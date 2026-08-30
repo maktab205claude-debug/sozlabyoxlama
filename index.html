@@ -2350,7 +2350,10 @@ async function loadDuelLobby(){
         <div class="admin-user-name">@${opp} ilə duel</div>
         <div class="admin-user-sub">Sənin irəliləyişin: ${myProg}/${(d.questions||[]).length}</div>
       </div>
-      <div class="admin-action-row"><button class="admin-btn-sm admin-btn-xp" onclick="continueDuel(${d.id})">▶️ Davam et</button></div>
+      <div class="admin-action-row">
+        <button class="admin-btn-sm admin-btn-xp" onclick="continueDuel(${d.id})">▶️ Davam et</button>
+        <button class="admin-btn-sm admin-btn-del" onclick="cancelDuel(${d.id})">❌ Ləğv et</button>
+      </div>
     </div>`;
   }).join(''):'<p style="color:var(--muted)">Davam edən duel yoxdur.</p>';
 
@@ -2361,6 +2364,7 @@ async function loadDuelLobby(){
         <div class="admin-user-name">@${d.p2_username}</div>
         <div class="admin-user-sub">⏳ Cavab gözlənilir...</div>
       </div>
+      <div class="admin-action-row"><button class="admin-btn-sm admin-btn-del" onclick="cancelDuel(${d.id})">❌ Ləğv et</button></div>
     </div>`).join(''):'<p style="color:var(--muted)">Göndərilmiş çağırış yoxdur.</p>';
 
   const histEl=document.getElementById('duelHistoryList');
@@ -2394,6 +2398,16 @@ window.continueDuel=async(duelId)=>{
   if(!duel){showToast('Duel tapılmadı!','red');return;}
   if(duel.status!=='active'){showToast('Bu duel hələ aktiv deyil.','red');loadDuelLobby();return;}
   playDuel(v,duel);
+};
+
+// Bir duel ilişib qalsa (şəbəkə problemi, brauzer dondurması s.), oyunçu onu
+// siyahıdan silmək üçün ləğv edə bilər — heç bir XP/nəticə hesablanmır.
+window.cancelDuel=async(duelId)=>{
+  try{
+    await sb.rpc('cancel_duel',{p_duel_id:duelId});
+    showToast('Duel ləğv edildi','muted');
+  }catch(e){showToast('Xəta!','red');}
+  loadDuelLobby();
 };
 
 async function refreshCurrentUserProfile(){
@@ -2453,12 +2467,15 @@ function playDuel(v,duel){
     document.getElementById('gback').onclick=()=>{stopDuelPoll();gameBack();};
     refreshOpponentBar();
     v.querySelectorAll('.quiz-opt').forEach(btn=>btn.addEventListener('click',function(){
-      sfxClick();
-      v.querySelectorAll('.quiz-opt').forEach(b=>b.disabled=true);
-      const correct=this.dataset.correct==='true';
-      if(correct){this.classList.add('correct');sfxCorrect();}
-      else{this.classList.add('wrong');v.querySelector('[data-correct="true"]').classList.add('correct');sfxWrong();}
-      sb.rpc('submit_duel_answer',{p_duel_id:duel.id,p_correct:correct}).catch(()=>{});
+      let correct=false;
+      try{
+        sfxClick();
+        v.querySelectorAll('.quiz-opt').forEach(b=>b.disabled=true);
+        correct=this.dataset.correct==='true';
+        if(correct){this.classList.add('correct');sfxCorrect();}
+        else{this.classList.add('wrong');v.querySelector('[data-correct="true"]')?.classList.add('correct');sfxWrong();}
+      }catch(e){}
+      try{sb.rpc('submit_duel_answer',{p_duel_id:duel.id,p_correct:correct}).catch(()=>{});}catch(e){}
       setTimeout(()=>{idx++;showQ();},900);
     }));
   }
