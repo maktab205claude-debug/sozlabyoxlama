@@ -246,6 +246,16 @@ input,textarea{font-family:var(--font-body)}
 .lq-feedback.correct{background:#0a2a1a;color:var(--green);border:1px solid var(--green)}
 .lq-feedback.wrong{background:#2a0a0a;color:var(--red);border:1px solid var(--red)}
 .lq-feedback .pts{display:block;font-family:var(--font-head);font-size:1.6rem;margin-top:4px}
+.lq-mode-toggle{display:flex;gap:8px;margin-bottom:12px}
+.lq-mode-btn{flex:1;padding:10px 8px;background:var(--card2);border:1.5px solid var(--border);
+  border-radius:var(--radius-sm);color:var(--muted);font-size:.82rem;font-weight:700;cursor:pointer;transition:.15s}
+.lq-mode-btn.active{border-color:var(--gold);color:var(--gold);background:#1e1a0a}
+.lq-manual-form{display:flex;flex-direction:column;gap:8px;margin:10px 0}
+.lq-manual-list{margin-bottom:10px}
+.lq-manual-item{display:flex;align-items:center;gap:8px;padding:9px 12px;background:var(--card2);
+  border-radius:var(--radius-sm);margin-bottom:7px;font-size:.82rem}
+.lq-manual-item-text{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lq-manual-item-del{background:none;border:none;color:var(--red);font-size:1rem;cursor:pointer;flex-shrink:0;padding:2px 6px}
 
 .fill-input{width:100%;padding:13px 14px;background:var(--bg2);border:1.5px solid var(--border2);
   border-radius:var(--radius-sm);color:var(--text);font-size:1rem;outline:none;margin:12px 0}
@@ -919,12 +929,45 @@ setTimeout(function(){
     <div class="admin-section">
       <h3>🎮 Canlı Sinif Yarışması</h3>
       <div style="font-size:.78rem;color:var(--muted);margin-bottom:10px">Bütün sinif eyni anda telefonundan qoşulub canlı sual-cavab yarışır — Kahoot kimi. Sürətli və düzgün cavab daha çox xal qazandırır.</div>
-      <select class="admin-input" id="lqQuestionCount">
-        <option value="5">5 sual</option>
-        <option value="10" selected>10 sual</option>
-        <option value="15">15 sual</option>
-      </select>
-      <button class="btn-primary" id="lqCreateBtn">🚀 Yeni Yarışma Başlat</button>
+      <div class="lq-mode-toggle">
+        <button class="lq-mode-btn active" id="lqModeAutoBtn" type="button">🤖 Avtomatik (sinifə görə)</button>
+        <button class="lq-mode-btn" id="lqModeManualBtn" type="button">✍️ Özüm hazırlayım</button>
+      </div>
+      <div id="lqAutoPanel">
+        <select class="admin-input" id="lqGradeSelect">
+          <option value="">Sinif seç (1-11)...</option>
+          <option value="1">1-ci sinif</option>
+          <option value="2">2-ci sinif</option>
+          <option value="3">3-cü sinif</option>
+          <option value="4">4-cü sinif</option>
+          <option value="5">5-ci sinif</option>
+          <option value="6">6-cı sinif</option>
+          <option value="7">7-ci sinif</option>
+          <option value="8">8-ci sinif</option>
+          <option value="9">9-cu sinif</option>
+          <option value="10">10-cu sinif</option>
+          <option value="11">11-ci sinif</option>
+        </select>
+        <select class="admin-input" id="lqQuestionCount" style="margin-top:8px">
+          <option value="5">5 sual</option>
+          <option value="10" selected>10 sual</option>
+          <option value="15">15 sual</option>
+        </select>
+        <div style="font-size:.72rem;color:var(--muted);margin-top:6px">Sistem seçdiyin sinifin səviyyəsinə uyğun sözlərdən avtomatik sual bankı hazırlayacaq.</div>
+        <button class="btn-primary" id="lqCreateBtn" style="margin-top:8px">🚀 Yeni Yarışma Başlat</button>
+      </div>
+      <div id="lqManualPanel" style="display:none">
+        <div class="lq-manual-list" id="lqManualList"><p style="color:var(--muted);font-size:.75rem">Hələ sual əlavə edilməyib.</p></div>
+        <div class="lq-manual-form">
+          <input class="admin-input" id="lqManualPrompt" placeholder="Sual mətni (məs. bir söz və ya ifadə)">
+          <input class="admin-input" id="lqManualOpt0" placeholder="✅ Düzgün cavab">
+          <input class="admin-input" id="lqManualOpt1" placeholder="Yanlış cavab 1">
+          <input class="admin-input" id="lqManualOpt2" placeholder="Yanlış cavab 2">
+          <input class="admin-input" id="lqManualOpt3" placeholder="Yanlış cavab 3">
+          <button class="btn-outline" id="lqManualAddBtn" type="button">+ Sualı əlavə et</button>
+        </div>
+        <button class="btn-primary" id="lqManualStartBtn">🚀 Yarışmanı Başlat (<span id="lqManualCount">0</span> sual)</button>
+      </div>
     </div>
     <div class="admin-section">
       <h3>💬 Dəstək Söhbətləri (öz sinfin)</h3>
@@ -1420,6 +1463,7 @@ async function doLogout(){
   stopLqHostPoll();
   stopLqStudentPoll();
   lqHostSessionId=null;lqStudentSessionId=null;
+  lqManualQuestions=[];renderLqManualList();
 }
 
 async function tryRestoreSession(){
@@ -2508,9 +2552,28 @@ function showDuelResult(v,duel,isP1){
 // verir ki, şagird öz xalını saxtalaşdıra bilməsin (Duel-dəki təhlükəsizlik
 // prinsipi ilə eynidir).
 // ══════════════════════════════════════════════
-function buildLiveQuizPool(n){
+// Sinif (1-11) -> söz bazasındakı 'difficulty' (1-5) səviyyəsinə uyğunlaşdırma.
+// Aşağı siniflər asan/tez-tez işlənən sözlərdən, yuxarı siniflər daha çətin/ədəbi
+// sözlərdən sual alır ki, "o sinif dərslərinə uyğun" səviyyə saxlanılsın.
+function difficultyTierForGrade(grade){
+  const g=parseInt(grade,10)||9;
+  if(g<=4)return 1;
+  if(g<=6)return 2;
+  if(g<=8)return 3;
+  if(g<=10)return 4;
+  return 5;
+}
+function buildLiveQuizPool(n,grade){
   const q=[];
-  shuffle([...WORDS]).slice(0,n).forEach(w=>{
+  let pool=WORDS;
+  if(grade){
+    const tier=difficultyTierForGrade(grade);
+    let tierWords=WORDS.filter(w=>w.difficulty===tier);
+    if(tierWords.length<n)tierWords=WORDS.filter(w=>w.difficulty<=tier);
+    if(tierWords.length<n)tierWords=WORDS;
+    pool=tierWords;
+  }
+  shuffle([...pool]).slice(0,n).forEach(w=>{
     const wrongs=shuffle(WORDS.filter(x=>x.en!==w.en)).slice(0,3);
     const opts=shuffle([...wrongs,w].map(o=>o.az));
     q.push({prompt:w.en,opts,correct:w.az});
@@ -2543,12 +2606,10 @@ let lqHostPollId=null;
 let lqHostSessionId=null;
 function stopLqHostPoll(){if(lqHostPollId){clearInterval(lqHostPollId);lqHostPollId=null;}}
 
-async function createLiveQuiz(){
-  const n=parseInt(document.getElementById('lqQuestionCount')?.value,10)||10;
-  const btn=document.getElementById('lqCreateBtn');
+async function launchLiveQuiz(questions,btn){
   if(btn)btn.disabled=true;
   try{
-    const{data,error}=await sb.rpc('create_live_quiz',{p_questions:buildLiveQuizPool(n)});
+    const{data,error}=await sb.rpc('create_live_quiz',{p_questions:questions});
     if(error||!data)throw error||new Error('no data');
     lqHostSessionId=data.id;
     showScreen('liveQuizHostScreen');
@@ -2557,6 +2618,58 @@ async function createLiveQuiz(){
     lqHostPollId=setInterval(lqHostPoll,2000);
   }catch(e){showToast('Yarışma yaradıla bilmədi!','red');}
   if(btn)btn.disabled=false;
+}
+
+async function createLiveQuiz(){
+  const grade=document.getElementById('lqGradeSelect')?.value||'';
+  if(!grade){showToast('Zəhmət olmasa sinif seçin','red');return;}
+  const n=parseInt(document.getElementById('lqQuestionCount')?.value,10)||10;
+  const btn=document.getElementById('lqCreateBtn');
+  await launchLiveQuiz(buildLiveQuizPool(n,grade),btn);
+}
+
+// ── MÜƏLLİMİN ÖZÜ SUAL HAZIRLAMASI (manual rejim) ──
+let lqManualQuestions=[];
+function renderLqManualList(){
+  const el=document.getElementById('lqManualList');
+  const countEl=document.getElementById('lqManualCount');
+  if(countEl)countEl.textContent=lqManualQuestions.length;
+  if(!el)return;
+  el.innerHTML=lqManualQuestions.length?lqManualQuestions.map((q,i)=>`
+    <div class="lq-manual-item">
+      <span class="lq-manual-item-text">${i+1}. ${escapeHtml(q.prompt)}</span>
+      <button class="lq-manual-item-del" type="button" onclick="removeLqManualQuestion(${i})">✕</button>
+    </div>`).join(''):'<p style="color:var(--muted);font-size:.75rem">Hələ sual əlavə edilməyib.</p>';
+}
+window.removeLqManualQuestion=(i)=>{lqManualQuestions.splice(i,1);renderLqManualList();};
+function addLqManualQuestion(){
+  const prompt=document.getElementById('lqManualPrompt')?.value.trim();
+  const o0=document.getElementById('lqManualOpt0')?.value.trim();
+  const o1=document.getElementById('lqManualOpt1')?.value.trim();
+  const o2=document.getElementById('lqManualOpt2')?.value.trim();
+  const o3=document.getElementById('lqManualOpt3')?.value.trim();
+  if(!prompt||!o0||!o1||!o2||!o3){showToast('Bütün sahələri doldurun','red');return;}
+  const opts=[o0,o1,o2,o3];
+  if(new Set(opts.map(o=>o.toLowerCase())).size<4){showToast('4 cavab variantı fərqli olmalıdır','red');return;}
+  lqManualQuestions.push({prompt,opts:shuffle(opts),correct:o0});
+  ['lqManualPrompt','lqManualOpt0','lqManualOpt1','lqManualOpt2','lqManualOpt3'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
+  renderLqManualList();
+  document.getElementById('lqManualPrompt')?.focus();
+}
+async function createLiveQuizManual(){
+  if(lqManualQuestions.length<2){showToast('Ən azı 2 sual əlavə edin','red');return;}
+  const btn=document.getElementById('lqManualStartBtn');
+  await launchLiveQuiz([...lqManualQuestions],btn);
+  lqManualQuestions=[];
+  renderLqManualList();
+}
+function setLqMode(mode){
+  document.getElementById('lqModeAutoBtn')?.classList.toggle('active',mode==='auto');
+  document.getElementById('lqModeManualBtn')?.classList.toggle('active',mode==='manual');
+  const autoPanel=document.getElementById('lqAutoPanel');
+  const manualPanel=document.getElementById('lqManualPanel');
+  if(autoPanel)autoPanel.style.display=mode==='auto'?'':'none';
+  if(manualPanel)manualPanel.style.display=mode==='manual'?'':'none';
 }
 
 async function lqHostPoll(){
@@ -5474,6 +5587,10 @@ window.addEventListener('DOMContentLoaded',async()=>{
   // Canlı Sinif Yarışması (müəllim tərəfi)
   document.getElementById('lqCreateBtn')?.addEventListener('click',createLiveQuiz);
   document.getElementById('lqHostBackBtn')?.addEventListener('click',lqHostBack);
+  document.getElementById('lqModeAutoBtn')?.addEventListener('click',()=>setLqMode('auto'));
+  document.getElementById('lqModeManualBtn')?.addEventListener('click',()=>setLqMode('manual'));
+  document.getElementById('lqManualAddBtn')?.addEventListener('click',addLqManualQuestion);
+  document.getElementById('lqManualStartBtn')?.addEventListener('click',createLiveQuizManual);
 
   // Nav
   document.querySelectorAll('.nav-btn').forEach(b=>b.addEventListener('click',function(){switchView(this.dataset.view);}));
