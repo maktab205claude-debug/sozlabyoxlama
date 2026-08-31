@@ -1,8 +1,10 @@
 // SözLab — sadə "app shell" service worker.
-// Məqsəd: PWA/APK meyarlarını ödəmək və tətbiqin qabığını (HTML/CSS/JS) offline
-// keş etmək. Supabase sorğuları (canlı data) HƏMİŞə şəbəkədən gedir — yalnız
-// statik qabıq keşlənir ki, məlumatlar köhnəlməsin.
-const CACHE_NAME = 'sozlab-shell-v1';
+// Məqsəd: PWA/APK meyarlarını ödəmək və İNTERNET OLMAYANDA tətbiqin qabığını
+// (HTML/CSS/JS) göstərə bilmək. Sayt tez-tez yenilənən aktiv layihə olduğu
+// üçün strategiya "network-first"dir: HƏMİŞə əvvəlcə şəbəkədən ən yeni
+// versiyanı çəkməyə çalışır, yalnız şəbəkə tamamilə əlçatmaz olanda (offline)
+// köhnə keşlənmiş nüsxəni göstərir. Supabase sorğularına heç toxunmur.
+const CACHE_NAME = 'sozlab-shell-v2';
 const SHELL_FILES = ['/', '/index.html', '/manifest.json'];
 
 self.addEventListener('install', (event) => {
@@ -27,17 +29,14 @@ self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET' || url.origin !== self.location.origin) return;
 
   event.respondWith(
-    caches.match(event.request).then((cached) => {
-      const network = fetch(event.request)
-        .then((resp) => {
-          if (resp && resp.ok) {
-            const copy = resp.clone();
-            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
-          }
-          return resp;
-        })
-        .catch(() => cached);
-      return cached || network;
-    })
+    fetch(event.request)
+      .then((resp) => {
+        if (resp && resp.ok) {
+          const copy = resp.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+        }
+        return resp;
+      })
+      .catch(() => caches.match(event.request))
   );
 });
