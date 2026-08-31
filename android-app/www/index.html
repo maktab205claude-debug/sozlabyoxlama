@@ -104,9 +104,12 @@ input,textarea{font-family:var(--font-body)}
 
 /* ── MAIN DASHBOARD ── */
 .top-bar{display:flex;align-items:center;padding:12px 16px;gap:10px;
-  background:var(--card);border-bottom:1px solid var(--border);flex-shrink:0;min-height:54px}
+  background:var(--card);border-bottom:1px solid var(--border);flex-shrink:0;min-height:54px;
+  overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.top-bar::-webkit-scrollbar{display:none}
 .top-logo{font-family:var(--font-head);font-weight:800;font-size:1.15rem;
-  background:linear-gradient(135deg,var(--gold),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;flex:1}
+  background:linear-gradient(135deg,var(--gold),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  flex:1;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
 .top-stat{display:flex;align-items:center;gap:4px;font-size:.82rem;color:var(--muted);
   background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:4px 10px}
 .top-stat span{color:var(--gold);font-weight:700;font-family:var(--font-head)}
@@ -777,6 +780,11 @@ setTimeout(function(){
 
     <!-- STATS -->
     <div id="atab-stats">
+      <div class="admin-section" style="margin-bottom:14px">
+        <h3>💾 Ehtiyat Nüsxə</h3>
+        <div style="font-size:.78rem;color:var(--muted);margin-bottom:10px">Bütün istifadəçilər, duellər, hekayələr, duyurular və digər məlumatları bir JSON faylına köçürüb kompüterinə saxla — Supabase-də hər hansı problem olsa belə, sənin öz nüsxən qalır.</div>
+        <button class="btn-primary" id="adminBackupBtn">⬇️ İndi ehtiyat nüsxə al</button>
+      </div>
       <div class="admin-stats-grid">
         <div class="admin-stat"><div class="val" id="aStatUsers">0</div><div class="lbl">İstifadəçi</div></div>
         <div class="admin-stat"><div class="val" id="aStatStories">0</div><div class="lbl">Hekayə</div></div>
@@ -5558,6 +5566,26 @@ window.addEventListener('DOMContentLoaded',async()=>{
   document.getElementById('adminPanelBtn').addEventListener('click',()=>{
     if(currentUser?.role!=='admin'){showToast('İcazə yoxdur!','red');return;}
     openAdmin();
+  });
+
+  // Ehtiyat nüsxə — bütün cədvəlləri tək bir JSON faylı kimi endirir. RPC özü
+  // server tərəfdə admin yoxlaması edir (bax supabase_update_backup.sql).
+  document.getElementById('adminBackupBtn')?.addEventListener('click',async()=>{
+    const btn=document.getElementById('adminBackupBtn');
+    btn.disabled=true;btn.textContent='Hazırlanır...';
+    try{
+      const{data,error}=await sb.rpc('admin_export_backup');
+      if(error||!data)throw error||new Error('no data');
+      const stamp=new Date().toISOString().slice(0,19).replace(/[:T]/g,'-');
+      const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+      const url=URL.createObjectURL(blob);
+      const a=document.createElement('a');
+      a.href=url;a.download=`sozlab-backup-${stamp}.json`;
+      document.body.appendChild(a);a.click();a.remove();
+      setTimeout(()=>URL.revokeObjectURL(url),3000);
+      showToast('Ehtiyat nüsxə endirildi!','teal');
+    }catch(e){showToast('Ehtiyat nüsxə alına bilmədi: '+(e?.message||'xəta'),'red');}
+    btn.disabled=false;btn.textContent='⬇️ İndi ehtiyat nüsxə al';
   });
 
   // Direktor Paneli — eyni ekranı (adminScreen) açır, amma RLS server tərəfdə admin
