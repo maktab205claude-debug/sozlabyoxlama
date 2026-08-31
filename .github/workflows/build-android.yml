@@ -1,0 +1,56 @@
+name: Android APK build
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "android-app/**"
+      - ".github/workflows/build-android.yml"
+  workflow_dispatch: {}
+
+defaults:
+  run:
+    working-directory: android-app
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repo-nu çək
+        uses: actions/checkout@v4
+
+      - name: Node.js quraşdır
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: JDK quraşdır (Android Gradle Plugin üçün lazımdır)
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: "17"
+
+      - name: npm paketlərini quraşdır
+        run: npm install
+
+      - name: Android platformasını yarat (Capacitor)
+        run: npx cap add android
+
+      - name: Kodu Android layihəsinə sinxronlaşdır
+        run: npx cap sync android
+
+      - name: Tətbiq ikonlarını/splash ekranını hazırla
+        run: npx capacitor-assets generate --android
+
+      - name: APK-nı kompilyasiya et (debug — birbaşa quraşdırıla bilən)
+        working-directory: android-app/android
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleDebug --no-daemon
+
+      - name: APK-nı yüklə (bu iş bitəndə "Artifacts" bölməsindən endirə bilərsən)
+        uses: actions/upload-artifact@v4
+        with:
+          name: SozLab-android-apk
+          path: android-app/android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error

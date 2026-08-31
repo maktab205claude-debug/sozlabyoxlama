@@ -1,0 +1,9 @@
+{
+  "appId": "com.sozlab.app",
+  "appName": "SözLab",
+  "webDir": "www",
+  "backgroundColor": "#0a0a0f",
+  "android": {
+    "backgroundColor": "#0a0a0f"
+  }
+}

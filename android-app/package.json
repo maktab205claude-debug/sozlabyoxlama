@@ -1,0 +1,17 @@
+{
+  "name": "sozlab-android",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SözLab — Android app qabığı (Capacitor). Kod telefona köçürülür, yalnız Supabase daha da canlı qalır.",
+  "scripts": {
+    "android:add": "cap add android",
+    "android:sync": "cap sync android",
+    "android:assets": "capacitor-assets generate --android"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^6.1.2",
+    "@capacitor/core": "^6.1.2",
+    "@capacitor/android": "^6.1.2",
+    "@capacitor/assets": "^3.0.5"
+  }
+}
