@@ -62,12 +62,12 @@ input,textarea{font-family:var(--font-body)}
 @keyframes spin{to{transform:rotate(360deg)}}
 
 /* ── LOGIN ── */
-#loginScreen{align-items:center;justify-content:center;padding:20px;overflow-y:auto;
+#loginScreen{align-items:center;justify-content:flex-start;padding:20px;overflow-y:auto;
   background:radial-gradient(ellipse at 30% 20%,#1a1030 0%,transparent 60%),
              radial-gradient(ellipse at 70% 80%,#0a2020 0%,transparent 60%)}
 .login-card{width:100%;max-width:400px;background:var(--card);border:1px solid var(--border);
   border-radius:24px;padding:32px 28px;display:flex;flex-direction:column;gap:14px;
-  box-shadow:0 24px 80px #0008;position:relative;overflow:hidden}
+  box-shadow:0 24px 80px #0008;position:relative;overflow:hidden;margin:auto 0;flex-shrink:0}
 .login-card::before{content:'';position:absolute;inset:0;
   background:radial-gradient(ellipse at 50% 0%,#9B72CF18 0%,transparent 60%);pointer-events:none}
 .login-logo{font-family:var(--font-head);font-size:1.9rem;font-weight:800;text-align:center;
@@ -684,7 +684,6 @@ setTimeout(function(){
       <button class="login-tab" data-mode="register">Qeydiyyat</button>
     </div>
     <input type="text" id="regUsername" class="login-input" placeholder="İstifadəçi adı" autocomplete="off" autocapitalize="none" style="display:none">
-    <input type="text" id="regDisplayName" class="login-input" placeholder="Görünən ad" autocomplete="off" style="display:none">
     <input type="text" id="regFirstName" class="login-input" placeholder="Ad" autocomplete="given-name" style="display:none">
     <input type="text" id="regLastName" class="login-input" placeholder="Soyad" autocomplete="family-name" style="display:none">
     <div id="regClassRow" style="display:none;gap:8px">
@@ -1410,9 +1409,9 @@ async function doLogin(){
 async function doRegister(){
   const usernameRaw=document.getElementById('regUsername').value.trim().toLowerCase();
   const username=usernameRaw.replace(/[^a-z0-9_]/g,'');
-  const displayName=document.getElementById('regDisplayName').value.trim();
   const firstName=document.getElementById('regFirstName').value.trim();
   const lastName=document.getElementById('regLastName').value.trim();
+  const displayName=`${firstName} ${lastName}`.trim();
   const classNum=document.getElementById('regClassNum').value;
   const classLetter=document.getElementById('regClassLetter').value;
   const classGrade=classNum&&classLetter?(classNum+classLetter):'';
@@ -1421,7 +1420,6 @@ async function doRegister(){
   const password=document.getElementById('authPassword').value;
   if(!username||username.length<3){showToast('İstifadəçi adı ən az 3 simvol olmalıdır (a-z, 0-9, _)!','red');return;}
   if(username!==usernameRaw){showToast('İstifadəçi adında yalnız hərf, rəqəm və "_" istifadə edin!','red');return;}
-  if(!displayName){showToast('Görünən adı daxil edin!','red');return;}
   if(!firstName){showToast('Adınızı daxil edin!','red');return;}
   if(!lastName){showToast('Soyadınızı daxil edin!','red');return;}
   if(!classGrade){showToast('Sinifinizi seçin (məs. 5B)!','red');return;}
@@ -4542,7 +4540,7 @@ function renderAI(){
 
     // Hesab / qeydiyyat / şifrə ilə bağlı suallar
     if(lower.includes('qeydiyyat')||lower.includes('hesab aç'))
-      return '📝 Qeydiyyat üçün giriş ekranında "Qeydiyyat" tabına keçib istifadəçi adı, görünən ad, ad/soyad, sinif, email və şifrə daxil et. İstifadəçi adı unikal olmalıdır (başqası artıq götürübsə xəbərdarlıq alacaqsan). İstəsən dostunun dəvət kodunu da yaza bilərsən.';
+      return '📝 Qeydiyyat üçün giriş ekranında "Qeydiyyat" tabına keçib istifadəçi adı, ad/soyad, sinif, email və şifrə daxil et. İstifadəçi adı unikal olmalıdır (başqası artıq götürübsə xəbərdarlıq alacaqsan). İstəsən dostunun dəvət kodunu da yaza bilərsən.';
     if(lower.includes('şifrə')||lower.includes('parol')){
       return `🔑 Hazırda tətbiq daxilində şifrə sıfırlama funksiyası yoxdur. Şifrəni unutmusansa, canlı dəstəyə yaz — sənə kömək edərik.\n${supportButtonHTML()}`;
     }
@@ -5544,7 +5542,6 @@ window.addEventListener('DOMContentLoaded',async()=>{
     this.classList.add('active');loginMode=this.dataset.mode;
     const isReg=loginMode==='register';
     document.getElementById('regUsername').style.display=isReg?'':'none';
-    document.getElementById('regDisplayName').style.display=isReg?'':'none';
     document.getElementById('regFirstName').style.display=isReg?'':'none';
     document.getElementById('regLastName').style.display=isReg?'':'none';
     document.getElementById('regClassRow').style.display=isReg?'flex':'none';
@@ -5552,7 +5549,7 @@ window.addEventListener('DOMContentLoaded',async()=>{
     document.getElementById('loginBtn').textContent=isReg?'📝 Qeydiyyat':'🚀 Daxil Ol';
   }));
   document.getElementById('loginBtn').addEventListener('click',doLogin);
-  ['authEmail','authPassword','regUsername','regDisplayName','regFirstName','regLastName','regReferralCode'].forEach(id=>{
+  ['authEmail','authPassword','regUsername','regFirstName','regLastName','regReferralCode'].forEach(id=>{
     document.getElementById(id).addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
   });
 

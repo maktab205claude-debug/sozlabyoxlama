@@ -1,0 +1,8 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "app.vercel.maktab205claude_debug_sozlabyoxlama.twa",
+    "sha256_cert_fingerprints": ["66:73:33:4F:0E:E8:F7:86:52:95:73:C1:7D:BD:E6:68:92:C3:92:84:8D:A1:2F:85:CA:6E:C6:DD:5F:F0:9C:85"]
+  }
+}]
