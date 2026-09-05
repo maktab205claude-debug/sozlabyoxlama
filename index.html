@@ -30,8 +30,9 @@
 :root{
   --bg:#0a0a0f;--bg2:#111118;--card:#16161f;--card2:#1c1c28;
   --border:#2a2a3a;--border2:#333348;--text:#e8e8f0;--muted:#6b6b85;
-  --gold:#f0c040;--gold2:#c89820;--teal:#40d9c0;--purple:#9B72CF;
-  --purple2:#7a55a8;--red:#e05555;--green:#40c080;
+  --gold:#f0c040;--gold2:#c89820;--teal:#40d9c0;--purple:#7c5cff;
+  --purple2:#5a3fd6;--red:#e05555;--green:#40c080;
+  --accent-cyan:#00d4ff;
   --font-head:'Syne',sans-serif;--font-body:'DM Sans',sans-serif;
   --radius:16px;--radius-sm:10px;
   --nav-h:64px;
@@ -674,11 +675,45 @@ body.light-mode .theme-toggle::after{left:19px;background:#fff}
 .display-exit-btn{position:fixed;top:14px;right:14px;z-index:100000;background:rgba(255,255,255,.08);
   color:var(--muted);border:1px solid var(--border);border-radius:8px;padding:6px 12px;font-size:.8rem;cursor:pointer;opacity:.35}
 .display-exit-btn:hover{opacity:1}
+
+/* ══════════════════════════════════════════════
+   SAYT FOOTER-İ — yalnız giriş ekranında (login screen), yalnız BRAUZERDƏ göstərilir.
+   APK/quraşdırılmış tətbiq daxilində (TWA/standalone rejim) avtomatik gizlənir —
+   bax "is-standalone" class-ı body-yə DOMContentLoaded-dən ƏVVƏL əlavə olunur.
+   ══════════════════════════════════════════════ */
+body.is-standalone .site-footer{display:none}
+.site-footer{margin-top:28px;padding-top:24px;border-top:1px solid var(--border);width:100%;max-width:420px}
+.footer-brand{margin-bottom:20px}
+.footer-brand-logo{font-family:var(--font-head);font-weight:800;font-size:1.3rem;
+  background:linear-gradient(135deg,var(--purple),var(--accent-cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px}
+.footer-brand-desc{font-size:.76rem;color:var(--muted);line-height:1.6}
+.footer-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px}
+.footer-col-title{font-size:.78rem;font-weight:700;color:var(--text);margin-bottom:10px}
+.footer-col-item{font-size:.76rem;color:var(--muted);margin-bottom:7px;line-height:1.5}
+.footer-apk-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--purple),var(--accent-cyan));
+  color:#fff;padding:9px 16px;border-radius:10px;font-size:.78rem;font-weight:700;text-decoration:none;margin-top:4px}
+.footer-newsletter{margin-bottom:16px}
+.footer-newsletter-row{display:flex;gap:6px;margin-top:8px}
+.footer-newsletter-row input{flex:1;background:var(--card2);border:1px solid var(--border);border-radius:8px;
+  padding:8px 10px;color:var(--text);font-size:.76rem;min-width:0}
+.footer-newsletter-row button{background:var(--purple);color:#fff;border:none;border-radius:8px;
+  padding:8px 14px;font-size:.76rem;font-weight:700;cursor:pointer;flex-shrink:0}
+.footer-bottom{font-size:.7rem;color:var(--muted);text-align:center;padding-top:14px;border-top:1px solid var(--border)}
+@media(min-width:480px){.footer-grid{grid-template-columns:1fr 1fr 1fr}}
 </style>
 </head>
 <body>
 <canvas id="bgCanvas"></canvas>
 <script>
+// Quraşdırılmış tətbiq (APK/TWA) və ya PWA rejimini ERKƏN aşkar edir ki, marketinq
+// xarakterli footer (Play Store keçidi, bülleten) APK İÇİNDƏ heç görünməsin —
+// modul yüklənməzdən ƏVVƏL (görünmə anında) əlavə edirik ki, "flash of footer" olmasın.
+try{
+  if(window.matchMedia&&window.matchMedia('(display-mode: standalone)').matches){
+    document.body.classList.add('is-standalone');
+  }
+}catch(e){}
+
 // Watchdog: əgər CDN (Supabase skripti) yüklənə bilməzsə (zəif internet, bloklanmış CDN və s.),
 // aşağıdakı əsas modul heç vaxt işə düşməyəcək və "loadingOverlay" əbədi ekranı bağlayıb saytı
 // istifadəyə yararsız edərdi. Bunun qarşısını almaq üçün 20 saniyə sonra hələ də yüklənirsə,
@@ -754,6 +789,40 @@ setTimeout(function(){
       <div class="l-stat"><div class="num" id="lsStories">0</div><div class="lbl">Hekayə</div></div>
     </div>
   </div>
+
+  <!-- Yalnız brauzerdə görünür (APK içində gizlənir — bax "is-standalone" CSS qaydası) -->
+  <footer class="site-footer">
+    <div class="footer-brand">
+      <div class="footer-brand-logo">SözLab</div>
+      <div class="footer-brand-desc">1-ci sinifdən 11-ci sinfə qədər Azərbaycan dili söz ehtiyatını oyunla inkişaf etdirən platforma.</div>
+    </div>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-col-title">Xüsusiyyətlər</div>
+        <div class="footer-col-item">🎮 10+ Oyun</div>
+        <div class="footer-col-item">📚 Ədəbi Lüğət</div>
+        <div class="footer-col-item">🏆 Canlı Sinif Yarışması</div>
+        <div class="footer-col-item">⚔️ Duel Rejimi</div>
+      </div>
+      <div>
+        <div class="footer-col-title">Dəstək</div>
+        <div class="footer-col-item">Daxil olduqdan sonra 💬 Dəstək düyməsindən birbaşa yaza bilərsiniz.</div>
+      </div>
+      <div>
+        <div class="footer-col-title">Tətbiqi Yüklə</div>
+        <div class="footer-col-item">Android üçün APK faylını endirin:</div>
+        <a class="footer-apk-btn" id="footerApkLink" href="#" target="_blank" rel="noopener">⬇️ APK Endir</a>
+      </div>
+    </div>
+    <div class="footer-newsletter">
+      <div class="footer-col-title">Yeniliklərdən xəbərdar olun</div>
+      <div class="footer-newsletter-row">
+        <input type="email" id="footerNewsletterEmail" placeholder="E-poçt ünvanınızı daxil edin">
+        <button id="footerNewsletterBtn">Abunə ol</button>
+      </div>
+    </div>
+    <div class="footer-bottom">© <span id="footerYear"></span> SözLab. Bütün hüquqlar qorunur.</div>
+  </footer>
 </div>
 
 <!-- ═══ MAIN ═══ -->
@@ -1085,6 +1154,10 @@ import{createClient}from'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm
 // service_role / secret açar HEÇ VAXT frontend kodunda saxlanılmamalıdır (RLS bunun üçündür).
 const SUPABASE_URL='https://vukgqovtoeceevigsngq.supabase.co';
 const SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ1a2dxb3Z0b2VjZWV2aWdzbmdxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc5MzM0MTcsImV4cCI6MjEwMzUwOTQxN30.IastMzNLlf0uUa9lfu31QmmUh3YTBlhxCzFzA8abSGg';
+// TODO(kemal): APK-nızı harda saxlayırsınızsa (GitHub Releases və s.) BURAYA onun
+// birbaşa endirmə linkini yazın — məsələn bir GitHub Release yaratsanız:
+// 'https://github.com/İSTİFADƏÇİ_ADINIZ/REPO_ADINIZ/releases/latest/download/app-debug.apk'
+const APK_DOWNLOAD_URL='';
 const sb=createClient(SUPABASE_URL,SUPABASE_KEY);
 
 // Zəif/kəsilən internetdə bəzi Supabase sorğuları CƏVAB VERMƏDƏN asılı qala bilər
@@ -6012,6 +6085,25 @@ window.addEventListener('DOMContentLoaded',async()=>{
   document.getElementById('lsWords').textContent=WORDS.length;
   hideLoading();
   window.__sozlabBooted=true;
+
+  // Footer — il, APK linki, bülleten abunəliyi (yalnız brauzerdə görünür, bax "is-standalone" CSS).
+  const footerYearEl=document.getElementById('footerYear');
+  if(footerYearEl)footerYearEl.textContent=new Date().getFullYear();
+  const apkLinkEl=document.getElementById('footerApkLink');
+  if(apkLinkEl){
+    if(APK_DOWNLOAD_URL){apkLinkEl.href=APK_DOWNLOAD_URL;}
+    else{apkLinkEl.style.opacity='.5';apkLinkEl.style.pointerEvents='none';apkLinkEl.textContent='⬇️ APK tezliklə';}
+  }
+  document.getElementById('footerNewsletterBtn')?.addEventListener('click',async()=>{
+    const emailEl=document.getElementById('footerNewsletterEmail');
+    const email=(emailEl.value||'').trim();
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){showToast('Düzgün e-poçt ünvanı daxil edin!','red');return;}
+    try{
+      await sb.from('newsletter_signups').insert([{email}]);
+      emailEl.value='';
+      showToast('Abunə oldunuz! Təşəkkürlər 🎉','teal');
+    }catch(e){showToast('Artıq abunəsiniz və ya xəta baş verdi.','red');}
+  });
 
   // Login tabs
   document.querySelectorAll('.login-tab').forEach(t=>t.addEventListener('click',function(){
