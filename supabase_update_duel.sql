@@ -179,6 +179,11 @@ begin
 
     update public.profiles set xp = xp + v_xp_p1, level = public.compute_level(xp + v_xp_p1) where username = v_duel.p1_username;
     update public.profiles set xp = xp + v_xp_p2, level = public.compute_level(xp + v_xp_p2) where username = v_duel.p2_username;
+    -- xp_log-a da yazırıq ki, "Ayın Söz Ustası" sertifikatı və şəxsi 14-günlük
+    -- qrafik duel qazanclarını da düzgün hesablasın (əvvəllər YALNIZ client-trusted
+    -- addXP() yolları buraya yazırdı, RPC-əsaslı qazanclar hesaba düşmürdü).
+    perform public.log_xp_gain(v_duel.p1_username, (now() at time zone 'UTC')::date, v_xp_p1);
+    perform public.log_xp_gain(v_duel.p2_username, (now() at time zone 'UTC')::date, v_xp_p2);
 
     update public.duels set status = 'finished', winner_username = v_winner, xp_awarded = true where id = p_duel_id;
   end if;

@@ -296,6 +296,7 @@ begin
 
   if v_points > 0 then
     update public.profiles set xp = xp + 2, level = public.compute_level(xp + 2) where username = v_username;
+    perform public.log_xp_gain(v_username, (now() at time zone 'UTC')::date, 2);
   end if;
 
   return jsonb_build_object('correct', v_is_correct, 'points', v_points, 'correctAnswer', v_correct_answer);
@@ -336,6 +337,7 @@ begin
     v_rank := v_rank + 1;
     v_bonus := case v_rank when 1 then 15 when 2 then 10 else 5 end;
     update public.profiles set xp = xp + v_bonus, level = public.compute_level(xp + v_bonus) where username = v_top.username;
+    perform public.log_xp_gain(v_top.username, (now() at time zone 'UTC')::date, v_bonus);
   end loop;
 end;
 $$;
