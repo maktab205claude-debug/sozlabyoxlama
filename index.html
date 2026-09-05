@@ -496,6 +496,7 @@ textarea.admin-input{resize:vertical;min-height:80px;line-height:1.5}
 .type-btn{padding:6px 13px;background:var(--card2);border:1px solid var(--border);border-radius:20px;
   color:var(--muted);cursor:pointer;font-size:.75rem;transition:.15s}
 .type-btn.active{background:var(--purple);border-color:var(--purple);color:#fff}
+.duel-mode-btn.active{background:var(--purple);border-color:var(--purple);color:#fff}
 
 .admin-user-row{display:flex;align-items:center;gap:10px;padding:11px 13px;
   background:var(--card2);border-radius:var(--radius-sm);margin-bottom:7px}
@@ -700,6 +701,79 @@ body.is-standalone .site-footer{display:none}
   padding:8px 14px;font-size:.76rem;font-weight:700;cursor:pointer;flex-shrink:0}
 .footer-bottom{font-size:.7rem;color:var(--muted);text-align:center;padding-top:14px;border-top:1px solid var(--border)}
 @media(min-width:480px){.footer-grid{grid-template-columns:1fr 1fr 1fr}}
+
+/* ══════════════════════════════════════════════
+   "DÖYÜŞ BİLETİ" (Battle Pass) — DAİMİ kosmetik çərçivə/tema effektləri.
+   Hər şey mövcud dəyişənlər (--purple, --gold, --accent-cyan) üzərində
+   qurulub, heç bir şəkil/asset tələb etmir.
+   ══════════════════════════════════════════════ */
+.avatar-btn.frame-frame_bronze,.profile-big-av.frame-frame_bronze{box-shadow:0 0 0 3px #cd7f32}
+.avatar-btn.frame-frame_silver,.profile-big-av.frame-frame_silver{box-shadow:0 0 0 3px #c0c0c0}
+.avatar-btn.frame-frame_gold,.profile-big-av.frame-frame_gold{box-shadow:0 0 0 3px var(--gold),0 0 14px rgba(240,192,64,.6)}
+.avatar-btn.frame-frame_diamond,.profile-big-av.frame-frame_diamond{box-shadow:0 0 0 3px var(--accent-cyan),0 0 18px rgba(0,212,255,.7);animation:diamondPulse 2.4s ease-in-out infinite}
+@keyframes diamondPulse{0%,100%{box-shadow:0 0 0 3px var(--accent-cyan),0 0 10px rgba(0,212,255,.5)}50%{box-shadow:0 0 4px var(--accent-cyan),0 0 22px rgba(0,212,255,.9)}}
+
+.cosmetic-item{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 8px;border-radius:12px;
+  background:var(--card2);border:1px solid var(--border);cursor:pointer;transition:.15s;text-align:center;min-width:76px}
+.cosmetic-item.locked{opacity:.4;filter:grayscale(1);cursor:not-allowed}
+.cosmetic-item.equipped{border-color:var(--gold);background:#1e1e08}
+.cosmetic-icon{font-size:1.6rem}
+.cosmetic-name{font-size:.65rem;font-weight:600;color:var(--muted)}
+.cosmetic-item.equipped .cosmetic-name{color:var(--gold)}
+.cosmetic-req{font-size:.6rem;color:var(--muted)}
+
+/* Temalar — YALNIZ taxan istifadəçi üçün opt-in rəng dəyişikliyi (defolt
+   palitraya toxunmur). Kontrastı qorumaq üçün yalnız --purple/--purple2/
+   --accent-cyan dəyişir, --gold/--teal/--red/--green olduğu kimi qalır. */
+body.theme-theme_sunset{--purple:#ff7a45;--purple2:#d9531e;--accent-cyan:#ffb347}
+body.theme-theme_ocean{--purple:#2d7dd2;--purple2:#1c5a99;--accent-cyan:#5ce1e6}
+body.theme-theme_neon{--purple:#e930ff;--purple2:#a100c9;--accent-cyan:#39ff88}
+
+/* ══════════════════════════════════════════════
+   "SİNİF BOSS'U" — ortaq HP zolağı. xp-bar ilə eyni vizual dilini
+   saxlayır, amma qırmızı-narıncı (təhlükə) tonunda.
+   ══════════════════════════════════════════════ */
+.boss-hp-wrap{margin-bottom:14px}
+.boss-hp-label{display:flex;justify-content:space-between;margin-bottom:6px;font-size:.85rem;font-weight:700;color:var(--text)}
+.boss-hp-bar{height:22px;background:var(--border);border-radius:11px;overflow:hidden;border:1px solid var(--border)}
+.boss-hp-fill{height:100%;background:linear-gradient(90deg,#8b1a1a,var(--red));border-radius:11px;transition:width .6s ease-out}
+
+/* ══════════════════════════════════════════════
+   "HACKER TERMİNALI" (CTF) — həqiqi terminal görünüşü üçün qəsdən
+   sabit (temadan asılı olmayan) qara/yaşıl rəng sxemi istifadə edir,
+   çünki "hacker ekranı" hissi bütün temalarda eyni qalmalıdır.
+   ══════════════════════════════════════════════ */
+.ctf-terminal{background:#060608;border:1px solid #1d3d24;border-radius:var(--radius);padding:12px;
+  font-family:'Courier New',monospace;box-shadow:inset 0 0 24px rgba(61,220,97,.06)}
+.ctf-log{height:280px;overflow-y:auto;font-size:.8rem;line-height:1.65;padding-right:4px}
+.ctf-line{white-space:pre-wrap;word-break:break-word;color:#3ddc61}
+.ctf-line.system{color:#7d8590}
+.ctf-line.clue{color:#e8e8f0}
+.ctf-line.error{color:#ff5f5f}
+.ctf-line.success{color:#3ddc61;font-weight:700}
+.ctf-line.flag{color:var(--gold);font-weight:800}
+.ctf-prompt{display:flex;align-items:center;gap:6px;margin-top:8px;border-top:1px solid #1d3d24;padding-top:8px}
+.ctf-prompt-label{color:#3ddc61;font-weight:700;white-space:nowrap;font-family:'Courier New',monospace;font-size:.8rem}
+.ctf-input{background:transparent;border:none;outline:none;color:#3ddc61;font-family:'Courier New',monospace;font-size:.85rem;flex:1;caret-color:#3ddc61}
+.ctf-cursor{display:inline-block;width:8px;height:14px;background:#3ddc61;animation:ctfBlink 1s step-end infinite;vertical-align:middle;margin-left:2px}
+@keyframes ctfBlink{0%,50%{opacity:1}50.01%,100%{opacity:0}}
+
+/* ══════════════════════════════════════════════
+   "SÖZ DÜNYASI" — avtomatik böyüyən ada. Sabit CSS gradient fon (göy →
+   qum → dəniz/torpaq) üzərində emoji-tikililər XP həddinə görə peyda olur.
+   ══════════════════════════════════════════════ */
+.island-scene{position:relative;width:100%;height:220px;border-radius:var(--radius);overflow:hidden;
+  border:1px solid var(--border);
+  background:linear-gradient(180deg,#87ceeb 0%,#b8e2f2 38%,#f4e2b8 55%,#e0c988 63%,#3a9d6e 64%,#256b48 100%)}
+.island-sun{position:absolute;top:8%;right:9%;font-size:1.5rem;opacity:.9}
+.island-item{position:absolute;transform:translate(-50%,-50%) scale(0);opacity:0;
+  transition:transform .5s cubic-bezier(.34,1.56,.64,1),opacity .4s;
+  filter:drop-shadow(0 2px 3px rgba(0,0,0,.3));cursor:default}
+.island-item.unlocked{transform:translate(-50%,-50%) scale(1);opacity:1}
+
+.island-share-screen{position:fixed;inset:0;background:var(--bg);color:var(--text);z-index:99999;
+  overflow-y:auto;padding:6vh 4vw;box-sizing:border-box;font-family:var(--font-body)}
+.island-share-card{max-width:520px;margin:0 auto;text-align:center}
 </style>
 </head>
 <body>
@@ -1111,6 +1185,32 @@ setTimeout(function(){
       </div>
     </div>
     <div class="admin-section">
+      <h3>🐉 Sinif Boss'u</h3>
+      <div style="font-size:.78rem;color:var(--muted);margin-bottom:10px">Bütün sinif eyni anda ORTAQ bir "Boss"a qarşı vuruşur — hər düzgün cavab onun canını (HP) azaldır. Sinif birləşib bossu dəf etsin!</div>
+      <input class="admin-input" id="bossNameInput" placeholder="Boss adı (məs. Söz Divi)" value="Söz Divi">
+      <select class="admin-input" id="bossGradeSelect" style="margin-top:8px">
+        <option value="">Sinif seç (1-11)...</option>
+        <option value="1">1-ci sinif</option><option value="2">2-ci sinif</option>
+        <option value="3">3-cü sinif</option><option value="4">4-cü sinif</option>
+        <option value="5">5-ci sinif</option><option value="6">6-cı sinif</option>
+        <option value="7">7-ci sinif</option><option value="8">8-ci sinif</option>
+        <option value="9">9-cu sinif</option><option value="10">10-cu sinif</option>
+        <option value="11">11-ci sinif</option>
+      </select>
+      <select class="admin-input" id="bossQuestionCount" style="margin-top:8px">
+        <option value="10">10 sual</option>
+        <option value="20" selected>20 sual</option>
+        <option value="30">30 sual</option>
+      </select>
+      <select class="admin-input" id="bossHpSelect" style="margin-top:8px">
+        <option value="100">100 HP (qısa döyüş)</option>
+        <option value="200" selected>200 HP (orta döyüş)</option>
+        <option value="400">400 HP (uzun, böyük sinif üçün)</option>
+      </select>
+      <div style="font-size:.72rem;color:var(--muted);margin-top:6px">Sistem seçdiyin sinifin səviyyəsinə uyğun sözlərdən avtomatik sual bankı hazırlayacaq.</div>
+      <button class="btn-primary" id="bossCreateBtn" style="margin-top:8px">🐉 Boss Döyüşünü Başlat</button>
+    </div>
+    <div class="admin-section">
       <h3>💬 Dəstək Söhbətləri (öz sinfin)</h3>
       <div id="teacherSupportThreadsList"><p style="color:var(--muted)">Yüklənir...</p></div>
     </div>
@@ -1124,6 +1224,15 @@ setTimeout(function(){
     <button class="btn-outline" id="lqHostBackBtn" style="font-size:.8rem;padding:7px 13px">← Çıx</button>
   </div>
   <div class="admin-content" id="lqHostContent"></div>
+</div>
+
+<!-- ═══ SİNİF BOSS'U — MÜƏLLİM (HOST) EKRANI ═══ -->
+<div class="screen" id="bossHostScreen">
+  <div class="admin-bar">
+    <div class="admin-title">🐉 Sinif Boss'u</div>
+    <button class="btn-outline" id="bossHostBackBtn" style="font-size:.8rem;padding:7px 13px">← Çıx</button>
+  </div>
+  <div class="admin-content" id="bossHostContent"></div>
 </div>
 
 <!-- ═══ DƏSTƏK SÖHBƏTİ (həm şagird öz söhbətini, həm admin/direktor/müəllim bir şagirdin söhbətini açır) ═══ -->
@@ -1496,7 +1605,7 @@ function getDueWeakWordIds(){
 // "ən çox oynadığın oyunlar" qrafiki üçün. weakreview/exam bura daxil edilmir
 // (onlar "oyun seçimi" deyil, əlavə məşq/sınaq rejimləridir).
 function recordGamePlayed(type){
-  if(!currentUser||type==='weakreview'||type==='exam'||type==='duel'||type==='livequiz'||type==='wordcontrib')return;
+  if(!currentUser||type==='weakreview'||type==='exam'||type==='duel'||type==='livequiz'||type==='wordcontrib'||type==='classboss')return;
   const gp={...(currentUser.games_played||{})};
   gp[type]=(gp[type]||0)+1;
   currentUser.games_played=gp;
@@ -1529,6 +1638,81 @@ async function loadCommunityWords(){
       existing.add(key);
     }
   }catch(e){}
+}
+
+// ══════════════════════════════════════════════
+// "DÖYÜŞ BİLETİ" (Battle Pass) — DAİMİ kosmetik çərçivə/tema kataloqu.
+// Mövsümlük DEYİL — bir dəfə XP həddinə çatanda element həmişəlik açılır,
+// heç vaxt itmir (bax supabase_update_cosmetics.sql-dəki izah).
+// ══════════════════════════════════════════════
+let COSMETICS=[];
+async function loadCosmeticsCatalog(){
+  try{
+    const{data}=await withTimeout(sb.from('cosmetics_catalog').select('id,type,name,icon,min_xp,sort_order').order('sort_order'),3000);
+    COSMETICS=data||[];
+  }catch(e){COSMETICS=[];}
+}
+
+// Hazırkı istifadəçinin taxdığı çərçivə/temanı vizual olaraq tətbiq edir.
+// Yalnız görünüşə təsir edir — funksionallığa toxunmur.
+function applyCosmetics(){
+  if(!currentUser)return;
+  document.body.className=document.body.className.replace(/\btheme-\S+/g,'').trim();
+  if(currentUser.equipped_theme&&currentUser.equipped_theme!=='theme_default'){
+    document.body.classList.add('theme-'+currentUser.equipped_theme);
+  }
+  document.querySelectorAll('.avatar-btn,.profile-big-av').forEach(el=>{
+    el.className=el.className.replace(/\bframe-\S+/g,'').trim();
+    if(currentUser.equipped_frame&&currentUser.equipped_frame!=='frame_none'){
+      el.classList.add('frame-'+currentUser.equipped_frame);
+    }
+  });
+}
+
+window.equipCosmetic=async(id)=>{
+  try{
+    const{error}=await sb.rpc('equip_cosmetic',{p_cosmetic_id:id});
+    if(error)throw error;
+    const cat=COSMETICS.find(c=>c.id===id);
+    if(cat){
+      if(cat.type==='frame')currentUser.equipped_frame=id;
+      else currentUser.equipped_theme=id;
+    }
+    applyCosmetics();
+    renderProfile();
+    showToast('Taxıldı! ✨','teal');
+  }catch(e){
+    showToast(e?.message?.includes('hələ açmamısınız')?'Bu elementi hələ açmamısınız!':'Xəta baş verdi','red');
+  }
+};
+
+// ══════════════════════════════════════════════
+// "SÖZ DÜNYASI" — avtomatik böyüyən ada. Şagird HEÇ NƏ SÜRÜKLƏYİB-QOYMUR —
+// yalnız topladığı ÜMUMİ XP-yə görə yeni tikili özbaşına peyda olur (eyni
+// "daimi, XP-həddi ilə açılan kataloq" fəlsəfəsi — Döyüş Bileti ilə
+// EYNİ məntiq, sadəcə geyim əvəzinə mənzərə elementi). Kataloq client-side
+// sabit massivdir (yeni SQL/cədvəl lazım deyil) — çünki bura yalnız artıq
+// public_profiles görünüşündən açıq şəkildə oxunan XP-yə əsaslanır, gizli
+// heç nə yoxdur. Paylaşma linki (?ada=username) həmin public görünüşdən
+// SADƏCƏ OXUYUR — heç bir yeni səlahiyyət açmır.
+// ══════════════════════════════════════════════
+const ISLAND_MILESTONES=[
+  {id:'hut',icon:'🏠',name:'Daxma',minXp:0,left:'10%',top:'70%',size:'1.8rem'},
+  {id:'palm',icon:'🌴',name:'Palma Ağacı',minXp:150,left:'24%',top:'58%',size:'2.1rem'},
+  {id:'well',icon:'⛲',name:'Bulaq',minXp:400,left:'38%',top:'74%',size:'1.7rem'},
+  {id:'garden',icon:'🌻',name:'Bağça',minXp:700,left:'52%',top:'68%',size:'1.6rem'},
+  {id:'bridge',icon:'🌉',name:'Körpü',minXp:1100,left:'66%',top:'72%',size:'2rem'},
+  {id:'boat',icon:'⛵',name:'Gəmi',minXp:1600,left:'80%',top:'78%',size:'1.9rem'},
+  {id:'castle',icon:'🏯',name:'Qala',minXp:2200,left:'60%',top:'42%',size:'2.4rem'},
+  {id:'lighthouse',icon:'🗼',name:'Mayak',minXp:3000,left:'88%',top:'50%',size:'2.2rem'},
+];
+
+function renderIslandScene(xp){
+  const items=ISLAND_MILESTONES.map(m=>{
+    const unlocked=xp>=m.minXp;
+    return`<div class="island-item${unlocked?' unlocked':''}" style="left:${m.left};top:${m.top};font-size:${m.size}" title="${m.name}${unlocked?'':' — 🔒 '+m.minXp+' XP'}">${m.icon}</div>`;
+  }).join('');
+  return`<div class="island-scene"><span class="island-sun">☀️</span>${items}</div>`;
 }
 
 // ══════════════════════════════════════════════
@@ -1631,6 +1815,40 @@ async function startDisplayMode(){
   renderSlide();
   displaySlideTimer=setInterval(renderSlide,9000);
   displayRefreshTimer=setInterval(loadData,45000);
+}
+
+// ══════════════════════════════════════════════
+// "SÖZ DÜNYASI" PAYLAŞMA GÖRÜNÜŞÜ — "Böyük Ekran"la EYNİ prinsip: login
+// TƏLƏB ETMİR, tam ayrı bir "ekran". "?ada=username" ilə açılır (bax
+// DOMContentLoaded). Yalnız public_profiles-dan (artıq liderbordda da açıq
+// olan) ad/XP/seriya oxuyur — heç bir yeni səlahiyyət/sahə açmır.
+// ══════════════════════════════════════════════
+async function startIslandShareView(username){
+  const root=document.createElement('div');
+  root.className='island-share-screen';
+  root.id='islandShareScreen';
+  root.innerHTML=`
+    <div class="island-share-card">
+      <div style="font-family:var(--font-head);font-size:1.5rem;font-weight:800;color:var(--gold)">SözLab</div>
+      <div style="font-size:.82rem;color:var(--muted);margin-bottom:18px">🏝️ Söz Dünyası — Paylaşılan Ada</div>
+      <div id="islandShareBody"><p style="color:var(--muted)">Yüklənir...</p></div>
+      <button class="btn-primary" id="islandShareCta" style="margin-top:22px">SözLab-da öz Söz Dünyanı yarat →</button>
+    </div>`;
+  document.body.appendChild(root);
+  document.getElementById('islandShareCta').onclick=()=>{location.href=location.pathname;};
+
+  const body=document.getElementById('islandShareBody');
+  try{
+    const{data,error}=await sb.from('public_profiles').select('username,display_name,xp,streak').eq('username',username).single();
+    if(error||!data)throw error||new Error('tapılmadı');
+    const unlockedCount=ISLAND_MILESTONES.filter(m=>data.xp>=m.minXp).length;
+    body.innerHTML=`
+      <div style="font-size:1.05rem;font-weight:700;margin-bottom:12px">${data.display_name||data.username}-in adası</div>
+      ${renderIslandScene(data.xp)}
+      <div style="font-size:.8rem;color:var(--muted);margin-top:12px">🏆 ${data.xp} XP · 🔥 ${data.streak||0} gün seriyası · ${unlockedCount}/${ISLAND_MILESTONES.length} tikili açılıb</div>`;
+  }catch(e){
+    body.innerHTML=`<p style="color:var(--muted)">Bu istifadəçi tapılmadı, ya da adı dəyişib.</p>`;
+  }
 }
 
 // ══════════════════════════════════════════════
@@ -1763,6 +1981,7 @@ function updateTopBar(){
   document.getElementById('topStreak').textContent=currentUser.streak||0;
   document.getElementById('topXP').textContent=currentUser.xp||0;
   document.getElementById('avatarBtn').textContent=(currentUser.display_name||'?')[0].toUpperCase();
+  applyCosmetics();
 }
 
 // ══════════════════════════════════════════════
@@ -2094,6 +2313,20 @@ function renderGames(){
         <div class="game-desc">Lüğətdə olmayan sözün mənasını tap, yaz, lüğətə əlavə et</div>
         <div class="game-xp">+1 XP / söz (gündə 100-ə qədər)</div>
       </div>
+      <div class="game-card" data-game="classboss" style="border-color:var(--red)">
+        <div class="game-difficulty">Sinif</div>
+        <div class="game-icon">🐉</div>
+        <div class="game-name">Sinif Boss'u</div>
+        <div class="game-desc">Bütün sinif birləşib ORTAQ bir Bossa qarşı vuruşur — hər düzgün cavab zərbədir!</div>
+        <div class="game-xp">+2 XP / zərbə + ən çox zərbə vurana bonus</div>
+      </div>
+      <div class="game-card" data-game="ctfterm" style="border-color:#3ddc61">
+        <div class="game-difficulty">Məntiq</div>
+        <div class="game-icon">🖥️</div>
+        <div class="game-name">Hacker Terminalı</div>
+        <div class="game-desc">Şifrələnmiş sözləri deşifrə et, terminala düzgün cavabı yaz, sistemi haqla!</div>
+        <div class="game-xp">+15 XP / səviyyə + bonus FLAG</div>
+      </div>
     </div>
     <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px;margin-top:4px">
       <div style="font-size:.82rem;font-weight:600;margin-bottom:8px">💡 Necə işləyir?</div>
@@ -2127,6 +2360,8 @@ function startGame(type){
   else if(type==='duel')startDuel(v);
   else if(type==='livequiz')startLiveQuiz(v);
   else if(type==='wordcontrib')startWordContrib(v);
+  else if(type==='classboss')startBossGame(v);
+  else if(type==='ctfterm')startCtfTerminal(v);
 }
 
 function gameBack(){currentGame=null;renderGames();document.getElementById('viewGames').scrollTop=0;}
@@ -2248,6 +2483,165 @@ async function startWordContrib(v){
   updateProgress();
   pickNextWord();
   renderCard();
+}
+
+// ══════════════════════════════════════════════
+// HACKER TERMİNALI (CTF) — sadə, tək-oyunçu "kod sındırma" oyunu.
+// Hər səviyyədə lüğətdəki bir söz fərqli bir şifrə üsulu ilə kodlaşdırılır
+// (Sezar, əks sıra, Morze, ikilik, leet-şifrə). Şagird AZ mənasını ipucu
+// kimi görür, şifrəni açır və düzgün sözü terminala yazır.
+// Doğrulama BÜTÜNLÜKLƏ KLİENT tərəfdə edilir — digər tək-oyunçu oyunlar
+// (Quiz, Flashkart, Hərf Tetrisi və s.) ilə EYNİ təhlükəsizlik modeli:
+// şifrələnmiş söz onsuz da WORDS massivində açıq mətn kimi mövcuddur,
+// ona görə burda ayrıca RPC/server yoxlaması əlavə etmək real fayda
+// vermir — XP digər bütün solo-oyunlarda olduğu kimi addXP() ilə verilir.
+// ══════════════════════════════════════════════
+const CTF_MORSE_MAP={a:'.-',b:'-...',c:'-.-.',d:'-..',e:'.',f:'..-.',g:'--.',h:'....',i:'..',j:'.---',k:'-.-',l:'.-..',m:'--',n:'-.',o:'---',p:'.--.',q:'--.-',r:'.-.',s:'...',t:'-',u:'..-',v:'...-',w:'.--',x:'-..-',y:'-.--',z:'--..'};
+const CTF_LEET_MAP={a:'4',e:'3',i:'1',o:'0',s:'5',t:'7',g:'9',b:'8'};
+const CTF_LEVELS=[
+  {type:'caesar',shift:3,name:'Sezar Şifrəsi (ROT-3)',xp:15,minLen:4,maxLen:9},
+  {type:'reverse',name:'Əks Sıra Şifrəsi',xp:15,minLen:4,maxLen:9},
+  {type:'morse',name:'Morze Kodu',xp:20,minLen:3,maxLen:6},
+  {type:'binary',name:'İkilik Kod (ASCII-8bit)',xp:20,minLen:3,maxLen:6},
+  {type:'leet',name:'Leet-Şifrə',xp:25,minLen:4,maxLen:9},
+];
+
+function ctfEncode(cfg,word){
+  const w=word.toLowerCase();
+  if(cfg.type==='caesar'){
+    return w.split('').map(ch=>{
+      const code=ch.charCodeAt(0);
+      if(code>=97&&code<=122)return String.fromCharCode(((code-97+cfg.shift)%26)+97);
+      return ch;
+    }).join('').toUpperCase();
+  }
+  if(cfg.type==='reverse')return w.split('').reverse().join('').toUpperCase();
+  if(cfg.type==='morse')return w.split('').map(ch=>CTF_MORSE_MAP[ch]||'?').join(' / ');
+  if(cfg.type==='binary')return w.split('').map(ch=>ch.charCodeAt(0).toString(2).padStart(8,'0')).join(' ');
+  if(cfg.type==='leet')return w.split('').map(ch=>CTF_LEET_MAP[ch]||ch).join('');
+  return w;
+}
+
+function ctfLegend(cfg){
+  if(cfg.type==='caesar')return `Hər hərf əlifbada ${cfg.shift} irəli sürüşüb (a→${String.fromCharCode(97+cfg.shift)}, b→${String.fromCharCode(98+cfg.shift)}...). Geri sürüşdürərək aç!`;
+  if(cfg.type==='reverse')return 'Söz sadəcə tərsinə yazılıb — hərfləri əks sıra ilə oxu.';
+  if(cfg.type==='morse')return 'a=.- b=-... c=-.-. d=-.. e=. f=..-. g=--. h=.... i=.. j=.--- k=-.- l=.-.. m=-- n=-. o=--- p=.--. q=--.- r=.-. s=... t=- u=..- v=...- w=.-- x=-..- y=-.-- z=--..';
+  if(cfg.type==='binary')return 'Hər 8 rəqəm bir hərfin ASCII kodudur (məs: 01100001 = a). Onluq ədədə çevirib ASCII cədvəli ilə hərfə çevir.';
+  if(cfg.type==='leet')return '4=a  3=e  1=i  0=o  5=s  7=t  9=g  8=b — digər hərflər olduğu kimi qalır.';
+  return '';
+}
+
+function ctfFragment(word,levelIdx){
+  return (word.slice(0,3)+(levelIdx+1)).toUpperCase();
+}
+
+function startCtfTerminal(v){
+  const pool=WORDS.filter(w=>/^[a-z]+$/i.test(w.en));
+  const fallback={en:'sozlab',az:'sözlab'};
+  const usedEn=new Set();
+  const picked=CTF_LEVELS.map(cfg=>{
+    let candidates=shuffle(pool.filter(w=>!usedEn.has(w.en.toLowerCase())&&w.en.length>=cfg.minLen&&w.en.length<=cfg.maxLen));
+    if(!candidates.length)candidates=shuffle(pool.filter(w=>!usedEn.has(w.en.toLowerCase())));
+    const chosen=candidates[0]||fallback;
+    usedEn.add(chosen.en.toLowerCase());
+    return chosen;
+  });
+
+  let levelIdx=0;
+  const flagFragments=[];
+  let runXP=0;
+  let currentPuzzle=null;
+
+  v.innerHTML=`
+    <button class="btn-outline" id="gback" style="margin-bottom:10px">← Geri</button>
+    <div style="font-family:var(--font-head);font-size:1rem;font-weight:700;margin-bottom:4px;color:#3ddc61">🖥️ Hacker Terminalı</div>
+    <div style="font-size:.75rem;color:var(--muted);margin-bottom:10px">Şifrələnmiş sözləri deşifrə et, sistemi haqla. Səviyyə: <span id="ctfLevelNum" style="color:var(--gold);font-weight:700">1</span>/5</div>
+    <div class="ctf-terminal">
+      <div class="ctf-log" id="ctfLog"></div>
+      <div class="ctf-prompt">
+        <span class="ctf-prompt-label">root@sozlab:~$</span>
+        <input class="ctf-input" id="ctfInput" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="cavabı yaz və Enter bas...">
+        <span class="ctf-cursor"></span>
+      </div>
+    </div>
+    <div style="font-size:.7rem;color:var(--muted);margin-top:6px;text-align:center">💡 Çətinləşsə "yardım" yaz — ilk hərfi göstərər.</div>`;
+  document.getElementById('gback').onclick=gameBack;
+
+  const logEl=document.getElementById('ctfLog');
+  const inputEl=document.getElementById('ctfInput');
+  inputEl.focus();
+
+  function pushLine(text,cls){
+    const p=document.createElement('div');
+    p.className='ctf-line'+(cls?' '+cls:'');
+    p.textContent=text;
+    logEl.appendChild(p);
+    logEl.scrollTop=logEl.scrollHeight;
+  }
+
+  function presentLevel(){
+    const cfg=CTF_LEVELS[levelIdx];
+    const word=picked[levelIdx];
+    const encoded=ctfEncode(cfg,word.en);
+    currentPuzzle={answer:word.en.toLowerCase(),az:word.az,cfg};
+    const lvlEl=document.getElementById('ctfLevelNum');if(lvlEl)lvlEl.textContent=levelIdx+1;
+    pushLine('','');
+    pushLine(`[SƏVİYYƏ ${levelIdx+1}/5] ŞİFRƏ NÖVÜ: ${cfg.name}`,'system');
+    pushLine(`ŞİFRƏLİ MESAJ >> ${encoded}`,'flag');
+    pushLine(`AÇAR: ${ctfLegend(cfg)}`,'system');
+    pushLine(`İPUCU (mənası): ${word.az}`,'clue');
+    pushLine('Cavabı (sözü) aşağı sətrə yaz:','system');
+  }
+
+  function finish(){
+    const flag=`FLAG{${flagFragments.join('_')}}`;
+    const bonus=40;
+    runXP+=bonus;
+    addXP(bonus,'– Tam Sistem Haqlaması bonusu');
+    v.innerHTML=`<button class="btn-outline" id="gback" style="margin-bottom:14px">← Oyunlar</button>
+      <div class="quiz-box"><div class="quiz-result">🖥️💥
+        <div class="score">${runXP} XP</div>
+        <div class="grade">Sistem tam haqlandı! 5/5 şifrə sındırıldı.<br>
+        <span style="font-family:'Courier New',monospace;color:var(--gold);font-size:.85rem;word-break:break-all">${flag}</span></div>
+      </div>
+      <button class="btn-primary" id="retryBtn" style="margin-top:14px">🔄 Yenidən Sındır</button></div>`;
+    document.getElementById('gback').onclick=gameBack;
+    document.getElementById('retryBtn').onclick=()=>startCtfTerminal(v);
+  }
+
+  function handleSubmit(){
+    const raw=inputEl.value;
+    const typed=raw.trim().toLowerCase().normalize('NFC');
+    if(!typed)return;
+    inputEl.value='';
+    pushLine('$ '+raw,'system');
+    if(typed==='yardım'||typed==='komek'||typed==='kömək'||typed==='hint'){
+      if(currentPuzzle)pushLine(`💡 İlk hərf: "${currentPuzzle.answer[0]}"`,'clue');
+      return;
+    }
+    if(!currentPuzzle)return;
+    if(typed===currentPuzzle.answer){
+      sfxCorrect();
+      pushLine('✅ DOĞRU! Qıfıl açıldı, sistemə giriş təsdiqləndi.','success');
+      const cfg=currentPuzzle.cfg;
+      runXP+=cfg.xp;
+      addXP(cfg.xp,'– Hacker Terminalı');
+      flagFragments.push(ctfFragment(currentPuzzle.answer,levelIdx));
+      currentPuzzle=null;
+      levelIdx++;
+      if(levelIdx>=CTF_LEVELS.length)setTimeout(finish,600);
+      else setTimeout(presentLevel,700);
+    }else{
+      sfxWrong();
+      pushLine('❌ SƏHV PAROL. Şifrəni yenidən yoxla və təkrar yaz.','error');
+    }
+  }
+
+  inputEl.addEventListener('keydown',e=>{if(e.key==='Enter')handleSubmit();});
+
+  pushLine('SİSTEM: Naməlum giriş aşkarlandı... Backdoor axtarılır...','system');
+  pushLine('SİSTEM: 5 qatlı şifrələmə tapıldı. Sındırma prosesi başladı.','system');
+  presentLevel();
 }
 
 function gameHeader(v,title,current,total){
@@ -2714,15 +3108,23 @@ function startExamSimulation(v){
 // ── CANLI DUEL (1v1) ── Dostla real-vaxta yaxın (poll-based) söz döyüşü.
 // Hər iki oyunçu EYNİ 8 sual dəstini öz sürəti ilə cavablandırır (yarış rejimi);
 // nəticə və XP mükafatı server tərəfdə (submit_duel_answer RPC) atomik hesablanır.
-function buildDuelPool(){
+function buildDuelPool(count=8){
   const q=[];
-  shuffle([...WORDS]).slice(0,8).forEach(w=>{
+  shuffle([...WORDS]).slice(0,count).forEach(w=>{
     const wrongs=shuffle(WORDS.filter(x=>x.en!==w.en)).slice(0,3);
     const opts=shuffle([...wrongs,w].map(o=>o.az));
     q.push({prompt:w.en,opts,correct:w.az});
   });
   return q;
 }
+
+// "Sürətli Düello" (reflex) rejiminin taymer/sual-sayı tənzimləri — tənəffüs
+// arası qısa, gərgin bir tur üçün. Eyni duels cədvəli/RPC-ləri üzərində işləyir,
+// heç bir yeni infrastruktur (WebRTC və s.) tələb etmir.
+const DUEL_MODE_CONFIG={
+  normal:{questionCount:8,timerSec:0,pollMs:3000,label:'Normal'},
+  sureli:{questionCount:6,timerSec:5,pollMs:1000,label:'⚡ Sürətli'},
+};
 
 let duelPollId=null;
 function stopDuelPoll(){if(duelPollId){clearInterval(duelPollId);duelPollId=null;}}
@@ -2735,6 +3137,11 @@ function startDuel(v){
     <div class="admin-section">
       <h3>🎯 Yeni Duel Başlat</h3>
       <input class="admin-input" id="duelOpponentInput" placeholder="Rəqibin istifadəçi adı">
+      <div style="display:flex;gap:8px;margin-top:8px">
+        <button class="btn-outline duel-mode-btn active" data-mode="normal" style="flex:1">🎯 Normal (8 sual)</button>
+        <button class="btn-outline duel-mode-btn" data-mode="sureli" style="flex:1">⚡ Sürətli (6 sual, 5 san)</button>
+      </div>
+      <div style="font-size:.72rem;color:var(--muted);margin-top:6px">⚡ Sürətli rejimdə hər sualı 5 saniyə ərzində cavablandırmalısan — tənəffüs turnirləri üçün ideal!</div>
       <button class="btn-primary" id="duelChallengeBtn" style="margin-top:8px">⚔️ Çağırış Göndər</button>
     </div>
     <div class="admin-section">
@@ -2754,12 +3161,18 @@ function startDuel(v){
       <div id="duelHistoryList"><p style="color:var(--muted)">Yüklənir...</p></div>
     </div>`;
   document.getElementById('gback').onclick=()=>{stopDuelPoll();gameBack();};
+  let selectedDuelMode='normal';
+  v.querySelectorAll('.duel-mode-btn').forEach(b=>b.addEventListener('click',function(){
+    v.querySelectorAll('.duel-mode-btn').forEach(x=>x.classList.remove('active'));
+    this.classList.add('active');selectedDuelMode=this.dataset.mode;
+  }));
   document.getElementById('duelChallengeBtn').onclick=async()=>{
     const opp=document.getElementById('duelOpponentInput').value.trim().toLowerCase();
     if(!opp){showToast('İstifadəçi adı yazın!','red');return;}
     if(opp===currentUser.username){showToast('Özünüzə çağırış göndərə bilməzsiniz!','red');return;}
+    const cfg=DUEL_MODE_CONFIG[selectedDuelMode]||DUEL_MODE_CONFIG.normal;
     try{
-      await sb.rpc('create_duel',{p_opponent_username:opp,p_questions:buildDuelPool()});
+      await sb.rpc('create_duel',{p_opponent_username:opp,p_questions:buildDuelPool(cfg.questionCount),p_mode:selectedDuelMode});
       showToast('Çağırış göndərildi!','teal');
       document.getElementById('duelOpponentInput').value='';
       loadDuelLobby();
@@ -2777,12 +3190,13 @@ async function loadDuelLobby(){
   try{const r=await sb.from('duels').select().eq('p1_username',me).eq('status','pending').order('created_at',{ascending:false});sentPending=r.data||[];}catch(e){}
   try{const r=await sb.from('duels').select().or(`p1_username.eq.${me},p2_username.eq.${me}`).eq('status','finished').order('created_at',{ascending:false}).limit(10);history=r.data||[];}catch(e){}
 
+  const modeBadge=(d)=>d.mode==='sureli'?' · ⚡ Sürətli':'';
   const invEl=document.getElementById('duelInvitesList');
   if(invEl)invEl.innerHTML=invites.length?invites.map(d=>`
     <div class="admin-user-row">
       <div class="admin-user-info">
         <div class="admin-user-name">@${d.p1_username}</div>
-        <div class="admin-user-sub">Sizi duelə çağırır — ${(d.questions||[]).length} sual</div>
+        <div class="admin-user-sub">Sizi duelə çağırır — ${(d.questions||[]).length} sual${modeBadge(d)}</div>
       </div>
       <div class="admin-action-row">
         <button class="admin-btn-sm admin-btn-xp" onclick="respondDuelInvite(${d.id},true)">✅ Qəbul et</button>
@@ -2797,7 +3211,7 @@ async function loadDuelLobby(){
     return `<div class="admin-user-row">
       <div class="admin-user-info">
         <div class="admin-user-name">@${opp} ilə duel</div>
-        <div class="admin-user-sub">Sənin irəliləyişin: ${myProg}/${(d.questions||[]).length}</div>
+        <div class="admin-user-sub">Sənin irəliləyişin: ${myProg}/${(d.questions||[]).length}${modeBadge(d)}</div>
       </div>
       <div class="admin-action-row">
         <button class="admin-btn-sm admin-btn-xp" onclick="continueDuel(${d.id})">▶️ Davam et</button>
@@ -2873,6 +3287,10 @@ function playDuel(v,duel){
   const isP1=duel.p1_username===me;
   const questions=duel.questions||[];
   let idx=isP1?duel.p1_progress:duel.p2_progress;
+  const modeCfg=DUEL_MODE_CONFIG[duel.mode]||DUEL_MODE_CONFIG.normal;
+  let reflexTimer=null;
+
+  function stopReflexTimer(){if(reflexTimer){clearInterval(reflexTimer);reflexTimer=null;}}
 
   async function refreshOpponentBar(){
     let fresh=null;
@@ -2891,6 +3309,7 @@ function playDuel(v,duel){
   }
 
   function showQ(){
+    stopReflexTimer();
     if(idx>=questions.length){
       v.innerHTML=`
         <button class="btn-outline" id="gback" style="margin-bottom:14px">← Oyunlar</button>
@@ -2901,32 +3320,51 @@ function playDuel(v,duel){
           <div style="font-size:.72rem;color:var(--muted);margin-top:10px">Nəticə hazır olanda "Davam edən Duellər" bölməsindən bura qayıda bilərsən.</div>
         </div>`;
       document.getElementById('gback').onclick=()=>{stopDuelPoll();gameBack();};
-      duelPollId=setInterval(refreshOpponentBar,3000);
+      duelPollId=setInterval(refreshOpponentBar,modeCfg.pollMs);
       refreshOpponentBar();
       return;
     }
     const q=questions[idx];
-    gameHeader(v,'⚔️ Canlı Duel',idx+1,questions.length);
+    gameHeader(v,(duel.mode==='sureli'?'⚡ Sürətli Düello':'⚔️ Canlı Duel'),idx+1,questions.length);
+    const timerHtml=modeCfg.timerSec>0?`<div style="display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:8px;font-size:.82rem;color:var(--muted)">⏱ <span id="duelReflexTimer" style="font-family:var(--font-head);font-size:1.1rem;font-weight:800;color:var(--gold)">${modeCfg.timerSec}</span> san</div>`:'';
     v.innerHTML+=`
       <div class="quiz-box" style="margin-top:12px">
+        ${timerHtml}
         <div style="font-size:.8rem;color:var(--text);margin-bottom:8px">"${q.prompt}" sözünün mənası?</div>
         <div class="quiz-opts">${q.opts.map(o=>`<button class="quiz-opt" data-correct="${o===q.correct}">${o}</button>`).join('')}</div>
       </div>
       <div id="duelOppBar" style="margin-top:10px;font-size:.75rem;color:var(--muted);text-align:center">Rəqibin irəliləyişi yoxlanılır...</div>`;
-    document.getElementById('gback').onclick=()=>{stopDuelPoll();gameBack();};
+    document.getElementById('gback').onclick=()=>{stopDuelPoll();stopReflexTimer();gameBack();};
     refreshOpponentBar();
-    v.querySelectorAll('.quiz-opt').forEach(btn=>btn.addEventListener('click',function(){
-      let correct=false;
+
+    function answer(correct,btnEl){
+      stopReflexTimer();
       try{
-        sfxClick();
         v.querySelectorAll('.quiz-opt').forEach(b=>b.disabled=true);
-        correct=this.dataset.correct==='true';
-        if(correct){this.classList.add('correct');sfxCorrect();}
-        else{this.classList.add('wrong');v.querySelector('[data-correct="true"]')?.classList.add('correct');sfxWrong();}
+        if(btnEl){
+          if(correct){btnEl.classList.add('correct');sfxCorrect();}
+          else{btnEl.classList.add('wrong');v.querySelector('[data-correct="true"]')?.classList.add('correct');sfxWrong();}
+        }else{
+          v.querySelector('[data-correct="true"]')?.classList.add('correct');sfxWrong();
+        }
       }catch(e){}
       try{sb.rpc('submit_duel_answer',{p_duel_id:duel.id,p_correct:correct}).catch(()=>{});}catch(e){}
       setTimeout(()=>{idx++;showQ();},900);
+    }
+
+    v.querySelectorAll('.quiz-opt').forEach(btn=>btn.addEventListener('click',function(){
+      sfxClick();
+      answer(this.dataset.correct==='true',this);
     }));
+
+    if(modeCfg.timerSec>0){
+      let left=modeCfg.timerSec;
+      reflexTimer=setInterval(()=>{
+        left--;
+        const el=document.getElementById('duelReflexTimer');if(el)el.textContent=left;
+        if(left<=0){stopReflexTimer();answer(false,null);}
+      },1000);
+    }
   }
   showQ();
 }
@@ -3300,6 +3738,308 @@ async function lqShowStudentFinal(session){
     <div style="margin-top:10px">${renderLqScoreboardRows(ranked)}</div>`;
   document.getElementById('gback').onclick=gameBack;
   if(myRank&&myRank<=3)spawnConfetti();
+  refreshCurrentUserProfile();
+}
+
+// ══════════════════════════════════════════════
+// SİNİF BOSS'U (Kollektiv Reyd Rejimi) — Canlı Sinif Yarışmasının EYNİ
+// arxitekturası (kod ilə qoşulma, poll-based sinxronlaşma, server-tərəf
+// düzgünlük yoxlaması), amma fərdi xal yerinə BÜTÜN sinif ORTAQ bir "Boss
+// HP" zolağını azaldır. Bax supabase_update_boss.sql-dəki izah (WebRTC/P2P
+// ƏVƏZİNƏ niyə bu sadə poll üsulu seçildi).
+// ══════════════════════════════════════════════
+function renderBossHpBar(hp,maxHp){
+  const pct=Math.max(0,Math.min(100,Math.round(hp/maxHp*100)));
+  return `<div class="boss-hp-wrap">
+    <div class="boss-hp-label"><span>🐉 Boss HP</span><span>${hp} / ${maxHp}</span></div>
+    <div class="boss-hp-bar"><div class="boss-hp-fill" style="width:${pct}%"></div></div>
+  </div>`;
+}
+function renderBossDamageRows(list){
+  if(!list.length)return '<p style="color:var(--muted)">İştirakçı yoxdur.</p>';
+  return [...list].sort((a,b)=>b.damage_dealt-a.damage_dealt).map((p,i)=>`
+    <div class="lq-scoreboard-row">
+      <div class="lq-scoreboard-rank">${i+1}</div>
+      <div class="lq-scoreboard-name">${escapeHtml(p.display_name||p.username)}</div>
+      <div class="lq-scoreboard-score">💥${p.damage_dealt}</div>
+    </div>`).join('');
+}
+function renderBossDamagePodium(ranked){
+  const withHits=ranked.filter(p=>p.hits>0);
+  if(!withHits.length)return '';
+  const medals=['🥇','🥈','🥉'];
+  const order=[1,0,2].filter(i=>withHits[i]);
+  return `<div class="lq-podium">${order.map(i=>`
+    <div class="lq-podium-place p${i+1}">
+      <div class="lq-podium-medal">${medals[i]}</div>
+      <div class="lq-podium-name">${escapeHtml(withHits[i].display_name||withHits[i].username)}</div>
+      <div class="lq-podium-score">💥${withHits[i].damage_dealt}</div>
+    </div>`).join('')}</div>`;
+}
+
+// ── MÜƏLLİM (HOST) TƏRƏFİ ──
+let bossHostPollId=null;
+let bossHostSessionId=null;
+function stopBossHostPoll(){if(bossHostPollId){clearInterval(bossHostPollId);bossHostPollId=null;}}
+
+async function launchBossSession(questions,bossName,bossHp,btn){
+  if(btn)btn.disabled=true;
+  try{
+    const{data,error}=await sb.rpc('create_boss_session',{p_questions:questions,p_boss_name:bossName,p_boss_hp:bossHp,p_damage_per_correct:5});
+    if(error||!data)throw error||new Error('no data');
+    bossHostSessionId=data.id;
+    showScreen('bossHostScreen');
+    stopBossHostPoll();
+    renderBossHost(data,[]);
+    bossHostPollId=setInterval(bossHostPoll,1500);
+  }catch(e){showToast('Boss döyüşü yaradıla bilmədi!','red');}
+  if(btn)btn.disabled=false;
+}
+
+async function createBossSession(){
+  const grade=document.getElementById('bossGradeSelect')?.value||'';
+  if(!grade){showToast('Zəhmət olmasa sinif seçin','red');return;}
+  const n=parseInt(document.getElementById('bossQuestionCount')?.value,10)||20;
+  const hp=parseInt(document.getElementById('bossHpSelect')?.value,10)||200;
+  const name=document.getElementById('bossNameInput')?.value.trim()||'Söz Divi';
+  const btn=document.getElementById('bossCreateBtn');
+  await launchBossSession(buildLiveQuizPool(n,grade),name,hp,btn);
+}
+
+async function bossHostPoll(){
+  if(!bossHostSessionId)return;
+  let session=null,participants=[];
+  try{const r=await sb.from('class_boss_sessions').select().eq('id',bossHostSessionId).single();session=r.data;}catch(e){}
+  if(!session){stopBossHostPoll();return;}
+  try{const r=await sb.from('class_boss_participants').select().eq('session_id',bossHostSessionId);participants=r.data||[];}catch(e){}
+  renderBossHost(session,participants);
+  if(session.status==='finished'){
+    stopBossHostPoll();
+    sb.rpc('award_boss_damage_bonus',{p_session_id:bossHostSessionId}).catch(()=>{});
+  }
+}
+
+function renderBossHost(session,participants){
+  const el=document.getElementById('bossHostContent');
+  if(!el||!bossHostSessionId)return;
+  const total=(session.questions||[]).length;
+  const answeredCount=participants.filter(p=>p.last_answered_index===session.current_index).length;
+
+  if(session.status==='waiting'){
+    el.innerHTML=`
+      <div class="lq-code-box">
+        <div class="lq-code-label">Sinif bu kodla qoşulsun</div>
+        <div class="lq-code-value">${session.code}</div>
+        <div class="lq-code-hint">Şagird: Oyunlar → 🐉 Sinif Boss'u → kodu daxil et</div>
+      </div>
+      ${renderBossHpBar(session.boss_hp,session.boss_max_hp)}
+      <div class="lq-participant-count">👥 ${participants.length} şagird qoşuldu</div>
+      <div id="bossParticipantList">${renderBossDamageRows(participants)}</div>
+      <button class="btn-primary" id="bossNextBtn" style="margin-top:12px" ${participants.length?'':'disabled'}>▶️ Döyüşü Başlat</button>`;
+    document.getElementById('bossNextBtn').onclick=bossStartNextQuestion;
+    return;
+  }
+
+  if(session.status==='question'){
+    el.innerHTML=`
+      ${renderBossHpBar(session.boss_hp,session.boss_max_hp)}
+      <div class="lq-qnum">Sual ${session.current_index+1} / ${total}</div>
+      <div class="quiz-box">
+        <div style="font-size:.8rem;color:var(--text);margin-bottom:8px">"${escapeHtml(session.questions[session.current_index].prompt)}" sözünün mənası?</div>
+      </div>
+      <div class="lq-participant-count" style="margin-top:12px">✅ ${answeredCount} / ${participants.length} zərbə vurmağa çalışdı</div>
+      <div id="bossParticipantList">${renderBossDamageRows(participants)}</div>
+      <button class="btn-primary" id="bossNextBtn" style="margin-top:12px">⏭️ Növbəti Sual</button>
+      <button class="btn-outline" id="bossEndBtn" style="margin-top:8px;width:100%">⏹️ Döyüşü Bitir</button>`;
+    document.getElementById('bossNextBtn').onclick=bossStartNextQuestion;
+    document.getElementById('bossEndBtn').onclick=bossEndNow;
+    return;
+  }
+
+  if(session.status==='finished'){
+    const ranked=[...participants].sort((a,b)=>b.damage_dealt-a.damage_dealt);
+    el.innerHTML=`
+      <div class="lq-status-pill">${session.defeated?'🏆 Boss dəf edildi!':'⏱️ Vaxt bitdi — Boss sağ qaldı'}</div>
+      ${renderBossHpBar(session.boss_hp,session.boss_max_hp)}
+      ${renderBossDamagePodium(ranked)}
+      <div style="margin-top:14px">${renderBossDamageRows(ranked)}</div>
+      <button class="btn-primary" id="bossDoneBtn" style="margin-top:12px">✅ Bitir</button>`;
+    document.getElementById('bossDoneBtn').onclick=bossHostBack;
+    if(session.defeated)spawnConfetti();
+    return;
+  }
+}
+
+async function bossStartNextQuestion(){
+  if(!bossHostSessionId)return;
+  const btn=document.getElementById('bossNextBtn');
+  if(btn)btn.disabled=true;
+  try{
+    const{data,error}=await sb.rpc('start_boss_question',{p_session_id:bossHostSessionId});
+    if(error)throw error;
+    let participants=[];
+    try{const r=await sb.from('class_boss_participants').select().eq('session_id',bossHostSessionId);participants=r.data||[];}catch(e){}
+    renderBossHost(data,participants);
+  }catch(e){showToast('Xəta!','red');if(btn)btn.disabled=false;}
+}
+
+async function bossEndNow(){
+  if(!bossHostSessionId)return;
+  try{await sb.rpc('end_boss_session',{p_session_id:bossHostSessionId});}catch(e){}
+  bossHostPoll();
+}
+
+function bossHostBack(){
+  stopBossHostPoll();
+  bossHostSessionId=null;
+  openTeacherPanel();
+}
+
+// ── ŞAGİRD (İŞTİRAKÇI) TƏRƏFİ ──
+let bossStudentPollId=null;
+let bossStudentSessionId=null;
+let bossStudentAnsweredIndex=-1;
+let bossStudentMaxHp=200;
+function stopBossStudentPoll(){if(bossStudentPollId){clearInterval(bossStudentPollId);bossStudentPollId=null;}}
+
+function startBossGame(v){
+  stopBossStudentPoll();
+  bossStudentSessionId=null;bossStudentAnsweredIndex=-1;
+  v.innerHTML=`
+    <button class="btn-outline" id="gback" style="margin-bottom:14px">← Oyunlar</button>
+    <div class="section-title">🐉 Sinif Boss'u</div>
+    <div class="admin-section">
+      <h3>🔑 Kodu Daxil Et</h3>
+      <div style="font-size:.78rem;color:var(--muted);margin-bottom:10px">Müəllimin lövhədə göstərdiyi 6 simvollu kodu yaz. Sinif birləşib Bossu dəf edəcək!</div>
+      <input class="admin-input" id="bossCodeInput" placeholder="Məs. AB3X9K" maxlength="8" style="text-transform:uppercase">
+      <button class="btn-primary" id="bossJoinBtn">▶️ Qoşul</button>
+    </div>`;
+  document.getElementById('gback').onclick=()=>{stopBossStudentPoll();gameBack();};
+  document.getElementById('bossJoinBtn').onclick=bossJoinFlow;
+  document.getElementById('bossCodeInput').addEventListener('keydown',e=>{if(e.key==='Enter')bossJoinFlow();});
+}
+
+async function bossJoinFlow(){
+  const code=document.getElementById('bossCodeInput')?.value?.trim();
+  if(!code){showToast('Kodu yazın!','red');return;}
+  const btn=document.getElementById('bossJoinBtn');
+  if(btn)btn.disabled=true;
+  try{
+    const{data,error}=await sb.rpc('join_boss_session',{p_code:code});
+    if(error)throw error;
+    bossStudentSessionId=data.id;bossStudentAnsweredIndex=-1;
+    stopBossStudentPoll();
+    renderBossStudent(data);
+    bossStudentPollId=setInterval(bossStudentPoll,1000);
+  }catch(e){showToast(e?.message||'Kod tapılmadı!','red');}
+  if(btn)btn.disabled=false;
+}
+
+async function bossStudentPoll(){
+  if(!bossStudentSessionId)return;
+  let session=null;
+  try{const r=await sb.from('class_boss_sessions').select().eq('id',bossStudentSessionId).single();session=r.data;}catch(e){}
+  if(!session){stopBossStudentPoll();return;}
+  renderBossStudent(session);
+}
+
+function renderBossStudent(session){
+  const v=document.getElementById('viewGames');
+  if(!v||currentGame!=='classboss'||!bossStudentSessionId)return;
+  const total=(session.questions||[]).length;
+  bossStudentMaxHp=session.boss_max_hp||bossStudentMaxHp;
+
+  if(session.status==='waiting'){
+    v.innerHTML=`
+      <button class="btn-outline" id="gback" style="margin-bottom:14px">← Oyunlar</button>
+      <div style="font-size:1.1rem;font-weight:800;text-align:center;margin-bottom:8px">🐉 ${escapeHtml(session.boss_name)}</div>
+      ${renderBossHpBar(session.boss_hp,session.boss_max_hp)}
+      <div class="quiz-box" style="text-align:center;margin-top:12px">
+        <div style="font-size:2rem">⏳</div>
+        <div style="margin:10px 0">Qoşuldun! Müəllimin döyüşü başlamasını gözləyirik...</div>
+        <div style="color:var(--muted);font-size:.85rem">${total} sual hazırlanıb</div>
+      </div>`;
+    document.getElementById('gback').onclick=()=>{stopBossStudentPoll();gameBack();};
+    return;
+  }
+
+  if(session.status==='question'){
+    if(bossStudentAnsweredIndex>=session.current_index){
+      v.innerHTML=`
+        <button class="btn-outline" id="gback" style="margin-bottom:14px">← Oyunlar</button>
+        <div style="font-size:1.1rem;font-weight:800;text-align:center;margin-bottom:8px">🐉 ${escapeHtml(session.boss_name)}</div>
+        ${renderBossHpBar(session.boss_hp,session.boss_max_hp)}
+        <div class="lq-qnum">Sual ${session.current_index+1} / ${total}</div>
+        <div class="quiz-box" style="text-align:center">
+          <div style="font-size:1.6rem">✅</div>
+          <div style="margin-top:8px;color:var(--muted)">Zərbən göndərildi. Növbəti sual gözlənilir...</div>
+        </div>`;
+      document.getElementById('gback').onclick=()=>{stopBossStudentPoll();gameBack();};
+      return;
+    }
+    const q=session.questions[session.current_index];
+    v.innerHTML=`
+      <button class="btn-outline" id="gback" style="margin-bottom:14px">← Oyunlar</button>
+      <div style="font-size:1.1rem;font-weight:800;text-align:center;margin-bottom:8px">🐉 ${escapeHtml(session.boss_name)}</div>
+      ${renderBossHpBar(session.boss_hp,session.boss_max_hp)}
+      <div class="lq-qnum">Sual ${session.current_index+1} / ${total}</div>
+      <div class="quiz-box">
+        <div style="font-size:.8rem;color:var(--text);margin-bottom:8px">"${escapeHtml(q.prompt)}" sözünün mənası?</div>
+        <div class="quiz-opts">${q.opts.map(o=>`<button class="quiz-opt">${escapeHtml(o)}</button>`).join('')}</div>
+      </div>`;
+    document.getElementById('gback').onclick=()=>{stopBossStudentPoll();gameBack();};
+    v.querySelectorAll('.quiz-opt').forEach(btn=>btn.addEventListener('click',function(){
+      v.querySelectorAll('.quiz-opt').forEach(b=>b.disabled=true);
+      bossSubmitAnswer(session.id,session.current_index,this.textContent);
+    }));
+    return;
+  }
+
+  if(session.status==='finished'){
+    stopBossStudentPoll();
+    bossShowStudentFinal(session);
+  }
+}
+
+async function bossSubmitAnswer(sessionId,questionIndex,answer){
+  bossStudentAnsweredIndex=questionIndex;
+  let result=null;
+  try{
+    const{data,error}=await sb.rpc('submit_boss_answer',{p_session_id:sessionId,p_question_index:questionIndex,p_answer:answer});
+    if(error)throw error;
+    result=data;
+  }catch(e){showToast('Cavab göndərilə bilmədi!','red');}
+  const v=document.getElementById('viewGames');
+  if(!v||currentGame!=='classboss')return;
+  if(result){
+    if(result.correct)sfxCorrect();else sfxWrong();
+    v.innerHTML=`
+      <div class="lq-feedback ${result.correct?'correct':'wrong'}">
+        ${result.correct?`💥 Zərbə vurdun! (-${result.damage} HP)`:'❌ Səhv'}
+        ${result.correct?'':`<div style="font-size:.78rem;font-weight:400;margin-top:6px">Düzgün cavab: ${escapeHtml(result.correctAnswer)}</div>`}
+      </div>
+      ${typeof result.bossHp==='number'?renderBossHpBar(result.bossHp,bossStudentMaxHp):''}
+      <div style="text-align:center;color:var(--muted);font-size:.8rem;margin-top:12px">Növbəti sual gözlənilir...</div>`;
+    refreshCurrentUserProfile();
+  }
+}
+
+async function bossShowStudentFinal(session){
+  const v=document.getElementById('viewGames');
+  if(!v||currentGame!=='classboss')return;
+  let participants=[];
+  try{const r=await sb.from('class_boss_participants').select().eq('session_id',session.id);participants=r.data||[];}catch(e){}
+  const ranked=[...participants].sort((a,b)=>b.damage_dealt-a.damage_dealt);
+  const meIdx=ranked.findIndex(p=>p.username===currentUser.username);
+  const myRank=meIdx>=0?meIdx+1:null;
+  v.innerHTML=`
+    <button class="btn-outline" id="gback" style="margin-bottom:14px">← Oyunlar</button>
+    <div class="lq-status-pill">${session.defeated?'🏆 Boss dəf edildi!':'⏱️ Vaxt bitdi — Boss sağ qaldı'}</div>
+    ${renderBossDamagePodium(ranked)}
+    ${myRank?`<div style="text-align:center;margin:10px 0;color:var(--gold);font-weight:700">Sənin yerin: ${myRank} / ${ranked.length}</div>`:''}
+    <div style="margin-top:10px">${renderBossDamageRows(ranked)}</div>`;
+  document.getElementById('gback').onclick=gameBack;
+  if(session.defeated&&myRank&&myRank<=3)spawnConfetti();
   refreshCurrentUserProfile();
 }
 
@@ -4612,6 +5352,7 @@ function renderProfile(){
   const daysNow=(u.days_active||u.streak||0);
   const xpLeft=next?Math.max(0,next.minXp-u.xp):0;
   const daysLeft=next?Math.max(0,next.minDays-daysNow):0;
+  const islandNext=ISLAND_MILESTONES.find(m=>u.xp<m.minXp);
   v.innerHTML=`
     <div class="profile-header">
       <div class="profile-big-av">${(u.display_name||u.username||'?')[0].toUpperCase()}</div>
@@ -4638,6 +5379,37 @@ function renderProfile(){
           <div class="badge-icon">${t.icon}</div>
           <div class="badge-name">${t.name}</div>
         </div>`;}).join('')}</div>
+    </div>
+    <div class="profile-section">
+      <h3>🎖️ Döyüş Bileti — Stil</h3>
+      <div style="font-size:.76rem;color:var(--muted);margin-bottom:10px">XP topladıqca çərçivə və temalar HƏMİŞƏLİK açılır (heç vaxt itmir) — açılanı istədiyin vaxt tax.</div>
+      <div style="font-size:.78rem;font-weight:700;color:var(--text);margin-bottom:6px">Çərçivələr</div>
+      <div class="badge-grid" style="margin-bottom:14px">${COSMETICS.filter(c=>c.type==='frame').map(c=>{
+        const unlocked=u.xp>=c.min_xp;
+        const equipped=u.equipped_frame===c.id;
+        return`<div class="cosmetic-item ${unlocked?'':'locked'} ${equipped?'equipped':''}" ${unlocked?`onclick="equipCosmetic('${c.id}')"`:''} title="${unlocked?'Taxmaq üçün klikləyin':`${c.min_xp} XP tələb olunur`}">
+          <div class="cosmetic-icon">${c.icon||'⚪'}</div>
+          <div class="cosmetic-name">${c.name}</div>
+          <div class="cosmetic-req">${equipped?'✅ Taxılıb':unlocked?'Taxmaq üçün klikləyin':`🔒 ${c.min_xp} XP`}</div>
+        </div>`;}).join('')||'<p style="color:var(--muted);font-size:.78rem">Yüklənir...</p>'}</div>
+      <div style="font-size:.78rem;font-weight:700;color:var(--text);margin-bottom:6px">Temalar</div>
+      <div class="badge-grid">${COSMETICS.filter(c=>c.type==='theme').map(c=>{
+        const unlocked=u.xp>=c.min_xp;
+        const equipped=u.equipped_theme===c.id;
+        return`<div class="cosmetic-item ${unlocked?'':'locked'} ${equipped?'equipped':''}" ${unlocked?`onclick="equipCosmetic('${c.id}')"`:''} title="${unlocked?'Taxmaq üçün klikləyin':`${c.min_xp} XP tələb olunur`}">
+          <div class="cosmetic-icon">${c.icon||'⚪'}</div>
+          <div class="cosmetic-name">${c.name}</div>
+          <div class="cosmetic-req">${equipped?'✅ Taxılıb':unlocked?'Taxmaq üçün klikləyin':`🔒 ${c.min_xp} XP`}</div>
+        </div>`;}).join('')||'<p style="color:var(--muted);font-size:.78rem">Yüklənir...</p>'}</div>
+    </div>
+    <div class="profile-section">
+      <h3>🏝️ Söz Dünyası</h3>
+      <div style="font-size:.76rem;color:var(--muted);margin-bottom:10px">Topladığın XP ilə adan özbaşına böyüyür — yeni tikili hər həddə avtomatik peyda olur, heç nə sürükləyib-qoymursan.</div>
+      ${renderIslandScene(u.xp)}
+      <div style="font-size:.78rem;color:var(--muted);margin:10px 0">
+        ${islandNext?`Növbəti tikili: <b style="color:var(--text)">${islandNext.icon} ${islandNext.name}</b> — daha <b style="color:var(--gold)">${islandNext.minXp-u.xp}</b> XP lazımdır`:'🎉 Bütün Söz Dünyası tikililəri açıldı!'}
+      </div>
+      <button class="btn-sm btn-teal" id="islandShareBtn">🔗 Adamı Paylaş</button>
     </div>
     <div class="profile-section">
       <h3>✏️ Ad dəyişdir</h3>
@@ -4681,6 +5453,7 @@ function renderProfile(){
         <button class="btn-danger" id="deleteBtn">🗑️ Hesabı Sil</button>
       </div>
     </div>`;
+  applyCosmetics();
   document.getElementById('saveNameBtn').addEventListener('click',async()=>{
     const name=document.getElementById('newName').value.trim();
     if(!name){showToast('Ad sahəsi boş ola bilməz!','red');return;}
@@ -4693,6 +5466,11 @@ function renderProfile(){
     if(stats&&rank){stats.innerHTML+=`<br>🏆 Ümumi sıra: <b style="color:var(--gold)">#${rank}</b>`;}
   });
   loadPersonalAnalytics();
+  document.getElementById('islandShareBtn')?.addEventListener('click',async()=>{
+    const url=`${location.origin}${location.pathname}?ada=${encodeURIComponent(u.username)}`;
+    try{await navigator.clipboard.writeText(url);showToast('Ada linki kopyalandı! 🏝️','teal');}
+    catch(e){showToast('Kopyalama uğursuz oldu, əl ilə seçib kopyalayın','red');}
+  });
   document.getElementById('copyReferralBtn')?.addEventListener('click',async()=>{
     try{await navigator.clipboard.writeText(u.username);showToast('Kopyalandı!','teal');}
     catch(e){showToast('Kopyalama uğursuz oldu, əl ilə seçib kopyalayın','red');}
@@ -6065,6 +6843,12 @@ window.copyEmail=()=>{
 // ══════════════════════════════════════════════
 window.addEventListener('DOMContentLoaded',async()=>{
   await loadCommunityWords();
+  loadCosmeticsCatalog().then(()=>{
+    // Kataloq boot bitdikdən sonra gələ bilər (kritik yol deyil) — əgər
+    // istifadəçi artıq profil ekranındadırsa, "Yüklənir..." görünüşünü
+    // real kosmetik siyahısı ilə əvəz etmək üçün yenidən render edirik.
+    if(document.getElementById('viewProfile')?.classList.contains('active'))renderProfile();
+  });
   pickDailyWord();
 
   // "Böyük Ekran" — login TƏLƏB ETMİR, normal tətbiq axınından tam ayrıdır.
@@ -6072,6 +6856,16 @@ window.addEventListener('DOMContentLoaded',async()=>{
     hideLoading();
     window.__sozlabBooted=true;
     startDisplayMode();
+    return;
+  }
+
+  // "Söz Dünyası" paylaşma linki (?ada=username) — login TƏLƏB ETMİR,
+  // yalnız public profildən oxuyaraq həmin şagirdin adasını göstərir.
+  const sharedIslandUser=new URLSearchParams(location.search).get('ada');
+  if(sharedIslandUser){
+    hideLoading();
+    window.__sozlabBooted=true;
+    startIslandShareView(sharedIslandUser);
     return;
   }
 
@@ -6222,6 +7016,10 @@ window.addEventListener('DOMContentLoaded',async()=>{
   document.getElementById('lqManualAddBtn')?.addEventListener('click',addLqManualQuestion);
   document.getElementById('lqManualStartBtn')?.addEventListener('click',createLiveQuizManual);
 
+  // Sinif Boss'u (müəllim tərəfi)
+  document.getElementById('bossCreateBtn')?.addEventListener('click',createBossSession);
+  document.getElementById('bossHostBackBtn')?.addEventListener('click',bossHostBack);
+
   // Nav
   document.querySelectorAll('.nav-btn').forEach(b=>b.addEventListener('click',function(){switchView(this.dataset.view);}));
   document.getElementById('avatarBtn').addEventListener('click',()=>switchView('Profile'));
@@ -6306,19 +7104,34 @@ window.addEventListener('DOMContentLoaded',async()=>{
     }catch(e){showToast('Xəta!','red');}
   });
 
-  // Add word
-  document.getElementById('addWordBtn')?.addEventListener('click',()=>{
+  // Add word — Supabase-dəki "community_words" cədvəlinə yazır (admin_add_word_direct
+  // RPC-si vasitəsilə), sadəcə brauzer yaddaşına deyil, ona görə səhifə yenilənəndə
+  // və ya başqa cihazda/istifadəçidə də söz qalır və dərhal görünür.
+  document.getElementById('addWordBtn')?.addEventListener('click',async()=>{
+    const btn=document.getElementById('addWordBtn');
     const en=(document.getElementById('wEn').value||'').trim();
     const az=(document.getElementById('wAz').value||'').trim();
     const ex=(document.getElementById('wEx').value||'').trim();
     const tags=(document.getElementById('wTags').value||'').split(',').map(t=>t.trim()).filter(Boolean);
     if(!en||!az){showToast('İngilis və Azərbaycan mənası mütləqdir!','red');return;}
     if(WORDS.find(w=>w.en.toLowerCase()===en.toLowerCase())){showToast('Bu söz artıq lüğətdədir!','red');return;}
-    WORDS.push({en,az,ex:ex||`${en}.`,exAz:'',tags:tags.length?tags:['B2','Sif']});
-    document.getElementById('wEn').value='';document.getElementById('wAz').value='';
-    document.getElementById('wEx').value='';document.getElementById('wTags').value='';
-    renderAdminWords();showToast(`"${en}" sözü lüğətə əlavə edildi!`,'teal');
-    const cnt=document.getElementById('aStatWords');if(cnt)cnt.textContent=WORDS.length;
+    const finalTags=tags.length?tags:['B2','Sif'];
+    btn.disabled=true;
+    try{
+      const{error}=await sb.rpc('admin_add_word_direct',{
+        p_en:en,p_az:az,p_ex:ex,p_ex_az:'',p_tags:finalTags,p_difficulty:2
+      });
+      if(error)throw error;
+      WORDS.push({en,az,ex:ex||`${en}.`,exAz:'',tags:finalTags});
+      document.getElementById('wEn').value='';document.getElementById('wAz').value='';
+      document.getElementById('wEx').value='';document.getElementById('wTags').value='';
+      renderAdminWords();showToast(`"${en}" sözü lüğətə əlavə edildi!`,'teal');
+      const cnt=document.getElementById('aStatWords');if(cnt)cnt.textContent=WORDS.length;
+    }catch(e){
+      showToast(e?.message?.includes('artıq lüğətdədir')?'Bu söz artıq lüğətdədir!':'Xəta baş verdi — yenidən cəhd edin','red');
+    }finally{
+      btn.disabled=false;
+    }
   });
 
   // Type buttons

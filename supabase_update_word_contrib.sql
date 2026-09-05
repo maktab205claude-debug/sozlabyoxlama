@@ -270,3 +270,46 @@ end;
 $$;
 
 grant execute on function public.admin_export_community_words() to authenticated;
+
+-- 7) admin_add_word_direct() — admin panelindəki "➕ Yeni Söz Əlavə Et"
+--    formasından SÖZÜ BİRBAŞA lüğətə əlavə edir (Söz Kəşf Et göndərişindən
+--    fərqli olaraq — bura heç bir şagird göndərişi yoxdur, admin özü yazır).
+--    ƏVVƏLLƏR bu, YALNIZ brauzer yaddaşına (WORDS.push) yazılırdı və səhifə
+--    yenilənəndə/başqa cihazda itirdi. İndi community_words cədvəlinə yazılır
+--    və digər söz mənbələri kimi bütün saytda/cihazlarda dərhal görünür.
+create or replace function public.admin_add_word_direct(
+  p_en text, p_az text, p_ex text default '', p_ex_az text default '',
+  p_tags jsonb default '["B2"]'::jsonb, p_difficulty integer default 2
+)
+returns void
+language plpgsql
+security definer set search_path = public
+as $$
+declare
+  v_en text := trim(p_en);
+  v_az text := trim(p_az);
+begin
+  if not public.is_admin(auth.uid()) then
+    raise exception 'Yalnız adminlər söz əlavə edə bilər';
+  end if;
+  if v_en = '' or v_az = '' then
+    raise exception 'Söz və məna mütləqdir';
+  end if;
+  if exists(select 1 from public.community_words where lower(en) = lower(v_en)) then
+    raise exception 'Bu söz artıq lüğətdədir';
+  end if;
+
+  insert into public.community_words(en, az, ex, ex_az, tags, difficulty, added_by, source_submission_id)
+  values (
+    v_en, v_az,
+    coalesce(nullif(trim(p_ex), ''), v_en || '.'),
+    trim(coalesce(p_ex_az, '')),
+    coalesce(p_tags, '["B2"]'::jsonb),
+    coalesce(p_difficulty, 2),
+    coalesce((select username from public.profiles where id = auth.uid()), ''),
+    null
+  );
+end;
+$$;
+
+grant execute on function public.admin_add_word_direct(text, text, text, text, jsonb, integer) to authenticated;

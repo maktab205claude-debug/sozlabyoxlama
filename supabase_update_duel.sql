@@ -51,9 +51,25 @@ create policy "duels_select"
 -- oyunçular öz XP-lərini və ya nəticəni birbaşa dəyişə bilməsinlər.
 
 -- ─────────────────────────────────────────────
--- 2) create_duel() — çağırış göndərmək
+-- 1b) "Sürətli Düello" (reflex) rejimi üçün əlavə sütun.
+--     Bu, ayrı bir infrastruktur (WebRTC/P2P) YOXDUR — eyni duels
+--     cədvəli/RPC-ləri üzərində işləyir, sadəcə klient tərəfdə hər
+--     suala qısa taymer qoyur və rəqib zolağını daha tez yeniləyir
+--     ("tənəffüs turniri" hissini P2P-nin mürəkkəbliyi/kövrəkliyi
+--     olmadan verir).
 -- ─────────────────────────────────────────────
-create or replace function public.create_duel(p_opponent_username text, p_questions jsonb)
+alter table public.duels add column if not exists mode text not null default 'normal';
+alter table public.duels drop constraint if exists duels_mode_check;
+alter table public.duels add constraint duels_mode_check check (mode in ('normal','sureli'));
+
+-- ─────────────────────────────────────────────
+-- 2) create_duel() — çağırış göndərmək
+--    Köhnə 2-arqumentli overload-u qəsdən silirik ki, Supabase RPC
+--    çağırışında iki funksiya arasında qeyri-müəyyənlik yaranmasın.
+-- ─────────────────────────────────────────────
+drop function if exists public.create_duel(text, jsonb);
+
+create or replace function public.create_duel(p_opponent_username text, p_questions jsonb, p_mode text default 'normal')
 returns bigint
 language plpgsql
 security definer set search_path = public
@@ -61,6 +77,7 @@ as $$
 declare
   v_username text;
   v_opponent text := lower(p_opponent_username);
+  v_mode text := coalesce(p_mode, 'normal');
   v_id bigint;
 begin
   select username into v_username from public.profiles where id = auth.uid();
@@ -76,16 +93,19 @@ begin
   if jsonb_typeof(p_questions) <> 'array' or jsonb_array_length(p_questions) < 1 or jsonb_array_length(p_questions) > 20 then
     raise exception 'Yanlış sual formatı';
   end if;
+  if v_mode not in ('normal','sureli') then
+    raise exception 'Yanlış rejim';
+  end if;
 
-  insert into public.duels(p1_username, p2_username, questions, status)
-  values (v_username, v_opponent, p_questions, 'pending')
+  insert into public.duels(p1_username, p2_username, questions, status, mode)
+  values (v_username, v_opponent, p_questions, 'pending', v_mode)
   returning id into v_id;
 
   return v_id;
 end;
 $$;
 
-grant execute on function public.create_duel(text, jsonb) to authenticated;
+grant execute on function public.create_duel(text, jsonb, text) to authenticated;
 
 -- ─────────────────────────────────────────────
 -- 3) respond_duel() — çağırışı qəbul/rədd etmək (yalnız p2 çağıra bilər)
