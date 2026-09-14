@@ -30,8 +30,9 @@
 :root{
   --bg:#0a0a0f;--bg2:#111118;--card:#16161f;--card2:#1c1c28;
   --border:#2a2a3a;--border2:#333348;--text:#e8e8f0;--muted:#6b6b85;
-  --gold:#f0c040;--gold2:#c89820;--teal:#40d9c0;--purple:#7c5cff;
-  --purple2:#5a3fd6;--red:#e05555;--green:#40c080;
+  --gold:#f0c040;--gold2:#c89820;--teal:#40d9c0;--teal2:#219080;--purple:#7c5cff;
+  --purple2:#5a3fd6;--red:#e05555;--red2:#a83232;--green:#40c080;--green2:#248a56;
+  --blue:#4098f0;--blue2:#2568b8;--pink:#ff5ca8;--pink2:#c93f82;
   --accent-cyan:#00d4ff;
   --font-head:'Syne',sans-serif;--font-body:'DM Sans',sans-serif;
   --radius:16px;--radius-sm:10px;
@@ -191,18 +192,28 @@ input,textarea{font-family:var(--font-body)}
   padding:4px 12px;font-size:.75rem;color:var(--text)}
 
 /* ── GAMES ── */
+#viewGames{position:relative}
+.games-decor{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.games-content{position:relative;z-index:1}
 .games-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:16px}
-.game-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
-  padding:18px 12px;text-align:center;cursor:pointer;transition:.2s;position:relative;overflow:hidden}
-.game-card:hover,.game-card:active{border-color:var(--purple);transform:translateY(-2px)}
-.game-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(155,114,207,.05),transparent);opacity:0;transition:.3s}
-.game-card:hover::before{opacity:1}
-.game-icon{font-size:1.9rem;margin-bottom:7px}
-.game-name{font-family:var(--font-head);font-weight:700;font-size:.88rem;margin-bottom:3px}
-.game-desc{font-size:.72rem;color:var(--muted)}
-.game-xp{font-size:.68rem;color:var(--gold);margin-top:5px;font-weight:600}
-.game-difficulty{position:absolute;top:8px;right:8px;font-size:.6rem;
-  background:var(--card2);border:1px solid var(--border);border-radius:20px;padding:2px 7px;color:var(--muted)}
+.game-card{--tc:var(--purple);--tc-dark:var(--purple2);--tc-glow:rgba(124,92,255,.35);
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:14px;text-align:left;cursor:pointer;transition:.2s;position:relative;overflow:hidden;
+  display:flex;flex-direction:column;gap:9px}
+.game-card:hover,.game-card:active{border-color:var(--tc);transform:translateY(-2px);box-shadow:0 10px 26px -10px var(--tc-glow)}
+.game-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--tc-glow),transparent 65%);opacity:0;transition:.3s;pointer-events:none}
+.game-card:hover::before{opacity:.55}
+.game-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.game-card-icon{width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;
+  font-size:1.15rem;background:linear-gradient(135deg,var(--tc),var(--tc-dark));box-shadow:0 4px 14px -4px var(--tc-glow);flex-shrink:0}
+.game-name{font-family:var(--font-head);font-weight:700;font-size:.88rem;line-height:1.25;position:relative}
+.game-desc{font-size:.72rem;color:var(--muted);line-height:1.4;position:relative;flex:1}
+.game-card-bottom{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto;position:relative}
+.game-xp{font-size:.68rem;color:var(--gold);font-weight:600}
+.game-arrow-btn{width:26px;height:26px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--tc),var(--tc-dark));color:#fff;font-size:.7rem;box-shadow:0 4px 12px -3px var(--tc-glow)}
+.game-difficulty{font-size:.6rem;background:var(--card2);border:1px solid var(--border);border-radius:20px;
+  padding:2px 8px;color:var(--muted);white-space:nowrap;font-weight:600;flex-shrink:0}
 
 /* ── GAME AREA ── */
 .game-header{display:flex;align-items:center;gap:10px;margin-bottom:14px}
@@ -2250,128 +2261,75 @@ function renderGames(){
   if(currentGame)return;
   const v=document.getElementById('viewGames');
   v.innerHTML=`
+    <div class="games-decor" aria-hidden="true">
+      <svg viewBox="0 0 200 120" preserveAspectRatio="none" style="position:absolute;top:0;left:0;width:150px;height:90px;opacity:.3">
+        <line x1="0" y1="0" x2="70" y2="45" stroke="#7c5cff" stroke-width="1" opacity=".6"/>
+        <line x1="70" y1="45" x2="30" y2="100" stroke="#7c5cff" stroke-width="1" opacity=".6"/>
+        <line x1="0" y1="0" x2="20" y2="90" stroke="#7c5cff" stroke-width="1" opacity=".6"/>
+        <line x1="20" y1="90" x2="70" y2="45" stroke="#7c5cff" stroke-width="1" opacity=".6"/>
+        <circle cx="0" cy="0" r="2.5" fill="#a99bff"/>
+        <circle cx="70" cy="45" r="2.5" fill="#a99bff"/>
+        <circle cx="30" cy="100" r="2.5" fill="#a99bff"/>
+        <circle cx="20" cy="90" r="2.5" fill="#a99bff"/>
+      </svg>
+      <svg viewBox="0 0 200 200" style="position:absolute;top:-40px;right:-32px;width:140px;height:140px;opacity:.22">
+        <defs><linearGradient id="gGemA" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#9b7ed6"/><stop offset="100%" stop-color="#5a3fd6"/>
+        </linearGradient></defs>
+        <polygon points="100,10 180,70 150,180 50,180 20,70" fill="url(#gGemA)"/>
+        <polygon points="100,10 180,70 100,100" fill="#c7b8ff" opacity=".55"/>
+        <polygon points="100,10 20,70 100,100" fill="#7c5cff" opacity=".5"/>
+        <polygon points="20,70 50,180 100,100" fill="#5a3fd6" opacity=".6"/>
+        <polygon points="180,70 150,180 100,100" fill="#5a3fd6" opacity=".6"/>
+      </svg>
+      <svg viewBox="0 0 200 200" style="position:absolute;bottom:60px;left:-30px;width:105px;height:105px;opacity:.18">
+        <defs><linearGradient id="gGemB" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#6ee8d4"/><stop offset="100%" stop-color="#219080"/>
+        </linearGradient></defs>
+        <polygon points="100,10 180,70 150,180 50,180 20,70" fill="url(#gGemB)"/>
+        <polygon points="100,10 180,70 100,100" fill="#a8f5e9" opacity=".5"/>
+        <polygon points="100,10 20,70 100,100" fill="#40d9c0" opacity=".45"/>
+        <polygon points="20,70 50,180 100,100" fill="#219080" opacity=".6"/>
+        <polygon points="180,70 150,180 100,100" fill="#219080" opacity=".6"/>
+      </svg>
+    </div>
+    <div class="games-content">
     <div class="section-title">🎮 Oyunlar</div>
     <div style="font-size:.78rem;color:var(--muted);margin-bottom:12px">Oyun seç, XP qazan, liderboardda yüksəl!</div>
     <div class="games-grid">
-      <div class="game-card" data-game="quiz">
-        <div class="game-difficulty">Orta</div>
-        <div class="game-icon">🧠</div>
-        <div class="game-name">Mənası Nədir?</div>
-        <div class="game-desc">Ədəbi sözün mənasını tap</div>
-        <div class="game-xp">+10 XP</div>
-      </div>
-      <div class="game-card" data-game="fill">
-        <div class="game-difficulty">Orta</div>
-        <div class="game-icon">✏️</div>
-        <div class="game-name">Boşluğu Doldur</div>
-        <div class="game-desc">Cümləni tamamla, sözü tap</div>
-        <div class="game-xp">+10 XP</div>
-      </div>
-      <div class="game-card" data-game="matchtap">
-        <div class="game-difficulty">Qarışıq</div>
-        <div class="game-icon">🧩</div>
-        <div class="game-name">Uyğun Sözü Tap</div>
-        <div class="game-desc">Tapşırığa uyğun sözü kartlar arasından tap</div>
-        <div class="game-xp">+8–25 XP / sual</div>
-      </div>
-      <div class="game-card" data-game="match">
-        <div class="game-difficulty">Çətin</div>
-        <div class="game-icon">🔗</div>
-        <div class="game-name">Uyğunlaşdır</div>
-        <div class="game-desc">Söz-məna cütlərini uyğunlaşdır</div>
-        <div class="game-xp">+10 XP</div>
-      </div>
-      <div class="game-card" data-game="flash">
-        <div class="game-difficulty">Asan</div>
-        <div class="game-icon">⚡</div>
-        <div class="game-name">Flashkart</div>
-        <div class="game-desc">Kartı çevir, sözün mənasını öyrən</div>
-        <div class="game-xp">+10 XP</div>
-      </div>
-      <div class="game-card" data-game="synonym">
-        <div class="game-difficulty">Orta</div>
-        <div class="game-icon">🔄</div>
-        <div class="game-name">Sinonim Tap</div>
-        <div class="game-desc">Eyni mənalı Azərbaycan sözünü tap</div>
-        <div class="game-xp">+10 XP</div>
-      </div>
-      <div class="game-card" data-game="antonym">
-        <div class="game-difficulty">Orta</div>
-        <div class="game-icon">🔀</div>
-        <div class="game-name">Antonim Tap</div>
-        <div class="game-desc">Əks mənalı Azərbaycan sözünü tap</div>
-        <div class="game-xp">+10 XP</div>
-      </div>
-      <div class="game-card" data-game="wordchain">
-        <div class="game-difficulty">Çətin</div>
-        <div class="game-icon">⛓️</div>
-        <div class="game-name">Söz Zənciri</div>
-        <div class="game-desc">Bot ilə yarış, son hərflə yeni söz yaz</div>
-        <div class="game-xp">+2 XP / Kombo +5 XP</div>
-      </div>
-      <div class="game-card" data-game="wordscapes">
-        <div class="game-difficulty">Orta</div>
-        <div class="game-icon">🌊</div>
-        <div class="game-name">Hərf Şorbası</div>
-        <div class="game-desc">Qarışıq hərflərdən sözlər tap</div>
-        <div class="game-xp">+3 XP / söz</div>
-      </div>
-      <div class="game-card" data-game="fallingletters">
-        <div class="game-difficulty">Çətin</div>
-        <div class="game-icon">🌧️</div>
-        <div class="game-name">Hərf Tetrisi</div>
-        <div class="game-desc">Düşən hərflərdən söz yaz, sil</div>
-        <div class="game-xp">+2/+5/+10 XP</div>
-      </div>
-      <div class="game-card" data-game="spellinghunter">
-        <div class="game-difficulty">Orta</div>
-        <div class="game-icon">🎯</div>
-        <div class="game-name">Səhv Avçısı</div>
-        <div class="game-desc">Axan sözlər arasında səhvləri tap</div>
-        <div class="game-xp">+2 XP / düzgün klik</div>
-      </div>
-      <div class="game-card" data-game="exam" style="border-color:var(--purple)">
-        <div class="game-difficulty">Çətin</div>
-        <div class="game-icon">🎓</div>
-        <div class="game-name">İmtahan Simulyasiyası</div>
-        <div class="game-desc">16 qarışıq sual, 6 dəqiqə, kateqoriya təhlili</div>
-        <div class="game-xp">+3 XP / düzgün + bonus</div>
-      </div>
-      <div class="game-card" data-game="duel" style="border-color:var(--red)">
-        <div class="game-difficulty">Rəqabət</div>
-        <div class="game-icon">⚔️</div>
-        <div class="game-name">Canlı Duel</div>
-        <div class="game-desc">Dostunu çağır, 1v1 sürətli söz döyüşü et</div>
-        <div class="game-xp">Qalib +30 XP</div>
-      </div>
-      <div class="game-card" data-game="livequiz" style="border-color:var(--gold)">
-        <div class="game-difficulty">Sinif</div>
-        <div class="game-icon">🏆</div>
-        <div class="game-name">Canlı Sinif Yarışması</div>
-        <div class="game-desc">Müəllimin verdiyi kodla bütün sinifin qoşulduğu canlı yarışma</div>
-        <div class="game-xp">+2 XP / düzgün + top-3 bonus</div>
-      </div>
-      <div class="game-card" data-game="wordcontrib" style="border-color:var(--teal)">
-        <div class="game-difficulty">Yaradıcı</div>
-        <div class="game-icon">🔍</div>
-        <div class="game-name">Söz Kəşf Et</div>
-        <div class="game-desc">Lüğətdə olmayan sözün mənasını tap, yaz, lüğətə əlavə et</div>
-        <div class="game-xp">+1 XP / söz (gündə 100-ə qədər)</div>
-      </div>
-      <div class="game-card" data-game="classboss" style="border-color:var(--red)">
-        <div class="game-difficulty">Sinif</div>
-        <div class="game-icon">🐉</div>
-        <div class="game-name">Sinif Boss'u</div>
-        <div class="game-desc">Bütün sinif birləşib ORTAQ bir Bossa qarşı vuruşur — hər düzgün cavab zərbədir!</div>
-        <div class="game-xp">+2 XP / zərbə + ən çox zərbə vurana bonus</div>
-      </div>
-      <div class="game-card" data-game="ctfterm" style="border-color:#3ddc61">
-        <div class="game-difficulty">Məntiq</div>
-        <div class="game-icon">🖥️</div>
-        <div class="game-name">Hacker Terminalı</div>
-        <div class="game-desc">Şifrələnmiş sözləri deşifrə et, terminala düzgün cavabı yaz, sistemi haqla!</div>
-        <div class="game-xp">+15 XP / səviyyə + bonus FLAG</div>
-      </div>
+      ${[
+        {game:'quiz',icon:'🧠',name:'Mənası Nədir?',desc:'Ədəbi sözün mənasını tap',diff:'Orta',xp:'+10 XP',tc:'purple'},
+        {game:'fill',icon:'✏️',name:'Boşluğu Doldur',desc:'Cümləni tamamla, sözü tap',diff:'Orta',xp:'+10 XP',tc:'blue'},
+        {game:'matchtap',icon:'🧩',name:'Uyğun Sözü Tap',desc:'Tapşırığa uyğun sözü kartlar arasından tap',diff:'Qarışıq',xp:'+8–25 XP / sual',tc:'gold'},
+        {game:'match',icon:'🔗',name:'Uyğunlaşdır',desc:'Söz-məna cütlərini uyğunlaşdır',diff:'Çətin',xp:'+10 XP',tc:'purple'},
+        {game:'flash',icon:'⚡',name:'Flashkart',desc:'Kartı çevir, sözün mənasını öyrən',diff:'Asan',xp:'+10 XP',tc:'blue'},
+        {game:'synonym',icon:'🔄',name:'Sinonim Tap',desc:'Eyni mənalı Azərbaycan sözünü tap',diff:'Orta',xp:'+10 XP',tc:'teal'},
+        {game:'antonym',icon:'🔀',name:'Antonim Tap',desc:'Əks mənalı Azərbaycan sözünü tap',diff:'Orta',xp:'+10 XP',tc:'blue'},
+        {game:'wordchain',icon:'⛓️',name:'Söz Zənciri',desc:'Bot ilə yarış, son hərflə yeni söz yaz',diff:'Çətin',xp:'+2 XP / Kombo +5 XP',tc:'purple'},
+        {game:'wordscapes',icon:'🌊',name:'Hərf Şorbası',desc:'Qarışıq hərflərdən sözlər tap',diff:'Orta',xp:'+3 XP / söz',tc:'gold'},
+        {game:'fallingletters',icon:'🌧️',name:'Hərf Tetrisi',desc:'Düşən hərflərdən söz yaz, sil',diff:'Çətin',xp:'+2/+5/+10 XP',tc:'purple'},
+        {game:'spellinghunter',icon:'🎯',name:'Səhv Avçısı',desc:'Axan sözlər arasında səhvləri tap',diff:'Orta',xp:'+2 XP / düzgün klik',tc:'teal'},
+        {game:'exam',icon:'🎓',name:'İmtahan Simulyasiyası',desc:'16 qarışıq sual, 6 dəqiqə, kateqoriya təhlili',diff:'Çətin',xp:'+3 XP / düzgün + bonus',tc:'pink'},
+        {game:'duel',icon:'⚔️',name:'Canlı Duel',desc:'Dostunu çağır, 1v1 sürətli söz döyüşü et',diff:'Rəqabət',xp:'Qalib +30 XP',tc:'red'},
+        {game:'livequiz',icon:'🏆',name:'Canlı Sinif Yarışması',desc:'Müəllimin verdiyi kodla bütün sinifin qoşulduğu canlı yarışma',diff:'Sinif',xp:'+2 XP / düzgün + top-3 bonus',tc:'gold'},
+        {game:'wordcontrib',icon:'🔍',name:'Söz Kəşf Et',desc:'Lüğətdə olmayan sözün mənasını tap, yaz, lüğətə əlavə et',diff:'Yaradıcı',xp:'+1 XP / söz (gündə 100-ə qədər)',tc:'teal'},
+        {game:'classboss',icon:'🐉',name:"Sinif Boss'u",desc:'Bütün sinif birləşib ORTAQ bir Bossa qarşı vuruşur — hər düzgün cavab zərbədir!',diff:'Sinif',xp:'+2 XP / zərbə + ən çox zərbə vurana bonus',tc:'red'},
+        {game:'ctfterm',icon:'🖥️',name:'Hacker Terminalı',desc:'Şifrələnmiş sözləri deşifrə et, terminala düzgün cavabı yaz, sistemi haqla!',diff:'Məntiq',xp:'+15 XP / səviyyə + bonus FLAG',tc:'green'}
+      ].map(g=>{
+      const glow={purple:'rgba(124,92,255,.35)',blue:'rgba(64,152,240,.35)',gold:'rgba(240,192,64,.35)',teal:'rgba(64,217,192,.35)',red:'rgba(224,85,85,.35)',green:'rgba(64,192,128,.35)',pink:'rgba(255,92,168,.35)'}[g.tc];
+      return `
+      <div class="game-card" data-game="${g.game}" style="--tc:var(--${g.tc});--tc-dark:var(--${g.tc}2);--tc-glow:${glow}">
+        <div class="game-card-top">
+          <div class="game-card-icon">${g.icon}</div>
+          <div class="game-difficulty">${g.diff}</div>
+        </div>
+        <div class="game-name">${g.name}</div>
+        <div class="game-desc">${g.desc}</div>
+        <div class="game-card-bottom">
+          <div class="game-xp">${g.xp}</div>
+          <div class="game-arrow-btn">→</div>
+        </div>
+      </div>`;}).join('')}
     </div>
     <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px;margin-top:4px">
       <div style="font-size:.82rem;font-weight:600;margin-bottom:8px">💡 Necə işləyir?</div>
@@ -2381,6 +2339,7 @@ function renderGames(){
         • Liderboardda yüksək yer tut!<br>
         • Gün seriyasını (streak) saxla, bonus qazan
       </div>
+    </div>
     </div>`;
   v.querySelectorAll('.game-card').forEach(c=>c.addEventListener('click',()=>startGame(c.dataset.game)));
 }
