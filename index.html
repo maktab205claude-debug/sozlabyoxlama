@@ -25,7 +25,7 @@
 <link rel="icon" href="/icons/icon-192.png" sizes="192x192">
 <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#0a0a0f;--bg2:#111118;--card:#16161f;--card2:#1c1c28;
@@ -128,6 +128,21 @@ input,textarea{font-family:var(--font-body)}
 .nav-btn.active{color:var(--gold)}
 .nav-btn .icon{font-size:1.15rem}
 .nav-btn .lbl{font-size:.58rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%;text-align:center}
+.nav-btn-desktop{display:none}
+.sidebar-streak-card{display:none}
+.topbar-search-wrap{display:none}
+.topbar-icon-desktop{display:none}
+.dash-decor{display:none}
+.dash-cursive{position:absolute;right:36px;bottom:28px;font-family:'Caveat',cursive;
+  font-weight:700;font-size:1.5rem;line-height:1.25;text-align:right;opacity:.55;
+  background:linear-gradient(120deg,var(--purple),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.topbar-icon-btn{position:relative;width:38px;height:38px;border-radius:50%;background:var(--card2);
+  border:1px solid var(--border);cursor:pointer;font-size:1.05rem;align-items:center;
+  justify-content:center;flex-shrink:0;transition:.15s}
+.topbar-icon-btn:hover{border-color:var(--purple)}
+.topbar-notif-badge{position:absolute;top:-3px;right:-3px;background:var(--red);color:#fff;
+  font-size:.6rem;font-weight:700;border-radius:20px;min-width:16px;height:16px;padding:0 4px;
+  display:flex;align-items:center;justify-content:center;line-height:1}
 
 /* ── VIEWS ── */
 .view{display:none}.view.active{display:block}
@@ -657,6 +672,51 @@ body.light-mode .theme-toggle::after{left:19px;background:#fff}
   .bottom-nav{border-radius:24px 24px 0 0;border:1px solid var(--border)}
 }
 
+/* ── DESKTOP SIDEBAR SHELL (Oyunlar ekranı istəyinə uyğun geniş masaüstü dizayn) ── */
+@media(min-width:1180px){
+  .app{max-width:1600px;box-shadow:none}
+  #mainDashboard.active{
+    position:relative;overflow:hidden;
+    display:grid;grid-template-columns:250px 1fr;grid-template-rows:auto 1fr;
+    grid-template-areas:"sidebar topbar" "sidebar main";column-gap:0}
+  .dash-decor{display:block;position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+  .top-bar{grid-area:topbar;max-width:none;width:auto;margin:0;padding:16px 28px;min-height:68px;
+    border-radius:0;overflow:visible;position:relative;z-index:1}
+  .top-logo{font-size:1.35rem;flex:0 0 auto}
+  .topbar-search-wrap{display:block;flex:1;min-width:0;margin:0 20px}
+  .topbar-search{width:100%;background:var(--card2);border:1px solid var(--border);border-radius:20px;
+    padding:9px 16px;color:var(--text);font-size:.85rem;outline:none;transition:.15s}
+  .topbar-search:focus{border-color:var(--purple)}
+  .topbar-search::placeholder{color:var(--muted)}
+  .top-stat{padding:6px 14px;font-size:.85rem}
+  .topbar-icon-desktop{display:flex}
+  .main-content{grid-area:main;max-width:none;width:auto;margin:0;padding:24px 32px 40px;position:relative;z-index:1}
+  .games-grid{grid-template-columns:repeat(4,1fr)}
+  .bottom-nav{grid-area:sidebar;flex-direction:column;align-items:stretch;justify-content:flex-start;
+    width:auto;max-width:none;margin:0;border-radius:0;border:none;border-right:1px solid var(--border);
+    padding:20px 14px;gap:4px;position:sticky;top:0;height:100vh;overflow-y:auto;z-index:1}
+  .nav-btn{flex-direction:row;justify-content:flex-start;align-items:center;gap:12px;
+    padding:11px 14px;border-radius:12px;text-align:left}
+  .nav-btn:hover{background:var(--card2);color:var(--text)}
+  .nav-btn.active{background:linear-gradient(135deg,rgba(124,92,255,.18),rgba(240,192,64,.1));
+    color:var(--gold);box-shadow:inset 0 0 0 1px var(--border2)}
+  .nav-btn .icon{font-size:1.25rem}
+  .nav-btn .lbl{font-size:.82rem;text-align:left;width:auto;overflow:visible}
+  .nav-btn-desktop{display:flex}
+  .sidebar-streak-card{display:block;margin-top:auto;padding:16px 14px;background:var(--card2);
+    border:1px solid var(--border);border-radius:var(--radius);text-align:center}
+  .sidebar-streak-trophy{font-size:2rem;margin-bottom:4px;filter:drop-shadow(0 0 10px rgba(240,192,64,.5))}
+  .sidebar-streak-title{font-size:.72rem;color:var(--muted);font-weight:600}
+  .sidebar-streak-val{font-family:var(--font-head);font-size:1.3rem;font-weight:800;color:var(--gold);margin:2px 0}
+  .sidebar-streak-sub{font-size:.62rem;color:var(--muted);line-height:1.4}
+  .support-fab{right:24px}
+  .game-card-icon{position:relative;overflow:hidden}
+  .game-card-icon::before{content:'';position:absolute;top:-40%;left:-20%;width:140%;height:100%;
+    background:linear-gradient(120deg,rgba(255,255,255,.55) 0%,rgba(255,255,255,.12) 35%,rgba(255,255,255,0) 55%);
+    transform:rotate(-15deg);pointer-events:none}
+  .game-card-icon{box-shadow:inset 0 -6px 10px -4px rgba(0,0,0,.35),inset 0 2px 3px rgba(255,255,255,.25)}
+}
+
 /* ══════════════════════════════════════════════
    BÖYÜK EKRAN — dəhliz/akt zalı televizoru üçün (login tələb etmir, bax ?ekran=1).
    ══════════════════════════════════════════════ */
@@ -942,10 +1002,36 @@ setTimeout(function(){
 
 <!-- ═══ MAIN ═══ -->
 <div class="screen" id="mainDashboard">
+  <div class="dash-decor" aria-hidden="true">
+    <svg viewBox="0 0 900 500" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;opacity:.22">
+      <line x1="0" y1="0" x2="120" y2="70" stroke="#7c5cff" stroke-width="1"/>
+      <line x1="120" y1="70" x2="60" y2="180" stroke="#7c5cff" stroke-width="1"/>
+      <line x1="0" y1="0" x2="30" y2="160" stroke="#7c5cff" stroke-width="1"/>
+      <line x1="30" y1="160" x2="120" y2="70" stroke="#7c5cff" stroke-width="1"/>
+      <line x1="780" y1="0" x2="900" y2="90" stroke="#7c5cff" stroke-width="1"/>
+      <line x1="780" y1="0" x2="850" y2="140" stroke="#7c5cff" stroke-width="1"/>
+      <line x1="850" y1="140" x2="900" y2="90" stroke="#7c5cff" stroke-width="1"/>
+      <line x1="700" y1="480" x2="820" y2="400" stroke="#40d9c0" stroke-width="1"/>
+      <line x1="820" y1="400" x2="900" y2="460" stroke="#40d9c0" stroke-width="1"/>
+      <line x1="700" y1="480" x2="780" y2="500" stroke="#40d9c0" stroke-width="1"/>
+      <circle cx="0" cy="0" r="2.5" fill="#a99bff"/><circle cx="120" cy="70" r="2.5" fill="#a99bff"/>
+      <circle cx="60" cy="180" r="2.5" fill="#a99bff"/><circle cx="30" cy="160" r="2.5" fill="#a99bff"/>
+      <circle cx="780" cy="0" r="2.5" fill="#a99bff"/><circle cx="900" cy="90" r="2.5" fill="#a99bff"/>
+      <circle cx="850" cy="140" r="2.5" fill="#a99bff"/>
+      <circle cx="700" cy="480" r="2.5" fill="#8ff3e0"/><circle cx="820" cy="400" r="2.5" fill="#8ff3e0"/>
+      <circle cx="900" cy="460" r="2.5" fill="#8ff3e0"/>
+    </svg>
+    <div class="dash-cursive">Daha çox öyrən<br>Daha çox qazan!</div>
+  </div>
   <div class="top-bar">
-    <div class="top-logo">SözLab</div>
+    <div class="top-logo">🧠 SözLab</div>
+    <div class="topbar-search-wrap">
+      <input class="topbar-search" id="topbarSearch" placeholder="🔍 Söz, oyun və ya mövzu axtar...">
+    </div>
     <div class="top-stat">🔥<span id="topStreak">0</span></div>
     <div class="top-stat">⭐<span id="topXP">0</span> XP</div>
+    <button class="topbar-icon-btn topbar-icon-desktop" id="topbarNotifBtn" title="Dəstək bildirişləri">🔔<span class="topbar-notif-badge" id="topbarNotifBadge" style="display:none">0</span></button>
+    <button class="topbar-icon-btn topbar-icon-desktop" id="topbarLangBtn" title="Dil seçimi (tezliklə)">🇦🇿</button>
     <button class="theme-toggle" id="themeToggleBtn" title="Rejimi dəyiş"></button>
     <button class="avatar-btn" id="adminPanelBtn" style="display:none" title="Admin Paneli">🛠️</button>
     <button class="avatar-btn" id="directorPanelBtn" style="display:none" title="Direktor Paneli">👑</button>
@@ -970,8 +1056,16 @@ setTimeout(function(){
     <button class="nav-btn" data-view="Games"><span class="icon">🎮</span><span class="lbl">Oyunlar</span></button>
     <button class="nav-btn" data-view="Vocab"><span class="icon">📚</span><span class="lbl">Lüğət</span></button>
     <button class="nav-btn" data-view="Derslikler"><span class="icon">📖</span><span class="lbl">Dərsliklər</span></button>
+    <button class="nav-btn nav-btn-desktop" data-view="Leaderboard"><span class="icon">🏆</span><span class="lbl">Liderlər</span></button>
     <button class="nav-btn" data-view="AI"><span class="icon">🤖</span><span class="lbl">AI</span></button>
+    <button class="nav-btn nav-btn-desktop" data-view="Profile"><span class="icon">👤</span><span class="lbl">Profil</span></button>
     <button class="nav-btn" data-view="About"><span class="icon">ℹ️</span><span class="lbl">Haqqımızda</span></button>
+    <div class="sidebar-streak-card">
+      <div class="sidebar-streak-trophy">🏆</div>
+      <div class="sidebar-streak-title">Gün Seriyası</div>
+      <div class="sidebar-streak-val"><span id="sidebarStreakVal">0</span> 🔥</div>
+      <div class="sidebar-streak-sub">Hər gün oyna, seriyanı saxla!</div>
+    </div>
   </nav>
   <button class="support-fab" id="supportFabBtn" title="Dəstək">💬<span class="support-badge" id="supportFabBadge" style="display:none">0</span></button>
 </div>
@@ -2036,6 +2130,7 @@ function updateTopBar(){
   if(!currentUser)return;
   document.getElementById('topStreak').textContent=currentUser.streak||0;
   document.getElementById('topXP').textContent=currentUser.xp||0;
+  document.getElementById('sidebarStreakVal').textContent=currentUser.streak||0;
   document.getElementById('avatarBtn').textContent=(currentUser.display_name||'?')[0].toUpperCase();
   applyCosmetics();
 }
@@ -4151,6 +4246,11 @@ async function loadSupportFabBadge(){
   }catch(e){}
   if(count>0){badge.textContent=count>9?'9+':count;badge.style.display='flex';}
   else badge.style.display='none';
+  const topBadge=document.getElementById('topbarNotifBadge');
+  if(topBadge){
+    if(count>0){topBadge.textContent=count>9?'9+':count;topBadge.style.display='flex';}
+    else topBadge.style.display='none';
+  }
 }
 
 // Admin/direktor/müəllim üçün: bütün (RLS-in icazə verdiyi) şagird söhbətlərinin
@@ -7273,6 +7373,22 @@ window.addEventListener('DOMContentLoaded',async()=>{
   // Nav
   document.querySelectorAll('.nav-btn').forEach(b=>b.addEventListener('click',function(){switchView(this.dataset.view);}));
   document.getElementById('avatarBtn').addEventListener('click',()=>switchView('Profile'));
+  document.getElementById('topbarSearch')?.addEventListener('keydown',function(e){
+    if(e.key!=='Enter')return;
+    const q=this.value.trim();
+    switchView('Vocab');
+    setTimeout(()=>{
+      const vs=document.getElementById('vocabSearch');
+      if(vs){vs.value=q;vs.dispatchEvent(new Event('input'));}
+    },50);
+  });
+  document.getElementById('topbarNotifBtn')?.addEventListener('click',()=>{
+    if(!currentUser)return;
+    openSupportChat(currentUser.username,'mainDashboard');
+  });
+  document.getElementById('topbarLangBtn')?.addEventListener('click',()=>{
+    showToast('Hazırda yalnız Azərbaycan dili mövcuddur','gold');
+  });
   document.getElementById('adminLogoutBtn').addEventListener('click',()=>{showScreen('mainDashboard');switchView('Home');});
   document.getElementById('teacherLogoutBtn').addEventListener('click',()=>{showScreen('mainDashboard');switchView('Home');});
 
