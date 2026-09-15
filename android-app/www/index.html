@@ -894,6 +894,93 @@ body.theme-theme_neon{--purple:#e930ff;--purple2:#a100c9;--accent-cyan:#39ff88}
 .lesson-present-nav button{background:var(--card2);border:1px solid var(--border2);color:#fff;
   border-radius:10px;padding:12px 28px;font-size:1.1rem;cursor:pointer;font-weight:700}
 .lesson-present-nav button:disabled{opacity:.3;cursor:not-allowed}
+
+/* ══════════════════════════════════════════════
+   205 SMART SCHOOL — öz açıq (light) rəng sistemi,
+   qalan tünd SözLab dizaynından bilərəkdən fərqlənir.
+   ══════════════════════════════════════════════ */
+.m205-root{
+  --m-primary:#4F46E5;--m-primary-hover:#6366F1;--m-primary-light:#EEF2FF;
+  --m-navy-950:#07152F;--m-navy-900:#0B1F3A;--m-navy-800:#102A4C;--m-navy-700:#183A63;
+  --m-white:#FFFFFF;--m-bg:#F5F7FB;--m-surface:#FFFFFF;--m-border:#E2E8F0;
+  --m-text:#172033;--m-text-secondary:#64748B;--m-text-muted:#94A3B8;
+  --m-purple:#7C3AED;--m-blue:#2563EB;--m-cyan:#06B6D4;--m-green:#10B981;
+  --m-yellow:#F59E0B;--m-orange:#F97316;--m-red:#EF4444;--m-pink:#EC4899;
+  --m-gradient-primary:linear-gradient(135deg,#4F46E5,#7C3AED);
+  --m-gradient-blue:linear-gradient(135deg,#2563EB,#06B6D4);
+  --m-gradient-success:linear-gradient(135deg,#10B981,#06B6D4);
+  --m-gradient-warm:linear-gradient(135deg,#F59E0B,#F97316);
+  background:
+    radial-gradient(circle at 15% 20%,rgba(79,70,229,.10),transparent 35%),
+    radial-gradient(circle at 85% 80%,rgba(6,182,212,.08),transparent 35%),
+    var(--m-bg);
+  color:var(--m-text);flex:1;overflow-y:auto;display:flex;flex-direction:column;
+}
+.m205-root *{box-sizing:border-box}
+.m205-topbar{padding:16px 18px;flex-shrink:0;display:flex;align-items:center;gap:12px;
+  background:var(--m-surface);border-bottom:1px solid var(--m-border);position:sticky;top:0;z-index:2}
+.m205-topbar .m205-back{background:var(--m-primary-light);color:var(--m-primary);border:none;
+  border-radius:10px;padding:7px 14px;font-size:.8rem;font-weight:700;cursor:pointer;transition:background .2s ease}
+.m205-topbar .m205-back:hover{background:#E0E1FF}
+.m205-topbar .m205-title{font-size:1.05rem;font-weight:800;color:var(--m-navy-950)}
+.m205-topbar .m205-sub{font-size:.72rem;color:var(--m-text-muted);margin-top:1px}
+.m205-body{padding:18px;flex:1}
+.m205-hero{background:var(--m-gradient-primary);border-radius:18px;padding:26px 24px;color:#fff;
+  margin-bottom:20px;box-shadow:0 15px 35px rgba(79,70,229,.25);position:relative;overflow:hidden}
+.m205-hero::after{content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at 90% 10%,rgba(255,255,255,.18),transparent 45%);pointer-events:none}
+.m205-hero h2{font-size:1.3rem;font-weight:800;margin-bottom:6px;position:relative}
+.m205-hero p{font-size:.85rem;opacity:.92;position:relative}
+.m205-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+@media(min-width:700px){.m205-grid{grid-template-columns:repeat(3,1fr)}}
+.m205-card{background:var(--m-surface);border:1.5px solid var(--m-border);border-radius:16px;padding:18px;
+  cursor:pointer;opacity:0;animation:m205FadeUp .6s ease both;
+  transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+.m205-card:hover{transform:translateY(-5px);box-shadow:0 15px 35px rgba(37,99,235,.14);border-color:var(--m-tc,var(--m-primary))}
+.m205-card:nth-child(1){animation-delay:.05s}.m205-card:nth-child(2){animation-delay:.10s}
+.m205-card:nth-child(3){animation-delay:.15s}.m205-card:nth-child(4){animation-delay:.20s}
+.m205-card:nth-child(5){animation-delay:.25s}.m205-card:nth-child(6){animation-delay:.30s}
+.m205-card:nth-child(7){animation-delay:.35s}.m205-card:nth-child(8){animation-delay:.40s}
+.m205-card:nth-child(9){animation-delay:.45s}.m205-card:nth-child(10){animation-delay:.50s}
+.m205-card-icon{width:46px;height:46px;border-radius:13px;display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;margin-bottom:12px;background:color-mix(in srgb,var(--m-tc,var(--m-primary)) 14%,white)}
+.m205-card-name{font-weight:800;font-size:.95rem;color:var(--m-navy-950);margin-bottom:4px}
+.m205-card-desc{font-size:.76rem;color:var(--m-text-secondary);line-height:1.4}
+@keyframes m205FadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.m205-list-card{background:var(--m-surface);border:1px solid var(--m-border);border-radius:14px;overflow:hidden;
+  margin-bottom:14px;opacity:0;animation:m205FadeUp .5s ease both;transition:transform .3s ease,box-shadow .3s ease}
+.m205-list-card:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(23,32,51,.10)}
+.m205-list-img{width:100%;height:170px;object-fit:cover;display:block;background:var(--m-primary-light)}
+.m205-list-body{padding:14px 16px}
+.m205-list-title{font-weight:800;font-size:.95rem;color:var(--m-navy-950);margin-bottom:6px}
+.m205-list-text{font-size:.8rem;color:var(--m-text-secondary);line-height:1.6;white-space:pre-wrap}
+.m205-list-meta{font-size:.72rem;color:var(--m-text-muted);margin-top:8px;display:flex;align-items:center;
+  justify-content:space-between;gap:8px;flex-wrap:wrap}
+.m205-pill{display:inline-block;padding:3px 11px;border-radius:20px;font-size:.68rem;font-weight:700}
+.m205-input,.m205-textarea{width:100%;background:var(--m-bg);border:1.5px solid var(--m-border);border-radius:10px;
+  padding:10px 13px;font-size:.85rem;color:var(--m-text);font-family:inherit;margin-bottom:10px}
+.m205-input:focus,.m205-textarea:focus{outline:none;border-color:var(--m-primary)}
+.m205-btn-primary{background:var(--m-gradient-primary);color:#fff;border:none;border-radius:10px;
+  padding:10px 18px;font-size:.85rem;font-weight:700;cursor:pointer;transition:opacity .2s ease}
+.m205-btn-primary:hover{opacity:.9}
+.m205-btn-outline{background:var(--m-surface);color:var(--m-text);border:1.5px solid var(--m-border);
+  border-radius:10px;padding:9px 16px;font-size:.8rem;font-weight:700;cursor:pointer}
+.m205-teacher-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media(min-width:700px){.m205-teacher-grid{grid-template-columns:repeat(3,1fr)}}
+.m205-teacher-card{background:var(--m-surface);border:1px solid var(--m-border);border-radius:14px;padding:16px;
+  text-align:center;opacity:0;animation:m205FadeUp .5s ease both;transition:transform .3s ease,box-shadow .3s ease}
+.m205-teacher-card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(23,32,51,.10)}
+.m205-teacher-avatar{width:56px;height:56px;border-radius:50%;background:var(--m-gradient-primary);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.1rem;margin:0 auto 10px}
+.m205-teacher-name{font-weight:700;font-size:.85rem;color:var(--m-navy-950)}
+.m205-teacher-role{font-size:.72rem;color:var(--m-text-secondary);margin-top:3px}
+.m205-about-hero{border-radius:16px;overflow:hidden;margin-bottom:18px;position:relative}
+.m205-about-hero img{width:100%;max-height:260px;object-fit:cover;display:block}
+.m205-stat-row{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:16px 0}
+@media(min-width:600px){.m205-stat-row{grid-template-columns:repeat(4,1fr)}}
+.m205-stat{background:var(--m-surface);border:1px solid var(--m-border);border-radius:12px;padding:14px;text-align:center}
+.m205-stat-val{font-size:1.25rem;font-weight:800;color:var(--m-primary)}
+.m205-stat-lbl{font-size:.68rem;color:var(--m-text-muted);margin-top:2px}
 </style>
 </head>
 <body>
@@ -7214,16 +7301,28 @@ async function sendContactMessage(){
 }
 
 // ══════════════════════════════════════════════
-// 205 SMART SCHOOL
+// 205 SMART SCHOOL — açıq (light) tema, ayrıca rəng sistemi
 // ══════════════════════════════════════════════
 let mekteb205Tab='menu';
 let m205FormOpen=false;
 let m205UploadedFile=null;
 const MEKTEB205_TYPES={
-  project:{label:'Şagird layihələri',icon:'🧠',singular:'Layihə'},
-  idea:{label:'İdeya bankı',icon:'💡',singular:'İdeya'},
-  startup:{label:'Startap layihələri',icon:'🚀',singular:'Startap'}
+  project:{label:'Şagird layihələri',icon:'🧠',singular:'Layihə',color:'#7C3AED'},
+  idea:{label:'İdeya bankı',icon:'💡',singular:'İdeya',color:'#F59E0B'},
+  startup:{label:'Startap layihələri',icon:'🚀',singular:'Startap',color:'#EF4444'}
 };
+const MEKTEB205_MENU=[
+  {tab:'about',icon:'🏫',name:'Məktəb haqqında',desc:'Tarixçə, ünvan, əlaqə və ümumi göstəricilər',color:'#4F46E5'},
+  {tab:'news',icon:'📰',name:'Xəbərlər',desc:'Məktəbin ən son xəbərləri',color:'#06B6D4'},
+  {tab:'events',icon:'📅',name:'Tədbirlər',desc:'Keçmiş və gələcək tədbirlər',color:'#F97316'},
+  {tab:'teachers',icon:'👩‍🏫',name:'Müəllimlər',desc:'Rəhbərlik və müəllim heyəti',color:'#183A63'},
+  {tab:'project',icon:'🧠',name:'Şagird layihələri',desc:'Layihəni təqdim et, təsdiqləndikdən sonra paylaş',color:'#7C3AED'},
+  {tab:'idea',icon:'💡',name:'İdeya bankı',desc:'Yeni ideyanı bölüş, müəllim/direktor baxsın',color:'#F59E0B'},
+  {tab:'achievements',icon:'🏆',name:'Nailiyyətlər',desc:'Məktəbin qazandığı uğurlar',color:'#10B981'},
+  {tab:'portfolio',icon:'👨‍🎓',name:'Şagird portfolio',desc:'Təsdiqlənmiş bütün işlərin bir yerdə',color:'#2563EB'},
+  {tab:'startup',icon:'🚀',name:'Startap layihələri',desc:'Biznes fikrini təqdim et',color:'#EF4444'},
+  {tab:'ai',icon:'🤖',name:'AI köməkçi',desc:'',color:'#EC4899'}
+];
 function aiDailyLimitTier(){
   const xp=currentUser?.xp||0;
   return xp>=10000?10000:xp>=5000?5000:2000;
@@ -7231,10 +7330,25 @@ function aiDailyLimitTier(){
 function aiTodayKey(){return 'ai205_'+(currentUser?.username||'guest')+'_'+new Date().toDateString();}
 function aiTodayCount(){return parseInt(localStorage.getItem(aiTodayKey())||'0',10);}
 function aiIncrementToday(){localStorage.setItem(aiTodayKey(),String(aiTodayCount()+1));}
+function m205InitialsAvatar(name){
+  return (name||'?').trim().split(/\s+/).slice(0,2).map(w=>w[0]).join('').toUpperCase();
+}
+function m205TopBar(title,sub){
+  return `<div class="m205-topbar">
+      <button class="m205-back" id="m205BackBtn">← Geri</button>
+      <div><div class="m205-title">${title}</div>${sub?`<div class="m205-sub">${sub}</div>`:''}</div>
+    </div>`;
+}
 
 function renderMekteb205(){
   const v=document.getElementById('viewMekteb205');
+  v.className='view m205-root';
   if(mekteb205Tab==='menu'){renderMekteb205Menu(v);return;}
+  if(mekteb205Tab==='ai'){switchView('AI');return;}
+  if(mekteb205Tab==='about'){renderMekteb205About(v);return;}
+  if(mekteb205Tab==='news'){renderMekteb205News(v);return;}
+  if(mekteb205Tab==='events'){renderMekteb205Events(v);return;}
+  if(mekteb205Tab==='teachers'){renderMekteb205Teachers(v);return;}
   if(mekteb205Tab==='achievements'){renderMekteb205Achievements(v);return;}
   if(mekteb205Tab==='portfolio'){renderMekteb205Portfolio(v);return;}
   renderMekteb205Submissions(v,mekteb205Tab);
@@ -7243,107 +7357,164 @@ function renderMekteb205(){
 function renderMekteb205Menu(v){
   const limit=aiDailyLimitTier(),used=aiTodayCount();
   v.innerHTML=`
-    <div style="padding:14px 16px;border-bottom:1px solid var(--border);flex-shrink:0">
-      <div class="section-title" style="margin-bottom:4px">🏫 205 Smart School</div>
-      <div style="font-size:.75rem;color:var(--muted)">Layihələrini, ideyalarını və nailiyyətlərini paylaş</div>
-    </div>
-    <div style="flex:1;overflow-y:auto;padding:16px">
-      <div class="games-grid" style="grid-template-columns:repeat(2,1fr)">
-        <div class="game-card m205-card" data-tab="project" style="cursor:pointer;--tc:var(--purple);--tc-dark:var(--purple2);--tc-glow:rgba(124,92,255,.35)">
-          <div class="game-card-icon" style="background:linear-gradient(135deg,var(--purple),var(--purple2))">🧠</div>
-          <div class="game-name">Şagird layihələri</div>
-          <div class="game-desc">Layihəni təqdim et, təsdiqləndikdən sonra paylaş</div>
-        </div>
-        <div class="game-card m205-card" data-tab="idea" style="cursor:pointer;--tc:var(--gold);--tc-dark:var(--gold2);--tc-glow:rgba(240,192,64,.35)">
-          <div class="game-card-icon" style="background:linear-gradient(135deg,var(--gold),var(--gold2))">💡</div>
-          <div class="game-name">İdeya bankı</div>
-          <div class="game-desc">Yeni ideyanı bölüş, müəllim/direktor baxsın</div>
-        </div>
-        <div class="game-card m205-card" data-tab="achievements" style="cursor:pointer;--tc:var(--teal);--tc-dark:var(--teal2);--tc-glow:rgba(64,217,192,.35)">
-          <div class="game-card-icon" style="background:linear-gradient(135deg,var(--teal),var(--teal2))">🏆</div>
-          <div class="game-name">Nailiyyətlər</div>
-          <div class="game-desc">Məktəbin qazandığı uğurlar</div>
-        </div>
-        <div class="game-card m205-card" data-tab="portfolio" style="cursor:pointer;--tc:var(--blue);--tc-dark:var(--blue2);--tc-glow:rgba(64,152,240,.35)">
-          <div class="game-card-icon" style="background:linear-gradient(135deg,var(--blue),var(--blue2))">👨‍🎓</div>
-          <div class="game-name">Şagird portfolio</div>
-          <div class="game-desc">Təsdiqlənmiş bütün işlərin bir yerdə</div>
-        </div>
-        <div class="game-card m205-card" data-tab="startup" style="cursor:pointer;--tc:var(--red);--tc-dark:var(--red2);--tc-glow:rgba(224,64,64,.35)">
-          <div class="game-card-icon" style="background:linear-gradient(135deg,var(--red),var(--red2))">🚀</div>
-          <div class="game-name">Startap layihələri</div>
-          <div class="game-desc">Biznes fikrini təqdim et</div>
-        </div>
-        <div class="game-card m205-card" id="m205AiCard" style="cursor:pointer;--tc:var(--pink);--tc-dark:var(--pink2);--tc-glow:rgba(255,92,168,.35)">
-          <div class="game-card-icon" style="background:linear-gradient(135deg,var(--pink),var(--pink2))">🤖</div>
-          <div class="game-name">AI köməkçi</div>
-          <div class="game-desc">Bugün: ${used}/${limit} sual istifadə olunub</div>
-        </div>
+    <div class="m205-body">
+      <div class="m205-hero">
+        <h2>🏫 205 Smart School</h2>
+        <p>İdeyalar → Layihələr → Uğurlar — daha çox öyrən, daha çox yarat, daha çox nail ol!</p>
       </div>
+      <div class="m205-grid" id="m205MenuGrid"></div>
     </div>`;
-  v.querySelectorAll('.m205-card[data-tab]').forEach(c=>c.addEventListener('click',()=>{mekteb205Tab=c.dataset.tab;renderMekteb205();}));
-  document.getElementById('m205AiCard')?.addEventListener('click',()=>switchView('AI'));
+  const grid=document.getElementById('m205MenuGrid');
+  grid.innerHTML=MEKTEB205_MENU.map(m=>`
+    <div class="m205-card" data-tab="${m.tab}" style="--m-tc:${m.color}">
+      <div class="m205-card-icon" style="color:${m.color}">${m.icon}</div>
+      <div class="m205-card-name">${m.name}</div>
+      <div class="m205-card-desc">${m.tab==='ai'?`Bugün: ${used}/${limit} sual istifadə olunub`:m.desc}</div>
+    </div>`).join('');
+  grid.querySelectorAll('.m205-card[data-tab]').forEach(c=>c.addEventListener('click',()=>{mekteb205Tab=c.dataset.tab;renderMekteb205();}));
+}
+
+async function renderMekteb205About(v){
+  v.innerHTML=m205TopBar('🏫 Məktəb haqqında')+`<div class="m205-body" id="m205List"><p style="color:var(--m-text-muted);font-size:.85rem">Yüklənir...</p></div>`;
+  document.getElementById('m205BackBtn').onclick=()=>{mekteb205Tab='menu';renderMekteb205();};
+  const box=document.getElementById('m205List');
+  try{
+    const{data,error}=await sb.from('school_info').select().eq('id',1).single();
+    if(error)throw error;
+    const paragraphs=(data.about_text||'').split(/\n\s*\n/).map(p=>`<p style="margin-bottom:12px">${p.replace(/\n/g,'<br>')}</p>`).join('');
+    box.innerHTML=`
+      ${data.cover_image_url?`<div class="m205-about-hero"><img src="${data.cover_image_url}" alt=""></div>`:''}
+      <h2 style="font-size:1.15rem;font-weight:800;color:var(--m-navy-950);margin-bottom:6px">${data.school_name||''}</h2>
+      <div class="m205-stat-row">
+        <div class="m205-stat"><div class="m205-stat-val">1270</div><div class="m205-stat-lbl">Şagird</div></div>
+        <div class="m205-stat"><div class="m205-stat-val">45</div><div class="m205-stat-lbl">Sinif (2A–11D)</div></div>
+        <div class="m205-stat"><div class="m205-stat-val">98,5%</div><div class="m205-stat-lbl">Müvəffəqiyyət</div></div>
+        <div class="m205-stat"><div class="m205-stat-val">63/139</div><div class="m205-stat-lbl">Ali məktəbə qəbul</div></div>
+      </div>
+      <div style="font-size:.85rem;color:var(--m-text-secondary);line-height:1.7;margin-top:6px">${paragraphs}</div>
+      <div class="m205-list-card" style="margin-top:16px">
+        <div class="m205-list-body">
+          <div class="m205-list-title">📍 Əlaqə</div>
+          <div class="m205-list-text">${data.address||''}${data.phone?`<br>☎️ ${data.phone}`:''}${data.email?`<br>✉️ ${data.email}`:''}</div>
+        </div>
+      </div>`;
+  }catch(e){box.innerHTML='<p style="color:var(--m-red);font-size:.85rem">Yüklənmədi: '+(e?.message||'xəta')+'</p>';}
+}
+
+async function renderMekteb205News(v){
+  v.innerHTML=m205TopBar('📰 Xəbərlər')+`<div class="m205-body" id="m205List"><p style="color:var(--m-text-muted);font-size:.85rem">Yüklənir...</p></div>`;
+  document.getElementById('m205BackBtn').onclick=()=>{mekteb205Tab='menu';renderMekteb205();};
+  const list=document.getElementById('m205List');
+  try{
+    const{data,error}=await sb.from('school_news').select().eq('published',true).order('created_at',{ascending:false});
+    if(error)throw error;
+    if(!data.length){list.innerHTML='<p style="color:var(--m-text-muted);font-size:.85rem">Hələ xəbər yoxdur.</p>';return;}
+    list.innerHTML=data.map(n=>`
+      <div class="m205-list-card">
+        ${n.image_url?`<img class="m205-list-img" src="${n.image_url}" alt="">`:''}
+        <div class="m205-list-body">
+          <div class="m205-list-title">${n.title}</div>
+          <div class="m205-list-text">${(n.body||'').replace(/\n/g,'<br>')}</div>
+          <div class="m205-list-meta"><span>📅 ${new Date(n.created_at).toLocaleDateString('az-AZ')}</span></div>
+        </div>
+      </div>`).join('');
+  }catch(e){list.innerHTML='<p style="color:var(--m-red);font-size:.85rem">Yüklənmədi: '+(e?.message||'xəta')+'</p>';}
+}
+
+async function renderMekteb205Events(v){
+  v.innerHTML=m205TopBar('📅 Tədbirlər')+`<div class="m205-body" id="m205List"><p style="color:var(--m-text-muted);font-size:.85rem">Yüklənir...</p></div>`;
+  document.getElementById('m205BackBtn').onclick=()=>{mekteb205Tab='menu';renderMekteb205();};
+  const list=document.getElementById('m205List');
+  try{
+    const{data,error}=await sb.from('school_events').select().order('event_date',{ascending:false});
+    if(error)throw error;
+    if(!data.length){list.innerHTML='<p style="color:var(--m-text-muted);font-size:.85rem">Hələ tədbir yoxdur.</p>';return;}
+    list.innerHTML=data.map(ev=>`
+      <div class="m205-list-card">
+        ${ev.image_url?`<img class="m205-list-img" src="${ev.image_url}" alt="">`:''}
+        <div class="m205-list-body">
+          <div class="m205-list-title">${ev.title}</div>
+          <div class="m205-list-text">${(ev.description||'').replace(/\n/g,'<br>')}</div>
+          <div class="m205-list-meta">
+            <span>${ev.event_date?'📅 '+new Date(ev.event_date).toLocaleDateString('az-AZ'):''}</span>
+            <span>${ev.location||''}</span>
+          </div>
+        </div>
+      </div>`).join('');
+  }catch(e){list.innerHTML='<p style="color:var(--m-red);font-size:.85rem">Yüklənmədi: '+(e?.message||'xəta')+'</p>';}
+}
+
+async function renderMekteb205Teachers(v){
+  v.innerHTML=m205TopBar('👩‍🏫 Müəllimlər')+`<div class="m205-body"><div class="m205-teacher-grid" id="m205List"><p style="color:var(--m-text-muted);font-size:.85rem">Yüklənir...</p></div></div>`;
+  document.getElementById('m205BackBtn').onclick=()=>{mekteb205Tab='menu';renderMekteb205();};
+  const list=document.getElementById('m205List');
+  try{
+    const{data,error}=await sb.from('school_teachers').select().order('sort_order',{ascending:true});
+    if(error)throw error;
+    if(!data.length){list.innerHTML='<p style="color:var(--m-text-muted);font-size:.85rem">Hələ müəllim əlavə edilməyib.</p>';return;}
+    list.innerHTML=data.map(t=>`
+      <div class="m205-teacher-card">
+        ${t.photo_url?`<img src="${t.photo_url}" alt="" style="width:56px;height:56px;border-radius:50%;object-fit:cover;margin:0 auto 10px;display:block">`
+          :`<div class="m205-teacher-avatar">${m205InitialsAvatar(t.full_name)}</div>`}
+        <div class="m205-teacher-name">${t.full_name}</div>
+        <div class="m205-teacher-role">${t.subject||''}</div>
+      </div>`).join('');
+  }catch(e){list.innerHTML='<p style="color:var(--m-red);font-size:.85rem">Yüklənmədi: '+(e?.message||'xəta')+'</p>';}
 }
 
 async function renderMekteb205Achievements(v){
-  v.innerHTML=`
-    <div style="padding:14px 16px;border-bottom:1px solid var(--border);flex-shrink:0;display:flex;align-items:center;gap:10px">
-      <button class="btn-outline" id="m205BackBtn" style="padding:6px 12px;font-size:.8rem">← Geri</button>
-      <div class="section-title" style="margin:0">🏆 Nailiyyətlər</div>
-    </div>
-    <div style="flex:1;overflow-y:auto;padding:16px" id="m205List"><p style="color:var(--muted);font-size:.83rem">Yüklənir...</p></div>`;
+  v.innerHTML=m205TopBar('🏆 Nailiyyətlər')+`<div class="m205-body" id="m205List"><p style="color:var(--m-text-muted);font-size:.85rem">Yüklənir...</p></div>`;
   document.getElementById('m205BackBtn').onclick=()=>{mekteb205Tab='menu';renderMekteb205();};
   const list=document.getElementById('m205List');
   try{
     const{data,error}=await sb.from('school_achievements').select().order('achieved_on',{ascending:false});
     if(error)throw error;
-    if(!data.length){list.innerHTML='<p style="color:var(--muted);font-size:.83rem">Hələ nailiyyət əlavə edilməyib.</p>';return;}
+    if(!data.length){list.innerHTML='<p style="color:var(--m-text-muted);font-size:.85rem">Hələ nailiyyət əlavə edilməyib.</p>';return;}
     list.innerHTML=data.map(a=>`
-      <div class="announce-card" style="margin-bottom:10px">
-        ${a.image_url?`<img src="${a.image_url}" alt="" style="width:100%;border-radius:10px;margin-bottom:8px;max-height:220px;object-fit:cover">`:''}
-        <div class="announce-title">${a.title}</div>
-        <div class="announce-body">${(a.description||'').replace(/\n/g,'<br>')}</div>
-        ${a.achieved_on?`<div class="announce-date">📅 ${new Date(a.achieved_on).toLocaleDateString('az-AZ')}</div>`:''}
+      <div class="m205-list-card">
+        ${a.image_url?`<img class="m205-list-img" src="${a.image_url}" alt="">`:''}
+        <div class="m205-list-body">
+          <div class="m205-list-title">🏆 ${a.title}</div>
+          <div class="m205-list-text">${(a.description||'').replace(/\n/g,'<br>')}</div>
+          ${a.achieved_on?`<div class="m205-list-meta"><span>📅 ${new Date(a.achieved_on).toLocaleDateString('az-AZ')}</span></div>`:''}
+        </div>
       </div>`).join('');
-  }catch(e){list.innerHTML='<p style="color:var(--red);font-size:.83rem">Yüklənmədi: '+(e?.message||'xəta')+'</p>';}
+  }catch(e){list.innerHTML='<p style="color:var(--m-red);font-size:.85rem">Yüklənmədi: '+(e?.message||'xəta')+'</p>';}
 }
 
 async function renderMekteb205Portfolio(v){
-  v.innerHTML=`
-    <div style="padding:14px 16px;border-bottom:1px solid var(--border);flex-shrink:0;display:flex;align-items:center;gap:10px">
-      <button class="btn-outline" id="m205BackBtn" style="padding:6px 12px;font-size:.8rem">← Geri</button>
-      <div class="section-title" style="margin:0">👨‍🎓 Şagird Portfolio</div>
-    </div>
-    <div style="flex:1;overflow-y:auto;padding:16px" id="m205List"><p style="color:var(--muted);font-size:.83rem">Yüklənir...</p></div>`;
+  v.innerHTML=m205TopBar('👨‍🎓 Şagird Portfolio')+`<div class="m205-body" id="m205List"><p style="color:var(--m-text-muted);font-size:.85rem">Yüklənir...</p></div>`;
   document.getElementById('m205BackBtn').onclick=()=>{mekteb205Tab='menu';renderMekteb205();};
   const list=document.getElementById('m205List');
   try{
     const{data,error}=await sb.from('school_portfolio').select().eq('username',currentUser.username).order('created_at',{ascending:false});
     if(error)throw error;
-    if(!data.length){list.innerHTML='<p style="color:var(--muted);font-size:.83rem">Hələ təsdiqlənmiş işin yoxdur. Layihə, ideya və ya startap əlavə et — təsdiqlənəndə burada görünəcək.</p>';return;}
+    if(!data.length){list.innerHTML='<p style="color:var(--m-text-muted);font-size:.85rem">Hələ təsdiqlənmiş işin yoxdur. Layihə, ideya və ya startap əlavə et — təsdiqlənəndə burada görünəcək.</p>';return;}
     list.innerHTML=data.map(s=>`
-      <div class="announce-card" style="margin-bottom:10px">
-        ${s.image_url?`<img src="${s.image_url}" alt="" style="width:100%;border-radius:10px;margin-bottom:8px;max-height:200px;object-fit:cover">`:''}
-        <div class="announce-title">${MEKTEB205_TYPES[s.type]?.icon||'📄'} ${s.title}</div>
-        <div class="announce-body">${(s.description||'').replace(/\n/g,'<br>')}</div>
-        <div class="announce-date">${MEKTEB205_TYPES[s.type]?.label||s.type} · ${new Date(s.created_at).toLocaleDateString('az-AZ')}</div>
+      <div class="m205-list-card">
+        ${s.image_url?`<img class="m205-list-img" src="${s.image_url}" alt="">`:''}
+        <div class="m205-list-body">
+          <div class="m205-list-title">${MEKTEB205_TYPES[s.type]?.icon||'📄'} ${s.title}</div>
+          <div class="m205-list-text">${(s.description||'').replace(/\n/g,'<br>')}</div>
+          <div class="m205-list-meta"><span>${MEKTEB205_TYPES[s.type]?.label||s.type}</span><span>${new Date(s.created_at).toLocaleDateString('az-AZ')}</span></div>
+        </div>
       </div>`).join('');
-  }catch(e){list.innerHTML='<p style="color:var(--red);font-size:.83rem">Yüklənmədi: '+(e?.message||'xəta')+'</p>';}
+  }catch(e){list.innerHTML='<p style="color:var(--m-red);font-size:.85rem">Yüklənmədi: '+(e?.message||'xəta')+'</p>';}
 }
 
 async function renderMekteb205Submissions(v,type){
   const meta=MEKTEB205_TYPES[type];
   v.innerHTML=`
-    <div style="padding:14px 16px;border-bottom:1px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:space-between;gap:10px">
-      <div style="display:flex;align-items:center;gap:10px">
-        <button class="btn-outline" id="m205BackBtn" style="padding:6px 12px;font-size:.8rem">← Geri</button>
-        <div class="section-title" style="margin:0">${meta.icon} ${meta.label}</div>
+    <div class="m205-topbar" style="justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:12px">
+        <button class="m205-back" id="m205BackBtn">← Geri</button>
+        <div class="m205-title">${meta.icon} ${meta.label}</div>
       </div>
-      <button class="btn-primary" id="m205AddBtn" style="padding:7px 14px;font-size:.8rem">+ Yeni</button>
+      <button class="m205-btn-primary" id="m205AddBtn">+ Yeni</button>
     </div>
-    <div style="flex:1;overflow-y:auto;padding:16px">
+    <div class="m205-body">
       <div id="m205FormWrap"></div>
-      <div id="m205List"><p style="color:var(--muted);font-size:.83rem">Yüklənir...</p></div>
+      <div id="m205List"><p style="color:var(--m-text-muted);font-size:.85rem">Yüklənir...</p></div>
     </div>`;
   document.getElementById('m205BackBtn').onclick=()=>{mekteb205Tab='menu';m205FormOpen=false;renderMekteb205();};
   document.getElementById('m205AddBtn').onclick=()=>{m205FormOpen=!m205FormOpen;renderMekteb205SubmitForm(type);};
@@ -7357,15 +7528,15 @@ function renderMekteb205SubmitForm(type){
   if(!m205FormOpen){wrap.innerHTML='';return;}
   m205UploadedFile=null;
   wrap.innerHTML=`
-    <div class="admin-section">
-      <h3>➕ Yeni ${meta.singular}</h3>
-      <input class="admin-input" id="m205Title" placeholder="Başlıq" style="margin-bottom:8px" maxlength="200">
-      <textarea class="admin-input" id="m205Desc" rows="4" placeholder="Təsvir yaz..." style="margin-bottom:8px"></textarea>
-      <button class="btn-outline" id="m205FileBtn" type="button" style="margin-bottom:8px">📎 Fayl/Şəkil əlavə et (könüllü)</button>
+    <div class="m205-list-card"><div class="m205-list-body">
+      <div class="m205-list-title" style="margin-bottom:10px">➕ Yeni ${meta.singular}</div>
+      <input class="m205-input" id="m205Title" placeholder="Başlıq" maxlength="200">
+      <textarea class="m205-textarea" id="m205Desc" rows="4" placeholder="Təsvir yaz..."></textarea>
+      <button class="m205-btn-outline" id="m205FileBtn" type="button" style="margin-bottom:8px">📎 Fayl/Şəkil əlavə et (könüllü)</button>
       <input type="file" id="m205FileInput" accept="image/png,image/jpeg,image/webp,.pdf" style="display:none">
-      <div id="m205FileStatus" style="font-size:.75rem;color:var(--muted);margin-bottom:8px"></div>
-      <button class="btn-primary" id="m205SubmitBtn">📤 Göndər (təsdiq üçün)</button>
-    </div>`;
+      <div id="m205FileStatus" style="font-size:.75rem;color:var(--m-text-muted);margin-bottom:8px"></div>
+      <button class="m205-btn-primary" id="m205SubmitBtn">📤 Göndər (təsdiq üçün)</button>
+    </div></div>`;
   document.getElementById('m205FileBtn').onclick=()=>document.getElementById('m205FileInput').click();
   document.getElementById('m205FileInput').onchange=async(e)=>{
     const file=e.target.files[0];e.target.value='';if(!file)return;
@@ -7411,25 +7582,27 @@ async function loadMekteb205List(type){
       .or(`status.eq.approved,student_id.eq.${currentUser.id}`)
       .order('created_at',{ascending:false});
     if(error)throw error;
-    if(!data.length){list.innerHTML='<p style="color:var(--muted);font-size:.83rem">Hələ heç nə yoxdur. İlk əlavə edən sən ol!</p>';return;}
-    const statusMeta={pending:{label:'⏳ Baxılır',color:'var(--gold)'},approved:{label:'✅ Təsdiqləndi',color:'var(--teal)'},rejected:{label:'❌ Rədd edildi',color:'var(--red)'}};
+    if(!data.length){list.innerHTML='<p style="color:var(--m-text-muted);font-size:.85rem">Hələ heç nə yoxdur. İlk əlavə edən sən ol!</p>';return;}
+    const statusMeta={pending:{label:'⏳ Baxılır',bg:'#FEF3C7',fg:'#92400E'},approved:{label:'✅ Təsdiqləndi',bg:'#D1FAE5',fg:'#065F46'},rejected:{label:'❌ Rədd edildi',bg:'#FEE2E2',fg:'#991B1B'}};
     list.innerHTML=data.map(s=>{
       const isOwn=s.student_id===currentUser.id;
       const st=statusMeta[s.status]||statusMeta.pending;
       return `
-      <div class="announce-card" style="margin-bottom:10px">
-        ${s.image_url?`<img src="${s.image_url}" alt="" style="width:100%;border-radius:10px;margin-bottom:8px;max-height:200px;object-fit:cover">`:''}
-        <div class="announce-title">${s.title}</div>
-        <div class="announce-body">${(s.description||'').replace(/\n/g,'<br>')}</div>
-        ${s.file_url?`<a href="${s.file_url}" target="_blank" style="font-size:.75rem;color:var(--gold)">📎 Faylı aç</a>`:''}
-        <div class="announce-date" style="display:flex;align-items:center;justify-content:space-between;gap:8px">
-          <span>${new Date(s.created_at).toLocaleDateString('az-AZ')}</span>
-          ${isOwn?`<span style="color:${st.color};font-weight:700">${st.label}</span>`:''}
+      <div class="m205-list-card">
+        ${s.image_url?`<img class="m205-list-img" src="${s.image_url}" alt="">`:''}
+        <div class="m205-list-body">
+          <div class="m205-list-title">${s.title}</div>
+          <div class="m205-list-text">${(s.description||'').replace(/\n/g,'<br>')}</div>
+          ${s.file_url?`<a href="${s.file_url}" target="_blank" style="font-size:.78rem;color:var(--m-primary);font-weight:700">📎 Faylı aç</a>`:''}
+          <div class="m205-list-meta">
+            <span>${new Date(s.created_at).toLocaleDateString('az-AZ')}</span>
+            ${isOwn?`<span class="m205-pill" style="background:${st.bg};color:${st.fg}">${st.label}</span>`:''}
+          </div>
+          ${isOwn&&s.admin_note?`<div style="font-size:.75rem;color:var(--m-text-muted);margin-top:6px">💬 Qeyd: ${s.admin_note}</div>`:''}
         </div>
-        ${isOwn&&s.admin_note?`<div style="font-size:.75rem;color:var(--muted);margin-top:4px">💬 Qeyd: ${s.admin_note}</div>`:''}
       </div>`;
     }).join('');
-  }catch(e){list.innerHTML='<p style="color:var(--red);font-size:.83rem">Yüklənmədi: '+(e?.message||'xəta')+'</p>';}
+  }catch(e){list.innerHTML='<p style="color:var(--m-red);font-size:.85rem">Yüklənmədi: '+(e?.message||'xəta')+'</p>';}
 }
 
 window.copyEmail=()=>{
