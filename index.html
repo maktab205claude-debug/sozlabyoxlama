@@ -2621,6 +2621,7 @@ function switchView(name){
   const target=document.getElementById('view'+name);
   if(target){target.classList.add('active');target.style.display=(name==='AI'||name==='About'||name==='Derslikler'||name==='Mekteb205')?'flex':'block';}
   document.body.classList.toggle('m205-full',name==='Mekteb205');
+  if(name!=='Games')stopAllGamePolls();
   document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.view===name));
   const renders={Home:renderHome,Alpha:renderAlpha,Games:renderGames,Vocab:renderVocab,
     Creative:renderCreative,Leaderboard:renderLeaderboard,Profile:renderProfile,Derslikler:renderDerslikler,AI:renderAI,About:renderAbout,Mekteb205:renderMekteb205};
@@ -2950,7 +2951,7 @@ function startGame(type){
   else if(type==='ctfterm')startCtfTerminal(v);
 }
 
-function gameBack(){currentGame=null;renderGames();document.getElementById('viewGames').scrollTop=0;}
+function gameBack(){stopAllGamePolls();currentGame=null;renderGames();document.getElementById('viewGames').scrollTop=0;}
 
 // ══════════════════════════════════════════════
 // SÖZ KƏŞF ET — şagird lüğətdə olmayan bir sözün mənasını yazıb göndərir.
@@ -3727,12 +3728,28 @@ function buildDuelPool(count=8){
 // arası qısa, gərgin bir tur üçün. Eyni duels cədvəli/RPC-ləri üzərində işləyir,
 // heç bir yeni infrastruktur (WebRTC və s.) tələb etmir.
 const DUEL_MODE_CONFIG={
-  normal:{questionCount:8,timerSec:0,pollMs:3000,label:'Normal'},
+  normal:{questionCount:8,timerSec:0,pollMs:2000,label:'Normal'},
   sureli:{questionCount:6,timerSec:5,pollMs:1000,label:'⚡ Sürətli'},
 };
 
 let duelPollId=null;
+let duelLobbyPollId=null;
+let duelKnownActiveIds=null;   // qəbul edilən çağırışı dərhal tutmaq üçün
 function stopDuelPoll(){if(duelPollId){clearInterval(duelPollId);duelPollId=null;}}
+function stopDuelLobbyPoll(){
+  if(duelLobbyPollId){clearInterval(duelLobbyPollId);duelLobbyPollId=null;}
+  duelKnownActiveIds=null;
+}
+// Oyundan çıxanda BÜTÜN canlı sorğu taymerlərini dayandırırıq.
+// Əvvəl bunlar arxa planda işləməyə davam edirdi: hər dəfə oyuna girəndə
+// yeni taymer əlavə olunur, köhnələr qalırdı və Supabase-ə yığılan sorğular
+// getdikcə artırdı — duel-də hiss olunan gecikmənin əsas səbəbi bu idi.
+function stopAllGamePolls(){
+  stopDuelPoll();
+  stopDuelLobbyPoll();
+  try{stopLqStudentPoll();}catch(e){}
+  try{stopBossStudentPoll();}catch(e){}
+}
 
 function startDuel(v){
   stopDuelPoll();
@@ -3765,7 +3782,7 @@ function startDuel(v){
       <h3>📜 Tarixçə</h3>
       <div id="duelHistoryList"><p style="color:var(--muted)">Yüklənir...</p></div>
     </div>`;
-  document.getElementById('gback').onclick=()=>{stopDuelPoll();gameBack();};
+  document.getElementById('gback').onclick=()=>{stopAllGamePolls();gameBack();};
   let selectedDuelMode='normal';
   v.querySelectorAll('.duel-mode-btn').forEach(b=>b.addEventListener('click',function(){
     v.querySelectorAll('.duel-mode-btn').forEach(x=>x.classList.remove('active'));
@@ -3783,7 +3800,11 @@ function startDuel(v){
       loadDuelLobby();
     }catch(e){showToast('Xəta! İstifadəçi adını yoxlayın.','red');}
   };
+  // Lobbi özü yenilənir: əks halda rəqib çağırış göndərəndə və ya çağırışı
+  // qəbul edəndə ekranda heç nə dəyişmirdi — istifadəçi çıxıb-girməli olurdu.
   loadDuelLobby();
+  stopDuelLobbyPoll();
+  duelLobbyPollId=setInterval(loadDuelLobby,3000);
 }
 
 async function loadDuelLobby(){
@@ -3794,6 +3815,22 @@ async function loadDuelLobby(){
   try{const r=await sb.from('duels').select().or(`p1_username.eq.${me},p2_username.eq.${me}`).eq('status','active').order('created_at',{ascending:false});active=r.data||[];}catch(e){}
   try{const r=await sb.from('duels').select().eq('p1_username',me).eq('status','pending').order('created_at',{ascending:false});sentPending=r.data||[];}catch(e){}
   try{const r=await sb.from('duels').select().or(`p1_username.eq.${me},p2_username.eq.${me}`).eq('status','finished').order('created_at',{ascending:false}).limit(10);history=r.data||[];}catch(e){}
+
+  // Göndərdiyimiz çağırış qəbul olunan kimi (yeni aktiv duel peyda olur)
+  // oyunçunu avtomatik duelə salırıq — "gözləyib çıx-gir etmək" aradan qalxır.
+  const activeIds=active.map(d=>d.id);
+  if(duelKnownActiveIds!==null){
+    const fresh=active.find(d=>!duelKnownActiveIds.includes(d.id)
+      && d.p1_username===me && (d.p1_progress||0)===0);
+    if(fresh){
+      duelKnownActiveIds=activeIds;
+      stopDuelLobbyPoll();
+      showToast('Rəqib qəbul etdi — duel başlayır! ⚔️','teal');
+      window.continueDuel(fresh.id);
+      return;
+    }
+  }
+  duelKnownActiveIds=activeIds;
 
   const modeBadge=(d)=>d.mode==='sureli'?' · ⚡ Sürətli':'';
   const invEl=document.getElementById('duelInvitesList');
@@ -3854,7 +3891,7 @@ async function loadDuelLobby(){
 window.respondDuelInvite=async(duelId,accept)=>{
   try{
     await sb.rpc('respond_duel',{p_duel_id:duelId,p_accept:accept});
-    if(accept){showToast('Duel qəbul edildi!','teal');window.continueDuel(duelId);}
+    if(accept){stopDuelLobbyPoll();showToast('Duel qəbul edildi!','teal');window.continueDuel(duelId);}
     else{showToast('Rədd edildi','red');loadDuelLobby();}
   }catch(e){showToast('Xəta!','red');}
 };
@@ -3887,7 +3924,7 @@ async function refreshCurrentUserProfile(){
 }
 
 function playDuel(v,duel){
-  stopDuelPoll();
+  stopAllGamePolls();
   const me=currentUser.username;
   const isP1=duel.p1_username===me;
   const questions=duel.questions||[];
@@ -3924,8 +3961,7 @@ function playDuel(v,duel){
           <div id="duelOppBar" style="color:var(--muted);font-size:.85rem">Rəqib: .../${questions.length}</div>
           <div style="font-size:.72rem;color:var(--muted);margin-top:10px">Nəticə hazır olanda "Davam edən Duellər" bölməsindən bura qayıda bilərsən.</div>
         </div>`;
-      document.getElementById('gback').onclick=()=>{stopDuelPoll();gameBack();};
-      duelPollId=setInterval(refreshOpponentBar,modeCfg.pollMs);
+      document.getElementById('gback').onclick=()=>{stopAllGamePolls();gameBack();};
       refreshOpponentBar();
       return;
     }
@@ -3939,7 +3975,7 @@ function playDuel(v,duel){
         <div class="quiz-opts">${q.opts.map(o=>`<button class="quiz-opt" data-correct="${o===q.correct}">${o}</button>`).join('')}</div>
       </div>
       <div id="duelOppBar" style="margin-top:10px;font-size:.75rem;color:var(--muted);text-align:center">Rəqibin irəliləyişi yoxlanılır...</div>`;
-    document.getElementById('gback').onclick=()=>{stopDuelPoll();stopReflexTimer();gameBack();};
+    document.getElementById('gback').onclick=()=>{stopAllGamePolls();stopReflexTimer();gameBack();};
     refreshOpponentBar();
 
     function answer(correct,btnEl){
@@ -3972,6 +4008,9 @@ function playDuel(v,duel){
     }
   }
   showQ();
+  // Rəqibin irəliləyişi oyun boyu davamlı yenilənir (əvvəl yalnız
+  // sən bitirəndən sonra yenilənirdi — ona görə "rəqib donub qalıb" görünürdü).
+  duelPollId=setInterval(refreshOpponentBar,modeCfg.pollMs);
 }
 
 function showDuelResult(v,duel,isP1){
