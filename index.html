@@ -1100,9 +1100,21 @@ body.m205-guest #guestExitBtn{display:block}
 .m205-item:nth-child(3){animation-delay:.12s}.m205-item:nth-child(4){animation-delay:.16s}
 .m205-item:nth-child(5){animation-delay:.20s}.m205-item:nth-child(6){animation-delay:.24s}
 .m205-item:nth-child(n+7){animation-delay:.28s}
-.m205-item-img{width:100%;height:136px;object-fit:cover;display:block;background:var(--m-primary-light)}
-.m205-item-ph{width:100%;height:136px;display:flex;align-items:center;justify-content:center;font-size:2rem;
-  background:linear-gradient(135deg,var(--m-tc,var(--m-primary)),color-mix(in srgb,var(--m-tc,var(--m-primary)) 55%,#0B1F3A))}
+.m205-item-img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;background:var(--m-primary-light)}
+/* Şəkli olmayan kartlar üçün düzgün dizayn edilmiş yer tutucu —
+   əvvəlki düz rəngli blok + nəhəng emoji səliqəsiz görünürdü. */
+.m205-item-ph,.m205-approve-ph,.m205-mini-ph{position:relative;overflow:hidden;
+  background:linear-gradient(140deg,color-mix(in srgb,var(--m-tc,var(--m-primary)) 90%,#0B1F3A),
+                                    color-mix(in srgb,var(--m-tc,var(--m-primary)) 40%,#07152F))}
+.m205-item-ph{width:100%;aspect-ratio:16/10;display:flex;align-items:center;justify-content:center}
+.m205-item-ph::before,.m205-approve-ph::before{content:'';position:absolute;inset:0;opacity:.45;
+  background-image:radial-gradient(circle at 50% 50%,rgba(255,255,255,.22) 0 1.6px,transparent 1.7px);
+  background-size:22px 22px}
+.m205-ph-ic{position:relative;width:52px;height:52px;border-radius:15px;background:rgba(255,255,255,.2);
+  display:flex;align-items:center;justify-content:center;font-size:1.45rem;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.22)}
+.m205-approve-ph .m205-ph-ic{width:38px;height:38px;border-radius:11px;font-size:1.05rem}
+.m205-mini-ph .m205-ph-ic{width:26px;height:26px;border-radius:8px;font-size:.8rem}
 .m205-item-body{padding:13px 14px;flex:1;display:flex;flex-direction:column}
 .m205-item-title{font-weight:700;font-size:.85rem;color:var(--m-navy-950);line-height:1.4;margin:7px 0 5px}
 .m205-item-meta{font-size:.69rem;color:var(--m-text-muted);line-height:1.5}
@@ -1116,7 +1128,18 @@ body.m205-guest #guestExitBtn{display:block}
 /* ── Məqalə / detal görünüşü ───────────────────────────────── */
 .m205-article{background:var(--m-surface);border:1px solid var(--m-border);border-radius:16px;overflow:hidden;
   animation:m205FadeUp .5s ease both}
-.m205-article-img{width:100%;max-height:340px;object-fit:cover;display:block}
+/* Məqalə şəkli: qəbul/hesabat infoqrafikaları "cover" ilə kəsilib oxunmaz olurdu,
+   ona görə tam sığdırılır və tıklananda böyüdülür. */
+.m205-article-img{width:100%;max-height:420px;object-fit:contain;display:block;cursor:zoom-in;
+  background:linear-gradient(135deg,#0B1F3A,#183A63)}
+.m205-gallery img{cursor:zoom-in}
+.m205-lightbox{position:fixed;inset:0;z-index:300;background:rgba(7,21,47,.94);display:none;
+  align-items:center;justify-content:center;padding:26px;cursor:zoom-out;
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.m205-lightbox.open{display:flex}
+.m205-lightbox img{max-width:100%;max-height:100%;border-radius:12px;box-shadow:0 24px 70px rgba(0,0,0,.55)}
+.m205-lightbox-hint{position:absolute;bottom:22px;left:0;right:0;text-align:center;color:#cbd5e1;
+  font-size:.75rem;letter-spacing:.3px}
 .m205-article-body{padding:22px 24px}
 .m205-article h1{font-size:1.3rem;font-weight:800;color:var(--m-navy-950);line-height:1.35;margin:10px 0 8px}
 .m205-article-meta{display:flex;gap:14px;flex-wrap:wrap;font-size:.72rem;color:var(--m-text-muted);
@@ -1191,6 +1214,9 @@ body.m205-guest #guestExitBtn{display:block}
 .m205-approve-desc{font-size:.75rem;color:var(--m-text-secondary);line-height:1.55;
   display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .m205-approve-btns{display:flex;gap:8px;align-items:center;flex-shrink:0}
+.m205-approve-note{margin-top:7px;font-size:.71rem;color:var(--m-orange);background:#FFF7ED;
+  border:1px solid #FED7AA;border-radius:8px;padding:6px 10px}
+.m205-tabcount{font-weight:800;opacity:.75}
 .m205-btn-ok{background:var(--m-green);color:#fff;border:none;border-radius:8px;padding:8px 15px;
   font-size:.75rem;font-weight:700;cursor:pointer;font-family:inherit}
 .m205-btn-no{background:var(--m-red);color:#fff;border:none;border-radius:8px;padding:8px 15px;
@@ -7892,7 +7918,7 @@ function m205ImgSrc(u){
 function m205Media(url,icon,color,cls){
   return url
     ? `<img class="m205-${cls}-img" src="${m205Esc(m205ImgSrc(url))}" alt="" loading="lazy">`
-    : `<div class="m205-${cls}-ph" style="--m-tc:${color||'#4F46E5'}">${icon||'🏫'}</div>`;
+    : `<div class="m205-${cls}-ph" style="--m-tc:${color||'#4F46E5'}"><span class="m205-ph-ic">${icon||'🏫'}</span></div>`;
 }
 function m205Matches(text){
   if(!m205Search)return true;
@@ -7923,7 +7949,10 @@ function m205Invalidate(...keys){
 // ── Giriş nöqtəsi ─────────────────────────────────────────────
 function renderMekteb205(){
   const v=document.getElementById('viewMekteb205');
-  v.className='view m205-root';
+  // DİQQƏT: className-i tamamilə əvəz etmək olmaz — switchView() bu elementə
+  // 'active' sinfini əlavə edir, üzərinə yazsaq görünüş "aktiv" sayılmır və
+  // digər ekranlara keçid-qayıdışda qarışıqlıq yaranır.
+  v.classList.add('m205-root');
   m205WireDelegation();
   if(m205Page==='ai'){m205Page='dash';switchView('AI');return;}
   if(m205Page==='site')m205RenderSite(v);
@@ -7945,6 +7974,9 @@ function m205WireDelegation(){
   const root=document.getElementById('viewMekteb205');
 
   root.addEventListener('click',async e=>{
+    const zoom=e.target.closest('[data-zoom]');
+    if(zoom){m205OpenLightbox(zoom.dataset.zoom);return;}
+
     const ex=e.target.closest('[data-exit]');
     if(ex){switchView('Home');return;}
 
@@ -7964,7 +7996,7 @@ function m205WireDelegation(){
     if(ptab){m205ProfTab=ptab.dataset.proftab;renderMekteb205();return;}
 
     const atab=e.target.closest('[data-admintab]');
-    if(atab){m205AdminTab=atab.dataset.admintab;renderMekteb205();return;}
+    if(atab){m205AdminTab=atab.dataset.admintab;m205AdminSearch='';renderMekteb205();return;}
 
     const form=e.target.closest('[data-openform]');
     if(form){
@@ -7977,6 +8009,12 @@ function m205WireDelegation(){
 
     const rev=e.target.closest('[data-review]');
     if(rev){await m205Review(rev.dataset.review,rev.dataset.status);return;}
+
+    const ck=e.target.closest('[data-ckind]');
+    if(ck){m205AdminContentForm(document.getElementById('m205AdminBody'),ck.dataset.ckind);return;}
+
+    const cs=e.target.closest('[data-csave]');
+    if(cs){await m205SaveContent(cs.dataset.csave);return;}
   });
 
   root.addEventListener('input',e=>{
@@ -7986,7 +8024,28 @@ function m205WireDelegation(){
       if(box)m205FillCurrentList(box);
     }
     if(e.target.id==='m205File')m205UploadedFile=e.target.files?.[0]||null;
+    if(e.target.id==='m205AdminSearch'){
+      m205AdminSearch=e.target.value.trim();
+      renderMekteb205();
+      const inp=document.getElementById('m205AdminSearch');
+      if(inp){inp.focus();inp.setSelectionRange(inp.value.length,inp.value.length);}
+    }
   });
+}
+
+// Şəkli tam ölçüdə göstər (xüsusilə infoqrafikalar üçün vacibdir)
+function m205OpenLightbox(src){
+  let box=document.getElementById('m205Lightbox');
+  if(!box){
+    box=document.createElement('div');
+    box.id='m205Lightbox';box.className='m205-lightbox';
+    box.innerHTML='<img alt=""><div class="m205-lightbox-hint">Bağlamaq üçün kliklə və ya Esc</div>';
+    box.addEventListener('click',()=>box.classList.remove('open'));
+    document.body.appendChild(box);
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')box.classList.remove('open');});
+  }
+  box.querySelector('img').src=src;
+  box.classList.add('open');
 }
 
 function m205NeedAccount(){
@@ -8243,7 +8302,7 @@ async function m205RenderDetail(box){
   box.innerHTML=`
     <button class="m205-btn-outline" data-back="1" style="margin-bottom:14px">← Geri</button>
     <div class="m205-article">
-      ${r.image_url?`<img class="m205-article-img" src="${m205Esc(m205ImgSrc(r.image_url))}" alt="">`:''}
+      ${r.image_url?`<img class="m205-article-img" data-zoom="${m205Esc(m205ImgSrc(r.image_url))}" src="${m205Esc(m205ImgSrc(r.image_url))}" alt="">`:''}
       <div class="m205-article-body">
         <span class="m205-tag" style="--m-tc:#4F46E5">${m205Esc(r.category||'')}</span>
         <h1>${m205Esc(r.title)}</h1>
@@ -8256,7 +8315,7 @@ async function m205RenderDetail(box){
         </div>
         <div class="m205-article-text">${m205Esc(body)}</div>
         ${(r.gallery||[]).length?`<div class="m205-gallery">${r.gallery.map(g=>
-          `<img src="${m205Esc(m205ImgSrc(g))}" alt="" loading="lazy">`).join('')}</div>`:''}
+          `<img src="${m205Esc(m205ImgSrc(g))}" data-zoom="${m205Esc(m205ImgSrc(g))}" alt="" loading="lazy">`).join('')}</div>`:''}
         ${(r.keywords||[]).length?`<div class="m205-kw">${r.keywords.map(k=>`<span>#${m205Esc(k)}</span>`).join('')}</div>`:''}
       </div>
     </div>`;
@@ -8506,53 +8565,178 @@ async function m205PagePortfolio(box){
   }catch(e){body.innerHTML=`<div class="m205-empty">Yüklənmədi: ${m205Esc(e?.message||'xəta')}</div>`;}
 }
 
-// ── TƏSDİQ PANELİ (mockup 5/6) ────────────────────────────────
+// ── TƏSDİQ VƏ İDARƏETMƏ PANELİ (mockup 5/6) ───────────────────
+// Müəllim / direktor / admin burada həm şagird göndərişlərini təsdiqləyir,
+// həm də SQL yazmadan xəbər, tədbir və nailiyyət əlavə edə bilir.
+let m205AdminSearch='';
+
+const M205_CONTENT_FORMS={
+  news:{table:'school_news',icon:'📰',label:'Xəbər',
+        cats:['Məktəb həyatı','Təhsil və nəticələr','Tədbirlər','Müəllim nailiyyətləri','Psixoloji xidmət','Hesabatlar və statistika'],
+        dateField:'published_at',bodyField:'body'},
+  events:{table:'school_events',icon:'📅',label:'Tədbir',
+        cats:['Tədbirlər','Vətənpərvərlik','Tarixi yaddaş'],
+        dateField:'event_date',bodyField:'description'},
+  achv:{table:'school_achievements',icon:'🏆',label:'Nailiyyət',
+        cats:['Şagird nailiyyətləri','Olimpiadalar','İdman','Müəllim nailiyyətləri'],
+        dateField:'achieved_on',bodyField:'description'}
+};
+
 async function m205PageAdmin(box){
   if(!m205IsStaff()){
     box.innerHTML='<div class="m205-empty"><div class="m205-empty-ic">🔒</div>Bu bölmə yalnız müəllim, direktor və admin üçündür.</div>';
     return;
   }
   box.innerHTML=`
-    <div class="m205-head"><div><h2>🛠️ Layihələr — təsdiq paneli</h2>
-      <div class="m205-head-sub">Şagird göndərişlərini yoxla, təsdiqlə və ya rədd et</div></div></div>
+    <div class="m205-head"><div><h2>🛠️ İdarəetmə paneli</h2>
+      <div class="m205-head-sub">Şagird göndərişlərini yoxla və portalın məzmununu idarə et</div></div></div>
+    <div id="m205AdminStats" class="m205-stat-row"></div>
     <div class="m205-tabs">
-      <button class="m205-tab${m205AdminTab==='pending'?' active':''}" data-admintab="pending">Təsdiq gözləyənlər</button>
-      <button class="m205-tab${m205AdminTab==='all'?' active':''}" data-admintab="all">Bütün göndərişlər</button>
+      <button class="m205-tab${m205AdminTab==='pending'?' active':''}" data-admintab="pending">Təsdiq gözləyənlər<span id="m205CntPend" class="m205-tabcount"></span></button>
+      <button class="m205-tab${m205AdminTab==='all'?' active':''}" data-admintab="all">Bütün göndərişlər<span id="m205CntAll" class="m205-tabcount"></span></button>
+      <button class="m205-tab${m205AdminTab==='content'?' active':''}" data-admintab="content">➕ Məzmun əlavə et</button>
     </div>
     <div id="m205AdminBody"><div class="m205-empty">Yüklənir…</div></div>`;
 
+  if(m205AdminTab==='content')return m205AdminContentForm(document.getElementById('m205AdminBody'));
+
   const body=document.getElementById('m205AdminBody');
   try{
-    let q=sb.from('school_submissions').select('*').order('created_at',{ascending:false});
-    if(m205AdminTab==='pending')q=q.eq('status','pending');
-    const{data,error}=await q;
+    const{data,error}=await sb.from('school_submissions').select('*').order('created_at',{ascending:false});
     if(error)throw error;
-    const rows=data||[];
-    body.innerHTML=rows.length?rows.map((r,i)=>{
-      const t=M205_SUBMIT[r.type]||M205_SUBMIT.project;
-      const pill={pending:['#F59E0B','Gözləyir'],approved:['#10B981','Təsdiqlənib'],rejected:['#EF4444','Rədd edilib']}[r.status]||['#64748B',r.status];
-      return `
-        <div class="m205-approve" style="animation-delay:${.04*(i+1)}s">
-          ${m205Media(r.image_url,t.icon,t.color,'approve')}
-          <div class="m205-approve-main">
-            <div class="m205-approve-title">${m205Esc(r.title)}</div>
-            <div class="m205-approve-meta">${t.icon} ${m205Esc(t.one)} · 📅 ${m205Date(r.created_at)}
-              · <span style="color:${pill[0]};font-weight:700">${pill[1]}</span></div>
-            <div class="m205-approve-desc">${m205Esc(r.description||'')}</div>
-          </div>
-          ${r.status==='pending'?`
-            <div class="m205-approve-btns">
-              <button class="m205-btn-ok" data-review="${r.id}" data-status="approved">Təsdiq et</button>
-              <button class="m205-btn-no" data-review="${r.id}" data-status="rejected">Rədd et</button>
-            </div>`:''}
-        </div>`;
-    }).join(''):'<div class="m205-empty"><div class="m205-empty-ic">✅</div>Təsdiq gözləyən göndəriş yoxdur.</div>';
+    const all=data||[];
+    const cnt={pending:0,approved:0,rejected:0};
+    all.forEach(r=>{if(cnt[r.status]!==undefined)cnt[r.status]++;});
+
+    document.getElementById('m205AdminStats').innerHTML=`
+      <div class="m205-stat"><div class="m205-stat-val" style="color:var(--m-yellow)">${cnt.pending}</div><div class="m205-stat-lbl">Gözləyir</div></div>
+      <div class="m205-stat"><div class="m205-stat-val" style="color:var(--m-green)">${cnt.approved}</div><div class="m205-stat-lbl">Təsdiqlənib</div></div>
+      <div class="m205-stat"><div class="m205-stat-val" style="color:var(--m-red)">${cnt.rejected}</div><div class="m205-stat-lbl">Rədd edilib</div></div>
+      <div class="m205-stat"><div class="m205-stat-val">${all.length}</div><div class="m205-stat-lbl">Ümumi göndəriş</div></div>`;
+    const pc=document.getElementById('m205CntPend');if(pc&&cnt.pending)pc.textContent=' ('+cnt.pending+')';
+    const ac=document.getElementById('m205CntAll');if(ac)ac.textContent=' ('+all.length+')';
+
+    let rows=m205AdminTab==='pending'?all.filter(r=>r.status==='pending'):all;
+    if(m205AdminSearch){
+      const q=m205AdminSearch.toLowerCase();
+      rows=rows.filter(r=>`${r.title} ${r.description||''}`.toLowerCase().includes(q));
+    }
+
+    body.innerHTML=`
+      <input class="m205-input" id="m205AdminSearch" placeholder="🔍 Başlıq və ya təsvirə görə axtar..." value="${m205Esc(m205AdminSearch)}" style="max-width:420px">
+      <div id="m205AdminRows">${m205AdminRows(rows)}</div>`;
   }catch(e){body.innerHTML=`<div class="m205-empty">Yüklənmədi: ${m205Esc(e?.message||'xəta')}</div>`;}
 }
 
-async function m205Review(id,status){
+function m205AdminRows(rows){
+  if(!rows.length)return '<div class="m205-empty"><div class="m205-empty-ic">✅</div>Uyğun göndəriş yoxdur.</div>';
+  return rows.map((r,i)=>{
+    const t=M205_SUBMIT[r.type]||M205_SUBMIT.project;
+    const pill={pending:['#F59E0B','Gözləyir'],approved:['#10B981','Təsdiqlənib'],rejected:['#EF4444','Rədd edilib']}[r.status]||['#64748B',r.status];
+    return `
+      <div class="m205-approve" style="animation-delay:${.04*(i+1)}s">
+        ${m205Media(r.image_url,t.icon,t.color,'approve')}
+        <div class="m205-approve-main">
+          <div class="m205-approve-title">${m205Esc(r.title)}</div>
+          <div class="m205-approve-meta">${t.icon} ${m205Esc(t.one)} · 📅 ${m205Date(r.created_at)}
+            · <span style="color:${pill[0]};font-weight:700">${pill[1]}</span></div>
+          <div class="m205-approve-desc">${m205Esc(r.description||'')}</div>
+          ${r.admin_note?`<div class="m205-approve-note">📝 ${m205Esc(r.admin_note)}</div>`:''}
+        </div>
+        <div class="m205-approve-btns">
+          ${r.status!=='approved'?`<button class="m205-btn-ok" data-review="${r.id}" data-status="approved">Təsdiq et</button>`:''}
+          ${r.status!=='rejected'?`<button class="m205-btn-no" data-review="${r.id}" data-status="rejected">Rədd et</button>`:''}
+        </div>
+      </div>`;
+  }).join('');
+}
+
+// Məzmun əlavə etmə forması — müəllim/direktor SQL yazmadan xəbər verə bilsin
+function m205AdminContentForm(body,kind='news'){
+  const f=M205_CONTENT_FORMS[kind];
+  body.innerHTML=`
+    <div class="m205-chips" style="margin-bottom:14px">
+      ${Object.entries(M205_CONTENT_FORMS).map(([k,v])=>
+        `<button class="m205-chip${k===kind?' active':''}" data-ckind="${k}">${v.icon} ${v.label}</button>`).join('')}
+    </div>
+    <div class="m205-box" style="max-width:660px">
+      <div class="m205-box-title">${f.icon} Yeni ${f.label.toLowerCase()} əlavə et</div>
+      <div class="m205-note">Bu formadan əlavə etdiyin material dərhal portalda görünəcək — şagird göndərişlərindən fərqli olaraq təsdiq tələb etmir.</div>
+      <label class="m205-label">Başlıq *</label>
+      <input class="m205-input" id="m205cTitle" maxlength="200" placeholder="${f.label} başlığı">
+      <label class="m205-label">Kateqoriya</label>
+      <select class="m205-select" id="m205cCat">${f.cats.map(c=>`<option>${c}</option>`).join('')}</select>
+      <label class="m205-label">Bölmə (alt-kateqoriya)</label>
+      <input class="m205-input" id="m205cSection" maxlength="80" placeholder="məs. Valideyn əməkdaşlığı">
+      <label class="m205-label">Tarix</label>
+      <input class="m205-input" id="m205cDate" type="date" value="${new Date().toISOString().slice(0,10)}">
+      <label class="m205-label">Müəllif / mənbə</label>
+      <input class="m205-input" id="m205cAuthor" maxlength="120" value="Məktəb rəhbərliyi">
+      ${kind==='achv'?`
+        <label class="m205-label">Şagirdin adı</label>
+        <input class="m205-input" id="m205cStudent" maxlength="120" placeholder="məs. Səma Babayeva">
+        <label class="m205-label">Sinif</label>
+        <input class="m205-input" id="m205cClass" maxlength="20" placeholder="məs. V D">`:''}
+      ${kind==='events'?`
+        <label class="m205-label">Yer</label>
+        <input class="m205-input" id="m205cPlace" maxlength="120" placeholder="məs. Akt zalı">`:''}
+      <label class="m205-label">Mətn *</label>
+      <textarea class="m205-textarea" id="m205cBody" rows="8" placeholder="Materialın tam mətni..."></textarea>
+      <label class="m205-label">Şəkil (istəyə bağlı)</label>
+      <input class="m205-input" type="file" id="m205cFile" accept="image/*">
+      <div style="font-size:.7rem;color:var(--m-text-muted);margin:-4px 0 10px">
+        Və ya hazır fayl adı yaz (məs. <code>school205/ilk-zeng-1.jpg</code>):</div>
+      <input class="m205-input" id="m205cImgPath" placeholder="school205/fayl-adi.jpg">
+      <label class="m205-label">Açar sözlər (vergüllə ayır — AI köməkçi üçün)</label>
+      <input class="m205-input" id="m205cKw" placeholder="məs. valideyn, görüş, tədris ili">
+      <button class="m205-btn-primary" data-csave="${kind}">Dərc et</button>
+    </div>`;
+}
+
+async function m205SaveContent(kind){
+  const f=M205_CONTENT_FORMS[kind];
+  const g=id=>document.getElementById(id)?.value.trim()||'';
+  const title=g('m205cTitle'),bodyTxt=g('m205cBody');
+  if(!title){showToast('Başlıq yazın!','red');return;}
+  if(bodyTxt.length<20){showToast('Mətn ən az 20 simvol olmalıdır!','red');return;}
+  const btn=document.querySelector('[data-csave]');
+  if(btn){btn.disabled=true;btn.textContent='Dərc olunur…';}
   try{
-    const{error}=await sb.from('school_submissions').update({status}).eq('id',id);
+    let img=g('m205cImgPath');
+    const file=document.getElementById('m205cFile')?.files?.[0];
+    if(file){
+      const path=`content/${Date.now()}_${file.name.replace(/[^\w.\-]/g,'_')}`;
+      const{error:upErr}=await sb.storage.from('school-uploads').upload(path,file,{contentType:file.type});
+      if(upErr)throw upErr;
+      img=sb.storage.from('school-uploads').getPublicUrl(path).data.publicUrl;
+    }
+    const kw=g('m205cKw').split(',').map(x=>x.trim()).filter(Boolean);
+    const row={title,category:g('m205cCat'),section:g('m205cSection'),author:g('m205cAuthor'),
+               image_url:img,keywords:kw};
+    row[f.bodyField]=bodyTxt;
+    row[f.dateField]=g('m205cDate')||null;
+    if(kind==='achv'){row.student_name=g('m205cStudent');row.class_name=g('m205cClass');}
+    if(kind==='events'){row.location=g('m205cPlace');}
+    const{error}=await sb.from(f.table).insert([row]);
+    if(error)throw error;
+    showToast(`${f.label} dərc olundu ✅`,'teal');
+    m205Invalidate(); // keşi təmizlə ki, yeni material dərhal görünsün
+    m205AdminContentForm(document.getElementById('m205AdminBody'),kind);
+  }catch(e){
+    showToast('Dərc olunmadı: '+(e?.message||'xəta'),'red');
+    if(btn){btn.disabled=false;btn.textContent='Dərc et';}
+  }
+}
+
+async function m205Review(id,status){
+  let note='';
+  if(status==='rejected'){
+    note=prompt('Rədd səbəbini yaz (şagird görəcək, boş buraxa bilərsən):')||'';
+  }
+  try{
+    const patch={status};
+    if(note)patch.admin_note=note;
+    const{error}=await sb.from('school_submissions').update(patch).eq('id',id);
     if(error)throw error;
     showToast(status==='approved'?'Təsdiqləndi ✅':'Rədd edildi','teal');
     renderMekteb205();
