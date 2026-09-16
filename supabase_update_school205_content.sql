@@ -73,6 +73,7 @@ alter table public.school_news         add column if not exists section  text no
 alter table public.school_news         add column if not exists author   text not null default 'Məktəb rəhbərliyi';
 alter table public.school_news         add column if not exists keywords text[] not null default '{}';
 alter table public.school_news         add column if not exists published_at date not null default current_date;
+alter table public.school_news         add column if not exists gallery text[] not null default '{}';
 
 alter table public.school_events       add column if not exists category text not null default 'Tədbirlər';
 alter table public.school_events       add column if not exists section  text not null default '';
@@ -137,7 +138,23 @@ insert into public.school_teachers (full_name, subject, photo_url, bio, sort_ord
 -- ─────────────────────────────────────────────────────────────
 delete from public.school_news;
 
-insert into public.school_news (title, body, image_url, category, section, author, keywords, published_at, published) values
+insert into public.school_news (title, body, image_url, gallery, category, section, author, keywords, published_at, published) values
+
+($$15 Sentyabr – Bilik Günü!$$,
+$$Bu gün məktəbimizin həyəti yenidən uşaqların səsi, gülüşü və böyük arzuları ilə canlandı!
+
+Yeni tədris ilinin ilk günündə məktəbimizdə Bilik Günü münasibətilə tədbir keçirildi. Şagirdlər, müəllimlər və valideynlər üçün yeni bir başlanğıcın həyəcanı yaşandı.
+
+Mərasimdə məktəb direktoru Əliheydər Əlifli şagirdləri və pedaqoji kollektivi yeni tədris ili münasibətilə təbrik edib, xüsusilə ilk dəfə məktəb həyətinə qədəm qoyan birinci sinif şagirdlərinə uğurlar arzulayıb.
+
+Qoy 2026–2027-ci tədris ili hər bir şagirdimiz üçün yeni biliklər, yeni dostluqlar, gözəl xatirələr və böyük uğurlarla yadda qalsın!
+
+Yeni dərs ili uğurlu olsun!$$,
+$$school205/sagird-toplantisi.jpg$$,
+array[$$school205/bilik-gunu-sinif.jpg$$,$$school205/direktor-cixisi.jpg$$],
+$$Məktəb həyatı$$, $$Bilik Günü$$, $$Məktəb rəhbərliyi$$,
+array[$$Bilik Günü$$,$$15 sentyabr$$,$$yeni tədris ili$$,$$2026-2027$$,$$birinci sinif$$,$$açılış$$],
+date $$2026-09-15$$, true),
 
 ($$Yeni tədris ilinə birlikdə və məqsədyönlü şəkildə!$$,
 $$Bu gün məktəb rəhbərliyi tərəfindən valideyn komitələrinin iştirakı ilə yeni tədris ilinə hazırlıqla bağlı görüş keçirilib.
@@ -150,6 +167,7 @@ Təlim-tərbiyə işləri üzrə direktor müavini Aynur Ələsgərova isə təd
 
 Görüş qarşılıqlı fikir və təkliflərin dinlənilməsi baxımından səmərəli davam edib.$$,
 $$school205/valideyn-yiginciagi.jpg$$,
+array[]::text[],
 $$Məktəb həyatı$$, $$Valideyn əməkdaşlığı$$, $$Məktəb rəhbərliyi$$,
 array[$$valideyn$$,$$tədris ili$$,$$görüş$$,$$nizam-intizam$$,$$davamiyyət$$,$$direktor$$],
 date $$2026-08-29$$, true),
@@ -168,6 +186,7 @@ $$Bu gün məktəbimizin psixoloqu Aytən Məmmədova I sinif şagirdlərinin va
 
 Uşağın məktəbə uğurlu adaptasiyası ailə və məktəbin qarşılıqlı əməkdaşlığı, sevgisi və dəstəyi ilə daha da möhkəmlənir.$$,
 $$school205/ilk-zeng-1.jpg$$,
+array[]::text[],
 $$Psixoloji xidmət$$, $$Məktəbə adaptasiya$$, $$Aytən Məmmədova, məktəb psixoloqu$$,
 array[$$psixoloq$$,$$adaptasiya$$,$$birinci sinif$$,$$valideyn$$,$$tövsiyə$$],
 date $$2026-09-05$$, true),
@@ -183,6 +202,7 @@ $$Bakı şəhəri 205 nömrəli tam orta ümumtəhsil məktəbindən uğurlu nə
 
 Məzunlarımızı və müəllimlərimizi bu uğur münasibətilə təbrik edir, onlara gələcək fəaliyyətlərində yeni nailiyyətlər arzulayırıq!$$,
 $$school205/qebul-hesabati.jpg$$,
+array[]::text[],
 $$Təhsil və nəticələr$$, $$Ali məktəbə qəbul göstəriciləri$$, $$Məktəb rəhbərliyi$$,
 array[$$qəbul$$,$$məzun$$,$$600 bal$$,$$ali təhsil$$,$$nəticə$$,$$imtahan$$],
 date $$2026-08-15$$, true),
@@ -206,6 +226,7 @@ Konfransın II hissəsinin paytaxt üzrə məktəbəqədər təhsil müəssisəl
 
 Qeyd edək ki, konfrans növbəti gün də işini davam etdirəcək. BŞTİ-nin tabeliyindəki təhsil müəssisələrinin rəhbərləri, fənn müəllimləri, metodistlər və məktəb psixoloqlarının iştirakı ilə panel müzakirələr təşkil olunacaq, növbəti dərs ili üçün fəaliyyət planı hazırlanacaq və müvafiq təkliflər təqdim olunacaq.$$,
 $$school205/muellim-konfransi.jpg$$,
+array[]::text[],
 $$Tədbirlər$$, $$Konfranslar$$, $$Bakı Şəhəri üzrə Təhsil İdarəsi$$,
 array[$$konfrans$$,$$MÜTDA$$,$$BŞTİ$$,$$sentyabr$$,$$təhsil$$,$$prioritet$$],
 date $$2026-09-01$$, true),
@@ -219,6 +240,7 @@ Bu, xüsusilə 0–30 bal aralığında nəticə göstərən şagirdlərin sayı
 
 Növbəti tədris ilində təkmilləşdirilmiş iş prinsipi və komanda əməkdaşlığı ilə nəticələrimizi daha da yaxşılaşdırmaq üçün əzmlə çalışacağıq.$$,
 $$school205/mutda-hesabat.jpg$$,
+array[]::text[],
 $$Təhsil və nəticələr$$, $$Analitika$$, $$Məktəb rəhbərliyi$$,
 array[$$buraxılış imtahanı$$,$$IX sinif$$,$$təhlil$$,$$reytinq$$,$$bal$$],
 date $$2026-07-20$$, true),
@@ -243,6 +265,7 @@ Bununla əlaqədar olaraq 2026/2027-ci tədris ili üzrə Fəaliyyət Planı haz
 
 Təhsildə davamlı inkişafın əsasında dəqiq təhlil, düzgün planlaşdırma və səmərəli əməkdaşlıq dayanır.$$,
 $$school205/hesabat-2025-2026.jpg$$,
+array[]::text[],
 $$Hesabatlar və statistika$$, $$İllik təlim hesabatı$$, $$Məktəb rəhbərliyi$$,
 array[$$hesabat$$,$$təlim nəticələri$$,$$müvəffəqiyyət$$,$$keyfiyyət$$,$$orta bal$$,$$riyaziyyat$$,$$Azərbaycan dili$$],
 date $$2026-06-30$$, true),
@@ -254,6 +277,7 @@ Onlar gənc nəslin müstəqil həyata hazırlanmasında göstərdikləri şər�
 
 Təltif olunan bütün əməkdaşlarımızı ürəkdən təbrik edir, onlara gələcək fəaliyyətlərində yeni-yeni uğurlar arzulayırıq!$$,
 $$school205/teltif-merasimi-a.jpg$$,
+array[]::text[],
 $$Müəllim nailiyyətləri$$, $$Təltiflər$$, $$Məktəb rəhbərliyi$$,
 array[$$təltif$$,$$Silahlı Qüvvələr Günü$$,$$yubiley$$,$$həmkarlar ittifaqı$$,$$təşəkkürnamə$$],
 date $$2026-06-26$$, true);

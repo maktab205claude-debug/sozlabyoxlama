@@ -563,24 +563,53 @@ textarea.admin-input{resize:vertical;min-height:80px;line-height:1.5}
 /* min-height:0 burada vacibdir — flex uşağı olmasa da default min-height:auto olduğu üçün
    məzmun konteynerdən daşıb scroll işə düşmür, mesajlar "gizli" qalır (yalnız input-a fokuslananda
    brauzer məcburi reflow edib göstərirdi — əsl problem bu idi, göndər düyməsi ilə bağlı deyildi). */
-.schat-messages{flex:1;min-height:0;overflow-y:auto;padding:16px 14px;-webkit-overflow-scrolling:touch}
-.schat-row{display:flex;align-items:flex-end;gap:8px;margin-bottom:12px}
+/* Söhbət WhatsApp/Telegram üslubundadır: naxışlı fon, quyruqlu baloncuqlar,
+   baloncuğun içində saat + oxunma işarəsi, tarix ayırıcıları və ardıcıl
+   mesajların qruplaşdırılması. */
+.schat-messages{flex:1;min-height:0;overflow-y:auto;padding:14px 12px 18px;-webkit-overflow-scrolling:touch;
+  background-color:var(--bg);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='.030' stroke-width='1.6' stroke-linecap='round'%3E%3Cpath d='M12 16h9M16.5 11.5v9'/%3E%3Ccircle cx='54' cy='22' r='4.5'/%3E%3Cpath d='M42 54h9M46.5 49.5v9'/%3E%3Ccircle cx='18' cy='52' r='3.5'/%3E%3Cpath d='M60 60l5 5M65 60l-5 5'/%3E%3C/g%3E%3C/svg%3E")}
+.schat-daysep{display:flex;justify-content:center;margin:12px 0 14px}
+.schat-daysep span{background:rgba(0,0,0,.42);color:var(--muted);font-size:.66rem;font-weight:600;
+  padding:4px 13px;border-radius:12px;backdrop-filter:blur(4px);letter-spacing:.2px}
+.schat-row{display:flex;align-items:flex-end;gap:7px;margin-bottom:2px}
+.schat-row.grp-end{margin-bottom:11px}
 .schat-row.mine{justify-content:flex-end}
 .schat-row-avatar{width:26px;height:26px;border-radius:50%;background:var(--card2);border:1px solid var(--border);
-  display:flex;align-items:center;justify-content:center;font-size:.78rem;flex-shrink:0;font-weight:700}
-.schat-bubble-col{display:flex;flex-direction:column;max-width:72%;align-items:flex-start}
+  display:flex;align-items:center;justify-content:center;font-size:.76rem;flex-shrink:0;font-weight:700}
+.schat-row-avatar.hidden{visibility:hidden}
+.schat-bubble-col{display:flex;flex-direction:column;max-width:76%;align-items:flex-start;min-width:0}
 .schat-row.mine .schat-bubble-col{align-items:flex-end}
-.schat-sender-label{font-size:.68rem;color:var(--muted);margin-bottom:3px;padding:0 4px}
-.support-msg{padding:10px 14px;border-radius:16px;font-size:.85rem;
-  line-height:1.5;word-wrap:break-word;white-space:pre-wrap}
-.support-msg.mine{background:linear-gradient(135deg,var(--teal),#0c8a7c);color:#fff;border-bottom-right-radius:4px}
-.support-msg.theirs{background:var(--card2);color:var(--text);border:1px solid var(--border);border-bottom-left-radius:4px}
-.support-msg .meta{font-size:.63rem;opacity:.65;margin-top:4px}
-.support-msg.mine .meta{color:#e8fffb;opacity:.85}
+.schat-sender-label{font-size:.68rem;font-weight:700;color:var(--teal);margin:0 0 3px 4px}
+.support-msg{position:relative;padding:6px 10px 7px;border-radius:12px;font-size:.88rem;line-height:1.45;
+  word-wrap:break-word;overflow-wrap:anywhere;white-space:pre-wrap;box-shadow:0 1px 1px rgba(0,0,0,.22);
+  font-family:inherit;letter-spacing:.1px}
+.support-msg.mine{background:var(--teal);color:#ffffff}
+.support-msg.theirs{background:var(--card2);color:var(--text)}
+/* Qrupun son mesajında quyruq — rəng baloncuqla eynidir */
+.schat-row.grp-end .support-msg.mine{border-bottom-right-radius:3px}
+.schat-row.grp-end .support-msg.theirs{border-bottom-left-radius:3px}
+.schat-row.grp-end .support-msg::after{content:'';position:absolute;bottom:0;width:0;height:0;
+  border-style:solid;border-width:0 0 9px 8px}
+.schat-row.grp-end .support-msg.mine::after{right:-7px;border-color:transparent transparent var(--teal) transparent;
+  border-width:0 0 9px 8px;transform:scaleX(-1)}
+.schat-row.grp-end .support-msg.theirs::after{left:-7px;
+  border-color:transparent transparent var(--card2) transparent;border-width:0 0 9px 8px}
+.schat-meta{float:right;display:inline-flex;align-items:center;gap:3px;font-size:.62rem;
+  margin:7px -3px -2px 9px;line-height:1;opacity:.8;white-space:nowrap;font-weight:500}
+.support-msg.mine .schat-meta{color:#dff7f2;opacity:.9}
+.support-msg.theirs .schat-meta{color:var(--muted)}
+.schat-ticks{font-size:.66rem;letter-spacing:-2px}
+.schat-ticks.read{color:#7fd4ff}
+.schat-empty{text-align:center;color:var(--muted);font-size:.83rem;margin-top:26px;line-height:1.7;
+  background:rgba(0,0,0,.28);border-radius:14px;padding:16px 18px;max-width:320px;margin-left:auto;margin-right:auto}
 .schat-inputbar{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--card);
   border-top:1px solid var(--border);flex-shrink:0;padding-bottom:max(10px, env(safe-area-inset-bottom))}
 .schat-input{flex:1;padding:11px 16px;border-radius:24px;border:1px solid var(--border);
-  background:var(--bg2);color:var(--text);font-size:.85rem;outline:none}
+  background:var(--bg2);color:var(--text);font-size:.88rem;outline:none;font-family:inherit;
+  transition:border-color .15s ease}
+.schat-input:focus{border-color:var(--teal)}
+.schat-input::placeholder{color:var(--muted)}
 .schat-send-btn{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold2));
   border:none;color:#231a06;font-size:1.15rem;cursor:pointer;display:flex;align-items:center;justify-content:center;
   flex-shrink:0}
@@ -1093,6 +1122,10 @@ body.m205-guest #guestExitBtn{display:block}
 .m205-article-meta{display:flex;gap:14px;flex-wrap:wrap;font-size:.72rem;color:var(--m-text-muted);
   padding-bottom:14px;border-bottom:1px solid var(--m-border);margin-bottom:16px}
 .m205-article-text{font-size:.87rem;line-height:1.85;color:var(--m-text);white-space:pre-wrap}
+.m205-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:18px}
+.m205-gallery img{width:100%;height:190px;object-fit:cover;border-radius:12px;display:block;
+  border:1px solid var(--m-border);transition:transform .3s ease}
+.m205-gallery img:hover{transform:scale(1.02)}
 .m205-kw{display:flex;gap:6px;flex-wrap:wrap;margin-top:18px;padding-top:14px;border-top:1px solid var(--m-border)}
 .m205-kw span{background:var(--m-bg);border:1px solid var(--m-border);border-radius:6px;padding:3px 9px;
   font-size:.66rem;color:var(--m-text-secondary)}
@@ -4641,6 +4674,21 @@ function openSupportChat(threadUsername,returnScreen){
   supportChatPollId=setInterval(loadSupportChat,4000);
 }
 
+// Saatı həmişə eyni formatda göstər (bəzi brauzerlərdə 'az-AZ' locale yoxdur,
+// ona görə toLocaleTimeString-ə güvənmirik).
+function schatTime(d){
+  const h=String(d.getHours()).padStart(2,'0'),m=String(d.getMinutes()).padStart(2,'0');
+  return h+':'+m;
+}
+// Tarix ayırıcısının etiketi: "Bu gün" / "Dünən" / "12.03.2026"
+function schatDayLabel(d){
+  const today=new Date(),y=new Date();y.setDate(today.getDate()-1);
+  const same=(a,b)=>a.getFullYear()===b.getFullYear()&&a.getMonth()===b.getMonth()&&a.getDate()===b.getDate();
+  if(same(d,today))return 'Bu gün';
+  if(same(d,y))return 'Dünən';
+  return String(d.getDate()).padStart(2,'0')+'.'+String(d.getMonth()+1).padStart(2,'0')+'.'+d.getFullYear();
+}
+
 async function loadSupportChat(){
   if(!supportChatContext)return;
   const{username,isStaffView}=supportChatContext;
@@ -4648,24 +4696,45 @@ async function loadSupportChat(){
   try{const r=await sb.from('support_messages').select().eq('username',username).order('created_at',{ascending:true});msgs=r.data||[];}catch(e){}
   const el=document.getElementById('supportChatMessages');
   if(!el)return;
-  if(!msgs.length){el.innerHTML='<p style="color:var(--muted);text-align:center;margin-top:20px">Hələ mesaj yoxdur. Sualını yaz, tezliklə cavablanacaq!</p>';return;}
+  if(!msgs.length){
+    el.innerHTML=`<div class="schat-empty">👋 Hələ mesaj yoxdur.<br>Sualını yaz — dəstək komandamız tezliklə cavablayacaq.</div>`;
+    return;
+  }
   const wasNearBottom=el.scrollTop+el.clientHeight>=el.scrollHeight-60;
-  el.innerHTML=msgs.map(m=>{
+
+  let html='',lastDay='';
+  msgs.forEach((m,idx)=>{
+    const when=new Date(m.created_at);
     const mine=isStaffView?(m.sender_role!=='user'):(m.sender_role==='user');
+
+    // Tarix ayırıcısı
+    const dayKey=when.toDateString();
+    if(dayKey!==lastDay){
+      html+=`<div class="schat-daysep"><span>${schatDayLabel(when)}</span></div>`;
+      lastDay=dayKey;
+    }
+
+    // Ardıcıl mesajları qruplaşdır: eyni göndərən + 5 dəqiqə içində
+    const prev=msgs[idx-1],next=msgs[idx+1];
+    const sameSender=o=>o&&o.sender_role===m.sender_role&&new Date(o.created_at).toDateString()===dayKey;
+    const near=o=>o&&Math.abs(new Date(o.created_at)-when)<5*60*1000;
+    const isFirst=!(sameSender(prev)&&near(prev));
+    const isLast=!(sameSender(next)&&near(next));
+
     const avatarLetter=m.sender_role==='user'?(username[0]||'?').toUpperCase():supportRoleAvatar(m.sender_role);
-    const label=mine?'':(m.sender_role==='user'?'':supportRoleLabel(m.sender_role));
-    const time=new Date(m.created_at).toLocaleString('az-AZ',{hour:'2-digit',minute:'2-digit',day:'2-digit',month:'2-digit'});
-    return `<div class="schat-row ${mine?'mine':''}">
-      ${mine?'':`<div class="schat-row-avatar">${avatarLetter}</div>`}
+    const label=(!mine&&isFirst&&m.sender_role!=='user')?supportRoleLabel(m.sender_role):'';
+    // Oxunma işarəsi yalnız öz mesajlarımızda
+    const ticks=mine?`<span class="schat-ticks${m.read?' read':''}">${m.read?'✓✓':'✓'}</span>`:'';
+
+    html+=`<div class="schat-row ${mine?'mine':''}${isLast?' grp-end':''}">
+      ${mine?'':`<div class="schat-row-avatar${isLast?'':' hidden'}">${avatarLetter}</div>`}
       <div class="schat-bubble-col">
         ${label?`<div class="schat-sender-label">${label}</div>`:''}
-        <div class="support-msg ${mine?'mine':'theirs'}">
-          <div>${escapeHtml(m.body)}</div>
-          <div class="meta">${time}</div>
-        </div>
+        <div class="support-msg ${mine?'mine':'theirs'}">${escapeHtml(m.body)}<span class="schat-meta">${schatTime(when)}${ticks}</span></div>
       </div>
     </div>`;
-  }).join('');
+  });
+  el.innerHTML=html;
   if(wasNearBottom||msgs.length<=3)el.scrollTop=el.scrollHeight;
 }
 
@@ -8186,6 +8255,8 @@ async function m205RenderDetail(box){
           ${r.student_name?`<span>🎓 ${m205Esc(r.student_name)}${r.class_name?' · '+m205Esc(r.class_name):''}</span>`:''}
         </div>
         <div class="m205-article-text">${m205Esc(body)}</div>
+        ${(r.gallery||[]).length?`<div class="m205-gallery">${r.gallery.map(g=>
+          `<img src="${m205Esc(m205ImgSrc(g))}" alt="" loading="lazy">`).join('')}</div>`:''}
         ${(r.keywords||[]).length?`<div class="m205-kw">${r.keywords.map(k=>`<span>#${m205Esc(k)}</span>`).join('')}</div>`:''}
       </div>
     </div>`;
