@@ -4,7 +4,7 @@
 // üçün strategiya "network-first"dir: HƏMİŞə əvvəlcə şəbəkədən ən yeni
 // versiyanı çəkməyə çalışır, yalnız şəbəkə tamamilə əlçatmaz olanda (offline)
 // köhnə keşlənmiş nüsxəni göstərir. Supabase sorğularına heç toxunmur.
-const CACHE_NAME = 'sozlab-shell-v2';
+const CACHE_NAME = 'sozlab-shell-v3';
 const SHELL_FILES = ['/', '/index.html', '/manifest.json'];
 
 self.addEventListener('install', (event) => {

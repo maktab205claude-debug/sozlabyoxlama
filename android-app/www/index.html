@@ -924,6 +924,14 @@ body.theme-theme_neon{--purple:#e930ff;--purple2:#a100c9;--accent-cyan:#39ff88}
   border-radius:10px;padding:12px 28px;font-size:1.1rem;cursor:pointer;font-weight:700}
 .lesson-present-nav button:disabled{opacity:.3;cursor:not-allowed}
 
+/* Duel çağırışı gələndə "Oyunlar" düyməsində yanıb-sönən nişan */
+.nav-btn.has-duel-invite{position:relative}
+.nav-btn.has-duel-invite::after{content:'';position:absolute;top:6px;right:8px;width:9px;height:9px;
+  border-radius:50%;background:var(--red);box-shadow:0 0 0 2px var(--bg2);animation:duelDot 1.2s ease-in-out infinite}
+@keyframes duelDot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.8)}}
+.duel-live-dot{width:7px;height:7px;border-radius:50%;background:var(--green);display:inline-block;
+  animation:duelDot 1.4s ease-in-out infinite;flex-shrink:0}
+
 /* 205 portalı açıq olanda SözLab çərçivəsi gizlənir ki, portal
    mockup-dakı kimi bütün ekranı tutsun (geri qayıtmaq üçün portalın
    öz menyusunda "SözLab-a qayıt" düyməsi var). */
@@ -2425,6 +2433,7 @@ async function afterAuthSuccess(profile){
   loadSupportFabBadge();
   stopSupportBadgePoll();
   supportBadgePollId=setInterval(loadSupportFabBadge,20000);
+  startDuelInviteWatch();
 }
 
 async function doLogin(){
@@ -2574,6 +2583,8 @@ function exitGuestMode(){
 
 async function doLogout(){
   try{await sb.auth.signOut();}catch(e){}
+  stopDuelInviteWatch();
+  stopAllGamePolls();
   currentUser=null;aiHistory=[];currentGame=null;
   document.getElementById('adminPanelBtn').style.display='none';
   document.getElementById('directorPanelBtn').style.display='none';
@@ -3732,6 +3743,46 @@ const DUEL_MODE_CONFIG={
   sureli:{questionCount:6,timerSec:5,pollMs:1000,label:'⚡ Sürətli'},
 };
 
+// Qlobal çağırış izləyicisi: oyunçu saytın İSTƏNİLƏN bölməsində olsa belə
+// duelə çağırıldığını dərhal bilir. Əvvəl yalnız duel ekranında oturan adam
+// çağırışı görürdü — iki şagirdin "eyni anda" oynaya bilməməsinin əsas
+// praktik səbəbi bu idi.
+let duelInviteWatchId=null;
+let duelSeenInviteIds=null;
+function stopDuelInviteWatch(){
+  if(duelInviteWatchId){clearInterval(duelInviteWatchId);duelInviteWatchId=null;}
+  duelSeenInviteIds=null;
+  setGamesNavDot(false);
+}
+function setGamesNavDot(on){
+  document.querySelectorAll('.nav-btn[data-view="Games"]').forEach(b=>{
+    b.classList.toggle('has-duel-invite',!!on);
+  });
+}
+async function checkDuelInvites(){
+  if(!currentUser)return;
+  try{
+    const r=await sb.from('duels').select('id,p1_username')
+      .eq('p2_username',currentUser.username).eq('status','pending');
+    const rows=r.data||[];
+    const ids=rows.map(d=>d.id);
+    setGamesNavDot(rows.length>0);
+    if(duelSeenInviteIds!==null){
+      const fresh=rows.find(d=>!duelSeenInviteIds.includes(d.id));
+      if(fresh){
+        showToast(`⚔️ @${fresh.p1_username} səni duelə çağırır! Oyunlar → Canlı Duel`,'gold');
+        try{sfxCorrect();}catch(e){}
+      }
+    }
+    duelSeenInviteIds=ids;
+  }catch(e){}
+}
+function startDuelInviteWatch(){
+  stopDuelInviteWatch();
+  checkDuelInvites();
+  duelInviteWatchId=setInterval(checkDuelInvites,12000);
+}
+
 let duelPollId=null;
 let duelLobbyPollId=null;
 let duelKnownActiveIds=null;   // qəbul edilən çağırışı dərhal tutmaq üçün
@@ -3765,6 +3816,9 @@ function startDuel(v){
       </div>
       <div style="font-size:.72rem;color:var(--muted);margin-top:6px">⚡ Sürətli rejimdə hər sualı 5 saniyə ərzində cavablandırmalısan — tənəffüs turnirləri üçün ideal!</div>
       <button class="btn-primary" id="duelChallengeBtn" style="margin-top:8px">⚔️ Çağırış Göndər</button>
+    </div>
+    <div style="display:flex;align-items:center;gap:7px;font-size:.72rem;color:var(--muted);margin:-4px 0 10px">
+      <span class="duel-live-dot"></span> Canlı — çağırışlar avtomatik yenilənir
     </div>
     <div class="admin-section">
       <h3>📨 Gələn Çağırışlar</h3>
@@ -3891,7 +3945,7 @@ async function loadDuelLobby(){
 window.respondDuelInvite=async(duelId,accept)=>{
   try{
     await sb.rpc('respond_duel',{p_duel_id:duelId,p_accept:accept});
-    if(accept){stopDuelLobbyPoll();showToast('Duel qəbul edildi!','teal');window.continueDuel(duelId);}
+    if(accept){stopDuelLobbyPoll();setGamesNavDot(false);showToast('Duel qəbul edildi!','teal');window.continueDuel(duelId);}
     else{showToast('Rədd edildi','red');loadDuelLobby();}
   }catch(e){showToast('Xəta!','red');}
 };
