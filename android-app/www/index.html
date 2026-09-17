@@ -924,6 +924,65 @@ body.theme-theme_neon{--purple:#e930ff;--purple2:#a100c9;--accent-cyan:#39ff88}
   border-radius:10px;padding:12px 28px;font-size:1.1rem;cursor:pointer;font-weight:700}
 .lesson-present-nav button:disabled{opacity:.3;cursor:not-allowed}
 
+/* ══════════════════════════════════════════════
+   ÖZÜNÜ İNKİŞAF ETDİR — yaradıcılıq mərkəzi
+   Quruluş (axtarış + rəngli alət sırası) tanış bir dizayn
+   modelidir, amma bütün rənglər, ikonlar və funksiyalar
+   SözLab-ın öz sistemindəndir.
+   ══════════════════════════════════════════════ */
+.st-hero{text-align:center;padding:26px 16px 20px;position:relative;overflow:hidden;border-radius:var(--radius);
+  background:radial-gradient(circle at 20% 0%,rgba(124,92,255,.22),transparent 55%),
+             radial-gradient(circle at 85% 20%,rgba(64,217,192,.16),transparent 50%),var(--card);
+  border:1px solid var(--border);margin-bottom:16px}
+.st-hero h2{font-family:var(--font-head);font-size:1.5rem;font-weight:800;margin-bottom:6px;
+  background:linear-gradient(135deg,var(--purple),var(--teal));-webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;background-clip:text}
+.st-hero p{font-size:.8rem;color:var(--muted);margin-bottom:14px}
+.st-search{max-width:520px;margin:0 auto;position:relative}
+.st-search input{width:100%;padding:12px 16px 12px 40px;border-radius:26px;border:1.5px solid var(--border2);
+  background:var(--bg2);color:var(--text);font-size:.88rem;font-family:inherit;outline:none;transition:border-color .18s}
+.st-search input:focus{border-color:var(--purple)}
+.st-search::before{content:'🔍';position:absolute;left:15px;top:50%;transform:translateY(-50%);font-size:.85rem;opacity:.65}
+
+.st-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:10px;margin-bottom:18px}
+.st-tool{background:none;border:none;font-family:inherit;cursor:pointer;padding:12px 6px 14px;border-radius:14px;
+  display:flex;flex-direction:column;align-items:center;gap:8px;transition:background .18s ease,transform .18s ease;
+  position:relative}
+.st-tool:hover{background:var(--card);transform:translateY(-3px)}
+.st-tool-ic{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:1.35rem;background:var(--tc);box-shadow:0 6px 18px var(--tc-glow);flex-shrink:0}
+.st-tool-name{font-size:.74rem;font-weight:700;color:var(--text);line-height:1.3;text-align:center}
+.st-tool-desc{font-size:.63rem;color:var(--muted);line-height:1.35;text-align:center;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.st-soon{position:absolute;top:6px;right:6px;background:var(--border2);color:var(--muted);
+  font-size:.55rem;font-weight:800;padding:2px 6px;border-radius:8px;letter-spacing:.3px}
+
+/* Söz Kartı Studiyası */
+.st-studio{display:grid;grid-template-columns:1fr;gap:14px}
+@media(min-width:900px){.st-studio{grid-template-columns:310px 1fr}}
+.st-panel{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:15px}
+.st-panel h4{font-size:.82rem;font-weight:800;margin-bottom:10px;color:var(--text)}
+.st-label{display:block;font-size:.7rem;font-weight:700;color:var(--muted);margin:10px 0 5px;letter-spacing:.2px}
+.st-input,.st-select,.st-textarea{width:100%;background:var(--bg2);border:1px solid var(--border2);border-radius:9px;
+  padding:9px 11px;color:var(--text);font-size:.82rem;font-family:inherit;outline:none}
+.st-input:focus,.st-select:focus,.st-textarea:focus{border-color:var(--purple)}
+.st-chiprow{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.st-chip{background:var(--bg2);border:1px solid var(--border2);border-radius:18px;padding:6px 12px;
+  font-size:.71rem;font-weight:600;color:var(--muted);cursor:pointer;font-family:inherit;transition:all .15s}
+.st-chip:hover{border-color:var(--purple);color:var(--text)}
+.st-chip.active{background:var(--purple);border-color:var(--purple);color:#fff;font-weight:700}
+.st-preview{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:15px;
+  display:flex;flex-direction:column;align-items:center;gap:12px}
+.st-canvas-wrap{width:100%;display:flex;justify-content:center;align-items:center;background:var(--bg2);
+  border-radius:12px;padding:14px;min-height:240px;overflow:hidden}
+#stCanvas{max-width:100%;max-height:440px;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.45)}
+.st-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.st-back{background:var(--card2);border:1px solid var(--border2);color:var(--text);border-radius:10px;
+  padding:8px 14px;font-size:.78rem;font-weight:700;cursor:pointer;font-family:inherit;margin-bottom:14px}
+.st-back:hover{border-color:var(--purple)}
+.st-empty{text-align:center;padding:40px 18px;color:var(--muted);font-size:.84rem;line-height:1.7}
+.st-empty-ic{font-size:2.6rem;margin-bottom:10px;opacity:.6}
+
 /* Duel çağırışı gələndə "Oyunlar" düyməsində yanıb-sönən nişan */
 .nav-btn.has-duel-invite{position:relative}
 .nav-btn.has-duel-invite::after{content:'';position:absolute;top:6px;right:8px;width:9px;height:9px;
@@ -1454,12 +1513,14 @@ setTimeout(function(){
     <div class="view" id="viewAI" style="display:none;flex-direction:column;height:100%"></div>
     <div class="view" id="viewAbout" style="display:none;flex-direction:column;height:100%"></div>
     <div class="view" id="viewMekteb205" style="display:none;flex-direction:column;height:100%"></div>
+    <div class="view" id="viewStudio"></div>
   </div>
   <nav class="bottom-nav">
     <button class="nav-btn active" data-view="Home"><span class="icon">🏠</span><span class="lbl">Əsas</span></button>
     <button class="nav-btn" data-view="Alpha"><span class="icon">🔤</span><span class="lbl">Əlifba</span></button>
     <button class="nav-btn" data-view="Games"><span class="icon">🎮</span><span class="lbl">Oyunlar</span></button>
     <button class="nav-btn" data-view="Vocab"><span class="icon">📚</span><span class="lbl">Lüğət</span></button>
+    <button class="nav-btn" data-view="Studio"><span class="icon">✨</span><span class="lbl">Özünü İnkişaf Etdir</span></button>
     <button class="nav-btn" data-view="Derslikler"><span class="icon">📖</span><span class="lbl">Dərsliklər</span></button>
     <button class="nav-btn nav-btn-desktop" data-view="Leaderboard"><span class="icon">🏆</span><span class="lbl">Liderlər</span></button>
     <button class="nav-btn" data-view="AI"><span class="icon">🤖</span><span class="lbl">AI</span></button>
@@ -2635,7 +2696,7 @@ function switchView(name){
   if(name!=='Games')stopAllGamePolls();
   document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.view===name));
   const renders={Home:renderHome,Alpha:renderAlpha,Games:renderGames,Vocab:renderVocab,
-    Creative:renderCreative,Leaderboard:renderLeaderboard,Profile:renderProfile,Derslikler:renderDerslikler,AI:renderAI,About:renderAbout,Mekteb205:renderMekteb205};
+    Creative:renderCreative,Leaderboard:renderLeaderboard,Profile:renderProfile,Derslikler:renderDerslikler,AI:renderAI,About:renderAbout,Mekteb205:renderMekteb205,Studio:renderStudio};
   if(renders[name])renders[name]();
 }
 
@@ -3977,9 +4038,26 @@ async function refreshCurrentUserProfile(){
   }catch(e){}
 }
 
+// Cavabı serverə etibarlı çatdırır. Əvvəl "göndər və unut" idi və xəta
+// səssizcə udulurdu: bir cavab itən kimi həmin oyunçunun progress-i sual
+// sayına çatmırdı, finished_at yazılmırdı və duel əbədi "gözləyirik..."
+// ekranında ilişib qalırdı. İndi 3 dəfə təkrar cəhd edilir.
+async function duelSubmitAnswer(duelId,correct){
+  for(let attempt=0;attempt<3;attempt++){
+    try{
+      const{error}=await sb.rpc('submit_duel_answer',{p_duel_id:duelId,p_correct:correct});
+      if(!error)return true;
+    }catch(e){}
+    await new Promise(r=>setTimeout(r,400*(attempt+1)));
+  }
+  return false;
+}
+
 function playDuel(v,duel){
   stopAllGamePolls();
   const me=currentUser.username;
+  const answerJobs=[];        // gedən göndərişlər
+  let failedAnswers=0;        // çatdırıla bilməyənlər
   const isP1=duel.p1_username===me;
   const questions=duel.questions||[];
   let idx=isP1?duel.p1_progress:duel.p2_progress;
@@ -3996,8 +4074,9 @@ function playDuel(v,duel){
     const oppProgress=isP1?fresh.p2_progress:fresh.p1_progress;
     const oppFinished=isP1?fresh.p2_finished_at:fresh.p1_finished_at;
     const myFinished=isP1?fresh.p1_finished_at:fresh.p2_finished_at;
+    const myProgress=isP1?fresh.p1_progress:fresh.p2_progress;
     const bar=document.getElementById('duelOppBar');
-    if(bar)bar.textContent=`Rəqib: ${oppProgress}/${questions.length}${oppFinished?' ✅':''}`;
+    if(bar)bar.textContent=`Sən: ${myProgress}/${questions.length}${myFinished?' ✅':''}  ·  Rəqib: ${oppProgress}/${questions.length}${oppFinished?' ✅':''}`;
     if(myFinished&&oppFinished&&fresh.status==='finished'){
       stopDuelPoll();
       showDuelResult(v,fresh,isP1);
@@ -4012,11 +4091,54 @@ function playDuel(v,duel){
         <div class="quiz-box" style="text-align:center">
           <div style="font-size:2rem">⏳</div>
           <div style="margin:10px 0">Sən bitirdin! Rəqibin bitirməsini gözləyirik...</div>
+          <div id="duelSyncBar" style="color:var(--muted);font-size:.78rem;margin-bottom:4px">Cavabların yazılır...</div>
           <div id="duelOppBar" style="color:var(--muted);font-size:.85rem">Rəqib: .../${questions.length}</div>
-          <div style="font-size:.72rem;color:var(--muted);margin-top:10px">Nəticə hazır olanda "Davam edən Duellər" bölməsindən bura qayıda bilərsən.</div>
+          <div id="duelStuckBox" style="margin-top:14px;display:none">
+            <div style="font-size:.74rem;color:var(--muted);margin-bottom:8px">
+              Rəqib uzun müddətdir cavab vermir. Dueli indiki xallara görə yekunlaşdıra bilərsən.
+            </div>
+            <button class="btn-primary" id="duelFinalizeBtn">🏁 Nəticəni yekunlaşdır</button>
+          </div>
         </div>`;
       document.getElementById('gback').onclick=()=>{stopAllGamePolls();gameBack();};
       refreshOpponentBar();
+
+      // Bütün cavabların serverə çatdığına əmin ol — əsas düzəliş budur.
+      (async()=>{
+        await Promise.all(answerJobs);
+        const bar=document.getElementById('duelSyncBar');
+        if(!bar)return;
+        if(failedAnswers>0){
+          bar.innerHTML=`<span style="color:var(--red)">⚠️ ${failedAnswers} cavab göndərilə bilmədi — internet bağlantını yoxla.</span>`;
+          const box=document.getElementById('duelStuckBox');
+          if(box)box.style.display='';
+        }else{
+          bar.innerHTML='<span style="color:var(--green)">✓ Bütün cavabların yazıldı</span>';
+        }
+        refreshOpponentBar();
+      })();
+
+      // 45 saniyədən sonra hələ nəticə yoxdursa, yekunlaşdırma yolu aç
+      setTimeout(()=>{
+        const box=document.getElementById('duelStuckBox');
+        if(box)box.style.display='';
+      },45000);
+
+      const fin=document.getElementById('duelFinalizeBtn');
+      if(fin)fin.onclick=async()=>{
+        fin.disabled=true;fin.textContent='Yekunlaşdırılır...';
+        try{
+          const{error}=await sb.rpc('finalize_duel',{p_duel_id:duel.id});
+          if(error)throw error;
+          const r=await sb.from('duels').select().eq('id',duel.id).single();
+          stopAllGamePolls();
+          if(r.data&&r.data.status==='finished')showDuelResult(v,r.data,isP1);
+          else{showToast('Yekunlaşdırıla bilmədi.','red');fin.disabled=false;fin.textContent='🏁 Nəticəni yekunlaşdır';}
+        }catch(e){
+          showToast('Server funksiyası tapılmadı — supabase_fix_duel_stuck.sql işlədilməlidir.','red');
+          fin.disabled=false;fin.textContent='🏁 Nəticəni yekunlaşdır';
+        }
+      };
       return;
     }
     const q=questions[idx];
@@ -4043,7 +4165,9 @@ function playDuel(v,duel){
           v.querySelector('[data-correct="true"]')?.classList.add('correct');sfxWrong();
         }
       }catch(e){}
-      try{sb.rpc('submit_duel_answer',{p_duel_id:duel.id,p_correct:correct}).catch(()=>{});}catch(e){}
+      // UI dərhal irəliləyir (oyun sürətli qalsın), göndəriş arxa planda
+      // təkrar cəhdlərlə davam edir; bitişdən əvvəl hamısı gözlənilir.
+      answerJobs.push(duelSubmitAnswer(duel.id,correct).then(ok=>{if(!ok)failedAnswers++;}));
       setTimeout(()=>{idx++;showQ();},900);
     }
 
@@ -4145,7 +4269,22 @@ function renderLqPodium(ranked){
 // ── MÜƏLLİM (HOST) TƏRƏFİ ──
 let lqHostPollId=null;
 let lqHostSessionId=null;
-function stopLqHostPoll(){if(lqHostPollId){clearInterval(lqHostPollId);lqHostPollId=null;}}
+// ── TƏKRAR RENDER QORUYUCUSU ──────────────────────────────────
+// Sinif oyunlarında bütün ekran hər poll dövründə (1-2 saniyədə bir)
+// yenidən qurulurdu. Nəticədə: şagird cavab düyməsinə basanda düymə
+// məhz o anda silinib yenidən yaradılırsa toxunuş itirdi, cavabdan
+// sonra çıxan "✅ Düzgün! +xal" nəticəsi 1 saniyəyə silinirdi və ekran
+// daim titrəyirdi. İndi ekran YALNIZ məzmun həqiqətən dəyişəndə
+// yenidən qurulur.
+let lqStudentSig='',lqHostSig='',bossStudentSig='',bossHostSig='';
+function lqSigOf(s){return [s.status,s.current_index,lqStudentAnsweredIndex,(s.questions||[]).length].join('|');}
+function bossSigOf(s){return [s.status,s.current_index,bossStudentAnsweredIndex,s.boss_hp,(s.questions||[]).length].join('|');}
+function hostSigOf(s,parts){
+  return [s.status,s.current_index,parts.length,
+          parts.map(p=>`${p.username}:${p.score}:${p.last_answered_index}`).sort().join(',')].join('|');
+}
+
+function stopLqHostPoll(){if(lqHostPollId){clearInterval(lqHostPollId);lqHostPollId=null;}lqHostSig='';}
 
 async function launchLiveQuiz(questions,btn){
   if(btn)btn.disabled=true;
@@ -4156,7 +4295,7 @@ async function launchLiveQuiz(questions,btn){
     showScreen('liveQuizHostScreen');
     stopLqHostPoll();
     renderLqHost(data,[]);
-    lqHostPollId=setInterval(lqHostPoll,2000);
+    lqHostPollId=setInterval(lqHostPoll,1500);
   }catch(e){showToast('Yarışma yaradıla bilmədi!','red');}
   if(btn)btn.disabled=false;
 }
@@ -4229,6 +4368,9 @@ async function lqHostPoll(){
 function renderLqHost(session,participants){
   const el=document.getElementById('lqHostContent');
   if(!el||!lqHostSessionId)return;
+  const sig=hostSigOf(session,participants||[]);
+  if(sig===lqHostSig)return;
+  lqHostSig=sig;
   const total=(session.questions||[]).length;
   const answeredCount=participants.filter(p=>p.last_answered_index===session.current_index).length;
 
@@ -4303,7 +4445,7 @@ function lqHostBack(){
 let lqStudentPollId=null;
 let lqStudentSessionId=null;
 let lqStudentAnsweredIndex=-1;
-function stopLqStudentPoll(){if(lqStudentPollId){clearInterval(lqStudentPollId);lqStudentPollId=null;}}
+function stopLqStudentPoll(){if(lqStudentPollId){clearInterval(lqStudentPollId);lqStudentPollId=null;}lqStudentSig='';}
 
 function startLiveQuiz(v){
   stopLqStudentPoll();
@@ -4333,7 +4475,7 @@ async function lqJoinFlow(){
     lqStudentSessionId=data.id;lqStudentAnsweredIndex=-1;
     stopLqStudentPoll();
     renderLqStudent(data);
-    lqStudentPollId=setInterval(lqStudentPoll,1500);
+    lqStudentPollId=setInterval(lqStudentPoll,1100);
   }catch(e){showToast(e?.message||'Kod tapılmadı!','red');}
   if(btn)btn.disabled=false;
 }
@@ -4349,6 +4491,9 @@ async function lqStudentPoll(){
 function renderLqStudent(session){
   const v=document.getElementById('viewGames');
   if(!v||currentGame!=='livequiz'||!lqStudentSessionId)return;
+  const sig=lqSigOf(session);
+  if(sig===lqStudentSig)return;   // məzmun dəyişməyib — ekrana toxunma
+  lqStudentSig=sig;
   const total=(session.questions||[]).length;
 
   if(session.status==='waiting'){
@@ -4386,7 +4531,7 @@ function renderLqStudent(session){
     document.getElementById('gback').onclick=()=>{stopLqStudentPoll();gameBack();};
     v.querySelectorAll('.quiz-opt').forEach(btn=>btn.addEventListener('click',function(){
       v.querySelectorAll('.quiz-opt').forEach(b=>b.disabled=true);
-      lqSubmitAnswer(session.id,session.current_index,this.textContent);
+      lqSubmitAnswer(session.id,session.current_index,this.textContent,session);
     }));
     return;
   }
@@ -4397,14 +4542,25 @@ function renderLqStudent(session){
   }
 }
 
-async function lqSubmitAnswer(sessionId,questionIndex,answer){
+async function lqSubmitAnswer(sessionId,questionIndex,answer,session){
+  const prevAnswered=lqStudentAnsweredIndex;
   lqStudentAnsweredIndex=questionIndex;
   let result=null;
   try{
     const{data,error}=await sb.rpc('submit_live_quiz_answer',{p_session_id:sessionId,p_question_index:questionIndex,p_answer:answer});
     if(error)throw error;
     result=data;
-  }catch(e){showToast('Cavab göndərilə bilmədi!','red');}
+  }catch(e){
+    // Göndərilmədisə şagird kilidli qalmasın — yenidən cavablaya bilsin
+    lqStudentAnsweredIndex=prevAnswered;
+    lqStudentSig='';
+    showToast('Cavab göndərilə bilmədi — yenidən cəhd et!','red');
+    const vv=document.getElementById('viewGames');
+    if(vv)vv.querySelectorAll('.quiz-opt').forEach(b=>{b.disabled=false;});
+    return;
+  }
+  // Nəticə ekranı poll tərəfindən silinməsin deyə imzanı yenilə
+  if(session)lqStudentSig=lqSigOf(session);
   const v=document.getElementById('viewGames');
   if(!v||currentGame!=='livequiz')return;
   if(result){
@@ -4417,6 +4573,7 @@ async function lqSubmitAnswer(sessionId,questionIndex,answer){
       </div>
       <div style="text-align:center;color:var(--muted);font-size:.8rem;margin-top:12px">Növbəti sual gözlənilir...</div>`;
     refreshCurrentUserProfile();
+    setTimeout(()=>{lqStudentPoll();},600); // növbəti sual üçün dərhal bir yoxlama
   }
 }
 
@@ -4478,7 +4635,7 @@ function renderBossDamagePodium(ranked){
 // ── MÜƏLLİM (HOST) TƏRƏFİ ──
 let bossHostPollId=null;
 let bossHostSessionId=null;
-function stopBossHostPoll(){if(bossHostPollId){clearInterval(bossHostPollId);bossHostPollId=null;}}
+function stopBossHostPoll(){if(bossHostPollId){clearInterval(bossHostPollId);bossHostPollId=null;}bossHostSig='';}
 
 async function launchBossSession(questions,bossName,bossHp,btn){
   if(btn)btn.disabled=true;
@@ -4520,6 +4677,9 @@ async function bossHostPoll(){
 function renderBossHost(session,participants){
   const el=document.getElementById('bossHostContent');
   if(!el||!bossHostSessionId)return;
+  const sig=hostSigOf(session,participants||[])+'|'+session.boss_hp;
+  if(sig===bossHostSig)return;
+  bossHostSig=sig;
   const total=(session.questions||[]).length;
   const answeredCount=participants.filter(p=>p.last_answered_index===session.current_index).length;
 
@@ -4598,7 +4758,7 @@ let bossStudentPollId=null;
 let bossStudentSessionId=null;
 let bossStudentAnsweredIndex=-1;
 let bossStudentMaxHp=200;
-function stopBossStudentPoll(){if(bossStudentPollId){clearInterval(bossStudentPollId);bossStudentPollId=null;}}
+function stopBossStudentPoll(){if(bossStudentPollId){clearInterval(bossStudentPollId);bossStudentPollId=null;}bossStudentSig='';}
 
 function startBossGame(v){
   stopBossStudentPoll();
@@ -4644,6 +4804,9 @@ async function bossStudentPoll(){
 function renderBossStudent(session){
   const v=document.getElementById('viewGames');
   if(!v||currentGame!=='classboss'||!bossStudentSessionId)return;
+  const sig=bossSigOf(session);
+  if(sig===bossStudentSig)return;
+  bossStudentSig=sig;
   const total=(session.questions||[]).length;
   bossStudentMaxHp=session.boss_max_hp||bossStudentMaxHp;
 
@@ -4688,7 +4851,7 @@ function renderBossStudent(session){
     document.getElementById('gback').onclick=()=>{stopBossStudentPoll();gameBack();};
     v.querySelectorAll('.quiz-opt').forEach(btn=>btn.addEventListener('click',function(){
       v.querySelectorAll('.quiz-opt').forEach(b=>b.disabled=true);
-      bossSubmitAnswer(session.id,session.current_index,this.textContent);
+      bossSubmitAnswer(session.id,session.current_index,this.textContent,session);
     }));
     return;
   }
@@ -4699,14 +4862,23 @@ function renderBossStudent(session){
   }
 }
 
-async function bossSubmitAnswer(sessionId,questionIndex,answer){
+async function bossSubmitAnswer(sessionId,questionIndex,answer,session){
+  const prevAnswered=bossStudentAnsweredIndex;
   bossStudentAnsweredIndex=questionIndex;
   let result=null;
   try{
     const{data,error}=await sb.rpc('submit_boss_answer',{p_session_id:sessionId,p_question_index:questionIndex,p_answer:answer});
     if(error)throw error;
     result=data;
-  }catch(e){showToast('Cavab göndərilə bilmədi!','red');}
+    if(session)bossStudentSig=bossSigOf(session);
+  }catch(e){
+    bossStudentAnsweredIndex=prevAnswered;
+    bossStudentSig='';
+    showToast('Cavab göndərilə bilmədi — yenidən cəhd et!','red');
+    const vv=document.getElementById('viewGames');
+    if(vv)vv.querySelectorAll('.quiz-opt').forEach(b=>{b.disabled=false;});
+    return;
+  }
   const v=document.getElementById('viewGames');
   if(!v||currentGame!=='classboss')return;
   if(result){
@@ -7855,6 +8027,9 @@ function renderAbout(){
           <p style="margin-bottom:10px"><strong>Qurucular:</strong></p>
           <p><strong>Mirzəyev Kamal</strong> — 205 nömrəli tam orta məktəbin 10B sinif şagirdi</p>
           <p style="margin-bottom:10px"><strong>Ağazadə İsmayıl</strong> — 205 nömrəli tam orta məktəbin 10B sinif şagirdi</p>
+          <p style="margin-bottom:10px"><strong>Layihə rəhbəri:</strong><br>
+          <strong>Elnurə müəllimə</strong> — layihənin elmi-metodiki rəhbəri; ideyanın formalaşmasından
+          tətbiqinə qədər bütün mərhələlərdə istiqamətverici dəstək göstərmişdir.</p>
           <p style="margin-bottom:10px">Bu layihə məktəbimiz üçün xüsusi olaraq hazırlanmışdır. Layihənin əsas məqsədi Azərbaycan ədəbi dilinin qorunması və təbliği, şagirdlərə ana dilimizin zənginliyini daha yaxından tanıtmaq, həmçinin dil öyrənmə prosesini müasir, maraqlı və interaktiv üsullarla daha əlçatan etməkdir.</p>
           <p style="margin-bottom:10px">Hazırlanan platforma şagirdlərin dil bacarıqlarının inkişafına dəstək olmaqla yanaşı, onların öyrənməyə olan marağını artırmağı və Azərbaycan dilinə sevgisini gücləndirməyi hədəfləyir.</p>
           <p style="margin-bottom:10px"><strong>🏫 Məktəb Rəhbərliyi</strong><br>
@@ -7863,7 +8038,6 @@ function renderAbout(){
           Məktəbdənkənar və sinifdənkənar tərbiyə işi üzrə təşkilatçı: <strong>Vüsalə Rəcəbova Fərhad qızı</strong></p>
           <p style="margin-bottom:10px">💐 <strong>Xüsusi Təşəkkür</strong><br>
           Səmimi minnətdarlığımızı bildiririk:<br>
-          • <strong>Elnurə müəlliməyə</strong> — bu layihənin formalaşmasında bizə yol göstərdiyi, dəyərli məsləhətləri və daim göstərdiyi dəstəyə görə;<br>
           • <strong>Billurə müəlliməyə</strong> (sinif rəhbərimizə) — hər zaman yanımızda olduğu, bizə inandığı və motivasiya verdiyi üçün;<br>
           • <strong>Bütün sinif yoldaşlarımıza</strong> — layihəni sınaqdan keçirərək öz dəyərli fikir və rəylərini bizimlə bölüşdükləri üçün.</p>
           <p style="margin-bottom:8px">✨ <strong>Məqsədimiz</strong><br>
@@ -8985,6 +9159,515 @@ async function m205AiLookup(msg){
          `<i>${escapeHtml(best.kind)} · ${escapeHtml(r.category||'')}${date?' · '+date:''}</i>\n\n`+
          `${escapeHtml(firstPara)}\n\n`+
          `📰 Tam mətn: 205 Məktəb bölməsindədir.`;
+}
+
+// ══════════════════════════════════════════════
+// ÖZÜNÜ İNKİŞAF ETDİR — SözLab yaradıcılıq mərkəzi
+//
+// Quruluş tanış bir model üzərində qurulub: yuxarıda axtarış, altında
+// rəngli alət sırası. Amma alətlərin hamısı SözLab-ın öz məzmunu ilə
+// işləyir — lüğət, öyrənilən sözlər, XP statistikası və AI köməkçi.
+//
+// Əsas mühərrik "Söz Kartı Studiyası"dır: canvas üzərində real şəkil
+// hazırlayıb PNG kimi yükləyə bilirsən. Şablonlar, Sosial Media,
+// Şəkil/Flashkart, Özəl ölçü və AI kartı — hamısı bu mühərrikdən qidalanır.
+// ══════════════════════════════════════════════
+
+let studioPage='hub';       // 'hub' | 'card' | 'sheet' | 'board' | 'more'
+let studioSearch='';
+let studioWired=false;
+
+// Kart studiyasının vəziyyəti
+let stWord=null;            // seçilmiş söz obyekti
+let stTheme='gecə';
+let stSize='square';
+let stCustomW=1080, stCustomH=1080;
+let stShowExample=true;
+
+const STUDIO_TOOLS=[
+  {id:'templates',icon:'🎴',name:'Şablonlar',      desc:'Hazır söz kartı və dərs şablonları',        color:'#7c5cff',act:'card'},
+  {id:'slides',   icon:'📊',name:'Təqdimat',       desc:'Sözlərdən slayd dəsti hazırla',             color:'#f0a020',act:'slides'},
+  {id:'social',   icon:'📣',name:'Sosial Media',   desc:'“Günün sözü” paylaşımı hazırla',            color:'#e0555f',act:'card',size:'square'},
+  {id:'video',    icon:'🎬',name:'Video',          desc:'Tələffüz və izah videoları',                color:'#ff5ca8',act:'soon'},
+  {id:'doc',      icon:'📄',name:'Sənəd',          desc:'Esse, hekayə və tapşırıq yaz',              color:'#4098f0',act:'creative'},
+  {id:'board',    icon:'🧑‍🏫',name:'Ağ Lövhə',      desc:'Sərbəst çəkim və qeyd lövhəsi',             color:'#40d9c0',act:'board'},
+  {id:'sheet',    icon:'📋',name:'Cədvəl',         desc:'Söz bazanı cədvəl (CSV) kimi çıxar',        color:'#4098f0',act:'sheet'},
+  {id:'mini',     icon:'🧩',name:'Mini Tətbiq',    desc:'İnteraktiv kiçik layihələr',                color:'#9b7ed6',act:'soon'},
+  {id:'site',     icon:'🌐',name:'Mini Səhifə',    desc:'Öz təqdimat səhifən',                       color:'#4098f0',act:'soon'},
+  {id:'mail',     icon:'✉️',name:'Bülleten',       desc:'Elan və xəbər məktubu',                     color:'#7c5cff',act:'soon'},
+  {id:'photo',    icon:'🖼️',name:'Flashkart',      desc:'Sözə uyğun vizual kart',                    color:'#f0c040',act:'card',size:'square'},
+  {id:'ai',       icon:'✨',name:'AI ilə Yarat',   desc:'AI söz seçsin, kartı doldursun',            color:'#40d9c0',act:'card',ai:true},
+  {id:'size',     icon:'📐',name:'Özəl Ölçü',      desc:'A4, story və ya istədiyin ölçü',            color:'#9b7ed6',act:'card',focusSize:true},
+  {id:'upload',   icon:'☁️',name:'Yüklə',          desc:'Şəkil və ya fayl yüklə',                    color:'#40c080',act:'upload'},
+  {id:'more',     icon:'⋯', name:'Daha çox',       desc:'Digər SözLab alətləri',                     color:'#6b6b85',act:'more'}
+];
+
+// Kart temaları — SözLab palitrasından
+const ST_THEMES={
+  'gecə':    {bg:['#0a0a0f','#1a1140'],accent:'#7c5cff',text:'#ffffff',sub:'#b9b4e8'},
+  'firuzə':  {bg:['#04201d','#0f5b52'],accent:'#40d9c0',text:'#ffffff',sub:'#a9ece2'},
+  'qızıl':   {bg:['#221a05','#6b5212'],accent:'#f0c040',text:'#ffffff',sub:'#f3e2b0'},
+  'çəhrayı': {bg:['#2a0a1c','#7a1f4e'],accent:'#ff5ca8',text:'#ffffff',sub:'#ffc6e0'},
+  'ağ':      {bg:['#f7f7fb','#e6e6f2'],accent:'#5a3fd6',text:'#14142a',sub:'#5b5b78'}
+};
+
+const ST_SIZES={
+  square: {w:1080,h:1080,label:'Kvadrat 1080×1080'},
+  story:  {w:1080,h:1920,label:'Story 1080×1920'},
+  post:   {w:1200,h:630, label:'Banner 1200×630'},
+  a4:     {w:1240,h:1754,label:'A4 (çap)'},
+  custom: {w:0,h:0,      label:'Özəl ölçü'}
+};
+
+function studioSize(){
+  if(stSize==='custom')return {w:Math.max(200,Math.min(3000,stCustomW)),h:Math.max(200,Math.min(3000,stCustomH))};
+  return ST_SIZES[stSize]||ST_SIZES.square;
+}
+
+// ── Giriş nöqtəsi ─────────────────────────────────────────────
+function renderStudio(){
+  const v=document.getElementById('viewStudio');
+  if(!v)return;
+  studioWire(v);
+  if(studioPage==='card')return stRenderCard(v);
+  if(studioPage==='sheet')return stRenderSheet(v);
+  if(studioPage==='board')return stRenderBoard(v);
+  if(studioPage==='more')return stRenderMore(v);
+  return stRenderHub(v);
+}
+
+function studioWire(v){
+  if(studioWired)return;
+  studioWired=true;
+  v.addEventListener('click',async e=>{
+    const t=e.target.closest('[data-st-tool]');
+    if(t){studioOpenTool(t.dataset.stTool);return;}
+    const b=e.target.closest('[data-st-back]');
+    if(b){studioPage='hub';renderStudio();return;}
+    const c=e.target.closest('[data-st-chip]');
+    if(c){
+      const{stChip,stVal}=c.dataset;
+      if(stChip==='theme')stTheme=stVal;
+      if(stChip==='size')stSize=stVal;
+      stRenderCard(document.getElementById('viewStudio'));
+      return;
+    }
+    const d=e.target.closest('[data-st-download]');
+    if(d){stDownload();return;}
+    const r=e.target.closest('[data-st-random]');
+    if(r){stPickRandomWord();return;}
+    const x=e.target.closest('[data-st-csv]');
+    if(x){stExportCsv(x.dataset.stCsv);return;}
+  });
+  v.addEventListener('input',e=>{
+    if(e.target.id==='stSearchInput'){
+      studioSearch=e.target.value.trim();
+      const g=document.getElementById('stGrid');
+      if(g)g.innerHTML=stToolsHtml();
+      return;
+    }
+    if(['stWordPick','stTitle','stMeaning','stExample','stCustomW','stCustomH'].includes(e.target.id)){
+      stSyncFromInputs();
+      stDrawCanvas();
+    }
+  });
+  v.addEventListener('change',e=>{
+    if(e.target.id==='stWordPick'){stSyncFromInputs();stFillFieldsFromWord();stDrawCanvas();}
+  });
+}
+
+// ── HUB ───────────────────────────────────────────────────────
+function stToolsHtml(){
+  const q=studioSearch.toLowerCase();
+  const list=STUDIO_TOOLS.filter(t=>!q||`${t.name} ${t.desc}`.toLowerCase().includes(q));
+  if(!list.length)return `<div class="st-empty" style="grid-column:1/-1">Uyğun alət tapılmadı.</div>`;
+  return list.map(t=>`
+    <button class="st-tool" data-st-tool="${t.id}" style="--tc:${t.color};--tc-glow:${t.color}55">
+      ${t.act==='soon'?'<span class="st-soon">TEZLİKLƏ</span>':''}
+      <span class="st-tool-ic">${t.icon}</span>
+      <span class="st-tool-name">${t.name}</span>
+      <span class="st-tool-desc">${t.desc}</span>
+    </button>`).join('');
+}
+
+function stRenderHub(v){
+  const learned=(currentUser?.learned||[]).length;
+  v.innerHTML=`
+    <div class="st-hero">
+      <h2>Bu gün nə yaradacaqsan?</h2>
+      <p>Öyrəndiyin sözləri kartlara, paylaşımlara və materiallara çevir</p>
+      <div class="st-search"><input id="stSearchInput" placeholder="Alət axtar — kart, cədvəl, təqdimat..." value="${escapeHtml(studioSearch)}"></div>
+    </div>
+    <div class="st-grid" id="stGrid">${stToolsHtml()}</div>
+    <div class="admin-section">
+      <div style="font-size:.82rem;font-weight:700;margin-bottom:8px">💡 Necə işləyir?</div>
+      <div style="font-size:.78rem;color:var(--muted);line-height:1.8">
+        • <b>Söz Kartı Studiyası</b> lüğətdəki ${WORDS.length} sözdən istifadə edir — söz seç, tema və ölçü seç, PNG kimi yüklə<br>
+        • <b>Cədvəl</b> sənin öyrəndiyin sözləri və statistikanı CSV faylı kimi çıxarır (Excel-də açılır)<br>
+        • <b>Sənəd</b> səni Yaradıcı Yazı bölməsinə aparır — hekayə yazıb XP qazanırsan<br>
+        • Hazırda ${learned} söz öyrənmisən — hamısı kart və cədvəldə istifadə oluna bilər
+      </div>
+    </div>`;
+}
+
+// ── ALƏTLƏRİN AÇILMASI ────────────────────────────────────────
+function studioOpenTool(id){
+  const t=STUDIO_TOOLS.find(x=>x.id===id);
+  if(!t)return;
+  switch(t.act){
+    case 'card':
+      if(t.size)stSize=t.size;
+      if(t.ai)stPickAiWord();
+      else if(!stWord)stPickRandomWord(true);
+      studioPage='card';renderStudio();
+      if(t.focusSize)setTimeout(()=>document.getElementById('stSizeRow')?.scrollIntoView({behavior:'smooth',block:'center'}),150);
+      break;
+    case 'sheet':  studioPage='sheet';renderStudio();break;
+    case 'board':  studioPage='board';renderStudio();break;
+    case 'more':   studioPage='more';renderStudio();break;
+    case 'creative': switchView('Creative');break;
+    case 'slides': stSize='post';stPickRandomWord(true);studioPage='card';renderStudio();
+                   showToast('Slayd üçün banner ölçüsü seçildi — hər söz üçün bir kart yükləyə bilərsən.','teal');break;
+    case 'upload': switchView('Mekteb205');
+                   showToast('Fayl yükləmə 205 portalındakı layihə göndərmə formasındadır.','gold');break;
+    case 'soon':   showToast(`${t.name} hazırlanır — növbəti yeniləmədə əlavə olunacaq.`,'gold');break;
+  }
+}
+
+// ── SÖZ SEÇİMİ ────────────────────────────────────────────────
+function stPickRandomWord(silent){
+  const pool=WORDS&&WORDS.length?WORDS:[];
+  if(!pool.length)return;
+  stWord=pool[Math.floor(Math.random()*pool.length)];
+  if(!silent){stFillFieldsFromWord();stDrawCanvas();}
+}
+function stPickAiWord(){
+  // AI köməkçinin istifadə etdiyi eyni lüğətdən "günün sözü" məntiqi ilə seçir
+  const pool=(WORDS||[]).filter(w=>(w.difficulty||0)>=3);
+  const src=pool.length?pool:(WORDS||[]);
+  if(!src.length)return;
+  const day=new Date().toDateString();
+  let h=0;for(const ch of day)h=(h*31+ch.charCodeAt(0))>>>0;
+  stWord=src[h%src.length];
+}
+
+function stFillFieldsFromWord(){
+  if(!stWord)return;
+  const t=document.getElementById('stTitle');
+  const m=document.getElementById('stMeaning');
+  const e=document.getElementById('stExample');
+  if(t)t.value=stWord.en||'';
+  if(m)m.value=stWord.az||'';
+  if(e)e.value=stWord.ex||'';
+}
+
+function stSyncFromInputs(){
+  const pick=document.getElementById('stWordPick');
+  if(pick&&pick.value!=='__custom'){
+    const w=(WORDS||[]).find(x=>x.en===pick.value);
+    if(w&&(!stWord||stWord.en!==w.en))stWord=w;
+  }
+  stCustomW=parseInt(document.getElementById('stCustomW')?.value,10)||stCustomW;
+  stCustomH=parseInt(document.getElementById('stCustomH')?.value,10)||stCustomH;
+}
+
+// ── KART STUDİYASI ────────────────────────────────────────────
+function stRenderCard(v){
+  if(!stWord)stPickRandomWord(true);
+  const size=studioSize();
+  const words=(WORDS||[]).slice(0,600);
+  v.innerHTML=`
+    <button class="st-back" data-st-back="1">← Alətlər</button>
+    <div class="st-studio">
+      <div class="st-panel">
+        <h4>🎴 Söz Kartı Studiyası</h4>
+
+        <label class="st-label">Söz</label>
+        <select class="st-select" id="stWordPick">
+          <option value="__custom">✍️ Öz mətnimi yazacağam</option>
+          ${words.map(w=>`<option value="${escapeHtml(w.en)}"${stWord&&stWord.en===w.en?' selected':''}>${escapeHtml(w.en)}</option>`).join('')}
+        </select>
+        <button class="st-chip" data-st-random="1" style="margin-top:7px">🎲 Təsadüfi söz seç</button>
+
+        <label class="st-label">Başlıq</label>
+        <input class="st-input" id="stTitle" maxlength="40" value="${escapeHtml(stWord?.en||'')}">
+
+        <label class="st-label">Mənası</label>
+        <textarea class="st-textarea" id="stMeaning" rows="2" maxlength="160">${escapeHtml(stWord?.az||'')}</textarea>
+
+        <label class="st-label">Nümunə cümlə</label>
+        <textarea class="st-textarea" id="stExample" rows="2" maxlength="180">${escapeHtml(stWord?.ex||'')}</textarea>
+
+        <label class="st-label">Tema</label>
+        <div class="st-chiprow">
+          ${Object.keys(ST_THEMES).map(k=>`<button class="st-chip${stTheme===k?' active':''}" data-st-chip="theme" data-st-val="${k}">${k}</button>`).join('')}
+        </div>
+
+        <label class="st-label" id="stSizeRow">Ölçü</label>
+        <div class="st-chiprow">
+          ${Object.entries(ST_SIZES).map(([k,z])=>`<button class="st-chip${stSize===k?' active':''}" data-st-chip="size" data-st-val="${k}">${z.label}</button>`).join('')}
+        </div>
+        ${stSize==='custom'?`
+          <div style="display:flex;gap:8px;margin-top:8px">
+            <input class="st-input" id="stCustomW" type="number" min="200" max="3000" value="${stCustomW}" placeholder="En">
+            <input class="st-input" id="stCustomH" type="number" min="200" max="3000" value="${stCustomH}" placeholder="Hündürlük">
+          </div>`:''}
+      </div>
+
+      <div class="st-preview">
+        <div class="st-canvas-wrap"><canvas id="stCanvas" width="${size.w}" height="${size.h}"></canvas></div>
+        <div style="font-size:.72rem;color:var(--muted)">${size.w} × ${size.h} piksel</div>
+        <div class="st-actions">
+          <button class="btn-primary" data-st-download="1">⬇️ PNG yüklə</button>
+          <button class="st-chip" data-st-random="1">🎲 Başqa söz</button>
+        </div>
+      </div>
+    </div>`;
+  stDrawCanvas();
+}
+
+// Canvas-da mətni sətirlərə bölüb çəkir
+function stWrapText(ctx,text,maxW){
+  const words=String(text||'').split(/\s+/).filter(Boolean);
+  const lines=[];let cur='';
+  for(const w of words){
+    const test=cur?cur+' '+w:w;
+    if(ctx.measureText(test).width<=maxW)cur=test;
+    else{if(cur)lines.push(cur);cur=w;}
+  }
+  if(cur)lines.push(cur);
+  return lines;
+}
+
+function stDrawCanvas(){
+  const cv=document.getElementById('stCanvas');
+  if(!cv)return;
+  const size=studioSize();
+  cv.width=size.w;cv.height=size.h;
+  const ctx=cv.getContext('2d');
+  const th=ST_THEMES[stTheme]||ST_THEMES['gecə'];
+  const W=size.w,H=size.h;
+  const pad=Math.round(W*0.09);
+
+  // fon
+  const g=ctx.createLinearGradient(0,0,W,H);
+  g.addColorStop(0,th.bg[0]);g.addColorStop(1,th.bg[1]);
+  ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+
+  // dekorativ dairələr
+  ctx.globalAlpha=.10;ctx.fillStyle=th.accent;
+  ctx.beginPath();ctx.arc(W*0.88,H*0.12,W*0.22,0,Math.PI*2);ctx.fill();
+  ctx.beginPath();ctx.arc(W*0.10,H*0.92,W*0.16,0,Math.PI*2);ctx.fill();
+  ctx.globalAlpha=1;
+
+  // üst xətt
+  ctx.fillStyle=th.accent;
+  ctx.fillRect(pad,Math.round(H*0.085),Math.round(W*0.14),Math.max(4,Math.round(H*0.008)));
+
+  const title=(document.getElementById('stTitle')?.value||stWord?.en||'Söz').trim();
+  const meaning=(document.getElementById('stMeaning')?.value||stWord?.az||'').trim();
+  const example=(document.getElementById('stExample')?.value||stWord?.ex||'').trim();
+  const maxW=W-pad*2;
+  let y=Math.round(H*0.16);
+
+  // etiket
+  ctx.fillStyle=th.accent;
+  ctx.font=`700 ${Math.round(W*0.032)}px 'DM Sans',sans-serif`;
+  ctx.textAlign='left';
+  ctx.fillText('SÖZLAB · GÜNÜN SÖZÜ',pad,y);
+  y+=Math.round(H*0.055);
+
+  // başlıq
+  ctx.fillStyle=th.text;
+  let titleSize=Math.round(W*0.115);
+  ctx.font=`800 ${titleSize}px 'Syne',sans-serif`;
+  while(ctx.measureText(title).width>maxW&&titleSize>24){
+    titleSize-=4;ctx.font=`800 ${titleSize}px 'Syne',sans-serif`;
+  }
+  ctx.fillText(title,pad,y+titleSize*0.8);
+  y+=titleSize+Math.round(H*0.035);
+
+  // məna
+  if(meaning){
+    ctx.fillStyle=th.sub;
+    const ms=Math.round(W*0.045);
+    ctx.font=`500 ${ms}px 'DM Sans',sans-serif`;
+    stWrapText(ctx,meaning,maxW).slice(0,4).forEach(line=>{
+      ctx.fillText(line,pad,y+ms*0.85);y+=ms*1.38;
+    });
+    y+=Math.round(H*0.028);
+  }
+
+  // nümunə cümlə — vurğulu qutuda
+  if(example){
+    const es=Math.round(W*0.036);
+    ctx.font=`italic 400 ${es}px 'DM Sans',sans-serif`;
+    const lines=stWrapText(ctx,'"'+example+'"',maxW-Math.round(W*0.05)).slice(0,4);
+    const boxH=lines.length*es*1.45+Math.round(H*0.035);
+    ctx.globalAlpha=.14;ctx.fillStyle=th.accent;
+    if(ctx.roundRect){ctx.beginPath();ctx.roundRect(pad,y,maxW,boxH,Math.round(W*0.02));ctx.fill();}
+    else ctx.fillRect(pad,y,maxW,boxH);
+    ctx.globalAlpha=1;
+    ctx.fillStyle=th.accent;
+    ctx.fillRect(pad,y,Math.max(3,Math.round(W*0.006)),boxH);
+    ctx.fillStyle=th.sub;
+    let ly=y+Math.round(H*0.022);
+    lines.forEach(line=>{ctx.fillText(line,pad+Math.round(W*0.03),ly+es*0.85);ly+=es*1.45;});
+    y+=boxH;
+  }
+
+  // alt imza
+  ctx.fillStyle=th.sub;ctx.globalAlpha=.75;
+  ctx.font=`600 ${Math.round(W*0.028)}px 'DM Sans',sans-serif`;
+  ctx.textAlign='left';
+  ctx.fillText('sozlabyoxlama.vercel.app',pad,H-Math.round(H*0.055));
+  if(currentUser?.display_name){
+    ctx.textAlign='right';
+    ctx.fillText('@'+(currentUser.username||''),W-pad,H-Math.round(H*0.055));
+  }
+  ctx.globalAlpha=1;
+}
+
+function stDownload(){
+  const cv=document.getElementById('stCanvas');
+  if(!cv)return;
+  try{
+    const name=((document.getElementById('stTitle')?.value||'soz-karti').trim()
+      .replace(/[^\wəğıöşçüƏĞIİÖŞÇÜ-]+/g,'_')||'soz-karti')+'.png';
+    const a=document.createElement('a');
+    a.download=name;a.href=cv.toDataURL('image/png');
+    document.body.appendChild(a);a.click();a.remove();
+    showToast('Kart yükləndi 🎉','teal');
+  }catch(e){showToast('Yüklənmədi — yenidən cəhd et.','red');}
+}
+
+// ── CƏDVƏL / CSV ──────────────────────────────────────────────
+function stRenderSheet(v){
+  const learned=currentUser?.learned||[];
+  v.innerHTML=`
+    <button class="st-back" data-st-back="1">← Alətlər</button>
+    <div class="admin-section">
+      <div class="section-title" style="margin-bottom:4px">📋 Cədvəl (CSV)</div>
+      <div style="font-size:.78rem;color:var(--muted);margin-bottom:14px">
+        Söz bazanı və nəticələrini Excel-də açıla bilən fayl kimi çıxar.
+      </div>
+      <div style="display:grid;gap:10px">
+        <button class="btn-primary" data-st-csv="learned">⬇️ Öyrəndiyim sözlər (${learned.length})</button>
+        <button class="btn-outline" data-st-csv="dict">⬇️ Bütün lüğət (${WORDS.length} söz)</button>
+        <button class="btn-outline" data-st-csv="stats">⬇️ Şəxsi statistikam</button>
+      </div>
+    </div>`;
+}
+
+function stCsvEscape(x){
+  const s=String(x??'').replace(/"/g,'""');
+  return /[",\n;]/.test(s)?`"${s}"`:s;
+}
+function stDownloadCsv(rows,filename){
+  // ";" ayırıcı + BOM — Excel Azərbaycan hərflərini düzgün açsın
+  const csv='﻿'+rows.map(r=>r.map(stCsvEscape).join(';')).join('\n');
+  const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);a.download=filename;
+  document.body.appendChild(a);a.click();
+  setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},400);
+  showToast('Fayl yükləndi 📋','teal');
+}
+
+function stExportCsv(kind){
+  if(kind==='learned'){
+    const set=new Set(currentUser?.learned||[]);
+    const rows=[['Söz','Mənası','Nümunə','Teqlər','Çətinlik']];
+    (WORDS||[]).filter(w=>set.has(w.en)).forEach(w=>rows.push([w.en,w.az,w.ex,(w.tags||[]).join(', '),w.difficulty||'']));
+    if(rows.length===1){showToast('Hələ söz öyrənməmisən — əvvəlcə oyun oyna!','gold');return;}
+    stDownloadCsv(rows,'sozlab-oyrendiyim-sozler.csv');
+  }else if(kind==='dict'){
+    const rows=[['Söz','Mənası','Nümunə','Teqlər','Çətinlik']];
+    (WORDS||[]).forEach(w=>rows.push([w.en,w.az,w.ex,(w.tags||[]).join(', '),w.difficulty||'']));
+    stDownloadCsv(rows,'sozlab-luget.csv');
+  }else{
+    const u=currentUser||{};
+    const rows=[['Göstərici','Dəyər'],
+      ['İstifadəçi',u.display_name||u.username||''],
+      ['Sinif',u.class_grade||''],
+      ['Ümumi XP',u.xp||0],
+      ['Səviyyə',u.level||1],
+      ['Gün seriyası',u.streak||0],
+      ['Öyrənilən söz',(u.learned||[]).length],
+      ['Nişan',(u.badges||[]).length],
+      ['Tarix',new Date().toLocaleDateString()]];
+    stDownloadCsv(rows,'sozlab-statistikam.csv');
+  }
+}
+
+// ── AĞ LÖVHƏ ──────────────────────────────────────────────────
+function stRenderBoard(v){
+  v.innerHTML=`
+    <button class="st-back" data-st-back="1">← Alətlər</button>
+    <div class="admin-section">
+      <div class="section-title" style="margin-bottom:4px">🧑‍🏫 Ağ Lövhə</div>
+      <div style="font-size:.78rem;color:var(--muted);margin-bottom:12px">
+        Sözləri, sxemləri və qeydlərini sərbəst çək. Hazırladığını şəkil kimi yükləyə bilərsən.
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px">
+        ${['#e8e8f0','#7c5cff','#40d9c0','#f0c040','#ff5ca8','#40c080'].map((c,i)=>
+          `<button class="st-chip${i===0?' active':''}" data-board-color="${c}" style="background:${c};color:#111;border-color:${c};width:34px;height:30px;padding:0"></button>`).join('')}
+        <button class="st-chip" id="boardClear">🧽 Təmizlə</button>
+        <button class="st-chip" id="boardSave">⬇️ Yüklə</button>
+      </div>
+      <canvas id="boardCanvas" width="1000" height="600"
+        style="width:100%;background:#0f0f18;border:1px solid var(--border2);border-radius:12px;touch-action:none;cursor:crosshair"></canvas>
+    </div>`;
+  const cv=document.getElementById('boardCanvas');
+  const ctx=cv.getContext('2d');
+  ctx.lineCap='round';ctx.lineJoin='round';ctx.lineWidth=3;ctx.strokeStyle='#e8e8f0';
+  let drawing=false;
+  const pos=e=>{
+    const r=cv.getBoundingClientRect();
+    const p=e.touches?e.touches[0]:e;
+    return {x:(p.clientX-r.left)*(cv.width/r.width),y:(p.clientY-r.top)*(cv.height/r.height)};
+  };
+  const start=e=>{drawing=true;const{x,y}=pos(e);ctx.beginPath();ctx.moveTo(x,y);e.preventDefault();};
+  const move=e=>{if(!drawing)return;const{x,y}=pos(e);ctx.lineTo(x,y);ctx.stroke();e.preventDefault();};
+  const end=()=>{drawing=false;};
+  cv.addEventListener('mousedown',start);cv.addEventListener('mousemove',move);
+  window.addEventListener('mouseup',end);
+  cv.addEventListener('touchstart',start,{passive:false});
+  cv.addEventListener('touchmove',move,{passive:false});
+  cv.addEventListener('touchend',end);
+  v.querySelectorAll('[data-board-color]').forEach(b=>b.addEventListener('click',function(){
+    v.querySelectorAll('[data-board-color]').forEach(x=>x.classList.remove('active'));
+    this.classList.add('active');ctx.strokeStyle=this.dataset.boardColor;
+  }));
+  document.getElementById('boardClear').onclick=()=>ctx.clearRect(0,0,cv.width,cv.height);
+  document.getElementById('boardSave').onclick=()=>{
+    const a=document.createElement('a');a.download='sozlab-lovhe.png';a.href=cv.toDataURL('image/png');
+    document.body.appendChild(a);a.click();a.remove();showToast('Lövhə yükləndi 🎉','teal');
+  };
+}
+
+// ── DAHA ÇOX ──────────────────────────────────────────────────
+function stRenderMore(v){
+  const links=[
+    {icon:'🎮',name:'Oyunlar',    desc:'18 oyunla söz ehtiyatını inkişaf etdir', view:'Games'},
+    {icon:'📚',name:'Lüğət',      desc:'Söz axtar, mənasını öyrən',             view:'Vocab'},
+    {icon:'📖',name:'Dərsliklər', desc:'1–11-ci sinif rəsmi dərsliklər',        view:'Derslikler'},
+    {icon:'🤖',name:'AI Köməkçi', desc:'Sual ver, cavab al',                    view:'AI'},
+    {icon:'🏆',name:'Liderbord',  desc:'Şəxsi və sinif reytinqi',               view:'Leaderboard'},
+    {icon:'🏫',name:'205 Məktəb', desc:'Məktəbin portalı və layihələr',         view:'Mekteb205'}
+  ];
+  v.innerHTML=`
+    <button class="st-back" data-st-back="1">← Alətlər</button>
+    <div class="st-grid">
+      ${links.map(l=>`
+        <button class="st-tool" data-more-view="${l.view}" style="--tc:var(--purple);--tc-glow:rgba(124,92,255,.35)">
+          <span class="st-tool-ic">${l.icon}</span>
+          <span class="st-tool-name">${l.name}</span>
+          <span class="st-tool-desc">${l.desc}</span>
+        </button>`).join('')}
+    </div>`;
+  v.querySelectorAll('[data-more-view]').forEach(b=>
+    b.addEventListener('click',()=>switchView(b.dataset.moreView)));
 }
 
 window.copyEmail=()=>{
