@@ -1412,6 +1412,113 @@ table.sheet td{border-right:1px solid var(--border);border-bottom:1px solid var(
 .st-quiz-item b{color:var(--teal)}
 .st-del{margin-left:auto;background:none;border:none;color:var(--red);cursor:pointer;font-size:.9rem}
 
+
+/* ── Oflayn / yeniləmə zolaqları ── */
+#offlineBar,#swUpdateBar{position:fixed;left:50%;transform:translateX(-50%);z-index:600;
+  max-width:min(92vw,560px);border-radius:12px;padding:10px 14px;font-size:.78rem;line-height:1.5;
+  box-shadow:0 10px 34px rgba(0,0,0,.45);display:flex;align-items:center;gap:10px}
+#offlineBar{bottom:calc(env(safe-area-inset-bottom,0px) + 74px);background:#2a1a06;
+  border:1px solid var(--gold);color:#f3e2b0}
+#swUpdateBar{bottom:calc(env(safe-area-inset-bottom,0px) + 74px);background:var(--card);
+  border:1px solid var(--purple);color:var(--text)}
+#swUpdateBar button{background:var(--purple);border:none;color:#fff;border-radius:8px;
+  padding:6px 12px;font-family:inherit;font-size:.75rem;font-weight:700;cursor:pointer;flex-shrink:0}
+#swUpdateBar #swDismissBtn{background:transparent;color:var(--muted);padding:6px 8px}
+@media(min-width:1180px){#offlineBar,#swUpdateBar{bottom:22px}}
+
+/* ── Direktor Paneli v2 ── */
+.sch-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.sch-empty{color:var(--muted);font-size:.8rem;margin:0;padding:6px 0}
+.sch-week{display:flex;align-items:flex-end;gap:10px;height:150px;padding-top:6px;max-width:560px}
+.sch-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;height:100%}
+.sch-col-val{font-size:.72rem;font-weight:800;color:var(--teal)}
+.sch-col-bar{flex:1;width:100%;max-width:46px;background:var(--bg2);border-radius:7px;
+  display:flex;align-items:flex-end;overflow:hidden}
+.sch-col-bar>div{width:100%;min-height:3px;border-radius:7px;
+  background:linear-gradient(180deg,var(--teal),var(--purple));transition:height .4s ease}
+.sch-col-lbl{font-size:.66rem;color:var(--muted);text-transform:capitalize}
+.sch-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table.sch-table{width:100%;border-collapse:collapse;font-size:.76rem;min-width:520px}
+table.sch-table th{text-align:left;color:var(--muted);font-weight:700;font-size:.68rem;
+  text-transform:uppercase;letter-spacing:.4px;padding:7px 9px;border-bottom:1.5px solid var(--border2);white-space:nowrap}
+table.sch-table td{padding:9px;border-bottom:1px solid var(--border);vertical-align:middle}
+table.sch-table tbody tr:hover{background:var(--bg2)}
+.sch-pill{display:inline-block;border-radius:20px;padding:2px 9px;font-size:.7rem;font-weight:800}
+.sch-pill.good{background:rgba(64,192,128,.16);color:var(--green)}
+.sch-pill.mid{background:rgba(240,192,64,.16);color:var(--gold)}
+.sch-pill.low{background:rgba(224,85,85,.16);color:var(--red)}
+.sch-weak{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.sch-weak-w{width:33%;min-width:110px;font-size:.78rem;font-weight:700;color:var(--text);line-height:1.3}
+.sch-weak-w span{display:block;font-size:.66rem;font-weight:400;color:var(--muted);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sch-weak-bar{flex:1;height:9px;background:var(--bg2);border-radius:6px;overflow:hidden}
+.sch-weak-bar>div{height:100%;border-radius:6px;background:linear-gradient(90deg,var(--gold),var(--red))}
+.sch-weak-n{width:58px;text-align:right;font-size:.78rem;font-weight:800;color:var(--red)}
+.sch-weak-n small{display:block;font-size:.6rem;font-weight:400;color:var(--muted)}
+@media(max-width:600px){.sch-weak-w{width:42%}.sch-week{height:120px;gap:5px}}
+
+/* ══ BÖYÜK EKRAN (kiosk) — proyektor/televizor üçün iri tipoqrafiya ══ */
+#kioskScreen{position:fixed;inset:0;z-index:900;display:none;flex-direction:column;
+  background:radial-gradient(1200px 700px at 20% -10%,#241653 0%,#0a0a0f 62%);color:#fff;
+  padding:clamp(18px,3vw,42px);font-family:var(--font-body)}
+#kioskScreen.on{display:flex}
+body.kiosk-on{overflow:hidden}
+.kio-top{display:flex;justify-content:space-between;align-items:center;flex-shrink:0}
+.kio-brand{font-family:var(--font-head);font-weight:800;font-size:clamp(1rem,1.9vw,1.6rem);letter-spacing:.3px}
+.kio-brand span{font-weight:400;color:#b9b4e8;font-size:.72em}
+.kio-clock{font-size:clamp(1rem,2vw,1.7rem);font-weight:800;color:#b9b4e8;font-variant-numeric:tabular-nums}
+.kio-body{flex:1;display:flex;flex-direction:column;justify-content:center;min-height:0;
+  padding:clamp(10px,2vh,30px) 0}
+.kio-body.kio-in{animation:kioIn .55s cubic-bezier(.22,.9,.3,1)}
+@keyframes kioIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.kio-body.kio-in{animation:none}}
+.kio-eyebrow{font-size:clamp(.7rem,1.1vw,1rem);letter-spacing:.32em;color:#8f86d6;
+  text-transform:uppercase;margin-bottom:.5em;font-weight:700}
+.kio-title{font-family:var(--font-head);font-weight:800;line-height:1.08;
+  font-size:clamp(1.9rem,5.2vw,4.6rem);margin-bottom:.35em;text-wrap:balance}
+.kio-content{font-size:clamp(.95rem,1.6vw,1.5rem);min-height:0;overflow:hidden}
+/* sinif reytinqi */
+.kio-bars{display:flex;flex-direction:column;gap:clamp(7px,1.3vh,16px)}
+.kio-bar-row{display:flex;align-items:center;gap:clamp(9px,1.4vw,20px)}
+.kio-rank{width:1.9em;height:1.9em;border-radius:50%;background:rgba(255,255,255,.1);
+  display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0;font-size:.85em}
+.kio-rank.gold{background:linear-gradient(135deg,#f0c040,#c9971f);color:#231a06}
+.kio-bar-name{width:3.4em;font-weight:800;flex-shrink:0}
+.kio-bar{flex:1;height:clamp(14px,2.1vh,26px);background:rgba(255,255,255,.09);border-radius:99px;overflow:hidden}
+.kio-bar>div{height:100%;border-radius:99px;background:linear-gradient(90deg,#40d9c0,#7c5cff);
+  transition:width .8s cubic-bezier(.22,.9,.3,1)}
+.kio-bar-val{width:5.4em;text-align:right;font-weight:800;flex-shrink:0;font-variant-numeric:tabular-nums}
+.kio-bar-val small{font-weight:400;color:#8f86d6;margin-left:.25em;font-size:.7em}
+/* günün sözü */
+.kio-word-mean{font-size:1.25em;color:#cfc9f5;margin-bottom:.7em}
+.kio-word-ex{font-style:italic;color:#9c93e0;border-left:4px solid #7c5cff;padding-left:.9em;line-height:1.65}
+/* liderlər */
+.kio-podium{display:flex;gap:clamp(8px,1.4vw,20px);flex-wrap:wrap}
+.kio-pod{flex:1;min-width:130px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+  border-radius:16px;padding:clamp(10px,1.6vh,20px);text-align:center}
+.kio-pod.first{background:linear-gradient(160deg,rgba(240,192,64,.22),rgba(255,255,255,.05));border-color:#f0c040}
+.kio-pod-medal{font-size:1.7em;line-height:1}
+.kio-pod-name{font-weight:800;margin-top:.3em;line-height:1.25;word-break:break-word}
+.kio-pod-cls{color:#8f86d6;font-size:.78em}
+.kio-pod-xp{color:#40d9c0;font-weight:800;margin-top:.25em;font-size:.9em}
+/* xəbər */
+.kio-news{line-height:1.75;color:#cfc9f5;max-width:46ch}
+/* rəqəmlər */
+.kio-kpis{display:flex;gap:clamp(8px,1.5vw,22px);flex-wrap:wrap}
+.kio-kpi{flex:1;min-width:110px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+  border-radius:16px;padding:clamp(10px,1.8vh,22px);text-align:center}
+.kio-kpi b{display:block;font-family:var(--font-head);font-size:clamp(1.5rem,3.4vw,3rem);line-height:1.1}
+.kio-kpi span{color:#8f86d6;font-size:.8em;text-transform:uppercase;letter-spacing:.1em}
+/* alt panel */
+.kio-bottom{display:flex;align-items:center;gap:14px;flex-shrink:0}
+.kio-dots{flex:1;display:flex;gap:8px;justify-content:center}
+.kio-dots span{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.22);transition:all .3s}
+.kio-dots span.on{background:#40d9c0;width:26px;border-radius:99px}
+.kio-nav,.kio-exit{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:#fff;
+  border-radius:11px;padding:8px 14px;font-family:inherit;font-size:.9rem;cursor:pointer;transition:all .2s}
+.kio-nav:hover,.kio-exit:hover{background:rgba(255,255,255,.16)}
+.kio-exit{font-size:.76rem}
+@media(max-width:700px){.kio-bar-val{width:4.2em}.kio-exit{padding:8px 10px}}
 </style>
 </head>
 <body>
@@ -1458,7 +1565,7 @@ setTimeout(function(){
     <div class="login-logo">SözLab</div>
     <div class="login-tagline">Azərbaycan dilini öyrən, inkişaf et 🌟</div>
     <div class="feat-row">
-      <div class="feat-pill">🎮 10 Oyun</div>
+      <div class="feat-pill" id="featGamesPill">🎮 21 Oyun</div>
       <div class="feat-pill">🔤 Əlifba</div>
       <div class="feat-pill">📚 Ədəbi Lüğət</div>
       <div class="feat-pill">🤖 AI Köməkçi</div>
@@ -1508,11 +1615,13 @@ setTimeout(function(){
     </div>
     <button id="guestBtn" class="btn-outline" style="width:100%;margin-top:10px">🏫 Məktəb portalına qonaq kimi bax</button>
     <div class="login-stats">
-      <div class="l-stat"><div class="num" id="lsUsers">0</div><div class="lbl">İstifadəçi</div></div>
-      <div class="l-div"></div>
       <div class="l-stat"><div class="num" id="lsWords">0</div><div class="lbl">Söz</div></div>
       <div class="l-div"></div>
-      <div class="l-stat"><div class="num" id="lsStories">0</div><div class="lbl">Hekayə</div></div>
+      <div class="l-stat"><div class="num" id="lsGames">0</div><div class="lbl">Oyun</div></div>
+      <div class="l-div"></div>
+      <div class="l-stat"><div class="num" id="lsUsers">0</div><div class="lbl">İstifadəçi</div></div>
+      <div class="l-div" id="lsStoriesDiv" style="display:none"></div>
+      <div class="l-stat" id="lsStoriesStat" style="display:none"><div class="num" id="lsStories">0</div><div class="lbl">Hekayə</div></div>
     </div>
   </div>
 
@@ -1525,7 +1634,7 @@ setTimeout(function(){
     <div class="footer-grid">
       <div>
         <div class="footer-col-title">Xüsusiyyətlər</div>
-        <div class="footer-col-item">🎮 10+ Oyun</div>
+        <div class="footer-col-item" id="footerGamesItem">🎮 21 Oyun</div>
         <div class="footer-col-item">📚 Ədəbi Lüğət</div>
         <div class="footer-col-item">🏆 Canlı Sinif Yarışması</div>
         <div class="footer-col-item">⚔️ Duel Rejimi</div>
@@ -1536,8 +1645,10 @@ setTimeout(function(){
       </div>
       <div>
         <div class="footer-col-title">Tətbiqi Yüklə</div>
-        <div class="footer-col-item">Android üçün APK faylını endirin:</div>
+        <div class="footer-col-item" id="footerApkNote">SözLab telefonda tətbiq kimi işləyir — brauzer menyusundan
+          «Ana ekrana əlavə et» seçin, oflayn da açılsın.</div>
         <a class="footer-apk-btn" id="footerApkLink" href="#" target="_blank" rel="noopener">⬇️ APK Endir</a>
+        <button class="footer-apk-btn" id="footerInstallBtn" style="display:none;border:none;cursor:pointer;width:100%">📲 Tətbiqi quraşdır</button>
       </div>
     </div>
     <div class="footer-newsletter">
@@ -1549,6 +1660,22 @@ setTimeout(function(){
     </div>
     <div class="footer-bottom">© <span id="footerYear"></span> SözLab. Bütün hüquqlar qorunur.</div>
   </footer>
+</div>
+
+
+<!-- ═══ BÖYÜK EKRAN (kiosk) — proyektor / foye televizoru üçün ═══ -->
+<div id="kioskScreen">
+  <div class="kio-top">
+    <div class="kio-brand">🧠 SözLab · <span>205 nömrəli tam orta məktəb</span></div>
+    <div class="kio-clock" id="kioskClock"></div>
+  </div>
+  <div class="kio-body" id="kioskBody"></div>
+  <div class="kio-bottom">
+    <button class="kio-nav" id="kioskPrev" aria-label="Əvvəlki">‹</button>
+    <div class="kio-dots" id="kioskDots"></div>
+    <button class="kio-nav" id="kioskNext" aria-label="Növbəti">›</button>
+    <button class="kio-exit" id="kioskExit">✕ Çıx (Esc)</button>
+  </div>
 </div>
 
 <!-- ═══ MAIN ═══ -->
@@ -1582,7 +1709,8 @@ setTimeout(function(){
     <div class="top-stat">🔥<span id="topStreak">0</span></div>
     <div class="top-stat">⭐<span id="topXP">0</span> XP</div>
     <button class="topbar-icon-btn topbar-icon-desktop" id="topbarNotifBtn" title="Dəstək bildirişləri">🔔<span class="topbar-notif-badge" id="topbarNotifBadge" style="display:none">0</span></button>
-    <button class="topbar-icon-btn topbar-icon-desktop" id="topbarLangBtn" title="Dil seçimi (tezliklə)">🇦🇿</button>
+    <button class="topbar-icon-btn topbar-icon-desktop" id="topbarLangBtn" title="Sayt dili: Azərbaycan dili">🇦🇿</button>
+    <button class="topbar-icon-btn topbar-icon-desktop" id="kioskBtn" style="display:none" title="Böyük Ekran rejimi (proyektor / foye televizoru)">📺</button>
     <button class="theme-toggle" id="themeToggleBtn" title="Rejimi dəyiş"></button>
     <button class="avatar-btn" id="adminPanelBtn" style="display:none" title="Admin Paneli">🛠️</button>
     <button class="avatar-btn" id="directorPanelBtn" style="display:none" title="Direktor Paneli">👑</button>
@@ -1791,19 +1919,53 @@ setTimeout(function(){
 
     <!-- SCHOOL REPORT (yalnız Direktor) -->
     <div id="atab-school" style="display:none">
+      <div class="sch-head">
+        <div>
+          <h3 style="margin:0">🏫 Məktəb Hesabatı</h3>
+          <div style="font-size:.72rem;color:var(--muted);margin-top:3px" id="schActiveSub">Yüklənir…</div>
+        </div>
+        <div style="display:flex;gap:7px;flex-wrap:wrap">
+          <button class="st-btn" id="schRefreshBtn">🔄 Yenilə</button>
+          <button class="st-btn primary" id="schPrintBtn">🖨️ Hesabatı çap et</button>
+        </div>
+      </div>
+
       <div class="admin-stats-grid">
+        <div class="admin-stat"><div class="val" id="schStatStudents">0</div><div class="lbl">Şagird</div></div>
         <div class="admin-stat"><div class="val" id="schStatClasses">0</div><div class="lbl">Sinif</div></div>
         <div class="admin-stat"><div class="val" id="schStatTeachers">0</div><div class="lbl">Müəllim</div></div>
-        <div class="admin-stat"><div class="val" id="schStatStudents">0</div><div class="lbl">Şagird</div></div>
+        <div class="admin-stat"><div class="val" id="schStatActive">0%</div><div class="lbl">Həftəlik iştirak</div></div>
+        <div class="admin-stat"><div class="val" id="schStatLearned">0</div><div class="lbl">Öyrənilən söz</div></div>
         <div class="admin-stat"><div class="val" id="schStatTotalXP">0</div><div class="lbl">Ümumi XP</div></div>
       </div>
+
       <div class="admin-section">
-        <h3>🏆 Ən Aktiv Siniflər (Ümumi XP)</h3>
-        <div class="admin-chart" id="schoolClassChart"><p style="color:var(--muted);font-size:.82rem">Yüklənir...</p></div>
+        <h3>📈 Son 7 günün fəallığı</h3>
+        <div class="sch-week" id="schWeekChart"><p class="sch-empty">Yüklənir…</p></div>
       </div>
+
       <div class="admin-section">
-        <h3>👨‍🏫 Müəllimlər üzrə Sinif Nəticələri</h3>
-        <div id="schoolTeacherList"><p style="color:var(--muted)">Yüklənir...</p></div>
+        <h3>🏆 Siniflərin müqayisəsi</h3>
+        <div id="schClassTable"><p class="sch-empty">Yüklənir…</p></div>
+      </div>
+
+      <div class="admin-section">
+        <h3>⚠️ Ən çox səhv edilən sözlər</h3>
+        <div style="font-size:.74rem;color:var(--muted);line-height:1.65;margin-bottom:10px">
+          Şagirdlərin ən çox çətinlik çəkdiyi sözlər — müəllimlər üçün hazır təkrar planı.
+          Siyahı tam anonimdir, hansı şagirdin səhv etdiyi göstərilmir.
+        </div>
+        <div id="schWeakWords"><p class="sch-empty">Yüklənir…</p></div>
+      </div>
+
+      <div class="admin-section">
+        <h3>👨‍🏫 Müəllim fəallığı</h3>
+        <div id="schoolTeacherList"><p class="sch-empty">Yüklənir…</p></div>
+      </div>
+
+      <div class="admin-section">
+        <h3>⭐ Ən fəal şagirdlər</h3>
+        <div class="admin-chart" id="schTopStudents"><p class="sch-empty">Yüklənir…</p></div>
       </div>
     </div>
   </div>
@@ -2567,6 +2729,10 @@ async function afterAuthSuccess(profile){
   showScreen('mainDashboard');updateTopBar();switchView('Home');renderHome();
   document.getElementById('adminPanelBtn').style.display=currentUser.role==='admin'?'':'none';
   document.getElementById('directorPanelBtn').style.display=currentUser.role==='director'?'':'none';
+  // Böyük Ekran daxil olan hər kəsə görünür: sunumu şagird apara bilər və
+  // ekranda yalnız onsuz da ictimai olan liderbord/xəbər məlumatı göstərilir.
+  const kb=document.getElementById('kioskBtn');
+  if(kb)kb.style.display='';
   document.getElementById('teacherPanelBtn').style.display=currentUser.role==='teacher'?'':'none';
   showToast(`Xoş gəldin, ${currentUser.display_name}! 👋`,'gold');
   if(currentUser.streak>1){
@@ -2737,6 +2903,8 @@ async function doLogout(){
   currentUser=null;aiHistory=[];currentGame=null;
   document.getElementById('adminPanelBtn').style.display='none';
   document.getElementById('directorPanelBtn').style.display='none';
+  const kbOff=document.getElementById('kioskBtn');
+  if(kbOff)kbOff.style.display='none';
   document.getElementById('teacherPanelBtn').style.display='none';
   showScreen('loginScreen');showToast('Çıxış edildi','muted');
   stopSupportBadgePoll();
@@ -2997,6 +3165,31 @@ function renderAlpha(){
 // ══════════════════════════════════════════════
 // GAMES VIEW
 // ══════════════════════════════════════════════
+const GAMES=[
+  {game:'quiz',icon:'🧠',name:'Mənası Nədir?',desc:'Ədəbi sözün mənasını tap',diff:'Orta',xp:'+10 XP',tc:'purple'},
+  {game:'fill',icon:'✏️',name:'Boşluğu Doldur',desc:'Cümləni tamamla, sözü tap',diff:'Orta',xp:'+10 XP',tc:'blue'},
+  {game:'matchtap',icon:'🧩',name:'Uyğun Sözü Tap',desc:'Tapşırığa uyğun sözü kartlar arasından tap',diff:'Qarışıq',xp:'+8–25 XP / sual',tc:'gold'},
+  {game:'match',icon:'🔗',name:'Uyğunlaşdır',desc:'Söz-məna cütlərini uyğunlaşdır',diff:'Çətin',xp:'+10 XP',tc:'purple'},
+  {game:'flash',icon:'⚡',name:'Flashkart',desc:'Kartı çevir, sözün mənasını öyrən',diff:'Asan',xp:'+10 XP',tc:'blue'},
+  {game:'synonym',icon:'🔄',name:'Sinonim Tap',desc:'Eyni mənalı Azərbaycan sözünü tap',diff:'Orta',xp:'+10 XP',tc:'teal'},
+  {game:'antonym',icon:'🔀',name:'Antonim Tap',desc:'Əks mənalı Azərbaycan sözünü tap',diff:'Orta',xp:'+10 XP',tc:'blue'},
+  {game:'wordchain',icon:'⛓️',name:'Söz Zənciri',desc:'Bot ilə yarış, son hərflə yeni söz yaz',diff:'Çətin',xp:'+2 XP / Kombo +5 XP',tc:'purple'},
+  {game:'wordscapes',icon:'🌊',name:'Hərf Şorbası',desc:'Qarışıq hərflərdən sözlər tap',diff:'Orta',xp:'+3 XP / söz',tc:'gold'},
+  {game:'fallingletters',icon:'🌧️',name:'Hərf Tetrisi',desc:'Düşən hərflərdən söz yaz, sil',diff:'Çətin',xp:'+2/+5/+10 XP',tc:'purple'},
+  {game:'spellinghunter',icon:'🎯',name:'Səhv Avçısı',desc:'Axan sözlər arasında səhvləri tap',diff:'Orta',xp:'+2 XP / düzgün klik',tc:'teal'},
+  {game:'exam',icon:'🎓',name:'İmtahan Simulyasiyası',desc:'16 qarışıq sual, 6 dəqiqə, kateqoriya təhlili',diff:'Çətin',xp:'+3 XP / düzgün + bonus',tc:'pink'},
+  {game:'bilik',icon:'🧠',name:'Bilik Yarışı',desc:'Ümumi bilik sualları — 10 sual, 4 variant',diff:'Qarışıq',xp:'+3 XP / düzgün + bonus',tc:'teal'},
+  {game:'corpusfill',icon:'📖',name:'Cümlə Tamamla',desc:'Əsl Azərbaycan mətnindən çıxarılmış sözü tap — 12 sual',diff:'Orta',xp:'+4 XP / düzgün + seriya bonusu',tc:'blue'},
+  {game:'corpusword',icon:'🔎',name:'Söz Mənası Ovu',desc:'Sözü əsl cümlə kontekstində gör, mənasını seç',diff:'Orta',xp:'+4 XP / düzgün + bonus',tc:'teal'},
+  {game:'corpustopic',icon:'🗂️',name:'Mətnin Mövzusu',desc:'Mətn parçasını oxu, hansı sahəyə aid olduğunu tap',diff:'Çətin',xp:'+5 XP / düzgün + bonus',tc:'gold'},
+  {game:'duel',icon:'⚔️',name:'Canlı Duel',desc:'Dostunu çağır, 1v1 sürətli söz döyüşü et',diff:'Rəqabət',xp:'Qalib +30 XP',tc:'red'},
+  {game:'livequiz',icon:'🏆',name:'Canlı Sinif Yarışması',desc:'Müəllimin verdiyi kodla bütün sinifin qoşulduğu canlı yarışma',diff:'Sinif',xp:'+2 XP / düzgün + top-3 bonus',tc:'gold'},
+  {game:'wordcontrib',icon:'🔍',name:'Söz Kəşf Et',desc:'Lüğətdə olmayan sözün mənasını tap, yaz, lüğətə əlavə et',diff:'Yaradıcı',xp:'+1 XP / söz (gündə 100-ə qədər)',tc:'teal'},
+  {game:'classboss',icon:'🐉',name:"Sinif Boss'u",desc:'Bütün sinif birləşib ORTAQ bir Bossa qarşı vuruşur — hər düzgün cavab zərbədir!',diff:'Sinif',xp:'+2 XP / zərbə + ən çox zərbə vurana bonus',tc:'red'},
+  {game:'ctfterm',icon:'🖥️',name:'Hacker Terminalı',desc:'Şifrələnmiş sözləri deşifrə et, terminala düzgün cavabı yaz, sistemi haqla!',diff:'Məntiq',xp:'+15 XP / səviyyə + bonus FLAG',tc:'green'}
+];
+const GAMES_COUNT=GAMES.length;
+
 function renderGames(){
   if(currentGame)return;
   loadQaDB(); // fonda: Bilik Yarışı və İmtahanın "Ümumi bilik" bölməsi üçün
@@ -3038,29 +3231,7 @@ function renderGames(){
     <div class="section-title">🎮 Oyunlar</div>
     <div style="font-size:.78rem;color:var(--muted);margin-bottom:12px">Oyun seç, XP qazan, liderboardda yüksəl!</div>
     <div class="games-grid">
-      ${[
-        {game:'quiz',icon:'🧠',name:'Mənası Nədir?',desc:'Ədəbi sözün mənasını tap',diff:'Orta',xp:'+10 XP',tc:'purple'},
-        {game:'fill',icon:'✏️',name:'Boşluğu Doldur',desc:'Cümləni tamamla, sözü tap',diff:'Orta',xp:'+10 XP',tc:'blue'},
-        {game:'matchtap',icon:'🧩',name:'Uyğun Sözü Tap',desc:'Tapşırığa uyğun sözü kartlar arasından tap',diff:'Qarışıq',xp:'+8–25 XP / sual',tc:'gold'},
-        {game:'match',icon:'🔗',name:'Uyğunlaşdır',desc:'Söz-məna cütlərini uyğunlaşdır',diff:'Çətin',xp:'+10 XP',tc:'purple'},
-        {game:'flash',icon:'⚡',name:'Flashkart',desc:'Kartı çevir, sözün mənasını öyrən',diff:'Asan',xp:'+10 XP',tc:'blue'},
-        {game:'synonym',icon:'🔄',name:'Sinonim Tap',desc:'Eyni mənalı Azərbaycan sözünü tap',diff:'Orta',xp:'+10 XP',tc:'teal'},
-        {game:'antonym',icon:'🔀',name:'Antonim Tap',desc:'Əks mənalı Azərbaycan sözünü tap',diff:'Orta',xp:'+10 XP',tc:'blue'},
-        {game:'wordchain',icon:'⛓️',name:'Söz Zənciri',desc:'Bot ilə yarış, son hərflə yeni söz yaz',diff:'Çətin',xp:'+2 XP / Kombo +5 XP',tc:'purple'},
-        {game:'wordscapes',icon:'🌊',name:'Hərf Şorbası',desc:'Qarışıq hərflərdən sözlər tap',diff:'Orta',xp:'+3 XP / söz',tc:'gold'},
-        {game:'fallingletters',icon:'🌧️',name:'Hərf Tetrisi',desc:'Düşən hərflərdən söz yaz, sil',diff:'Çətin',xp:'+2/+5/+10 XP',tc:'purple'},
-        {game:'spellinghunter',icon:'🎯',name:'Səhv Avçısı',desc:'Axan sözlər arasında səhvləri tap',diff:'Orta',xp:'+2 XP / düzgün klik',tc:'teal'},
-        {game:'exam',icon:'🎓',name:'İmtahan Simulyasiyası',desc:'16 qarışıq sual, 6 dəqiqə, kateqoriya təhlili',diff:'Çətin',xp:'+3 XP / düzgün + bonus',tc:'pink'},
-        {game:'bilik',icon:'🧠',name:'Bilik Yarışı',desc:'Ümumi bilik sualları — 10 sual, 4 variant',diff:'Qarışıq',xp:'+3 XP / düzgün + bonus',tc:'teal'},
-        {game:'corpusfill',icon:'📖',name:'Cümlə Tamamla',desc:'Əsl Azərbaycan mətnindən çıxarılmış sözü tap — 12 sual',diff:'Orta',xp:'+4 XP / düzgün + seriya bonusu',tc:'blue'},
-        {game:'corpusword',icon:'🔎',name:'Söz Mənası Ovu',desc:'Sözü əsl cümlə kontekstində gör, mənasını seç',diff:'Orta',xp:'+4 XP / düzgün + bonus',tc:'teal'},
-        {game:'corpustopic',icon:'🗂️',name:'Mətnin Mövzusu',desc:'Mətn parçasını oxu, hansı sahəyə aid olduğunu tap',diff:'Çətin',xp:'+5 XP / düzgün + bonus',tc:'gold'},
-        {game:'duel',icon:'⚔️',name:'Canlı Duel',desc:'Dostunu çağır, 1v1 sürətli söz döyüşü et',diff:'Rəqabət',xp:'Qalib +30 XP',tc:'red'},
-        {game:'livequiz',icon:'🏆',name:'Canlı Sinif Yarışması',desc:'Müəllimin verdiyi kodla bütün sinifin qoşulduğu canlı yarışma',diff:'Sinif',xp:'+2 XP / düzgün + top-3 bonus',tc:'gold'},
-        {game:'wordcontrib',icon:'🔍',name:'Söz Kəşf Et',desc:'Lüğətdə olmayan sözün mənasını tap, yaz, lüğətə əlavə et',diff:'Yaradıcı',xp:'+1 XP / söz (gündə 100-ə qədər)',tc:'teal'},
-        {game:'classboss',icon:'🐉',name:"Sinif Boss'u",desc:'Bütün sinif birləşib ORTAQ bir Bossa qarşı vuruşur — hər düzgün cavab zərbədir!',diff:'Sinif',xp:'+2 XP / zərbə + ən çox zərbə vurana bonus',tc:'red'},
-        {game:'ctfterm',icon:'🖥️',name:'Hacker Terminalı',desc:'Şifrələnmiş sözləri deşifrə et, terminala düzgün cavabı yaz, sistemi haqla!',diff:'Məntiq',xp:'+15 XP / səviyyə + bonus FLAG',tc:'green'}
-      ].map(g=>{
+      ${GAMES.map(g=>{
       const glow={purple:'rgba(124,92,255,.35)',blue:'rgba(64,152,240,.35)',gold:'rgba(240,192,64,.35)',teal:'rgba(64,217,192,.35)',red:'rgba(224,85,85,.35)',green:'rgba(64,192,128,.35)',pink:'rgba(255,92,168,.35)'}[g.tc];
       return `
       <div class="game-card" data-game="${g.game}" style="--tc:var(--${g.tc});--tc-dark:var(--${g.tc}2);--tc-glow:${glow}">
@@ -7449,51 +7620,331 @@ async function openAdmin(){
   loadAdminStats();
   renderAdminWords();
   if(!isDirector){loadWordSubmissions();checkWordSubmissionMilestone();}
+  const rb=document.getElementById('schRefreshBtn');
+  if(rb&&!rb.dataset.wired){rb.dataset.wired='1';rb.onclick=()=>{loadSchoolReport();showToast('Hesabat yeniləndi.','teal');};}
+  const pb=document.getElementById('schPrintBtn');
+  if(pb&&!pb.dataset.wired){pb.dataset.wired='1';pb.onclick=printSchoolReport;}
 }
 
-// Direktor üçün məktəb-səviyyəli aqreqat hesabat: bütün sinifləri/müəllimləri
-// bir yerdə göstərir (mövcud class_leaderboard görünüşündən istifadə edir,
-// heç bir yeni fərdi məlumat açmır — yalnız sinif/müəllim səviyyəsində cəmlər).
-async function loadSchoolReport(){
-  let classes=[],teachers=[];
-  try{const r=await sb.from('class_leaderboard').select().order('total_xp',{ascending:false});classes=r.data||[];}catch(e){}
-  try{const r=await sb.from('profiles').select().eq('role','teacher');teachers=r.data||[];}catch(e){}
-  const totalStudents=classes.reduce((s,c)=>s+(c.student_count||0),0);
-  const totalXP=classes.reduce((s,c)=>s+(c.total_xp||0),0);
-  document.getElementById('schStatClasses').textContent=classes.length;
-  document.getElementById('schStatTeachers').textContent=teachers.length;
-  document.getElementById('schStatStudents').textContent=totalStudents;
-  document.getElementById('schStatTotalXP').textContent=totalXP;
+// ══════════════════════════════════════════════════════════════
+// DİREKTOR PANELİ v2 — məktəb səviyyəsində analitika
+//
+// Direktor bir platformanı üç sualla qiymətləndirir:
+//   1) Şagirdlər əslində istifadə edirmi?   → iştirak faizi, həftəlik fəallıq
+//   2) Nəticə verirmi?                      → sinif müqayisəsi, öyrənilən söz
+//   3) Müəllimin işini azaldırmı?           → ən çox səhv edilən sözlər,
+//                                             müəllim fəallığı
+// Bu panel məhz həmin üç suala cavab verir və nəticəni çap edilə bilən
+// bir səhifəlik hesabata çevirir.
+//
+// MƏXFİLİK: sinif və məktəb səviyyəsində cəmlər göstərilir; fərdi şagird adı
+// yalnız "ən fəal şagirdlər" siyahısında görünür (liderbordda onsuz da ictimaidir).
+// Zəif söz statistikası TAMAMİLƏ anonimdir — hansı şagirdin səhv etdiyi yox,
+// yalnız hansı sözün neçə dəfə səhv edildiyi cəmlənir.
+// ══════════════════════════════════════════════════════════════
 
-  const chart=document.getElementById('schoolClassChart');
-  if(chart){
-    if(!classes.length)chart.innerHTML='<p style="color:var(--muted);font-size:.82rem">Hələ məlumat yoxdur.</p>';
+let schoolReportData = null;   // çap üçün son yüklənmiş məlumat
+
+/** "Thu Sep 18 2026" formatındakı last_visit-i Date-ə çevirir */
+function schParseVisit(s){
+  if(!s)return null;
+  const d=new Date(s);
+  return isNaN(d.getTime())?null:d;
+}
+function schDaysAgo(n){
+  const d=new Date();
+  d.setHours(0,0,0,0);
+  d.setDate(d.getDate()-n);
+  return d;
+}
+function schPct(a,b){return b>0?Math.round((a/b)*100):0;}
+
+async function loadSchoolReport(){
+  const box=document.getElementById('atab-school');
+  if(!box)return;
+
+  let profiles=[],classes=[],lessons=[],quizzes=[],stories=0;
+  try{const r=await sb.from('profiles')
+    .select('username,display_name,class_grade,role,xp,level,streak,longest_streak,learned,weak_words,last_visit,created_at')
+    .limit(1000);profiles=r.data||[];}catch(e){}
+  try{const r=await sb.from('class_leaderboard').select().order('total_xp',{ascending:false});classes=r.data||[];}catch(e){}
+  try{const r=await sb.from('teacher_lessons').select('teacher_username,title,updated_at');lessons=r.data||[];}catch(e){}
+  try{const r=await sb.from('live_quiz_sessions').select('teacher_username,class_grade,status,created_at');quizzes=r.data||[];}catch(e){}
+  try{const r=await sb.from('stories').select('id',{count:'exact',head:true});stories=r.count||0;}catch(e){}
+
+  const students=profiles.filter(p=>p.role==='user');
+  const teachers=profiles.filter(p=>p.role==='teacher');
+
+  // ── İştirak: son 7 / 30 gündə ən azı bir dəfə daxil olanlar ──
+  const d7=schDaysAgo(7), d30=schDaysAgo(30);
+  let act7=0,act30=0;
+  for(const s of students){
+    const v=schParseVisit(s.last_visit);
+    if(!v)continue;
+    if(v>=d7)act7++;
+    if(v>=d30)act30++;
+  }
+
+  const totalXP=students.reduce((a,s)=>a+(s.xp||0),0);
+  const totalLearned=students.reduce((a,s)=>a+((s.learned||[]).length),0);
+
+  // ── Həftəlik fəallıq (son 7 gün, gün-gün) ──
+  const week=[];
+  for(let i=6;i>=0;i--){
+    const day=schDaysAgo(i);
+    const next=schDaysAgo(i-1);
+    const n=students.filter(s=>{const v=schParseVisit(s.last_visit);return v&&v>=day&&v<next;}).length;
+    week.push({label:day.toLocaleDateString('az-AZ',{weekday:'short'}),date:day,n});
+  }
+
+  // ── Sinif müqayisəsi ──
+  const byClass=new Map();
+  for(const s of students){
+    const c=(s.class_grade||'').trim()||'—';
+    if(!byClass.has(c))byClass.set(c,{cls:c,n:0,act:0,xp:0,learned:0,streak:0});
+    const e=byClass.get(c);
+    e.n++;e.xp+=s.xp||0;e.learned+=(s.learned||[]).length;
+    e.streak=Math.max(e.streak,s.longest_streak||s.streak||0);
+    const v=schParseVisit(s.last_visit);
+    if(v&&v>=d7)e.act++;
+  }
+  const classRows=[...byClass.values()]
+    .map(e=>({...e,avgXp:Math.round(e.xp/Math.max(e.n,1)),
+      avgLearned:Math.round(e.learned/Math.max(e.n,1)),pct:schPct(e.act,e.n)}))
+    .sort((a,b)=>b.avgXp-a.avgXp);
+
+  // ── Ən çox səhv edilən sözlər (ANONİM cəm) ──
+  const weak=new Map();
+  for(const s of students){
+    const ww=s.weak_words||{};
+    for(const [w,c] of Object.entries(ww)){
+      const n=typeof c==='number'?c:(c?.wrong||0);
+      if(!n)continue;
+      const cur=weak.get(w)||{w,n:0,students:0};
+      cur.n+=n;cur.students++;
+      weak.set(w,cur);
+    }
+  }
+  const weakTop=[...weak.values()].sort((a,b)=>b.n-a.n).slice(0,12)
+    .map(x=>{
+      const def=(WORDS||[]).find(d=>d.en.toLocaleLowerCase('az')===x.w.toLocaleLowerCase('az'));
+      return {...x,az:def?def.az:''};
+    });
+
+  // ── Müəllim fəallığı ──
+  const teacherRows=teachers.map(t=>{
+    const cls=classRows.find(c=>normClassJs(c.cls)===normClassJs(t.teacher_class||''));
+    return {
+      name:t.display_name||t.username,
+      username:t.username,
+      cls:t.teacher_class||'—',
+      students:cls?cls.n:0,
+      lessons:lessons.filter(l=>l.teacher_username===t.username).length,
+      quizzes:quizzes.filter(q=>q.teacher_username===t.username).length,
+      avgXp:cls?cls.avgXp:0
+    };
+  }).sort((a,b)=>(b.lessons+b.quizzes)-(a.lessons+a.quizzes));
+
+  const topStudents=[...students].sort((a,b)=>(b.xp||0)-(a.xp||0)).slice(0,10);
+
+  schoolReportData={
+    generated:new Date(),
+    classesCount:classRows.length, teachersCount:teachers.length,
+    studentsCount:students.length, act7, act30, totalXP, totalLearned, stories,
+    lessonsCount:lessons.length, quizzesCount:quizzes.length,
+    week, classRows, weakTop, teacherRows, topStudents
+  };
+
+  renderSchoolReport(schoolReportData);
+}
+
+/** Sinif adını müqayisə üçün normallaşdırır ("10 b" → "10B") */
+function normClassJs(s){return String(s||'').replace(/[^a-zA-Z0-9əğıöşüçƏĞIİÖŞÜÇ]/g,'').toLocaleUpperCase('az');}
+
+function renderSchoolReport(d){
+  const set=(id,val)=>{const el=document.getElementById(id);if(el)el.textContent=val;};
+  set('schStatClasses',d.classesCount);
+  set('schStatTeachers',d.teachersCount);
+  set('schStatStudents',d.studentsCount);
+  set('schStatTotalXP',d.totalXP.toLocaleString('az-AZ'));
+  set('schStatActive',`${schPct(d.act7,d.studentsCount)}%`);
+  set('schStatLearned',d.totalLearned.toLocaleString('az-AZ'));
+
+  const sub=document.getElementById('schActiveSub');
+  if(sub)sub.textContent=`${d.act7} şagird son 7 gündə · ${d.act30} şagird son 30 gündə aktiv olub`;
+
+  // ── Həftəlik fəallıq ──
+  const wk=document.getElementById('schWeekChart');
+  if(wk){
+    const max=Math.max(...d.week.map(w=>w.n),1);
+    wk.innerHTML=d.week.map(w=>`
+      <div class="sch-col">
+        <div class="sch-col-val">${w.n}</div>
+        <div class="sch-col-bar"><div style="height:${Math.round((w.n/max)*100)}%"></div></div>
+        <div class="sch-col-lbl">${w.label}</div>
+      </div>`).join('');
+  }
+
+  // ── Sinif müqayisəsi ──
+  const ct=document.getElementById('schClassTable');
+  if(ct){
+    if(!d.classRows.length)ct.innerHTML='<p class="sch-empty">Hələ sinif məlumatı yoxdur.</p>';
+    else ct.innerHTML=`
+      <div class="sch-table-wrap"><table class="sch-table">
+        <thead><tr><th>Sinif</th><th>Şagird</th><th>Aktiv (7g)</th><th>Orta XP</th><th>Orta söz</th><th>Ən uzun seriya</th></tr></thead>
+        <tbody>${d.classRows.map(c=>`
+          <tr>
+            <td><b>${escapeHtml(c.cls)}</b></td>
+            <td>${c.n}</td>
+            <td><span class="sch-pill ${c.pct>=60?'good':c.pct>=30?'mid':'low'}">${c.pct}%</span></td>
+            <td>${c.avgXp.toLocaleString('az-AZ')}</td>
+            <td>${c.avgLearned}</td>
+            <td>${c.streak} gün</td>
+          </tr>`).join('')}</tbody>
+      </table></div>`;
+  }
+
+  // ── Ən çox səhv edilən sözlər ──
+  const ww=document.getElementById('schWeakWords');
+  if(ww){
+    if(!d.weakTop.length)ww.innerHTML='<p class="sch-empty">Hələ kifayət qədər oyun oynanmayıb — məlumat toplandıqca burada görünəcək.</p>';
     else{
-      const maxXP=Math.max(...classes.map(c=>c.total_xp||0),1);
-      chart.innerHTML=classes.slice(0,8).map(c=>`
-        <div class="admin-chart-bar-row">
-          <div class="admin-chart-label">${c.class_grade}</div>
-          <div class="admin-chart-bar"><div class="admin-chart-fill" style="width:${Math.round((c.total_xp/maxXP)*100)}%;background:var(--gold)"></div></div>
-          <div class="admin-chart-val">${c.total_xp}</div>
+      const max=Math.max(...d.weakTop.map(x=>x.n),1);
+      ww.innerHTML=d.weakTop.map(x=>`
+        <div class="sch-weak">
+          <div class="sch-weak-w">${escapeHtml(x.w)}${x.az?`<span>${escapeHtml(x.az)}</span>`:''}</div>
+          <div class="sch-weak-bar"><div style="width:${Math.round((x.n/max)*100)}%"></div></div>
+          <div class="sch-weak-n">${x.n}<small>${x.students} şagird</small></div>
         </div>`).join('');
     }
   }
 
-  const tlist=document.getElementById('schoolTeacherList');
-  if(tlist){
-    if(!teachers.length)tlist.innerHTML='<p style="color:var(--muted)">Hələ müəllim təyin edilməyib.</p>';
+  // ── Müəllim fəallığı ──
+  const tl=document.getElementById('schoolTeacherList');
+  if(tl){
+    if(!d.teacherRows.length)tl.innerHTML='<p class="sch-empty">Hələ müəllim təyin edilməyib.</p>';
+    else tl.innerHTML=`
+      <div class="sch-table-wrap"><table class="sch-table">
+        <thead><tr><th>Müəllim</th><th>Sinif</th><th>Şagird</th><th>Dərs</th><th>Canlı yarışma</th><th>Sinfin orta XP-si</th></tr></thead>
+        <tbody>${d.teacherRows.map(t=>`
+          <tr>
+            <td><b>${escapeHtml(t.name)}</b><br><small style="color:var(--muted)">@${escapeHtml(t.username)}</small></td>
+            <td>${escapeHtml(t.cls)}</td>
+            <td>${t.students}</td>
+            <td>${t.lessons}</td>
+            <td>${t.quizzes}</td>
+            <td>${t.avgXp.toLocaleString('az-AZ')}</td>
+          </tr>`).join('')}</tbody>
+      </table></div>`;
+  }
+
+  // ── Ən fəal şagirdlər ──
+  const ts=document.getElementById('schTopStudents');
+  if(ts){
+    if(!d.topStudents.length)ts.innerHTML='<p class="sch-empty">Hələ şagird yoxdur.</p>';
     else{
-      tlist.innerHTML=teachers.map(t=>{
-        const cls=classes.find(c=>c.class_grade===t.teacher_class);
-        return `<div class="admin-user-row">
-          <div class="admin-user-info">
-            <div class="admin-user-name">${t.display_name||t.username}<span class="admin-badge" style="background:var(--purple);color:#fff">👨‍🏫 ${t.teacher_class||'?'}</span></div>
-            <div class="admin-user-sub">@${t.username} · Şagird: ${cls?.student_count||0} · Sinif XP-si: ${cls?.total_xp||0} · Orta XP: ${cls?.avg_xp||0}</div>
-          </div>
-        </div>`;
-      }).join('');
+      const max=Math.max(...d.topStudents.map(s=>s.xp||0),1);
+      ts.innerHTML=d.topStudents.map((s,i)=>`
+        <div class="admin-chart-bar-row">
+          <div class="admin-chart-label">${i+1}. ${escapeHtml((s.display_name||s.username||'?').slice(0,14))}${s.class_grade?` <small style="color:var(--muted)">${escapeHtml(s.class_grade)}</small>`:''}</div>
+          <div class="admin-chart-bar"><div class="admin-chart-fill" style="width:${Math.round(((s.xp||0)/max)*100)}%;background:${['var(--gold)','var(--teal)','var(--purple)'][i]||'var(--blue)'}"></div></div>
+          <div class="admin-chart-val">${(s.xp||0).toLocaleString('az-AZ')}</div>
+        </div>`).join('');
     }
   }
+}
+
+// ── Çap edilə bilən bir səhifəlik hesabat ────────────────────────
+function printSchoolReport(){
+  const d=schoolReportData;
+  if(!d){showToast('Hesabat hələ yüklənməyib.','gold');return;}
+  const w=window.open('','_blank');
+  if(!w){showToast('Brauzer yeni pəncərəni bloklayıb.','red');return;}
+  const date=d.generated.toLocaleDateString('az-AZ',{day:'numeric',month:'long',year:'numeric'});
+  const pct=schPct(d.act7,d.studentsCount);
+  const row=(c)=>`<tr><td><b>${escapeHtml(c.cls)}</b></td><td>${c.n}</td><td>${c.pct}%</td>
+    <td>${c.avgXp}</td><td>${c.avgLearned}</td></tr>`;
+  w.document.write(`<!doctype html><meta charset="utf-8"><title>SözLab — Məktəb Hesabatı</title>
+<style>
+@page{size:A4;margin:14mm}
+body{font-family:Georgia,'Times New Roman',serif;color:#111;margin:0;font-size:11.5px;line-height:1.5}
+.hd{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2.5px solid #0B1F3A;padding-bottom:8px}
+.hd h1{margin:4px 0 0;font-size:19px;color:#0B1F3A}
+.eyebrow{font-size:9px;letter-spacing:2.2px;color:#666}
+.meta{text-align:right;font-size:10px;color:#444}
+h2{font-size:12.5px;margin:15px 0 6px;color:#0B1F3A;border-bottom:1px solid #ccc;padding-bottom:3px}
+.kpi{display:flex;gap:7px;margin-top:11px}
+.kpi div{flex:1;border:1px solid #d5d5dd;border-radius:6px;padding:7px 8px;text-align:center}
+.kpi b{display:block;font-size:17px;color:#0B1F3A}
+.kpi span{font-size:8.5px;color:#666;text-transform:uppercase;letter-spacing:.5px}
+table{width:100%;border-collapse:collapse;font-size:10.5px}
+th{background:#f0f0f5;text-align:left;padding:4px 6px;border:1px solid #d5d5dd;font-size:9.5px}
+td{padding:4px 6px;border:1px solid #e2e2ea}
+.two{display:flex;gap:14px}.two>div{flex:1}
+ol{margin:4px 0;padding-left:18px}
+li{margin:2px 0}
+.note{font-size:9.5px;color:#555;background:#f7f7fb;border-left:3px solid #0B1F3A;padding:6px 9px;margin-top:8px}
+.ft{margin-top:16px;border-top:1px solid #ccc;padding-top:6px;font-size:9px;color:#888;display:flex;justify-content:space-between}
+</style>
+<div class="hd">
+  <div>
+    <div class="eyebrow">RÖVŞƏN İMANOV ADINA 205 NÖMRƏLİ TAM ORTA MƏKTƏB · BİNƏQƏDİ, BAKI</div>
+    <h1>SözLab — Məktəb Hesabatı</h1>
+  </div>
+  <div class="meta">Hesabat tarixi<br><b>${date}</b></div>
+</div>
+
+<div class="kpi">
+  <div><b>${d.studentsCount}</b><span>Şagird</span></div>
+  <div><b>${d.classesCount}</b><span>Sinif</span></div>
+  <div><b>${d.teachersCount}</b><span>Müəllim</span></div>
+  <div><b>${pct}%</b><span>Həftəlik iştirak</span></div>
+  <div><b>${d.totalLearned.toLocaleString('az-AZ')}</b><span>Öyrənilən söz</span></div>
+  <div><b>${d.totalXP.toLocaleString('az-AZ')}</b><span>Ümumi XP</span></div>
+</div>
+
+<h2>Siniflər üzrə nəticələr</h2>
+<table>
+  <thead><tr><th>Sinif</th><th>Şagird</th><th>Aktiv (7 gün)</th><th>Orta XP</th><th>Orta öyrənilən söz</th></tr></thead>
+  <tbody>${d.classRows.map(row).join('')||'<tr><td colspan="5">Məlumat yoxdur</td></tr>'}</tbody>
+</table>
+
+<div class="two">
+  <div>
+    <h2>Ən çox səhv edilən sözlər</h2>
+    <ol>${d.weakTop.slice(0,10).map(x=>
+      `<li><b>${escapeHtml(x.w)}</b>${x.az?` — ${escapeHtml(x.az)}`:''} <i>(${x.n} səhv)</i></li>`).join('')
+      ||'<li>Hələ məlumat toplanmayıb</li>'}</ol>
+    <div class="note">Bu siyahı müəllimlər üçün birbaşa təkrar planıdır: şagirdlərin
+    ən çox çətinlik çəkdiyi sözlər dərsdə yenidən işlənməlidir. Siyahı tam anonimdir.</div>
+  </div>
+  <div>
+    <h2>Müəllim fəallığı</h2>
+    <table>
+      <thead><tr><th>Müəllim</th><th>Sinif</th><th>Dərs</th><th>Yarışma</th></tr></thead>
+      <tbody>${d.teacherRows.map(t=>
+        `<tr><td>${escapeHtml(t.name)}</td><td>${escapeHtml(t.cls)}</td><td>${t.lessons}</td><td>${t.quizzes}</td></tr>`).join('')
+        ||'<tr><td colspan="4">Müəllim təyin edilməyib</td></tr>'}</tbody>
+    </table>
+    <h2>Platforma istifadəsi</h2>
+    <table>
+      <tbody>
+        <tr><td>Yaradılmış dərs materialı</td><td><b>${d.lessonsCount}</b></td></tr>
+        <tr><td>Keçirilmiş canlı sinif yarışması</td><td><b>${d.quizzesCount}</b></td></tr>
+        <tr><td>Şagird hekayələri</td><td><b>${d.stories}</b></td></tr>
+        <tr><td>Lüğətdəki söz sayı</td><td><b>${(WORDS||[]).length.toLocaleString('az-AZ')}</b></td></tr>
+        <tr><td>Mövcud oyun sayı</td><td><b>${typeof GAMES_COUNT!=='undefined'?GAMES_COUNT:'—'}</b></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="ft">
+  <span>SözLab · sozlabyoxlama.vercel.app</span>
+  <span>Məlumatlar hesabat anına aiddir · Şagird məlumatları anonimləşdirilib</span>
+</div>`);
+  w.document.close();w.focus();
+  setTimeout(()=>w.print(),400);
 }
 
 async function loadAdminStats(){
@@ -11088,6 +11539,184 @@ async function startCorpusWord(v){
 }
 
 
+// ══════════════════════════════════════════════════════════════
+// BÖYÜK EKRAN (kiosk) REJİMİ
+//
+// Məktəb foyesindəki televizor və ya sinifdəki proyektor üçün nəzərdə
+// tutulub: tam ekran, iri şrift, uzaqdan oxunan, öz-özünə dövr edən
+// slaydlar. Heç bir klik tələb etmir — açıb qoyursan, işləyir.
+//
+// Slaydlar: 1) Sinif reytinqi  2) Günün sözü  3) Həftənin şagirdləri
+//           4) Son xəbər       5) Məktəb rəqəmləri
+//
+// DAVAMLILIQ: məlumat 5 dəqiqədən bir yenilənir. Şəbəkə kəsilsə ən son
+// uğurlu məlumat ekranda qalır — proyektorda ağ ekran görünmür.
+// MƏXFİLİK: yalnız liderbordda onsuz da ictimai olan ad/xal göstərilir.
+// ══════════════════════════════════════════════════════════════
+
+let kioskTimer=null, kioskRefreshTimer=null, kioskIdx=0, kioskData=null, kioskKeyHandler=null;
+const KIOSK_SLIDE_MS=12000;      // hər slayd 12 saniyə
+const KIOSK_REFRESH_MS=300000;   // məlumat 5 dəqiqədən bir yenilənir
+
+async function kioskLoadData(){
+  const out={classes:[],top:[],news:null,stats:{}};
+  try{const r=await sb.from('class_leaderboard').select().order('total_xp',{ascending:false}).limit(8);out.classes=r.data||[];}catch(e){}
+  try{const r=await sb.from('profiles').select('username,display_name,class_grade,xp,level,streak')
+    .eq('role','user').order('xp',{ascending:false}).limit(8);out.top=r.data||[];}catch(e){}
+  try{const r=await sb.from('school_news').select('title,content,category,published_at')
+    .eq('published',true).order('published_at',{ascending:false}).limit(1);out.news=(r.data||[])[0]||null;}catch(e){}
+  out.stats={
+    students:out.classes.reduce((a,c)=>a+(c.student_count||0),0),
+    classes:out.classes.length,
+    xp:out.classes.reduce((a,c)=>a+(c.total_xp||0),0),
+    words:(WORDS||[]).length,
+    games:typeof GAMES_COUNT!=='undefined'?GAMES_COUNT:0
+  };
+  // Yalnız nəsə gəlibsə köhnə məlumatı əvəz et (offline-da ekran boşalmasın)
+  if(out.classes.length||out.top.length||out.news||!kioskData)kioskData=out;
+  return kioskData;
+}
+
+function kioskSlides(){
+  const d=kioskData||{classes:[],top:[],news:null,stats:{}};
+  const slides=[];
+
+  // 1) Sinif reytinqi
+  if(d.classes.length){
+    const max=Math.max(...d.classes.map(c=>c.total_xp||0),1);
+    slides.push({
+      eyebrow:'SİNİF REYTİNQİ',
+      title:'Ən fəal siniflər',
+      body:`<div class="kio-bars">${d.classes.slice(0,6).map((c,i)=>`
+        <div class="kio-bar-row">
+          <div class="kio-rank ${i===0?'gold':''}">${i+1}</div>
+          <div class="kio-bar-name">${escapeHtml(c.class_grade)}</div>
+          <div class="kio-bar"><div style="width:${Math.round(((c.total_xp||0)/max)*100)}%"></div></div>
+          <div class="kio-bar-val">${(c.total_xp||0).toLocaleString('az-AZ')}<small>XP</small></div>
+        </div>`).join('')}</div>`
+    });
+  }
+
+  // 2) Günün sözü
+  if(dailyWord){
+    slides.push({
+      eyebrow:'GÜNÜN SÖZÜ',
+      title:escapeHtml(dailyWord.en),
+      body:`<div class="kio-word-mean">${escapeHtml(dailyWord.az||'')}</div>
+        ${dailyWord.ex?`<div class="kio-word-ex">«${escapeHtml(dailyWord.ex)}»</div>`:''}`
+    });
+  }
+
+  // 3) Həftənin şagirdləri
+  if(d.top.length){
+    slides.push({
+      eyebrow:'LİDERLƏR',
+      title:'Ən çox XP toplayanlar',
+      body:`<div class="kio-podium">${d.top.slice(0,5).map((s,i)=>`
+        <div class="kio-pod ${i===0?'first':''}">
+          <div class="kio-pod-medal">${['🥇','🥈','🥉','🏅','🏅'][i]}</div>
+          <div class="kio-pod-name">${escapeHtml((s.display_name||s.username||'?').slice(0,18))}</div>
+          <div class="kio-pod-cls">${escapeHtml(s.class_grade||'')}</div>
+          <div class="kio-pod-xp">${(s.xp||0).toLocaleString('az-AZ')} XP</div>
+        </div>`).join('')}</div>`
+    });
+  }
+
+  // 4) Son xəbər
+  if(d.news){
+    const txt=String(d.news.content||'').replace(/\s+/g,' ').slice(0,320);
+    slides.push({
+      eyebrow:`MƏKTƏB XƏBƏRİ${d.news.category?' · '+escapeHtml(d.news.category).toLocaleUpperCase('az'):''}`,
+      title:escapeHtml(d.news.title||''),
+      body:`<div class="kio-news">${escapeHtml(txt)}${txt.length>=320?'…':''}</div>`
+    });
+  }
+
+  // 5) Rəqəmlərlə SözLab
+  slides.push({
+    eyebrow:'RƏQƏMLƏRLƏ',
+    title:'SözLab · 205 nömrəli məktəb',
+    body:`<div class="kio-kpis">
+      ${[[d.stats.students||0,'Şagird'],[d.stats.classes||0,'Sinif'],
+         [(d.stats.words||0).toLocaleString('az-AZ'),'Söz'],[d.stats.games||0,'Oyun'],
+         [(d.stats.xp||0).toLocaleString('az-AZ'),'Ümumi XP']]
+        .map(([v,l])=>`<div class="kio-kpi"><b>${v}</b><span>${l}</span></div>`).join('')}
+    </div>`
+  });
+
+  return slides;
+}
+
+function kioskRender(){
+  const el=document.getElementById('kioskBody');
+  if(!el)return;
+  const slides=kioskSlides();
+  if(!slides.length){
+    el.innerHTML='<div class="kio-eyebrow">SÖZLAB</div><div class="kio-title">Məlumat yüklənir…</div>';
+    return;
+  }
+  kioskIdx=kioskIdx%slides.length;
+  const s=slides[kioskIdx];
+  el.innerHTML=`<div class="kio-eyebrow">${s.eyebrow}</div>
+    <div class="kio-title">${s.title}</div>
+    <div class="kio-content">${s.body}</div>`;
+  el.classList.remove('kio-in');
+  void el.offsetWidth;          // animasiyanı yenidən başlat
+  el.classList.add('kio-in');
+  const dots=document.getElementById('kioskDots');
+  if(dots)dots.innerHTML=slides.map((_,i)=>`<span class="${i===kioskIdx?'on':''}"></span>`).join('');
+}
+
+function kioskNext(step){
+  const n=kioskSlides().length||1;
+  kioskIdx=(kioskIdx+(step||1)+n)%n;
+  kioskRender();
+  kioskRestartTimer();
+}
+function kioskRestartTimer(){
+  clearInterval(kioskTimer);
+  kioskTimer=setInterval(()=>kioskNext(1),KIOSK_SLIDE_MS);
+}
+
+async function openKiosk(){
+  const scr=document.getElementById('kioskScreen');
+  if(!scr)return;
+  scr.classList.add('on');
+  document.body.classList.add('kiosk-on');
+  kioskIdx=0;
+  kioskRender();                       // dərhal nəsə göstər
+  await kioskLoadData();
+  kioskRender();
+  kioskRestartTimer();
+  clearInterval(kioskRefreshTimer);
+  kioskRefreshTimer=setInterval(async()=>{await kioskLoadData();kioskRender();},KIOSK_REFRESH_MS);
+
+  kioskKeyHandler=e=>{
+    if(e.key==='Escape')closeKiosk();
+    else if(e.key==='ArrowRight'||e.key===' ')kioskNext(1);
+    else if(e.key==='ArrowLeft')kioskNext(-1);
+  };
+  document.addEventListener('keydown',kioskKeyHandler);
+
+  // Tam ekran (istifadəçi jesti ilə çağırıldığı üçün icazə verilir)
+  try{ if(!document.fullscreenElement) await scr.requestFullscreen(); }catch(e){}
+  // Ekran sönməsin (dəstəklənən brauzerlərdə)
+  try{ if('wakeLock' in navigator) kioskWakeLock=await navigator.wakeLock.request('screen'); }catch(e){}
+}
+let kioskWakeLock=null;
+
+function closeKiosk(){
+  const scr=document.getElementById('kioskScreen');
+  if(scr)scr.classList.remove('on');
+  document.body.classList.remove('kiosk-on');
+  clearInterval(kioskTimer);kioskTimer=null;
+  clearInterval(kioskRefreshTimer);kioskRefreshTimer=null;
+  if(kioskKeyHandler){document.removeEventListener('keydown',kioskKeyHandler);kioskKeyHandler=null;}
+  try{ if(document.fullscreenElement) document.exitFullscreen(); }catch(e){}
+  try{ kioskWakeLock?.release?.(); kioskWakeLock=null; }catch(e){}
+}
+
+
 window.copyEmail=()=>{
   navigator.clipboard.writeText('sozlab@example.com');
   showToast('Email ünvanı kopyalandı!','teal');
@@ -11130,9 +11759,22 @@ window.addEventListener('DOMContentLoaded',async()=>{
   try{
     const{data:stats}=await withTimeout(sb.rpc('get_public_stats'),3000);
     document.getElementById('lsUsers').textContent=stats?.users??0;
-    document.getElementById('lsStories').textContent=stats?.stories??0;
+    // Hekayə sayğacı yalnız sıfırdan böyük olanda göstərilir — açılış
+    // səhifəsində "0" rəqəmi platformanı zəif göstərir.
+    const st=stats?.stories??0;
+    document.getElementById('lsStories').textContent=st;
+    document.getElementById('lsStoriesStat').style.display=st>0?'':'none';
+    document.getElementById('lsStoriesDiv').style.display=st>0?'':'none';
   }catch(e){}
   document.getElementById('lsWords').textContent=WORDS.length;
+  // Oyun sayı tək mənbədən (GAMES_COUNT) gəlir ki, yeni oyun əlavə ediləndə
+  // açılış səhifəsi və footer avtomatik yenilənsin, əl ilə unudulmasın.
+  const gc=document.getElementById('lsGames');
+  if(gc)gc.textContent=GAMES_COUNT;
+  const fp=document.getElementById('featGamesPill');
+  if(fp)fp.textContent=`🎮 ${GAMES_COUNT} Oyun`;
+  const fg=document.getElementById('footerGamesItem');
+  if(fg)fg.textContent=`🎮 ${GAMES_COUNT} Oyun`;
   hideLoading();
   window.__sozlabBooted=true;
 
@@ -11141,8 +11783,11 @@ window.addEventListener('DOMContentLoaded',async()=>{
   if(footerYearEl)footerYearEl.textContent=new Date().getFullYear();
   const apkLinkEl=document.getElementById('footerApkLink');
   if(apkLinkEl){
-    if(APK_DOWNLOAD_URL){apkLinkEl.href=APK_DOWNLOAD_URL;}
-    else{apkLinkEl.style.opacity='.5';apkLinkEl.style.pointerEvents='none';apkLinkEl.textContent='⬇️ APK tezliklə';}
+    // APK hazır olanda link görünür; hazır deyilsə "tezliklə" yazmaq əvəzinə
+    // ümumiyyətlə gizlədilir — onun yerini PWA quraşdırma düyməsi tutur,
+    // çünki sayt onsuz da telefonda tətbiq kimi quraşdırıla bilir.
+    if(APK_DOWNLOAD_URL)apkLinkEl.href=APK_DOWNLOAD_URL;
+    else apkLinkEl.style.display='none';
   }
   document.getElementById('footerNewsletterBtn')?.addEventListener('click',async()=>{
     const emailEl=document.getElementById('footerNewsletterEmail');
@@ -11244,6 +11889,21 @@ window.addEventListener('DOMContentLoaded',async()=>{
   // Direktor Paneli — eyni ekranı (adminScreen) açır, amma RLS server tərəfdə admin
   // sətirlərinin redaktəsini/silinməsini bloklayır (is_director() ilə); UI da bunu
   // əks etdirir (bax loadAdminUsers() — admin sətirləri direktor üçün kilidlənir).
+  document.getElementById('kioskBtn')?.addEventListener('click',openKiosk);
+  // Foyedəki televizor üçün: sozlabyoxlama.vercel.app/#ekran linkini açmaq
+  // kifayətdir — heç bir klik lazım deyil.
+  if(location.hash==='#ekran'||location.hash==='#kiosk')setTimeout(openKiosk,1200);
+  window.addEventListener('hashchange',()=>{
+    if(location.hash==='#ekran'||location.hash==='#kiosk')openKiosk();
+  });
+  document.getElementById('kioskExit')?.addEventListener('click',closeKiosk);
+  document.getElementById('kioskNext')?.addEventListener('click',()=>kioskNext(1));
+  document.getElementById('kioskPrev')?.addEventListener('click',()=>kioskNext(-1));
+  setInterval(()=>{
+    const c=document.getElementById('kioskClock');
+    if(c&&document.getElementById('kioskScreen')?.classList.contains('on'))
+      c.textContent=new Date().toLocaleTimeString('az-AZ',{hour:'2-digit',minute:'2-digit'});
+  },1000);
   document.getElementById('directorPanelBtn').addEventListener('click',()=>{
     if(currentUser?.role!=='director'){showToast('İcazə yoxdur!','red');return;}
     openAdmin();
@@ -11440,7 +12100,59 @@ if('serviceWorker' in navigator){
   window.addEventListener('load',()=>{
     navigator.serviceWorker.register('/sw.js').catch(()=>{});
   });
+  // sw.js "stale-while-revalidate" işlədir: köhnə nüsxə dərhal göstərilir,
+  // yenisi arxa planda gəlir. Yeni versiya hazır olanda istifadəçiyə
+  // səhifəni yeniləməyi təklif edirik (məcburi yeniləmə etmirik ki,
+  // oyunun ortasında işi kəsilməsin).
+  navigator.serviceWorker.addEventListener('message',e=>{
+    if(e.data?.type!=='sozlab-update')return;
+    if(document.getElementById('swUpdateBar'))return;
+    const bar=document.createElement('div');
+    bar.id='swUpdateBar';
+    bar.innerHTML=`<span>🔄 SözLab-ın yeni versiyası hazırdır.</span>
+      <button id="swReloadBtn">Yenilə</button>
+      <button id="swDismissBtn" aria-label="Bağla">✕</button>`;
+    document.body.appendChild(bar);
+    document.getElementById('swReloadBtn').onclick=()=>location.reload();
+    document.getElementById('swDismissBtn').onclick=()=>bar.remove();
+  });
 }
+
+// ── Oflayn göstəricisi ──────────────────────────────────────────
+// İnternet kəsiləndə istifadəçi nəyin işlədiyini bilsin: oyunlar, lüğət və
+// korpus datası keşdən işləməyə davam edir, yalnız canlı bölmələr (duel,
+// sinif yarışması, liderbord) dayanır.
+function sozlabNetStatus(){
+  let bar=document.getElementById('offlineBar');
+  if(navigator.onLine){bar&&bar.remove();return;}
+  if(bar)return;
+  bar=document.createElement('div');
+  bar.id='offlineBar';
+  bar.textContent='📴 İnternet yoxdur — oyunlar və lüğət işləməyə davam edir, canlı bölmələr bərpa olunanda qayıdacaq.';
+  document.body.appendChild(bar);
+}
+window.addEventListener('online',sozlabNetStatus);
+window.addEventListener('offline',sozlabNetStatus);
+sozlabNetStatus();
+
+// ── Tətbiqi quraşdır (PWA) ──────────────────────────────────────
+// APK hazır olmayanda "tezliklə" yazmaq əvəzinə real quraşdırma təklif edirik.
+let deferredInstallPrompt=null;
+window.addEventListener('beforeinstallprompt',e=>{
+  e.preventDefault();
+  deferredInstallPrompt=e;
+  const btn=document.getElementById('footerInstallBtn');
+  if(btn){
+    btn.style.display='';
+    btn.onclick=async()=>{
+      if(!deferredInstallPrompt)return;
+      deferredInstallPrompt.prompt();
+      await deferredInstallPrompt.userChoice.catch(()=>{});
+      deferredInstallPrompt=null;
+      btn.style.display='none';
+    };
+  }
+});
 </script>
 </body>
 </html>
