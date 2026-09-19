@@ -1519,6 +1519,400 @@ body.kiosk-on{overflow:hidden}
 .kio-nav:hover,.kio-exit:hover{background:rgba(255,255,255,.16)}
 .kio-exit{font-size:.76rem}
 @media(max-width:700px){.kio-bar-val{width:4.2em}.kio-exit{padding:8px 10px}}
+
+/* ══════════════════════════════════════════════════════════════
+   205 SMART SCHOOL — EKOSİSTEM DİZAYN SİSTEMİ
+
+   DİQQƏT: yeni palitra icad EDİLMİR. Ekosistem 205 modulunun mövcud
+   işıqlı dizayn sisteminin (--m-* tokenləri: --m-text, --m-surface,
+   --m-border, --m-primary, --m-navy-900 …) üzərində qurulur ki,
+   SözLab-ın təbii davamı kimi görünsün, ayrıca tətbiq kimi yox.
+   ══════════════════════════════════════════════════════════════ */
+.ss{
+  --ss-ink:var(--m-text);
+  --ss-dim:var(--m-text-secondary);
+  --ss-faint:var(--m-text-muted);
+  --ss-line:var(--m-border);
+  --ss-line-2:#CBD5E1;
+  --ss-surface:var(--m-surface);
+  --ss-raised:#FFFFFF;
+  --ss-sunken:#F8FAFC;
+  --ss-shadow:0 1px 2px rgba(15,23,42,.04),0 8px 24px rgba(15,23,42,.06);
+  --ss-shadow-lg:0 18px 44px rgba(15,23,42,.13);
+  --ss-world:var(--m-blue); --ss-bank:var(--m-yellow); --ss-startup:var(--m-orange);
+  --ss-problem:var(--m-cyan); --ss-humanity:var(--m-green); --ss-olympics:var(--m-purple);
+  --ss-r:16px; --ss-r-sm:11px;
+  color:var(--ss-ink);
+}
+.ss *{box-sizing:border-box}
+.ss-wrap{max-width:1180px;margin:0 auto;padding:0 clamp(14px,2.4vw,26px) 60px}
+
+/* ── Tipoqrafiya ─────────────────────────────────────────── */
+.ss-eyebrow{font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--ss-faint);font-weight:700;margin-bottom:.7em}
+.ss-h1{font-family:var(--font-head);font-weight:800;line-height:1.04;
+  font-size:clamp(1.9rem,4.6vw,3.5rem);letter-spacing:-.02em;text-wrap:balance;margin:0}
+.ss-h2{font-family:var(--font-head);font-weight:800;line-height:1.14;
+  font-size:clamp(1.25rem,2.5vw,1.85rem);letter-spacing:-.01em;margin:0;text-wrap:balance}
+.ss-h3{font-family:var(--font-head);font-weight:700;font-size:1.02rem;margin:0}
+.ss-lead{font-size:clamp(.92rem,1.4vw,1.1rem);line-height:1.7;color:var(--ss-dim);
+  max-width:62ch;margin:0}
+.ss-p{font-size:.86rem;line-height:1.75;color:var(--ss-dim);margin:0}
+.ss-sec{margin-top:clamp(32px,5vw,58px)}
+.ss-sec-head{display:flex;align-items:flex-end;justify-content:space-between;
+  gap:16px;flex-wrap:wrap;margin-bottom:18px}
+
+/* ── Hero ────────────────────────────────────────────────── */
+.ss-hero{position:relative;overflow:hidden;border-radius:var(--ss-r);color:#fff;
+  padding:clamp(28px,5.2vw,62px) clamp(20px,4vw,50px);margin-top:clamp(10px,1.6vw,18px);
+  box-shadow:0 18px 44px rgba(11,31,58,.26);
+  background:
+    radial-gradient(820px 420px at 88% -14%,rgba(124,58,237,.55),transparent 56%),
+    radial-gradient(640px 360px at 8% 110%,rgba(6,182,212,.34),transparent 58%),
+    linear-gradient(126deg,var(--m-navy-950),var(--m-navy-700))}
+.ss-hero .ss-eyebrow{color:rgba(255,255,255,.58)}
+.ss-hero .ss-lead{color:rgba(255,255,255,.80)}
+.ss-hero-tag{font-family:var(--font-head);font-size:clamp(.95rem,1.7vw,1.25rem);
+  font-weight:600;color:rgba(255,255,255,.90);margin:.5em 0 .35em}
+.ss-hero .ss-btn{background:rgba(255,255,255,.13);border-color:rgba(255,255,255,.26);
+  color:#fff;box-shadow:none;backdrop-filter:blur(6px)}
+.ss-hero .ss-btn:hover{background:rgba(255,255,255,.22);border-color:rgba(255,255,255,.4)}
+.ss-hero .ss-btn.primary{background:#fff;color:var(--m-navy-900);border-color:transparent}
+.ss-hero .ss-btn.primary:hover{background:#fff;filter:brightness(.96)}
+.ss-hero-grid{position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background-image:linear-gradient(var(--ss-line) 1px,transparent 1px),
+                   linear-gradient(90deg,var(--ss-line) 1px,transparent 1px);
+  background-size:54px 54px;
+  -webkit-mask-image:radial-gradient(760px 340px at 22% 0%,#000,transparent 72%);
+          mask-image:radial-gradient(760px 340px at 22% 0%,#000,transparent 72%);
+  background-image:linear-gradient(rgba(255,255,255,.10) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.10) 1px,transparent 1px)}
+.ss-hero-in{position:relative;max-width:760px}
+.ss-hero .ss-h1 span{background:linear-gradient(96deg,#A5B4FC,#67E8F9 55%,#FCD34D);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.ss-hero-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+
+/* ── Düymələr ────────────────────────────────────────────── */
+.ss-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  border-radius:11px;padding:11px 19px;font-family:inherit;font-size:.83rem;font-weight:700;
+  cursor:pointer;border:1px solid var(--ss-line);background:var(--ss-raised);
+  color:var(--ss-ink);box-shadow:var(--ss-shadow);transition:transform .16s,border-color .16s,background .16s;
+  text-decoration:none;white-space:nowrap}
+.ss-btn:hover{border-color:var(--ss-line-2);transform:translateY(-1px);box-shadow:var(--ss-shadow-lg)}
+.ss-btn:active{transform:translateY(0)}
+.ss-btn.primary{background:var(--m-gradient-primary);border-color:transparent;color:#fff}
+.ss-btn.primary:hover{filter:brightness(1.08)}
+.ss-btn.ghost{background:transparent}
+.ss-btn.sm{padding:7px 13px;font-size:.75rem;border-radius:9px}
+.ss-btn[disabled]{opacity:.45;cursor:not-allowed;transform:none}
+.ss :focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:8px}
+
+/* ── Kartlar ─────────────────────────────────────────────── */
+.ss-card{background:var(--ss-raised);border:1px solid var(--ss-line);box-shadow:var(--ss-shadow);
+  border-radius:var(--ss-r);padding:clamp(15px,2vw,22px);position:relative;overflow:hidden}
+.ss-card.pad-sm{padding:14px 16px}
+.ss-grid{display:grid;gap:clamp(11px,1.5vw,16px)}
+.ss-grid.c2{grid-template-columns:1fr}
+.ss-grid.c3{grid-template-columns:1fr}
+.ss-grid.c4{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(min-width:640px){.ss-grid.c2{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ss-grid.c3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:980px){.ss-grid.c3{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .ss-grid.c4{grid-template-columns:repeat(4,minmax(0,1fr))}}
+
+/* Modul kartı — ana səhifənin mərkəzi elementi */
+.ss-mod{--c:var(--purple);text-align:left;width:100%;font-family:inherit;cursor:pointer;
+  background:var(--ss-raised);border:1px solid var(--ss-line);border-radius:var(--ss-r);
+  box-shadow:var(--ss-shadow);padding:22px 20px 18px;position:relative;overflow:hidden;color:var(--ss-ink);
+  transition:transform .28s cubic-bezier(.22,.9,.3,1),border-color .28s,background .28s;
+  display:flex;flex-direction:column;gap:10px;min-height:212px}
+.ss-mod:before{content:'';position:absolute;inset:-1px -1px auto -1px;height:3px;
+  background:linear-gradient(90deg,var(--c),transparent 70%);opacity:.9}
+.ss-mod:after{content:'';position:absolute;width:190px;height:190px;right:-70px;top:-70px;
+  border-radius:50%;background:var(--c);opacity:.10;filter:blur(26px);
+  transition:opacity .35s,transform .35s}
+.ss-mod:hover{transform:translateY(-4px);border-color:transparent;box-shadow:var(--ss-shadow-lg)}
+.ss-mod:hover:after{opacity:.22;transform:scale(1.18)}
+.ss-mod-ic{width:46px;height:46px;border-radius:13px;display:flex;align-items:center;
+  justify-content:center;font-size:1.35rem;background:color-mix(in srgb,var(--c) 18%,transparent);
+  border:1px solid color-mix(in srgb,var(--c) 38%,transparent)}
+.ss-mod-name{font-family:var(--font-head);font-weight:800;font-size:1.06rem;letter-spacing:-.01em}
+.ss-mod-desc{font-size:.79rem;line-height:1.6;color:var(--ss-dim);flex:1}
+.ss-mod-stats{display:flex;gap:14px;flex-wrap:wrap;font-size:.72rem;color:var(--ss-faint)}
+.ss-mod-stats b{color:var(--c);font-size:.86rem;font-family:var(--font-head)}
+.ss-mod-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding-top:11px;border-top:1px solid var(--ss-line)}
+.ss-mod-cta{font-size:.76rem;font-weight:700;color:var(--c);display:inline-flex;align-items:center;gap:6px}
+.ss-mod:hover .ss-mod-cta span{transform:translateX(3px)}
+.ss-mod-cta span{transition:transform .25s}
+@media(prefers-reduced-motion:reduce){.ss-mod,.ss-mod:after,.ss-mod-cta span{transition:none}
+  .ss-mod:hover{transform:none}}
+
+/* Status nişanı */
+.ss-chip{display:inline-flex;align-items:center;gap:5px;border-radius:99px;
+  padding:3px 10px;font-size:.67rem;font-weight:700;letter-spacing:.02em;
+  background:var(--ss-sunken);border:1px solid var(--ss-line);color:var(--ss-dim);white-space:nowrap}
+.ss-chip.live{color:var(--red);border-color:color-mix(in srgb,var(--red) 45%,transparent)}
+.ss-chip.live:before{content:'';width:6px;height:6px;border-radius:50%;background:var(--red);
+  animation:ssPulse 1.7s infinite}
+.ss-chip.open{color:var(--teal);border-color:color-mix(in srgb,var(--teal) 42%,transparent)}
+.ss-chip.done{color:var(--green);border-color:color-mix(in srgb,var(--green) 42%,transparent)}
+.ss-chip.warn{color:var(--gold);border-color:color-mix(in srgb,var(--gold) 42%,transparent)}
+.ss-chip.soon{color:var(--ss-faint)}
+@keyframes ssPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.72)}}
+@media(prefers-reduced-motion:reduce){.ss-chip.live:before{animation:none}}
+
+/* Statistika kartı */
+.ss-stat{background:var(--ss-raised);border:1px solid var(--ss-line);box-shadow:var(--ss-shadow);border-radius:var(--ss-r-sm);
+  padding:14px 15px;display:flex;flex-direction:column;gap:3px;min-width:0}
+.ss-stat b{font-family:var(--font-head);font-size:clamp(1.25rem,2.4vw,1.75rem);line-height:1.1;
+  font-weight:800;font-variant-numeric:tabular-nums}
+.ss-stat span{font-size:.68rem;letter-spacing:.09em;text-transform:uppercase;color:var(--ss-faint)}
+.ss-stat small{font-size:.7rem;color:var(--ss-dim)}
+
+/* ── Proqres ─────────────────────────────────────────────── */
+.ss-bar{height:8px;border-radius:99px;background:var(--ss-sunken);overflow:hidden;border:1px solid var(--ss-line)}
+.ss-bar>i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--teal),var(--purple));
+  transition:width .9s cubic-bezier(.22,.9,.3,1)}
+.ss-journey{display:flex;flex-direction:column;gap:13px}
+.ss-jrow{display:grid;grid-template-columns:104px 1fr 46px;gap:11px;align-items:center}
+.ss-jrow-lbl{font-size:.74rem;font-weight:700;color:var(--ss-dim);display:flex;align-items:center;gap:6px}
+.ss-jrow-val{font-size:.74rem;font-weight:800;text-align:right;font-variant-numeric:tabular-nums}
+@media(max-width:520px){.ss-jrow{grid-template-columns:88px 1fr 40px}}
+
+/* ── Timeline / boru xətti ───────────────────────────────── */
+.ss-pipe{display:flex;align-items:flex-start;gap:0;overflow-x:auto;padding:4px 0 10px;
+  scrollbar-width:thin}
+.ss-pipe-step{flex:1;min-width:96px;display:flex;flex-direction:column;align-items:center;
+  gap:7px;position:relative;text-align:center}
+.ss-pipe-step:not(:last-child):after{content:'';position:absolute;top:15px;left:calc(50% + 18px);
+  right:calc(-50% + 18px);height:2px;background:var(--ss-line-2)}
+.ss-pipe-step.done:not(:last-child):after,.ss-pipe-step.now:not(:last-child):after{
+  background:linear-gradient(90deg,var(--teal),var(--ss-line-2))}
+.ss-pipe-dot{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;font-size:.78rem;font-weight:800;background:var(--ss-raised);
+  border:1.5px solid var(--ss-line-2);position:relative;z-index:1;flex-shrink:0}
+.ss-pipe-step.done .ss-pipe-dot{background:var(--teal);border-color:var(--teal);color:#06231d}
+.ss-pipe-step.now .ss-pipe-dot{background:var(--purple);border-color:var(--purple);color:#fff;
+  box-shadow:0 0 0 5px color-mix(in srgb,var(--purple) 24%,transparent)}
+.ss-pipe-lbl{font-size:.68rem;line-height:1.35;color:var(--ss-faint);max-width:11ch}
+.ss-pipe-step.now .ss-pipe-lbl,.ss-pipe-step.done .ss-pipe-lbl{color:var(--ss-dim);font-weight:700}
+
+/* Ekosistem axını (Home) */
+.ss-flow{display:flex;align-items:center;gap:9px;overflow-x:auto;padding:6px 2px 12px}
+.ss-flow-node{flex-shrink:0;display:flex;align-items:center;gap:8px;border-radius:99px;
+  padding:8px 14px;background:var(--ss-raised);border:1px solid var(--ss-line);box-shadow:var(--ss-shadow);
+  font-size:.75rem;font-weight:700;white-space:nowrap;cursor:pointer;color:var(--ss-ink);
+  font-family:inherit;transition:border-color .2s,background .2s}
+.ss-flow-node:hover{border-color:var(--m-primary);color:var(--m-primary)}
+.ss-flow-arrow{flex-shrink:0;color:var(--ss-faint);font-size:.9rem}
+
+/* ── Siyahı kartları (çağırış / məktəb / startap / problem) ─ */
+.ss-item{background:var(--ss-raised);border:1px solid var(--ss-line);box-shadow:var(--ss-shadow);border-radius:var(--ss-r);
+  padding:16px 17px;display:flex;flex-direction:column;gap:10px;cursor:pointer;
+  color:inherit;font-family:inherit;text-align:left;width:100%;
+  transition:transform .2s,border-color .2s,background .2s}
+.ss-item:hover{transform:translateY(-2px);border-color:transparent;box-shadow:var(--ss-shadow-lg)}
+.ss-item-top{display:flex;align-items:flex-start;gap:11px}
+.ss-item-ic{width:38px;height:38px;border-radius:11px;flex-shrink:0;display:flex;
+  align-items:center;justify-content:center;font-size:1.1rem;background:var(--ss-sunken);
+  border:1px solid var(--ss-line)}
+.ss-item-ic img{width:100%;height:100%;object-fit:cover;border-radius:10px}
+.ss-item-title{font-family:var(--font-head);font-weight:700;font-size:.94rem;line-height:1.3}
+.ss-item-sub{font-size:.72rem;color:var(--ss-faint);margin-top:2px}
+.ss-item-body{font-size:.79rem;line-height:1.62;color:var(--ss-dim)}
+.ss-item-meta{display:flex;gap:13px;flex-wrap:wrap;font-size:.71rem;color:var(--ss-faint);
+  padding-top:10px;border-top:1px solid var(--ss-line);margin-top:auto}
+.ss-item-meta b{color:var(--ss-dim)}
+.ss-flag{font-size:1.15rem;line-height:1}
+
+/* ── Dünya xəritəsi ──────────────────────────────────────── */
+.ss-map{position:relative;border-radius:var(--ss-r);overflow:hidden;box-shadow:var(--ss-shadow);
+  border:1px solid var(--ss-line);background:linear-gradient(160deg,#0B1F3A,#102A4C)}
+.ss-map svg{display:block;width:100%;height:auto}
+.ss-map-dot{cursor:pointer;transition:r .25s}
+.ss-map-dot:hover{r:6}
+.ss-map-legend{display:flex;gap:16px;flex-wrap:wrap;padding:11px 15px;
+  border-top:1px solid rgba(255,255,255,.12);font-size:.71rem;color:rgba(255,255,255,.62)}
+.ss-map-legend i{width:9px;height:9px;border-radius:50%;display:inline-block;margin-right:6px}
+@keyframes ssRing{0%{r:6;opacity:.9}100%{r:19;opacity:0}}
+.ss-map-ring{animation:ssRing 2.6s ease-out infinite}
+@media(prefers-reduced-motion:reduce){.ss-map-ring{animation:none;opacity:.25}}
+
+/* ── Cüzdan ──────────────────────────────────────────────── */
+.ss-wallet{border-radius:var(--ss-r);padding:clamp(20px,3vw,30px);position:relative;color:#fff;
+  overflow:hidden;border:none;box-shadow:0 16px 40px rgba(11,31,58,.26);
+  background:radial-gradient(620px 300px at 88% -30%,rgba(245,158,11,.5),transparent 60%),
+             linear-gradient(140deg,var(--m-navy-950),var(--m-navy-700))}
+.ss-wallet-bal{font-family:var(--font-head);font-weight:800;line-height:1;
+  font-size:clamp(2.1rem,6vw,3.4rem);font-variant-numeric:tabular-nums;
+  display:flex;align-items:baseline;gap:10px}
+.ss-wallet-bal small{font-size:.32em;font-weight:700;color:var(--m-yellow);letter-spacing:.14em}
+.ss-tx{display:flex;align-items:center;gap:11px;padding:10px 0;border-bottom:1px solid var(--ss-line)}
+.ss-tx:last-child{border-bottom:none}
+.ss-tx-ic{width:32px;height:32px;border-radius:9px;display:flex;align-items:center;
+  justify-content:center;font-size:.86rem;background:var(--ss-sunken);flex-shrink:0}
+.ss-tx-txt{flex:1;min-width:0}
+.ss-tx-txt b{display:block;font-size:.81rem;font-weight:600;overflow:hidden;
+  text-overflow:ellipsis;white-space:nowrap}
+.ss-tx-txt span{font-size:.68rem;color:var(--ss-faint)}
+.ss-tx-amt{font-weight:800;font-size:.86rem;font-variant-numeric:tabular-nums;flex-shrink:0}
+.ss-tx-amt.plus{color:var(--green)}.ss-tx-amt.minus{color:var(--red)}
+
+/* ── Liderbord / sıra ────────────────────────────────────── */
+.ss-rank{display:flex;align-items:center;gap:12px;padding:11px 13px;border-radius:var(--ss-r-sm);
+  border:1px solid transparent;transition:background .2s}
+.ss-rank:hover{background:var(--ss-sunken)}
+.ss-rank.me{background:color-mix(in srgb,var(--purple) 13%,transparent);
+  border-color:color-mix(in srgb,var(--purple) 34%,transparent)}
+.ss-rank-n{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;font-size:.76rem;font-weight:800;background:var(--ss-sunken);
+  border:1px solid var(--ss-line);flex-shrink:0}
+.ss-rank-n.g{background:linear-gradient(135deg,#f0c040,#c89820);color:#231a06}
+.ss-rank-n.s{background:linear-gradient(135deg,#d8d8e4,#9a9ab0);color:#1a1a26}
+.ss-rank-n.b{background:linear-gradient(135deg,#d09050,#a06a30);color:#241505}
+.ss-rank-name{flex:1;min-width:0;font-size:.85rem;font-weight:600;overflow:hidden;
+  text-overflow:ellipsis;white-space:nowrap}
+.ss-rank-name small{display:block;font-size:.68rem;color:var(--ss-faint);font-weight:400}
+.ss-rank-val{font-weight:800;font-size:.86rem;font-variant-numeric:tabular-nums;flex-shrink:0}
+
+/* ── Tablar ──────────────────────────────────────────────── */
+.ss-tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:3px;margin-bottom:16px;
+  scrollbar-width:none}
+.ss-tabs::-webkit-scrollbar{display:none}
+.ss-tab{flex-shrink:0;border-radius:99px;padding:8px 15px;font-size:.76rem;font-weight:700;
+  cursor:pointer;font-family:inherit;background:transparent;border:1px solid var(--ss-line);
+  color:var(--ss-faint);transition:all .18s;white-space:nowrap}
+.ss-tab:hover{color:var(--ss-dim);border-color:var(--ss-line-2)}
+.ss-tab{background:var(--ss-raised)}
+.ss-tab.on{background:var(--m-navy-900);color:#fff;border-color:transparent}
+
+/* ── Vəziyyətlər: boş / yüklənir / xəta ──────────────────── */
+.ss-state{text-align:center;padding:clamp(34px,6vw,60px) 22px;border-radius:var(--ss-r);
+  border:1px dashed var(--ss-line-2);background:var(--ss-sunken)}
+.ss-state-ic{font-size:2.3rem;margin-bottom:12px;opacity:.85}
+.ss-state h4{font-family:var(--font-head);font-size:1rem;font-weight:700;margin:0 0 6px}
+.ss-state p{font-size:.82rem;color:var(--ss-dim);line-height:1.65;margin:0 auto;max-width:46ch}
+.ss-state .ss-btn{margin-top:16px}
+.ss-skel{border-radius:var(--ss-r);background:linear-gradient(100deg,
+  #EEF2F7 30%,#F8FAFC 48%,#EEF2F7 66%);
+  background-size:220% 100%;animation:ssShimmer 1.25s linear infinite;min-height:120px}
+.ss-skel.line{min-height:12px;border-radius:7px;margin-bottom:9px}
+.ss-skel.line.w60{width:60%}.ss-skel.line.w40{width:40%}.ss-skel.line.w80{width:80%}
+@keyframes ssShimmer{to{background-position:-220% 0}}
+@media(prefers-reduced-motion:reduce){.ss-skel{animation:none}}
+
+/* ── Nailiyyət nişanı ────────────────────────────────────── */
+.ss-badge{display:flex;align-items:center;gap:11px;padding:11px 13px;border-radius:var(--ss-r-sm);
+  background:var(--ss-raised);border:1px solid var(--ss-line);box-shadow:var(--ss-shadow)}
+.ss-badge-ic{width:38px;height:38px;border-radius:11px;display:flex;align-items:center;
+  justify-content:center;font-size:1.1rem;flex-shrink:0;
+  background:linear-gradient(135deg,color-mix(in srgb,var(--gold) 26%,transparent),transparent);
+  border:1px solid color-mix(in srgb,var(--gold) 34%,transparent)}
+.ss-badge b{display:block;font-size:.83rem;font-weight:700}
+.ss-badge span{font-size:.7rem;color:var(--ss-faint)}
+
+/* ── Formalar ────────────────────────────────────────────── */
+.ss-field{margin-bottom:13px}
+.ss-label{display:block;font-size:.72rem;font-weight:700;color:var(--ss-dim);
+  margin-bottom:6px;letter-spacing:.02em}
+.ss-input,.ss-textarea,.ss-select{width:100%;background:var(--ss-raised);
+  border:1px solid var(--ss-line-2);border-radius:10px;padding:10px 12px;
+  color:var(--ss-ink);font-family:inherit;font-size:.83rem;outline:none;transition:border-color .18s}
+.ss-input:focus,.ss-textarea:focus,.ss-select:focus{border-color:var(--m-primary);
+  box-shadow:0 0 0 3px rgba(79,70,229,.14)}
+.ss-textarea{resize:vertical;min-height:88px;line-height:1.6}
+.ss-select option{background:#fff;color:var(--m-text)}
+.ss-hint{font-size:.7rem;color:var(--ss-faint);margin-top:5px;line-height:1.5}
+
+/* ── Modal ───────────────────────────────────────────────── */
+.ss-modal{position:fixed;inset:0;z-index:520;display:none;align-items:center;
+  justify-content:center;padding:18px;background:rgba(4,4,10,.72);backdrop-filter:blur(7px)}
+.ss-modal.on{display:flex}
+.ss-modal-box{background:#fff;color:var(--m-text);border:1px solid var(--ss-line);border-radius:var(--ss-r);
+  width:min(620px,100%);max-height:88vh;overflow:auto;padding:22px}
+.ss-modal-head{display:flex;align-items:flex-start;justify-content:space-between;
+  gap:12px;margin-bottom:16px}
+.ss-modal-x{background:none;border:none;color:var(--ss-faint);font-size:1.15rem;
+  cursor:pointer;line-height:1;padding:4px}
+
+/* ── Detal səhifəsi ──────────────────────────────────────── */
+.ss-back{display:inline-flex;align-items:center;gap:7px;background:none;border:none;
+  color:var(--ss-faint);font-family:inherit;font-size:.78rem;font-weight:700;
+  cursor:pointer;padding:8px 0;margin-bottom:6px}
+.ss-back:hover{color:var(--ss-ink)}
+.ss-detail-grid{display:grid;grid-template-columns:1fr;gap:clamp(13px,2vw,20px)}
+@media(min-width:900px){.ss-detail-grid{grid-template-columns:minmax(0,1.62fr) minmax(0,1fr);align-items:start}}
+.ss-def{display:flex;flex-direction:column;gap:14px}
+.ss-def dt{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ss-faint);font-weight:700;margin-bottom:5px}
+.ss-def dd{margin:0;font-size:.85rem;line-height:1.72;color:var(--ss-dim)}
+
+/* ── Medal ───────────────────────────────────────────────── */
+.ss-medal{display:inline-flex;align-items:center;justify-content:center;
+  width:34px;height:34px;border-radius:50%;font-size:1rem}
+.ss-medal.gold{background:linear-gradient(135deg,#f0c040,#c89820)}
+.ss-medal.silver{background:linear-gradient(135deg,#dcdce8,#9a9ab0)}
+.ss-medal.bronze{background:linear-gradient(135deg,#d09050,#a06a30)}
+
+/* ── Mikro-animasiyalar ──────────────────────────────────── */
+.ss-fx-points{position:fixed;z-index:700;pointer-events:none;font-family:var(--font-head);
+  font-weight:800;font-size:1.3rem;color:var(--gold);text-shadow:0 2px 18px rgba(240,192,64,.55);
+  animation:ssFloatUp 1.25s cubic-bezier(.22,.9,.3,1) forwards}
+@keyframes ssFloatUp{0%{opacity:0;transform:translateY(8px) scale(.85)}
+  22%{opacity:1;transform:translateY(-6px) scale(1.06)}
+  100%{opacity:0;transform:translateY(-58px) scale(1)}}
+.ss-fx-cele{position:fixed;inset:0;z-index:690;display:flex;align-items:center;
+  justify-content:center;pointer-events:none}
+.ss-fx-cele-in{text-align:center;padding:26px 34px;border-radius:20px;
+  background:#fff;color:var(--m-text);border:1px solid var(--m-yellow);
+  box-shadow:0 26px 80px rgba(0,0,0,.6);animation:ssPop .5s cubic-bezier(.2,1.3,.4,1)}
+.ss-fx-cele-ic{font-size:2.8rem;line-height:1}
+.ss-fx-cele-in b{display:block;font-family:var(--font-head);font-size:1.05rem;margin-top:8px}
+.ss-fx-cele-in span{display:block;font-size:.78rem;color:var(--ss-dim);margin-top:3px}
+@keyframes ssPop{from{opacity:0;transform:scale(.82)}to{opacity:1;transform:scale(1)}}
+@media(prefers-reduced-motion:reduce){.ss-fx-points,.ss-fx-cele-in{animation:none}}
+
+/* ── Ekosistem alt-naviqasiyası (m205 yan paneli içində) ─── */
+.m205-side-group{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--muted);font-weight:800;padding:14px 14px 6px;margin-top:6px;
+  border-top:1px solid var(--border)}
+.m205-side-item .ss-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-left:auto}
+
+/* Ekosistem üçün üst sətir (mobil: üfüqi sürüşən) */
+.ss-subnav{display:flex;gap:6px;overflow-x:auto;padding:10px 14px 12px;scrollbar-width:none;
+  position:sticky;top:0;z-index:4;background:linear-gradient(var(--m-bg) 74%,transparent)}
+.ss-subnav::-webkit-scrollbar{display:none}
+@media(min-width:1024px){.ss-subnav{display:none}}
+
+/* ── Analitika qrafikləri ──────────────────────────────────── */
+.ssc-bars{display:flex;flex-direction:column;gap:2px}   /* 2px səth boşluğu */
+.ssc-row{display:grid;grid-template-columns:minmax(72px,132px) 1fr 50px;
+  gap:10px;align-items:center;padding:3px 0}
+.ssc-lbl{font-size:.75rem;color:var(--ss-dim);overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap}
+.ssc-track{height:15px;background:#F1F5F9;border-radius:5px;overflow:hidden;display:block}
+.ssc-fill{display:block;height:100%;border-radius:0 4px 4px 0;   /* 4px yuvarlaq uc */
+  transition:width .7s cubic-bezier(.22,.9,.3,1);cursor:default}
+.ssc-val{font-size:.76rem;font-weight:700;text-align:right;font-variant-numeric:tabular-nums;
+  color:var(--ss-ink)}
+.ssc-line-wrap{width:100%;overflow-x:auto}
+.ssc-line{width:100%;min-width:420px;height:auto;display:block}
+.ssc-hit{cursor:crosshair}
+.ssc-table{width:100%;border-collapse:collapse;font-size:.78rem}
+.ssc-table caption.ssc-cap{caption-side:top;text-align:left;font-size:.72rem;
+  color:var(--ss-faint);padding-bottom:8px}
+.ssc-table th[scope="col"]{text-align:left;font-size:.68rem;text-transform:uppercase;
+  letter-spacing:.06em;color:var(--ss-faint);border-bottom:1px solid var(--ss-line);padding:6px 8px}
+.ssc-table th[scope="row"]{text-align:left;font-weight:600;padding:7px 8px;
+  border-bottom:1px solid var(--ss-line);color:var(--ss-dim)}
+.ssc-table td{padding:7px 8px;border-bottom:1px solid var(--ss-line);text-align:right;
+  font-variant-numeric:tabular-nums;font-weight:700}
+.ssc-tip{position:fixed;z-index:800;pointer-events:none;background:#0B1F3A;color:#fff;
+  font-size:.73rem;font-weight:600;padding:6px 10px;border-radius:7px;
+  box-shadow:0 8px 24px rgba(11,31,58,.3);white-space:nowrap}
+@media(max-width:560px){.ssc-row{grid-template-columns:minmax(64px,104px) 1fr 44px;gap:8px}}
+@media(prefers-reduced-motion:reduce){.ssc-fill{transition:none}}
 </style>
 </head>
 <body>
@@ -8766,6 +9160,7 @@ function renderMekteb205(){
   // digər ekranlara keçid-qayıdışda qarışıqlıq yaranır.
   v.classList.add('m205-root');
   m205WireDelegation();
+  ssWire();
   if(m205Page==='ai'){m205Page='dash';switchView('AI');return;}
   if(m205Page==='site')m205RenderSite(v);
   else m205RenderShell(v);
@@ -8961,6 +9356,19 @@ function m205RenderShell(v){
               <span>${n.icon}</span> ${n.label}
               ${n.page==='admin'?'<span class="m205-side-badge" id="m205PendBadge" style="display:none">0</span>':''}
             </button>`).join('')}
+          <div class="m205-side-group">Ekosistem</div>
+          <button class="m205-side-item${m205Page==='ss-home'?' active':''}" data-ss-go="home">
+            <span>◎</span> 205 Smart School</button>
+          ${SS_MODULES.map(m=>`
+            <button class="m205-side-item${m205Page===m.page?' active':''}" data-ss-go="${m.key}">
+              <span>${m.icon}</span> ${m.short}
+              <span class="ss-dot" style="background:${m.color}"></span>
+            </button>`).join('')}
+          ${currentUser?`<button class="m205-side-item${m205Page==='ss-me'?' active':''}" data-ss-go="me">
+            <span>👤</span> Mənim panelim</button>`:''}
+          ${(currentUser&&['director','admin'].includes(currentUser.role))?`
+          <button class="m205-side-item${m205Page==='ss-analytics'?' active':''}" data-ss-go="analytics">
+            <span>📊</span> Məktəb analitikası</button>`:''}
         </div>
       </div>
       <div class="m205-main">
@@ -8972,6 +9380,7 @@ function m205RenderShell(v){
       <button data-go="site" class="${m205Page==='site'?'active':''}"><span>🏠</span>Ana səhifə</button>
       <button data-go="project" class="${m205Page==='project'?'active':''}"><span>🧠</span>Layihələr</button>
       <button data-go="idea" class="${m205Page==='idea'?'active':''}"><span>💡</span>İdeya bankı</button>
+      <button data-ss-go="home" class="${String(m205Page).startsWith('ss-')?'active':''}"><span>◎</span>Ekosistem</button>
       <button data-go="portfolio" class="${m205Page==='portfolio'?'active':''}"><span>👤</span>Profil</button>
     </div>`;
 
@@ -8990,6 +9399,9 @@ async function m205UpdatePendingBadge(){
 }
 
 function m205RenderPage(box){
+  // 205 Smart School ekosistemi — mövcud səhifə sistemi genişləndirilir,
+  // köhnə səhifələrin heç biri dəyişmir.
+  if(ssIsEcoPage(m205Page))return ssRenderEco(box);
   switch(m205Page){
     case 'dash':         return m205PageDash(box);
     case 'news':         return m205PageList(box,'news');
@@ -11717,6 +12129,3094 @@ function closeKiosk(){
 }
 
 
+// ══════════════════════════════════════════════════════════════════════
+// 205 SMART SCHOOL — EKOSİSTEM NÜVƏSİ
+//
+// Bu blok SözLab-ın MÖVCUD arxitekturasının üzərinə qurulur:
+//   • Ekran     → mövcud `viewMekteb205` görünüşü və m205 örtüyü (shell)
+//   • Naviqasiya→ mövcud `m205Page` / `m205Go()` mexanizmi genişləndirilir
+//   • Data      → mövcud `sb` (Supabase klienti) və `m205Fetch` keş nümunəsi
+//   • Rollar    → mövcud profiles.role (user/teacher/director/admin/+mentor)
+//   • Dizayn    → mövcud CSS tokenləri (--purple, --teal, --card, --border…)
+//
+// Yeni heç nə əvəz edilmir; ekosistem `ss-` prefiksi ilə əlavə olunur.
+// ══════════════════════════════════════════════════════════════════════
+
+// ── Vəziyyət ─────────────────────────────────────────────────────────
+let ssRoute   = { module:'home', id:null, tab:null };   // cari marşrut
+let ssCache   = {};                                      // sorğu keşi
+let ssMe      = null;                                    // ss_my_summary() nəticəsi
+let ssMeAt    = 0;
+let ssWired   = false;
+let ssRouting = false;                                   // hash döngəsinin qarşısını alır
+
+// Ekosistemin altı modulu — TƏK HƏQİQƏT MƏNBƏYİ.
+// Naviqasiya, ana səhifə kartları, marşrutlar və SEO başlıqları buradan gəlir.
+const SS_MODULES = [
+  { key:'world',    slug:'world',           page:'ss-world',    icon:'🌍',
+    name:'205 World',           short:'World',
+    color:'var(--ss-world)',
+    desc:'Digər ölkələrin məktəbləri ilə birgə layihələr, beynəlxalq çağırışlar və qlobal komandalar.',
+    tagline:'From 205 to the World.' },
+  { key:'bank',     slug:'student-bank',    page:'ss-bank',     icon:'🏦',
+    name:'205 Student Bank',    short:'Student Bank',
+    color:'var(--ss-bank)',
+    desc:'Təhsil və fəaliyyətlə qazanılan 205 Points — cüzdan, liderbordlar və mükafat mağazası.',
+    tagline:'Zəhmətin ölçülən qarşılığı.' },
+  { key:'startup',  slug:'startup-factory', page:'ss-startup',  icon:'🚀',
+    name:'205 Startup Factory', short:'Startup Factory',
+    color:'var(--ss-startup)',
+    desc:'İdeyadan Demo Day-ə səkkiz mərhələli inkubasiya: komanda, MVP, mentor, pitç.',
+    tagline:'One idea. One team. One product.' },
+  { key:'problem',  slug:'problem-market',  page:'ss-problem',  icon:'🧩',
+    name:'205 Problem Market',  short:'Problem Market',
+    color:'var(--ss-problem)',
+    desc:'Məktəbin real problemləri elan olunur, şagirdlər onları həll etməyi öhdəsinə götürür.',
+    tagline:'Tapşırıq yox — əsl problem.' },
+  { key:'humanity', slug:'humanity-lab',    page:'ss-humanity', icon:'🌱',
+    name:'205 Humanity Lab',    short:'Humanity Lab',
+    color:'var(--ss-humanity)',
+    desc:'İqlim, su, təhsil, əlçatanlıq — sinif divarlarından kənardakı qlobal problemlər.',
+    tagline:'Think beyond the classroom.' },
+  { key:'olympics', slug:'olympics',        page:'ss-olympics', icon:'🏅',
+    name:'205 Olympics',        short:'Olympics',
+    color:'var(--ss-olympics)',
+    desc:'On kateqoriya üzrə məktəbdaxili çempionat: təsnifat, sinif, paralel, final.',
+    tagline:'Məktəbin öz çempionatı.' }
+];
+
+// Ekosistem səhifələri (m205Page dəyərləri) → marşrut
+const SS_PAGES = {
+  'ss-home':      { slug:'',            module:'home',      title:'205 Smart School' },
+  'ss-world':     { slug:'world',        module:'world',     title:'205 World' },
+  'ss-bank':      { slug:'student-bank', module:'bank',      title:'205 Student Bank' },
+  'ss-startup':   { slug:'startup-factory', module:'startup',title:'205 Startup Factory' },
+  'ss-problem':   { slug:'problem-market',  module:'problem',title:'205 Problem Market' },
+  'ss-humanity':  { slug:'humanity-lab',    module:'humanity',title:'205 Humanity Lab' },
+  'ss-olympics':  { slug:'olympics',    module:'olympics',  title:'205 Olympics' },
+  'ss-me':        { slug:'dashboard',   module:'me',        title:'Mənim 205 panelim' },
+  'ss-analytics': { slug:'analytics',   module:'analytics', title:'Məktəb analitikası' }
+};
+const ssIsEcoPage = p => Object.prototype.hasOwnProperty.call(SS_PAGES, p);
+const ssModule    = k => SS_MODULES.find(m => m.key === k);
+
+// ── Marşrutlaşdırma ──────────────────────────────────────────────────
+// SözLab tək səhifəli, çərçivəsiz bir tətbiqdir; ona görə server yolu
+// əvəzinə hash marşrutu işlədilir. Nəticə eyni olur: hər bölmənin öz
+// paylaşıla bilən linki var və brauzerin geri düyməsi işləyir.
+//    #/205                      → ana səhifə
+//    #/205/world                → modul
+//    #/205/startup-factory/12   → detal
+function ssPath(module, id, tab){
+  const m = SS_MODULES.find(x => x.key === module);
+  const seg = m ? m.slug : (SS_PAGES['ss-'+module]?.slug ?? '');
+  let p = '#/205' + (seg ? '/'+seg : '');
+  if(id) p += '/'+id;
+  if(tab) p += '?tab='+encodeURIComponent(tab);
+  return p;
+}
+
+function ssParseHash(h){
+  const raw = String(h || '').replace(/^#\/?/, '');
+  if(!/^205(\/|$|\?)/.test(raw)) return null;
+  const [pathPart, queryPart] = raw.split('?');
+  const parts = pathPart.split('/').filter(Boolean).slice(1);  // "205"-i at
+  const slug = parts[0] || '';
+  const id   = parts[1] || null;
+  const tab  = new URLSearchParams(queryPart || '').get('tab');
+  if(!slug) return { module:'home', id:null, tab };
+  const mod = SS_MODULES.find(m => m.slug === slug);
+  if(mod) return { module:mod.key, id, tab };
+  const key = Object.keys(SS_PAGES).find(k => SS_PAGES[k].slug === slug);
+  if(key) return { module:SS_PAGES[key].module, id, tab };
+  return { module:'home', id:null, tab:null };
+}
+
+/** Ekosistem daxilində keçid — tək giriş nöqtəsi. */
+function ssGo(module, id, tab, opts){
+  ssRoute = { module: module || 'home', id: id || null, tab: tab || null };
+  m205Detail = null;
+  m205Page = 'ss-' + (module === 'home' ? 'home' : module);
+  if(!ssIsEcoPage(m205Page)) m205Page = 'ss-home';
+  if(!opts || !opts.silent){
+    ssRouting = true;
+    const next = ssPath(ssRoute.module, ssRoute.id, ssRoute.tab);
+    if(location.hash !== next) location.hash = next;
+    setTimeout(()=>{ ssRouting = false; }, 0);
+  }
+  // Ekosistemə SözLab-ın istənilən bölməsindən keçmək mümkündür, ona görə
+  // 205 görünüşü aktiv deyilsə əvvəlcə ona keçirik (switchView özü render edir).
+  const view = document.getElementById('viewMekteb205');
+  if(view && !view.classList.contains('active')) switchView('Mekteb205');
+  else renderMekteb205();
+  const main = document.querySelector('#viewMekteb205 .m205-main');
+  if(main) main.scrollTop = 0;
+}
+
+function ssHandleHash(){
+  if(ssRouting) return;
+  const r = ssParseHash(location.hash);
+  if(!r) return;                                  // 205 marşrutu deyil — toxunma
+  if(!currentUser && !document.body.classList.contains('m205-guest')){
+    // Qonaq rejimi olmadan ekosistemə keçid: əvvəlcə 205 görünüşünü aç
+    enterGuestMode?.();
+  }
+  ssRoute = r;
+  m205Page = 'ss-' + (r.module === 'home' ? 'home' : r.module);
+  if(!ssIsEcoPage(m205Page)) m205Page = 'ss-home';
+  m205Detail = null;
+  if(document.getElementById('viewMekteb205')){
+    switchView('Mekteb205');
+    ssApplyMeta();
+    renderMekteb205();
+  }
+}
+
+/** SEO / paylaşım metadatası — hər bölmənin öz başlığı və təsviri olur. */
+const SS_SCHOOL = 'Bakı Şəhəri R. İmanov adına 205 nömrəli tam orta ümumtəhsil məktəbi';
+function ssApplyMeta(){
+  const m = ssModule(ssRoute.module);
+  const pageTitle = m ? m.name
+    : (ssRoute.module === 'me' ? 'Mənim 205 panelim'
+    : ssRoute.module === 'analytics' ? 'Məktəb analitikası'
+    : '205 Smart School');
+  const desc = m ? m.desc
+    : 'Öyrən, kəşf et, yarat, əməkdaşlıq et, yarış, problem həll et — 205 Smart School ekosistemi.';
+  const title = `${pageTitle} | 205 Smart School — ${SS_SCHOOL}`;
+  // SözLab-ın mövcud SEO köməkçisindən istifadə edirik ki, başqa bölməyə
+  // keçəndə restoreSEO() hər şeyi öz yerinə qaytara bilsin.
+  setPageSEO(title, desc);
+  const set = (sel, attr, val) => {
+    let el = document.head.querySelector(sel);
+    if(!el){
+      el = document.createElement('meta');
+      const [k, v] = sel.replace(/^meta\[|\]$/g,'').split('=');
+      el.setAttribute(k, v.replace(/"/g,''));
+      document.head.appendChild(el);
+    }
+    el.setAttribute(attr, val);
+  };
+  set('meta[property="og:title"]','content',title);
+  set('meta[property="og:description"]','content',desc);
+  set('meta[property="og:type"]','content','website');
+  set('meta[property="og:site_name"]','content','SözLab · 205 Smart School');
+  set('meta[property="og:url"]','content',location.origin + location.pathname + ssPath(ssRoute.module, ssRoute.id));
+  set('meta[name="twitter:card"]','content','summary_large_image');
+  set('meta[name="twitter:title"]','content',title);
+  set('meta[name="twitter:description"]','content',desc);
+}
+/** SözLab-ın öz bölmələrinə qayıdanda başlığı bərpa edir. */
+function ssResetMeta(){ restoreSEO(); }
+
+// ── Data qatı ────────────────────────────────────────────────────────
+// m205Fetch ilə eyni nümunə: bir dəfə çək, keşdə saxla, lazım olanda təmizlə.
+async function ssFetch(key, builder){
+  if(ssCache[key]) return ssCache[key];
+  try{
+    const { data, error } = await builder();
+    if(error) throw error;
+    ssCache[key] = data || [];
+  }catch(e){
+    console.warn('[205] ' + key, e?.message || e);
+    ssCache[key] = { __error: e?.message || 'Məlumat yüklənmədi' };
+  }
+  return ssCache[key];
+}
+function ssInvalidate(...keys){
+  if(!keys.length){ ssCache = {}; return; }
+  keys.forEach(k => { delete ssCache[k]; });
+}
+const ssErr = d => d && d.__error;
+const ssRows = d => (Array.isArray(d) ? d : []);
+
+const ssSchools   = () => ssFetch('schools',   () => sb.from('ss_schools').select('*').order('is_home',{ascending:false}).order('status'));
+const ssChalls    = s  => ssFetch('chall_'+s,  () => sb.from('ss_challenges').select('*').eq('scope',s).order('id'));
+const ssStartups  = () => ssFetch('startups',  () => sb.from('ss_startups').select('*').order('votes',{ascending:false}).order('created_at',{ascending:false}));
+const ssProblems  = () => ssFetch('problems',  () => sb.from('ss_problems').select('*').order('created_at',{ascending:false}));
+const ssSolutions = () => ssFetch('solutions', () => sb.from('ss_solutions').select('*').order('created_at',{ascending:false}));
+const ssHumanity  = () => ssFetch('humanity',  () => sb.from('ss_humanity_projects').select('*').order('created_at',{ascending:false}));
+const ssOlyEvents = () => ssFetch('oly',       () => sb.from('ss_olympics_events').select('*').order('id'));
+const ssOlyResults= () => ssFetch('olyres',    () => sb.from('ss_olympics_results').select('*').order('score',{ascending:false}));
+const ssHall      = () => ssFetch('hall',      () => sb.from('ss_hall_of_fame').select('*').order('created_at',{ascending:false}));
+const ssRewards   = () => ssFetch('rewards',   () => sb.from('ss_rewards').select('*').eq('active',true).order('sort_order'));
+const ssWallets   = () => ssFetch('wallets',   () => sb.from('ss_wallets').select('*').order('balance',{ascending:false}).limit(100));
+const ssSubs      = () => ssFetch('subs',      () => sb.from('ss_submissions').select('*').order('created_at',{ascending:false}));
+const ssTeams     = () => ssFetch('teams',     () => sb.from('ss_teams').select('*').order('created_at',{ascending:false}));
+const ssAchv      = u  => ssFetch('achv_'+u,   () => sb.from('ss_achievements').select('*').eq('username',u).order('created_at',{ascending:false}));
+const ssLedger    = u  => ssFetch('ledger_'+u, () => sb.from('ss_points_ledger').select('*').eq('username',u).order('created_at',{ascending:false}).limit(40));
+
+/** Şagirdin ekosistem xülasəsi (60 saniyə keşlənir). */
+async function ssMySummary(force){
+  if(!currentUser) return null;
+  if(!force && ssMe && Date.now() - ssMeAt < 60000) return ssMe;
+  try{
+    const { data, error } = await sb.rpc('ss_my_summary');
+    if(error) throw error;
+    ssMe = data || {}; ssMeAt = Date.now();
+  }catch(e){ ssMe = ssMe || {}; }
+  return ssMe;
+}
+
+/** Xal vermə + mikro-animasiya. Bütün modul kodu bunu çağırır. */
+async function ssAward(amount, reason, source, refId){
+  if(!currentUser) return null;
+  try{
+    const { data, error } = await sb.rpc('ss_award_points',{
+      p_username: currentUser.username, p_amount: amount,
+      p_reason: reason, p_source: source || 'system', p_ref_id: refId || null
+    });
+    if(error) throw error;
+    ssInvalidate('wallets','ledger_'+currentUser.username);
+    ssMe = null;
+    ssFxPoints(amount);
+    return data;
+  }catch(e){
+    showToast(e?.message || 'Xal yazıla bilmədi','red');
+    return null;
+  }
+}
+
+// ── Rol köməkçiləri (mövcud sistemi genişləndirir, əvəz etmir) ───────
+const ssRole      = () => currentUser?.role || 'guest';
+const ssIsStudent = () => ssRole() === 'user';
+const ssIsTeacher = () => ['teacher','director','admin'].includes(ssRole());
+const ssIsMentor  = () => ['mentor','teacher','director','admin'].includes(ssRole());
+const ssIsDir     = () => ['director','admin'].includes(ssRole());
+function ssNeedLogin(what){
+  showToast(`${what} üçün SözLab hesabı lazımdır.`,'gold');
+  if(typeof exitGuestMode === 'function') exitGuestMode();
+  else switchView('Home');
+}
+
+// ── Mikro-animasiyalar ───────────────────────────────────────────────
+function ssFxPoints(amount){
+  if(!amount) return;
+  const el = document.createElement('div');
+  el.className = 'ss-fx-points';
+  el.textContent = (amount > 0 ? '+' : '') + amount + ' 205P';
+  el.style.left = '50%'; el.style.top = '36%'; el.style.transform = 'translateX(-50%)';
+  document.body.appendChild(el);
+  setTimeout(() => el.remove(), 1300);
+}
+function ssFxCelebrate(icon, title, sub){
+  const box = document.createElement('div');
+  box.className = 'ss-fx-cele';
+  box.innerHTML = `<div class="ss-fx-cele-in" role="status" aria-live="polite">
+    <div class="ss-fx-cele-ic">${icon}</div><b>${ssEsc(title)}</b>
+    ${sub ? `<span>${ssEsc(sub)}</span>` : ''}</div>`;
+  document.body.appendChild(box);
+  setTimeout(() => { box.style.opacity = '0'; box.style.transition = 'opacity .4s'; }, 1900);
+  setTimeout(() => box.remove(), 2400);
+}
+
+// ══════════════════════════════════════════════════════════════════════
+// TƏKRAR İSTİFADƏ OLUNAN KOMPONENTLƏR
+// Hamısı sətir (HTML) qaytarır — SözLab-ın mövcud render üslubu ilə eynidir.
+// ══════════════════════════════════════════════════════════════════════
+const ssEsc = s => escapeHtml(String(s ?? ''));
+const ssNum = n => Number(n || 0).toLocaleString('az-AZ');
+function ssDate(d){
+  if(!d) return '';
+  try{ return new Date(d).toLocaleDateString('az-AZ',{day:'numeric',month:'short',year:'numeric'}); }
+  catch(e){ return ''; }
+}
+function ssRel(d){
+  if(!d) return '';
+  const diff = (Date.now() - new Date(d).getTime()) / 86400000;
+  if(diff < 1) return 'bu gün';
+  if(diff < 2) return 'dünən';
+  if(diff < 7) return Math.floor(diff) + ' gün əvvəl';
+  return ssDate(d);
+}
+function ssFlag(cc){
+  const c = String(cc || '').trim().toUpperCase();
+  if(c.length !== 2) return '🏳️';
+  return String.fromCodePoint(...[...c].map(ch => 127397 + ch.charCodeAt(0)));
+}
+
+/** SmartSchoolHero */
+function ssHero({eyebrow, title, tagline, lead, ctas}){
+  return `
+  <header class="ss-hero">
+    <div class="ss-hero-grid" aria-hidden="true"></div>
+    <div class="ss-hero-in">
+      ${eyebrow ? `<div class="ss-eyebrow">${ssEsc(eyebrow)}</div>` : ''}
+      <h1 class="ss-h1">${title}</h1>
+      ${tagline ? `<p class="ss-hero-tag">${ssEsc(tagline)}</p>` : ''}
+      ${lead ? `<p class="ss-lead">${ssEsc(lead)}</p>` : ''}
+      ${ctas && ctas.length ? `<div class="ss-hero-cta">${ctas.join('')}</div>` : ''}
+    </div>
+  </header>`;
+}
+
+/** StatsCard */
+function ssStat(value, label, sub){
+  return `<div class="ss-stat"><b>${value}</b><span>${ssEsc(label)}</span>${
+    sub ? `<small>${ssEsc(sub)}</small>` : ''}</div>`;
+}
+
+/** ModuleCard */
+function ssModuleCard(m, stats, status){
+  return `
+  <button class="ss-mod" style="--c:${m.color}" data-ss-go="${m.key}"
+          aria-label="${ssEsc(m.name)} — ${ssEsc(m.desc)}">
+    <span class="ss-mod-ic" aria-hidden="true">${m.icon}</span>
+    <span class="ss-mod-name">${ssEsc(m.name)}</span>
+    <span class="ss-mod-desc">${ssEsc(m.desc)}</span>
+    <span class="ss-mod-stats">${(stats||[]).map(s =>
+      `<span><b>${s[0]}</b> ${ssEsc(s[1])}</span>`).join('')}</span>
+    <span class="ss-mod-foot">
+      ${status || '<span class="ss-chip open">Aktiv</span>'}
+      <span class="ss-mod-cta">Aç <span aria-hidden="true">→</span></span>
+    </span>
+  </button>`;
+}
+
+/** ProgressBar */
+function ssBar(pct, color){
+  const p = Math.max(0, Math.min(100, Math.round(pct || 0)));
+  return `<div class="ss-bar" role="progressbar" aria-valuenow="${p}" aria-valuemin="0" aria-valuemax="100">
+    <i style="width:${p}%${color ? `;background:${color}` : ''}"></i></div>`;
+}
+
+/** Timeline / boru xətti */
+function ssPipeline(steps, currentKey){
+  const idx = steps.findIndex(s => s.key === currentKey);
+  return `<div class="ss-pipe" role="list">${steps.map((s,i) => {
+    const cls = i < idx ? 'done' : i === idx ? 'now' : '';
+    return `<div class="ss-pipe-step ${cls}" role="listitem"${i===idx?' aria-current="step"':''}>
+      <span class="ss-pipe-dot">${i < idx ? '✓' : i + 1}</span>
+      <span class="ss-pipe-lbl">${ssEsc(s.label)}</span>
+    </div>`;
+  }).join('')}</div>`;
+}
+
+/** EmptyState */
+function ssEmpty(icon, title, text, cta){
+  return `<div class="ss-state">
+    <div class="ss-state-ic" aria-hidden="true">${icon}</div>
+    <h4>${ssEsc(title)}</h4><p>${ssEsc(text)}</p>${cta || ''}</div>`;
+}
+/** ErrorState */
+function ssErrorState(msg, retryAction){
+  return `<div class="ss-state">
+    <div class="ss-state-ic" aria-hidden="true">⚠️</div>
+    <h4>Məlumat yüklənmədi</h4>
+    <p>${ssEsc(msg || 'Şəbəkə və ya baza əlçatmaz oldu.')}</p>
+    ${retryAction ? `<button class="ss-btn" data-ss-retry="${retryAction}">🔄 Yenidən cəhd et</button>` : ''}
+  </div>`;
+}
+/** LoadingState — skelet */
+function ssSkeleton(n, cols){
+  return `<div class="ss-grid ${cols || 'c3'}">${Array.from({length:n||6},() =>
+    `<div class="ss-card"><div class="ss-skel line w40"></div>
+     <div class="ss-skel line w80"></div><div class="ss-skel line w60"></div>
+     <div class="ss-skel" style="min-height:52px;margin-top:10px"></div></div>`).join('')}</div>`;
+}
+
+/** AchievementBadge */
+function ssBadge(a){
+  return `<div class="ss-badge">
+    <span class="ss-badge-ic" aria-hidden="true">${a.icon || '🏆'}</span>
+    <div><b>${ssEsc(a.title)}</b><span>${ssEsc(a.detail || '')}${
+      a.created_at ? ' · ' + ssRel(a.created_at) : ''}</span></div></div>`;
+}
+
+/** StudentRankCard */
+function ssRankRow(i, name, sub, value, isMe){
+  const cls = i === 0 ? 'g' : i === 1 ? 's' : i === 2 ? 'b' : '';
+  return `<div class="ss-rank${isMe ? ' me' : ''}">
+    <span class="ss-rank-n ${cls}">${i + 1}</span>
+    <span class="ss-rank-name">${ssEsc(name)}${sub ? `<small>${ssEsc(sub)}</small>` : ''}</span>
+    <span class="ss-rank-val">${value}</span></div>`;
+}
+
+/** Bölmə başlığı */
+function ssSecHead(title, right){
+  return `<div class="ss-sec-head"><h2 class="ss-h2">${ssEsc(title)}</h2>${right || ''}</div>`;
+}
+
+/** Modal (bir dənə, yenidən istifadə olunur) */
+function ssModal(title, bodyHtml, footHtml){
+  let box = document.getElementById('ssModal');
+  if(!box){
+    box = document.createElement('div');
+    box.id = 'ssModal'; box.className = 'ss-modal ss';
+    box.setAttribute('role','dialog'); box.setAttribute('aria-modal','true');
+    document.body.appendChild(box);
+    box.addEventListener('click', e => { if(e.target === box) ssModalClose(); });
+    document.addEventListener('keydown', e => {
+      if(e.key === 'Escape' && box.classList.contains('on')) ssModalClose();
+    });
+  }
+  box.innerHTML = `<div class="ss-modal-box">
+    <div class="ss-modal-head"><h3 class="ss-h3" id="ssModalTitle">${ssEsc(title)}</h3>
+      <button class="ss-modal-x" data-ss-modal-close="1" aria-label="Bağla">✕</button></div>
+    <div id="ssModalBody">${bodyHtml}</div>
+    ${footHtml ? `<div style="display:flex;gap:8px;justify-content:flex-end;margin-top:18px;flex-wrap:wrap">${footHtml}</div>` : ''}
+  </div>`;
+  box.setAttribute('aria-labelledby','ssModalTitle');
+  box.classList.add('on');
+  setTimeout(() => box.querySelector('input,textarea,select,button')?.focus(), 50);
+  return box;
+}
+function ssModalClose(){ document.getElementById('ssModal')?.classList.remove('on'); }
+
+/** Ekosistemin alt-naviqasiyası — mobil üçün üfüqi sürüşən sətir */
+function ssSubnav(active){
+  const items = [{key:'home',icon:'◎',name:'Ana səhifə'}]
+    .concat(SS_MODULES.map(m => ({key:m.key,icon:m.icon,name:m.short})));
+  if(currentUser) items.push({key:'me',icon:'👤',name:'Mənim panelim'});
+  if(ssIsDir())   items.push({key:'analytics',icon:'📊',name:'Analitika'});
+  return `<nav class="ss-subnav" aria-label="205 Smart School bölmələri">
+    ${items.map(i => `<button class="ss-tab${i.key===active?' on':''}" data-ss-go="${i.key}"
+      ${i.key===active?'aria-current="page"':''}>${i.icon} ${ssEsc(i.name)}</button>`).join('')}
+  </nav>`;
+}
+
+/** Ekosistem səhifə çərçivəsi — hər modul bunun içinə yerləşir. */
+function ssPage(inner){
+  return `<div class="ss">${ssSubnav(ssRoute.module)}<div class="ss-wrap">${inner}</div></div>`;
+}
+
+// ── Hadisə bağlantıları (m205 delegasiyasına əlavə) ──────────────────
+function ssWire(){
+  if(ssWired) return;
+  ssWired = true;
+  const root = document.getElementById('viewMekteb205');
+  if(!root) return;
+
+  root.addEventListener('click', async e => {
+    const go = e.target.closest('[data-ss-go]');
+    if(go){ ssGo(go.dataset.ssGo); return; }
+
+    const open = e.target.closest('[data-ss-open]');
+    if(open){ ssGo(open.dataset.ssModule || ssRoute.module, open.dataset.ssOpen); return; }
+
+    const back = e.target.closest('[data-ss-back]');
+    if(back){ ssGo(back.dataset.ssBack || ssRoute.module); return; }
+
+    const tab = e.target.closest('[data-ss-tab]');
+    if(tab){ ssRoute.tab = tab.dataset.ssTab; renderMekteb205(); return; }
+
+    const retry = e.target.closest('[data-ss-retry]');
+    if(retry){ ssInvalidate(); renderMekteb205(); return; }
+
+    const act = e.target.closest('[data-ss-act]');
+    if(act){ await ssAction(act.dataset.ssAct, act.dataset, act); return; }
+  });
+
+  // Modal SƏHİFƏDƏN KƏNARDA olduğu üçün ayrıca dinləyici
+  document.addEventListener('click', async e => {
+    if(e.target.closest('[data-ss-modal-close]')){ ssModalClose(); return; }
+    const act = e.target.closest('#ssModal [data-ss-act]');
+    if(act){ await ssAction(act.dataset.ssAct, act.dataset, act); }
+  });
+
+  window.addEventListener('hashchange', ssHandleHash);
+}
+
+/**
+ * Bütün modul əməliyyatlarının ortaq dispetçeri.
+ * Hər modul öz `ssActions` girişini qeydiyyatdan keçirir — beləliklə
+ * modullar bir-birindən asılı olmur, amma eyni hadisə sistemindən istifadə edir.
+ */
+const ssActions = {};
+async function ssAction(name, data, el){
+  const fn = ssActions[name];
+  if(!fn){ console.warn('[205] naməlum əməliyyat:', name); return; }
+  if(el){ el.disabled = true; }
+  try{ await fn(data, el); }
+  catch(err){ showToast(err?.message || 'Əməliyyat alınmadı','red'); }
+  finally{ if(el) el.disabled = false; }
+}
+
+
+// ══════════════════════════════════════════════════════════════════════
+// 205 SMART SCHOOL — ANA SƏHİFƏ, ŞAGİRD PANELİ, MY 205 JOURNEY
+// ══════════════════════════════════════════════════════════════════════
+
+/** Ana səhifənin modul kartları üçün canlı statistika. */
+async function ssHomeStats(){
+  const [schools, wc, hc, startups, problems, humanity, oly, wallets] = await Promise.all([
+    ssSchools(), ssChalls('world'), ssChalls('humanity'),
+    ssStartups(), ssProblems(), ssHumanity(), ssOlyEvents(), ssWallets()
+  ]);
+  const S = ssRows(schools), P = ssRows(problems), St = ssRows(startups);
+  return {
+    world: {
+      connected: S.filter(s => s.status === 'connected' && !s.is_home).length,
+      challenges: ssRows(wc).filter(c => c.status === 'open').length,
+      countries: new Set(S.filter(s => !s.is_home).map(s => s.country)).size
+    },
+    bank: {
+      circulating: ssRows(wallets).reduce((a, w) => a + (w.earned || 0), 0),
+      holders: ssRows(wallets).length
+    },
+    startup: {
+      total: St.length,
+      demoday: St.filter(s => s.stage === 'demoday').length,
+      active: St.filter(s => s.status === 'active').length
+    },
+    problem: {
+      open: P.filter(p => p.status === 'open').length,
+      solved: P.filter(p => ['solved','implemented'].includes(p.status)).length,
+      total: P.length
+    },
+    humanity: {
+      challenges: ssRows(hc).length,
+      projects: ssRows(humanity).length
+    },
+    olympics: {
+      categories: new Set(ssRows(oly).map(e => e.category)).size,
+      live: ssRows(oly).filter(e => e.status === 'live').length,
+      upcoming: ssRows(oly).filter(e => e.status === 'upcoming').length
+    }
+  };
+}
+
+async function ssRenderHome(box){
+  box.innerHTML = ssPage(`
+    ${ssHero({
+      eyebrow:'205 SMART SCHOOL',
+      title:'Sabahın məktəbini <span>bu gün</span> qururuq.',
+      tagline:'Learn. Create. Compete. Collaborate. Solve real problems.',
+      lead:'205 Smart School — dərsdən kənar deyil, dərsin davamı olan bir ekosistemdir. '
+        + 'Şagird burada real problem tapır, həll qurur, komanda yığır, onu məhsula çevirir, '
+        + 'başqa ölkələrin məktəbləri ilə əməkdaşlıq edir və yarışır.',
+      ctas:[
+        currentUser
+          ? `<button class="ss-btn primary" data-ss-go="me">👤 Mənim panelim</button>`
+          : `<button class="ss-btn primary" data-ss-act="login">🚀 Ekosistemə qoşul</button>`,
+        `<button class="ss-btn" data-ss-go="problem">🧩 Real problemə bax</button>`
+      ]
+    })}
+    <section class="ss-sec" aria-labelledby="ssModsH">
+      <div class="ss-sec-head"><h2 class="ss-h2" id="ssModsH">Altı modul, bir ekosistem</h2></div>
+      <div class="ss-grid c3" id="ssModGrid">${ssSkeleton(6,'c3')}</div>
+    </section>
+    <section class="ss-sec" aria-labelledby="ssFlowH">
+      ${ssSecHead('Bir şagirdin yolu')}
+      <div class="ss-card">
+        <p class="ss-p" style="margin-bottom:14px">
+          Modullar ayrı-ayrı səhifələr deyil — biri digərini qidalandırır.
+          Aşağıdakı zəncirin hər halqasına toxunaraq həmin bölməyə keçə bilərsən.
+        </p>
+        <div class="ss-flow" id="ssFlowH">
+          ${[
+            ['problem','🧩','Real problemi tap'],
+            ['startup','🚀','Həlli məhsula çevir'],
+            ['humanity','🌱','Qlobal təsirə çıxar'],
+            ['world','🌍','Başqa məktəblərlə birləş'],
+            ['olympics','🏅','Yarış və təqdim et'],
+            ['bank','🏦','205 Points qazan']
+          ].map((n,i,arr) => `
+            <button class="ss-flow-node" data-ss-go="${n[0]}">
+              <span aria-hidden="true">${n[1]}</span>${n[2]}</button>
+            ${i < arr.length-1 ? '<span class="ss-flow-arrow" aria-hidden="true">→</span>' : ''}
+          `).join('')}
+        </div>
+      </div>
+    </section>
+    <section class="ss-sec">
+      ${ssSecHead('Rəqəmlərlə ekosistem')}
+      <div class="ss-grid c4" id="ssHomeStats">${ssSkeleton(4,'c4')}</div>
+    </section>
+    <section class="ss-sec">
+      <div class="ss-card">
+        <h3 class="ss-h3" style="margin-bottom:10px">Bu ekosistem nə üçündür?</h3>
+        <p class="ss-p">
+          Ənənəvi məktəb saytı xəbər elan edir. 205 Smart School isə iş görür:
+          şagird burada <b>tapşırıq alan</b> deyil, <b>problem həll edən</b> tərəfdir.
+          Məktəbin öz problemləri açıq elan olunur, şagird onu götürür, komanda qurur,
+          prototip hazırlayır və nəticə məktəbdə tətbiq olunur. Uğurlu həll
+          <b>«Problem Solved by 205 Students»</b> nailiyyəti kimi şagirdin portfelinə yazılır.
+        </p>
+      </div>
+    </section>
+  `);
+
+  // Statistikanı arxa planda doldur — səhifə dərhal görünür
+  try{
+    const s = await ssHomeStats();
+    const grid = document.getElementById('ssModGrid');
+    if(grid){
+      const stats = {
+        world:    [[s.world.connected,'əlaqəli məktəb'],[s.world.challenges,'açıq çağırış'],[s.world.countries,'ölkə']],
+        bank:     [[ssNum(s.bank.circulating),'205P qazanılıb'],[s.bank.holders,'cüzdan']],
+        startup:  [[s.startup.total,'startap'],[s.startup.demoday,'Demo Day-də']],
+        problem:  [[s.problem.open,'açıq problem'],[s.problem.solved,'həll olunub']],
+        humanity: [[s.humanity.challenges,'qlobal çağırış'],[s.humanity.projects,'layihə']],
+        olympics: [[s.olympics.categories,'kateqoriya'],[s.olympics.upcoming,'gözləyən yarış']]
+      };
+      const status = {
+        world:    '<span class="ss-chip open">Əlaqə açıqdır</span>',
+        bank:     '<span class="ss-chip warn">205 Points</span>',
+        startup:  s.startup.demoday ? '<span class="ss-chip done">Demo Day hazır</span>' : '<span class="ss-chip open">Qəbul açıqdır</span>',
+        problem:  s.problem.open ? `<span class="ss-chip open">${s.problem.open} problem gözləyir</span>` : '<span class="ss-chip done">Hamısı həll olunub</span>',
+        humanity: '<span class="ss-chip open">9 kateqoriya</span>',
+        olympics: s.olympics.live ? '<span class="ss-chip live">CANLI</span>' : '<span class="ss-chip soon">Təsnifat mərhələsi</span>'
+      };
+      grid.innerHTML = SS_MODULES.map(m => ssModuleCard(m, stats[m.key], status[m.key])).join('');
+    }
+    const st = document.getElementById('ssHomeStats');
+    if(st){
+      st.innerHTML =
+        ssStat(s.problem.total, 'Real problem', s.problem.solved + ' həll olunub') +
+        ssStat(s.startup.total, 'Startap layihəsi', s.startup.active + ' aktiv') +
+        ssStat(s.world.countries, 'Ölkə', s.world.connected + ' əlaqəli məktəb') +
+        ssStat(ssNum(s.bank.circulating), '205 Points', 'ekosistemdə qazanılıb');
+    }
+  }catch(e){
+    const grid = document.getElementById('ssModGrid');
+    if(grid) grid.innerHTML = ssErrorState(e.message, 'home');
+  }
+}
+
+// ══════════════════════════════════════════════════════════════════════
+// ŞAGİRD PANELİ + MY 205 JOURNEY
+// ══════════════════════════════════════════════════════════════════════
+
+/** Journey: hər modulda şagirdin irəliləyişi 0–100 kimi hesablanır. */
+function ssJourney(sum){
+  const cap = (v, max) => Math.min(100, Math.round((v / max) * 100));
+  return [
+    { key:'world',    icon:'🌍', label:'World',    pct:cap(sum.submissions || 0, 3),
+      note:`${sum.submissions||0} göndəriş` },
+    { key:'bank',     icon:'🏦', label:'Bank',     pct:cap(sum.earned || 0, 1000),
+      note:`${ssNum(sum.earned||0)} qazanılıb` },
+    { key:'startup',  icon:'🚀', label:'Startup',  pct:cap(sum.startups || 0, 2),
+      note:`${sum.startups||0} startap` },
+    { key:'problem',  icon:'🧩', label:'Problem',  pct:cap(sum.solutions || 0, 3),
+      note:`${sum.solutions||0} həll` },
+    { key:'humanity', icon:'🌱', label:'Humanity', pct:cap(sum.humanity || 0, 2),
+      note:`${sum.humanity||0} layihə` },
+    { key:'olympics', icon:'🏅', label:'Olympics', pct:cap(sum.olympics || 0, 4),
+      note:`${sum.olympics||0} yarış · ${sum.medals||0} medal` }
+  ];
+}
+
+async function ssRenderMe(box){
+  if(!currentUser){
+    box.innerHTML = ssPage(ssEmpty('🔐','Bura şəxsi paneldir',
+      'Öz 205 Points balansını, nailiyyətlərini və irəliləyişini görmək üçün SözLab hesabınla daxil ol.',
+      `<button class="ss-btn primary" data-ss-act="login">Daxil ol</button>`));
+    return;
+  }
+
+  box.innerHTML = ssPage(`
+    <div class="ss-sec" style="margin-top:18px">
+      <div class="ss-eyebrow">MƏNİM 205 PANELİM</div>
+      <h1 class="ss-h2">Xoş gəldin, ${ssEsc(currentUser.display_name || currentUser.username)}</h1>
+    </div>
+    <div class="ss-grid c4" id="ssMeStats" style="margin-top:16px">${ssSkeleton(4,'c4')}</div>
+    <section class="ss-sec">
+      ${ssSecHead('My 205 Journey')}
+      <div class="ss-card"><div class="ss-journey" id="ssMeJourney">${ssSkeleton(1,'c2')}</div></div>
+    </section>
+    <div class="ss-detail-grid ss-sec">
+      <section>
+        ${ssSecHead('Son fəaliyyət')}
+        <div class="ss-card pad-sm" id="ssMeFeed">${ssSkeleton(1,'c2')}</div>
+      </section>
+      <section>
+        ${ssSecHead('Nailiyyətlər')}
+        <div id="ssMeAchv" style="display:flex;flex-direction:column;gap:9px">${ssSkeleton(1,'c2')}</div>
+      </section>
+    </div>
+  `);
+
+  const sum = await ssMySummary(true) || {};
+  const el = id => document.getElementById(id);
+
+  if(el('ssMeStats')){
+    el('ssMeStats').innerHTML =
+      ssStat(ssNum(sum.balance || 0), '205 Points', `${ssNum(sum.earned||0)} qazanılıb · ${ssNum(sum.spent||0)} xərclənib`) +
+      ssStat('#' + (sum.rank || '—'), 'Məktəb sırası', 'balans üzrə') +
+      ssStat(sum.achievements || 0, 'Nailiyyət', (sum.medals||0) + ' medal') +
+      ssStat(ssNum(sum.humanity_points || 0), 'Humanity Points', (sum.humanity||0) + ' layihə');
+  }
+
+  if(el('ssMeJourney')){
+    el('ssMeJourney').innerHTML = ssJourney(sum).map(j => `
+      <div class="ss-jrow">
+        <button class="ss-jrow-lbl" data-ss-go="${j.key}" style="background:none;border:none;
+                font-family:inherit;cursor:pointer;color:inherit;padding:0;text-align:left">
+          <span aria-hidden="true">${j.icon}</span> ${j.label}
+        </button>
+        ${ssBar(j.pct, `var(--ss-${j.key})`)}
+        <span class="ss-jrow-val">${j.pct}%</span>
+      </div>
+      <div style="grid-column:1/-1;font-size:.68rem;color:var(--ss-faint);margin:-8px 0 2px 104px">
+        ${ssEsc(j.note)}</div>
+    `).join('');
+  }
+
+  const [led, achv] = await Promise.all([
+    ssLedger(currentUser.username), ssAchv(currentUser.username)
+  ]);
+
+  if(el('ssMeFeed')){
+    const rows = ssRows(led);
+    el('ssMeFeed').innerHTML = rows.length
+      ? rows.slice(0, 10).map(t => `
+        <div class="ss-tx">
+          <span class="ss-tx-ic" aria-hidden="true">${
+            ({quiz:'🎮',challenge:'🌍',project:'🧠',startup:'🚀',olympics:'🏅',
+              problem:'🧩',help:'🤝',teacher:'👨‍🏫',reward:'🎁'})[t.source] || '⭐'}</span>
+          <span class="ss-tx-txt"><b>${ssEsc(t.reason)}</b><span>${ssRel(t.created_at)}</span></span>
+          <span class="ss-tx-amt ${t.amount > 0 ? 'plus' : 'minus'}">${
+            t.amount > 0 ? '+' : ''}${ssNum(t.amount)}</span>
+        </div>`).join('')
+      : ssEmpty('📭','Hələ fəaliyyət yoxdur',
+          'Bir çağırışa qoşul və ya real problemə həll təklif et — ilk 205 Points burada görünəcək.',
+          `<button class="ss-btn sm" data-ss-go="problem">Problemlərə bax</button>`);
+  }
+
+  if(el('ssMeAchv')){
+    const rows = ssRows(achv);
+    el('ssMeAchv').innerHTML = rows.length
+      ? rows.slice(0, 8).map(ssBadge).join('')
+      : ssEmpty('🏆','Hələ nailiyyət yoxdur',
+          'İlk problemi həll edəndə və ya ilk startapını qurduqda nişanlar burada toplanacaq.');
+  }
+}
+
+// ── Ortaq əməliyyatlar ───────────────────────────────────────────────
+ssActions.login = () => ssNeedLogin('Ekosistemə qoşulmaq');
+
+
+
+// ── Ekosistem səhifə dispetçeri ──────────────────────────────────────
+// Hər modul öz render funksiyasını buraya qeyd edir; beləliklə modullar
+// bir-birindən asılı olmadan əlavə/çıxarıla bilər.
+const SS_RENDER = {};
+async function ssRenderEco(box){
+  ssApplyMeta();                       // switchView() restoreSEO() çağırdığı üçün
+  const key = ssRoute.module || 'home';
+  const fn = SS_RENDER[key];
+  if(!fn){
+    box.innerHTML = ssPage(ssEmpty('🚧','Bu bölmə hazırlanır',
+      'Modul tezliklə burada açılacaq.',
+      `<button class="ss-btn" data-ss-go="home">← Ana səhifə</button>`));
+    return;
+  }
+  try{ await fn(box); }
+  catch(err){
+    console.error('[205]', key, err);
+    box.innerHTML = ssPage(ssErrorState(err?.message, key));
+  }
+}
+SS_RENDER.home = ssRenderHome;
+SS_RENDER.me   = ssRenderMe;
+
+// ══════════════════════════════════════════════════════════════════════
+// MODUL 1 — 205 WORLD
+// "From 205 to the World." Qlobal məktəb əməkdaşlığı ekosistemi.
+// ══════════════════════════════════════════════════════════════════════
+
+/**
+ * Dünya xəritəsi — ekvirektangulyar proyeksiya.
+ * Hazır xəritə kitabxanası YÜKLƏNMİR (performans qaydası); sadələşdirilmiş
+ * qitə konturları birbaşa SVG yolu kimi qurulub və 205 mərkəzindən hər
+ * məktəbə əyri əlaqə xətti çəkilir.
+ */
+const SS_MAP_W = 1000, SS_MAP_H = 480;
+const ssProj = (lat, lng) => ({
+  x: (Number(lng) + 180) / 360 * SS_MAP_W,
+  y: (90 - Number(lat)) / 180 * SS_MAP_H
+});
+
+// Sadələşdirilmiş qitə siluetləri (ekvirektangulyar, 1000×480)
+const SS_LANDMASS = [
+  'M 130 96 L 196 78 L 268 86 L 300 112 L 286 150 L 248 168 L 214 206 L 190 250 L 168 232 L 150 186 L 128 150 Z',
+  'M 236 268 L 276 262 L 300 296 L 292 352 L 262 400 L 238 372 L 228 320 Z',
+  'M 452 92 L 520 76 L 566 92 L 552 120 L 500 132 L 466 124 Z',
+  'M 466 136 L 530 132 L 556 168 L 540 232 L 500 288 L 470 254 L 452 190 Z',
+  'M 560 94 L 700 72 L 792 96 L 830 136 L 796 176 L 720 186 L 648 166 L 596 140 Z',
+  'M 700 196 L 760 190 L 782 228 L 756 262 L 716 246 Z',
+  'M 806 264 L 880 254 L 906 288 L 884 326 L 824 318 Z',
+  'M 120 40 L 320 30 L 420 48 L 300 64 L 160 60 Z'
+];
+
+function ssWorldMap(schools){
+  const home = schools.find(s => s.is_home) || schools[0];
+  const others = schools.filter(s => s !== home && s.lat != null && s.lng != null);
+  const H = home && home.lat != null ? ssProj(home.lat, home.lng) : { x: 640, y: 130 };
+  const col = { connected:'#10B981', pending:'#F59E0B', invited:'#94A3B8' };
+
+  const links = others.map(s => {
+    const p = ssProj(s.lat, s.lng);
+    const mx = (H.x + p.x) / 2, my = Math.min(H.y, p.y) - Math.abs(H.x - p.x) * 0.22 - 16;
+    return `<path d="M ${H.x} ${H.y} Q ${mx} ${my} ${p.x} ${p.y}" fill="none"
+      stroke="${col[s.status] || '#94A3B8'}" stroke-width="1.3"
+      stroke-dasharray="${s.status === 'connected' ? '0' : '4 5'}" opacity=".55"/>`;
+  }).join('');
+
+  const dots = others.map(s => {
+    const p = ssProj(s.lat, s.lng);
+    return `<g class="ss-map-dot" tabindex="0" role="button"
+      data-ss-open="s${s.id}" data-ss-module="world"
+      aria-label="${ssEsc(s.name)}, ${ssEsc(s.country)}">
+      <title>${ssEsc(s.name)} — ${ssEsc(s.city)}, ${ssEsc(s.country)}</title>
+      <circle cx="${p.x}" cy="${p.y}" r="4.6" fill="${col[s.status] || '#94A3B8'}"
+        stroke="#0B1F3A" stroke-width="1.2"/></g>`;
+  }).join('');
+
+  return `
+  <div class="ss-map">
+    <svg viewBox="0 0 ${SS_MAP_W} ${SS_MAP_H}" role="img"
+         aria-label="205 məktəbinin dünya üzrə əlaqə xəritəsi">
+      <rect width="${SS_MAP_W}" height="${SS_MAP_H}" fill="none"/>
+      <!-- Paralel/meridian şəbəkəsi: xəritəni dərhal "dünya" kimi oxudur -->
+      <g stroke="rgba(255,255,255,.055)" stroke-width="1">
+        ${[...Array(11)].map((_,i)=>`<line x1="0" y1="${(i+1)*SS_MAP_H/12}" x2="${SS_MAP_W}" y2="${(i+1)*SS_MAP_H/12}"/>`).join('')}
+        ${[...Array(17)].map((_,i)=>`<line x1="${(i+1)*SS_MAP_W/18}" y1="0" x2="${(i+1)*SS_MAP_W/18}" y2="${SS_MAP_H}"/>`).join('')}
+      </g>
+      <line x1="0" y1="${SS_MAP_H/2}" x2="${SS_MAP_W}" y2="${SS_MAP_H/2}"
+            stroke="rgba(255,255,255,.12)" stroke-width="1" stroke-dasharray="3 6"/>
+      <g fill="rgba(255,255,255,.055)" stroke="rgba(255,255,255,.10)" stroke-width="1"
+         stroke-linejoin="round">
+        ${SS_LANDMASS.map(d => `<path d="${d}"/>`).join('')}
+      </g>
+      <g>${links}</g>
+      <circle class="ss-map-ring" cx="${H.x}" cy="${H.y}" r="6" fill="none"
+              stroke="#7C3AED" stroke-width="2"/>
+      <circle cx="${H.x}" cy="${H.y}" r="7" fill="#7C3AED" stroke="#fff" stroke-width="2"/>
+      <text x="${H.x + 13}" y="${H.y + 4}" fill="#fff" font-size="13" font-weight="700"
+            font-family="Syne,sans-serif">205</text>
+      ${dots}
+    </svg>
+    <div class="ss-map-legend">
+      <span><i style="background:#7C3AED"></i>205 (mərkəz)</span>
+      <span><i style="background:#10B981"></i>Əlaqə qurulub</span>
+      <span><i style="background:#F59E0B"></i>Gözləmədə</span>
+      <span><i style="background:#94A3B8"></i>Dəvət olunub</span>
+    </div>
+  </div>`;
+}
+
+/** GlobalSchoolCard */
+function ssSchoolCard(s, challengeCount){
+  const st = { connected:['done','Əlaqə qurulub'], pending:['warn','Gözləmədə'], invited:['soon','Dəvət olunub'] }[s.status]
+    || ['soon', s.status];
+  return `
+  <button class="ss-item" data-ss-open="s${s.id}" data-ss-module="world">
+    <span class="ss-item-top">
+      <span class="ss-item-ic ss-flag" aria-hidden="true">${ssFlag(s.country_code)}</span>
+      <span style="flex:1;min-width:0">
+        <span class="ss-item-title">${ssEsc(s.name)}</span>
+        <span class="ss-item-sub">${ssEsc(s.city)}${s.city ? ', ' : ''}${ssEsc(s.country)}</span>
+      </span>
+      <span class="ss-chip ${st[0]}">${st[1]}</span>
+    </span>
+    ${s.note ? `<span class="ss-item-body">${ssEsc(s.note)}</span>` : ''}
+    <span class="ss-item-meta">
+      <span><b>${ssNum(s.student_count)}</b> şagird</span>
+      <span><b>${challengeCount || 0}</b> birgə çağırış</span>
+      ${s.is_home ? '<span><b>Mərkəz</b></span>' : ''}
+    </span>
+  </button>`;
+}
+
+/** ChallengeCard — həm World, həm Humanity üçün */
+function ssChallengeCard(c, subCount, module){
+  const st = { open:['open','Açıqdır'], judging:['warn','Qiymətləndirilir'], closed:['soon','Bağlıdır'] }[c.status]
+    || ['open','Açıqdır'];
+  return `
+  <button class="ss-item" data-ss-open="${(module==='humanity'?'':'c')}${c.id}" data-ss-module="${module || 'world'}">
+    <span class="ss-item-top">
+      <span class="ss-item-ic" aria-hidden="true">${c.icon || '🌍'}</span>
+      <span style="flex:1;min-width:0">
+        <span class="ss-item-title">${ssEsc(c.title)}</span>
+        <span class="ss-item-sub">${ssEsc(c.category)} · ${ssEsc(c.difficulty)}</span>
+      </span>
+      <span class="ss-chip ${st[0]}">${st[1]}</span>
+    </span>
+    <span class="ss-item-body">${ssEsc(c.summary)}</span>
+    <span class="ss-item-meta">
+      <span><b>+${c.points}</b> 205P</span>
+      <span><b>${subCount || 0}</b> göndəriş</span>
+      ${c.deadline ? `<span>Son tarix: <b>${ssDate(c.deadline)}</b></span>` : ''}
+    </span>
+  </button>`;
+}
+
+const SS_WORLD_TABS = [
+  ['schools','🏫 Qlobal məktəblər'],
+  ['challenges','🎯 Beynəlxalq çağırışlar'],
+  ['teams','👥 Qlobal komandalar'],
+  ['projects','🤝 Birgə layihələr']
+];
+
+async function ssRenderWorld(box){
+  if(ssRoute.id) return ssRenderWorldDetail(box);
+  const tab = ssRoute.tab || 'schools';
+
+  box.innerHTML = ssPage(`
+    ${ssHero({
+      eyebrow:'MODUL 1 · 205 WORLD',
+      title:'205-dən <span>dünyaya</span>',
+      tagline:'From 205 to the World.',
+      lead:'Başqa ölkələrin məktəbləri ilə birgə çağırışlar, qarışıq komandalar və '
+        + 'ortaq layihələr. Bir sinif otağının həlli beş ölkədə sınaqdan keçə bilər.',
+      ctas:[`<button class="ss-btn primary" data-ss-tab="challenges">🎯 Açıq çağırışlara bax</button>`]
+    })}
+    <div class="ss-grid c4 ss-sec" id="ssWorldStats">${ssSkeleton(4,'c4')}</div>
+    <section class="ss-sec">
+      ${ssSecHead('Əlaqə xəritəsi')}
+      <div id="ssWorldMap"><div class="ss-skel" style="min-height:260px"></div></div>
+    </section>
+    <section class="ss-sec">
+      <div class="ss-tabs" role="tablist">${SS_WORLD_TABS.map(t =>
+        `<button class="ss-tab${tab===t[0]?' on':''}" role="tab"
+          aria-selected="${tab===t[0]}" data-ss-tab="${t[0]}">${t[1]}</button>`).join('')}</div>
+      <div id="ssWorldBody">${ssSkeleton(6,'c3')}</div>
+    </section>
+  `);
+
+  const [schools, challenges, subs, teams] = await Promise.all([
+    ssSchools(), ssChalls('world'), ssSubs(), ssTeams()
+  ]);
+  if(ssErr(schools)){ document.getElementById('ssWorldBody').innerHTML = ssErrorState(ssErr(schools),'world'); return; }
+
+  const S = ssRows(schools), C = ssRows(challenges), Sub = ssRows(subs), T = ssRows(teams);
+  const partners = S.filter(s => !s.is_home);
+  const subCount = id => Sub.filter(x => x.challenge_id === id).length;
+
+  const stats = document.getElementById('ssWorldStats');
+  if(stats) stats.innerHTML =
+    ssStat(partners.filter(s => s.status === 'connected').length, 'Əlaqəli məktəb',
+           partners.length + ' məktəb siyahıda') +
+    ssStat(new Set(partners.map(s => s.country)).size, 'Ölkə') +
+    ssStat(C.filter(c => c.status === 'open').length, 'Açıq çağırış', C.length + ' ümumi') +
+    ssStat(Sub.length, 'Göndərilmiş iş');
+
+  const mapBox = document.getElementById('ssWorldMap');
+  if(mapBox) mapBox.innerHTML = ssWorldMap(S);
+
+  const body = document.getElementById('ssWorldBody');
+  if(!body) return;
+
+  if(tab === 'schools'){
+    body.innerHTML = partners.length
+      ? `<div class="ss-grid c3">${partners.map(s => ssSchoolCard(s, C.length ? 1 : 0)).join('')}</div>`
+      : ssEmpty('🏫','Hələ tərəfdaş məktəb yoxdur',
+          'Müəllim və ya direktor ilk beynəlxalq məktəbi əlavə edəndə burada görünəcək.');
+  }
+  else if(tab === 'challenges'){
+    body.innerHTML = C.length
+      ? `<div class="ss-grid c3">${C.map(c => ssChallengeCard(c, subCount(c.id), 'world')).join('')}</div>`
+      : ssEmpty('🎯','Hələ aktiv beynəlxalq çağırış yoxdur',
+          'İlk çağırışı müəllim yaradacaq — sonra istənilən şagird komanda qurub qoşula bilər.');
+  }
+  else if(tab === 'teams'){
+    const wt = T.filter(t => t.purpose === 'challenge');
+    body.innerHTML = wt.length
+      ? `<div class="ss-grid c3">${wt.map(t => `
+          <div class="ss-item" style="cursor:default">
+            <span class="ss-item-top">
+              <span class="ss-item-ic" aria-hidden="true">👥</span>
+              <span style="flex:1;min-width:0">
+                <span class="ss-item-title">${ssEsc(t.name)}</span>
+                <span class="ss-item-sub">Kapitan: ${ssEsc(t.owner)}</span></span>
+            </span>
+            <span class="ss-item-meta"><span><b>${(t.members||[]).length}</b> üzv</span>
+            <span><b>${(t.school_ids||[]).length||1}</b> məktəb</span></span>
+          </div>`).join('')}</div>`
+      : ssEmpty('👥','Hələ qlobal komanda qurulmayıb',
+          'Bir çağırışı aç və “Komanda qur” düyməsi ilə ilk beynəlxalq komandanı yarat.',
+          `<button class="ss-btn sm" data-ss-tab="challenges">Çağırışlara bax</button>`);
+  }
+  else {
+    body.innerHTML = Sub.length
+      ? `<div class="ss-grid c2">${Sub.map(x => {
+          const c = C.find(y => y.id === x.challenge_id);
+          return `<div class="ss-item" style="cursor:default">
+            <span class="ss-item-top">
+              <span class="ss-item-ic" aria-hidden="true">${c?.icon || '🤝'}</span>
+              <span style="flex:1;min-width:0">
+                <span class="ss-item-title">${ssEsc(x.title)}</span>
+                <span class="ss-item-sub">${ssEsc(c?.title || 'Çağırış')} · ${ssEsc(x.author)}</span></span>
+              <span class="ss-chip ${x.status==='winner'?'done':'open'}">${
+                ({submitted:'Göndərilib',reviewed:'Baxılıb',winner:'Qalib',rejected:'Rədd'})[x.status]||x.status}</span>
+            </span>
+            ${x.description ? `<span class="ss-item-body">${ssEsc(x.description)}</span>` : ''}
+            <span class="ss-item-meta"><span>${ssRel(x.created_at)}</span>
+            ${x.score != null ? `<span>Bal: <b>${x.score}</b></span>` : ''}</span>
+          </div>`; }).join('')}</div>`
+      : ssEmpty('🤝','Hələ birgə layihə göndərilməyib',
+          'Bir beynəlxalq çağırışa ilk işi sən göndər — nəticə bütün tərəfdaş məktəblərə görünəcək.',
+          `<button class="ss-btn sm" data-ss-tab="challenges">Çağırışlara bax</button>`);
+  }
+}
+
+/** Çağırış / məktəb detalı — Challenge → Team → Idea → Submission axını */
+async function ssRenderWorldDetail(box){
+  // Marşrutda məktəb və çağırış eyni ədədi id daşıya bilər, ona görə
+  // prefiks işlədilir: s12 → məktəb, c12 → çağırış.
+  const raw = String(ssRoute.id || '');
+  const kind = raw[0] === 's' ? 'school' : raw[0] === 'c' ? 'challenge' : 'any';
+  const id = Number(raw.replace(/^[sc]/, ''));
+  const [schools, challenges, subs] = await Promise.all([ssSchools(), ssChalls('world'), ssSubs()]);
+  const school = kind === 'challenge' ? null : ssRows(schools).find(s => s.id === id);
+  const ch = kind === 'school' ? null : ssRows(challenges).find(c => c.id === id);
+
+  if(school){
+    box.innerHTML = ssPage(`
+      <button class="ss-back" data-ss-back="world">← 205 World</button>
+      <div class="ss-card">
+        <div style="display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap">
+          <div style="font-size:2.6rem;line-height:1">${ssFlag(school.country_code)}</div>
+          <div style="flex:1;min-width:200px">
+            <h1 class="ss-h2">${ssEsc(school.name)}</h1>
+            <p class="ss-p">${ssEsc(school.city)}${school.city?', ':''}${ssEsc(school.country)}</p>
+          </div>
+          <span class="ss-chip ${school.status==='connected'?'done':'warn'}">${
+            ({connected:'Əlaqə qurulub',pending:'Gözləmədə',invited:'Dəvət olunub'})[school.status]}</span>
+        </div>
+        ${school.note ? `<p class="ss-p" style="margin-top:14px">${ssEsc(school.note)}</p>` : ''}
+        <div class="ss-grid c3" style="margin-top:18px">
+          ${ssStat(ssNum(school.student_count),'Şagird')}
+          ${ssStat(ssRows(challenges).filter(c=>c.status==='open').length,'Ortaq çağırış')}
+          ${ssStat(school.is_home ? 'Mərkəz' : 'Tərəfdaş','Rol')}
+        </div>
+      </div>`);
+    return;
+  }
+
+  if(!ch){
+    box.innerHTML = ssPage(ssEmpty('🔍','Tapılmadı','Bu çağırış və ya məktəb mövcud deyil.',
+      `<button class="ss-btn" data-ss-back="world">← 205 World</button>`));
+    return;
+  }
+
+  const mine = ssRows(subs).filter(x => x.challenge_id === ch.id);
+  box.innerHTML = ssPage(`
+    <button class="ss-back" data-ss-back="world">← 205 World</button>
+    <div class="ss-detail-grid">
+      <div>
+        <div class="ss-card">
+          <div style="display:flex;gap:12px;align-items:center;margin-bottom:12px">
+            <span class="ss-item-ic" style="width:48px;height:48px;font-size:1.4rem">${ch.icon}</span>
+            <div><h1 class="ss-h2">${ssEsc(ch.title)}</h1>
+              <p class="ss-item-sub">${ssEsc(ch.category)} · ${ssEsc(ch.difficulty)} · +${ch.points} 205P</p></div>
+          </div>
+          <dl class="ss-def">
+            <div><dt>Problem</dt><dd>${ssEsc(ch.problem || ch.summary)}</dd></div>
+            ${ch.why ? `<div><dt>Niyə vacibdir</dt><dd>${ssEsc(ch.why)}</dd></div>` : ''}
+            ${ch.research ? `<div><dt>Araşdırma</dt><dd>${ssEsc(ch.research)}</dd></div>` : ''}
+            ${ch.approaches ? `<div><dt>Mümkün yanaşmalar</dt><dd>${ssEsc(ch.approaches)}</dd></div>` : ''}
+          </dl>
+        </div>
+        <div class="ss-card" style="margin-top:14px">
+          <h3 class="ss-h3" style="margin-bottom:12px">Necə iştirak edilir</h3>
+          ${ssPipeline([
+            {key:'challenge',label:'Çağırış'},{key:'team',label:'Komanda'},
+            {key:'idea',label:'İdeya'},{key:'submission',label:'Göndəriş'}
+          ],'challenge')}
+        </div>
+        <div class="ss-sec">
+          ${ssSecHead(`Göndərilmiş işlər (${mine.length})`)}
+          ${mine.length
+            ? `<div class="ss-grid c2">${mine.map(x => `
+                <div class="ss-item" style="cursor:default">
+                  <span class="ss-item-title">${ssEsc(x.title)}</span>
+                  <span class="ss-item-sub">${ssEsc(x.author)} · ${ssRel(x.created_at)}</span>
+                  ${x.description ? `<span class="ss-item-body">${ssEsc(x.description)}</span>` : ''}
+                </div>`).join('')}</div>`
+            : ssEmpty('📭','Hələ heç kim iş göndərməyib','Bu çağırışa ilk cavabı sən yaza bilərsən.')}
+        </div>
+      </div>
+      <aside>
+        <div class="ss-card">
+          <h3 class="ss-h3" style="margin-bottom:10px">Bu çağırışa qoşul</h3>
+          <p class="ss-p" style="margin-bottom:14px">
+            Tək və ya komanda ilə iştirak edə bilərsən. Qəbul olunan iş
+            <b>+${ch.points} 205 Points</b> qazandırır.</p>
+          ${currentUser
+            ? `<button class="ss-btn primary" style="width:100%"
+                 data-ss-act="worldSubmit" data-id="${ch.id}">🚀 İş göndər</button>
+               <button class="ss-btn" style="width:100%;margin-top:8px"
+                 data-ss-act="makeTeam" data-id="${ch.id}" data-purpose="challenge">👥 Komanda qur</button>`
+            : `<button class="ss-btn primary" style="width:100%" data-ss-act="login">Daxil ol</button>`}
+        </div>
+        <div class="ss-card" style="margin-top:12px">
+          <dt style="font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ss-faint);font-weight:700">Status</dt>
+          <p style="margin:6px 0 0"><span class="ss-chip ${ch.status==='open'?'open':'soon'}">${
+            ({open:'Açıqdır',judging:'Qiymətləndirilir',closed:'Bağlıdır'})[ch.status]}</span></p>
+          ${ch.deadline ? `<p class="ss-p" style="margin-top:10px">Son tarix: <b>${ssDate(ch.deadline)}</b></p>` : ''}
+        </div>
+      </aside>
+    </div>`);
+}
+
+// ── Əməliyyatlar ─────────────────────────────────────────────────────
+ssActions.worldSubmit = (d) => {
+  if(!currentUser) return ssNeedLogin('İş göndərmək');
+  ssModal('Çağırışa iş göndər', `
+    <div class="ss-field"><label class="ss-label" for="ssSubT">İşin adı</label>
+      <input class="ss-input" id="ssSubT" placeholder="Məs: Sinif karbon izi hesabatı"></div>
+    <div class="ss-field"><label class="ss-label" for="ssSubD">Qısa təsvir</label>
+      <textarea class="ss-textarea" id="ssSubD" placeholder="Nə etdin, hansı nəticəni aldın?"></textarea></div>
+    <div class="ss-field"><label class="ss-label" for="ssSubL">Link (istəyə bağlı)</label>
+      <input class="ss-input" id="ssSubL" placeholder="https://…"></div>
+    <p class="ss-hint">Göndərişini müəllim qiymətləndirəcək. Qəbul olunanda 205 Points avtomatik yazılır.</p>`,
+    `<button class="ss-btn" data-ss-modal-close="1">Ləğv et</button>
+     <button class="ss-btn primary" data-ss-act="worldSubmitSave" data-id="${d.id}">Göndər</button>`);
+};
+
+ssActions.worldSubmitSave = async (d) => {
+  const t = document.getElementById('ssSubT')?.value.trim();
+  const desc = document.getElementById('ssSubD')?.value.trim() || '';
+  const link = document.getElementById('ssSubL')?.value.trim() || '';
+  if(!t){ showToast('İşin adını yaz.','red'); return; }
+  const { error } = await sb.from('ss_submissions').insert([{
+    challenge_id: Number(d.id), author: currentUser.username,
+    title: t, description: desc, link
+  }]);
+  if(error){ showToast(error.message,'red'); return; }
+  ssModalClose();
+  ssInvalidate('subs');
+  ssFxCelebrate('🚀','İşin göndərildi','Müəllim qiymətləndirəndən sonra 205 Points yazılacaq.');
+  renderMekteb205();
+};
+
+ssActions.makeTeam = (d) => {
+  if(!currentUser) return ssNeedLogin('Komanda qurmaq');
+  ssModal('Komanda qur', `
+    <div class="ss-field"><label class="ss-label" for="ssTeamN">Komandanın adı</label>
+      <input class="ss-input" id="ssTeamN" placeholder="Məs: EcoTeam 205"></div>
+    <div class="ss-field"><label class="ss-label" for="ssTeamM">Üzvlər (istifadəçi adları, vergüllə)</label>
+      <input class="ss-input" id="ssTeamM" placeholder="sagird12, sagird7"></div>
+    <p class="ss-hint">Kapitan sən olacaqsan. Komanda qazandığı xalları bütün üzvlərə paylayır.</p>`,
+    `<button class="ss-btn" data-ss-modal-close="1">Ləğv et</button>
+     <button class="ss-btn primary" data-ss-act="makeTeamSave" data-id="${d.id}" data-purpose="${d.purpose||'challenge'}">Yarat</button>`);
+};
+
+ssActions.makeTeamSave = async (d) => {
+  const name = document.getElementById('ssTeamN')?.value.trim();
+  if(!name){ showToast('Komandanın adını yaz.','red'); return; }
+  const members = (document.getElementById('ssTeamM')?.value || '')
+    .split(',').map(x => x.trim()).filter(Boolean);
+  const { error } = await sb.from('ss_teams').insert([{
+    name, purpose: d.purpose || 'challenge', ref_id: Number(d.id) || null,
+    owner: currentUser.username, members: [currentUser.username, ...members]
+  }]);
+  if(error){ showToast(error.message,'red'); return; }
+  ssModalClose();
+  ssInvalidate('teams');
+  showToast('Komanda quruldu 👥','teal');
+  renderMekteb205();
+};
+
+SS_RENDER.world = ssRenderWorld;
+
+
+// ══════════════════════════════════════════════════════════════════════
+// MODUL 2 — 205 STUDENT BANK
+//
+// DİQQƏT: burada REAL PUL YOXDUR. 205 Points yalnız məktəbdaxili
+// motivasiya vahididir — nə alınır, nə satılır, nə də köçürülür.
+// Bütün balans hərəkəti ss_points_ledger cədvəlində açıq izlənir.
+// ══════════════════════════════════════════════════════════════════════
+
+// Xal qazanma cədvəli — şagirdə açıq göstərilir ki, sistem şəffaf olsun.
+const SS_EARN = [
+  ['🎮','Quiz və oyun',            20],
+  ['🤝','Başqa şagirdə kömək',     25],
+  ['🌍','Beynəlxalq çağırış',      50],
+  ['🧩','Real problemin həlli',    75],
+  ['🧠','Layihə təqdimatı',       100],
+  ['👨‍🏫','Müəllim nailiyyəti',    100],
+  ['🏅','Olimpiada iştirakı',     150],
+  ['🚀','Startap mərhələsi',      200]
+];
+
+const SS_BANK_TABS = [
+  ['wallet','💳 Cüzdan'],
+  ['board','🏆 Liderbordlar'],
+  ['store','🎁 Mükafat mağazası'],
+  ['how','📘 Necə qazanılır']
+];
+
+async function ssRenderBank(box){
+  const tab = ssRoute.tab || 'wallet';
+  box.innerHTML = ssPage(`
+    ${ssHero({
+      eyebrow:'MODUL 2 · 205 STUDENT BANK',
+      title:'Zəhmətin <span>ölçülən</span> qarşılığı',
+      tagline:'205 Points — məktəbin öz nailiyyət iqtisadiyyatı.',
+      lead:'Oxumaq, kömək etmək, problem həll etmək, layihə qurmaq — hamısı 205 Points '
+        + 'qazandırır. Bu, real pul deyil: yalnız məktəbdaxili motivasiya vahididir.'
+    })}
+    <section class="ss-sec" style="margin-top:18px">
+      <div class="ss-tabs" role="tablist">${SS_BANK_TABS.map(t =>
+        `<button class="ss-tab${tab===t[0]?' on':''}" role="tab"
+          aria-selected="${tab===t[0]}" data-ss-tab="${t[0]}">${t[1]}</button>`).join('')}</div>
+      <div id="ssBankBody">${ssSkeleton(4,'c2')}</div>
+    </section>`);
+
+  const body = document.getElementById('ssBankBody');
+  if(!body) return;
+
+  if(tab === 'how'){
+    body.innerHTML = `
+      <div class="ss-card">
+        <h3 class="ss-h3" style="margin-bottom:6px">Xal cədvəli</h3>
+        <p class="ss-p" style="margin-bottom:16px">
+          Sistem şəffafdır: hər hərəkətin dəyəri əvvəlcədən bəllidir və
+          hər əməliyyat cüzdan tarixçəsində görünür.</p>
+        <div class="ss-grid c2">
+          ${SS_EARN.map(([ic, name, pts]) => `
+            <div class="ss-badge">
+              <span class="ss-badge-ic" aria-hidden="true">${ic}</span>
+              <div><b>${ssEsc(name)}</b><span>hər dəfə</span></div>
+              <span style="margin-left:auto;font-weight:800;color:var(--m-yellow)">+${pts}</span>
+            </div>`).join('')}
+        </div>
+      </div>
+      <div class="ss-card" style="margin-top:14px">
+        <h3 class="ss-h3" style="margin-bottom:8px">Qaydalar</h3>
+        <p class="ss-p">
+          • Şagird özünə xal yaza bilmir — xal yalnız sistem hadisəsi və ya müəllim
+            təsdiqi ilə yaranır.<br>
+          • Xal başqasına köçürülmür, real dəyəri yoxdur.<br>
+          • Bütün hərəkət tarixçəsi açıqdır və geri izlənə bilər.<br>
+          • Mükafat alındıqda xal balansdan çıxılır və nailiyyət tarixçəsinə yazılır.
+        </p>
+      </div>`;
+    return;
+  }
+
+  if(tab === 'store'){
+    const [rewards, sum] = await Promise.all([ssRewards(), ssMySummary()]);
+    if(ssErr(rewards)){ body.innerHTML = ssErrorState(ssErr(rewards),'bank'); return; }
+    const bal = sum?.balance || 0;
+    const R = ssRows(rewards);
+    body.innerHTML = `
+      <div class="ss-card pad-sm" style="margin-bottom:14px;display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+        <span class="ss-item-ic" aria-hidden="true">💳</span>
+        <div style="flex:1;min-width:160px"><b style="font-size:.9rem">Balansın: ${ssNum(bal)} 205P</b>
+          <div class="ss-item-sub">Mükafat alanda xal balansdan çıxılır</div></div>
+      </div>
+      ${R.length ? `<div class="ss-grid c3">${R.map(r => {
+        const can = currentUser && bal >= r.cost;
+        return `<div class="ss-item" style="cursor:default">
+          <span class="ss-item-top">
+            <span class="ss-item-ic" aria-hidden="true">${r.icon}</span>
+            <span style="flex:1;min-width:0">
+              <span class="ss-item-title">${ssEsc(r.name)}</span>
+              <span class="ss-item-sub">${ssEsc(({badge:'Nişan',theme:'Tema',booster:'Booster',
+                rank:'Rütbə',pass:'Pass',frame:'Çərçivə'})[r.kind] || r.kind)}</span></span>
+          </span>
+          <span class="ss-item-body">${ssEsc(r.description)}</span>
+          <span class="ss-item-meta" style="align-items:center">
+            <span style="font-weight:800;color:var(--m-yellow)">${ssNum(r.cost)} 205P</span>
+            <button class="ss-btn sm" style="margin-left:auto"
+              data-ss-act="claimReward" data-id="${r.id}" data-cost="${r.cost}"
+              ${can ? '' : 'disabled'}>${can ? 'Al' : (currentUser ? 'Xal çatmır' : 'Daxil ol')}</button>
+          </span></div>`; }).join('')}</div>`
+        : ssEmpty('🎁','Mağaza hazırlanır','Müəllim ilk mükafatları əlavə edəndə burada görünəcək.')}`;
+    return;
+  }
+
+  if(tab === 'board'){
+    const scope = 'all';
+    const [wallets, ledger] = await Promise.all([
+      ssWallets(),
+      ssFetch('ledger_all', () => sb.from('ss_points_ledger').select('username,amount,created_at').limit(3000))
+    ]);
+    if(ssErr(wallets)){ body.innerHTML = ssErrorState(ssErr(wallets),'bank'); return; }
+
+    const L = ssRows(ledger);
+    const since = d => { const x = new Date(); x.setDate(x.getDate() - d); return x; };
+    const sumSince = d => {
+      const m = new Map();
+      L.filter(r => r.amount > 0 && new Date(r.created_at) >= since(d))
+       .forEach(r => m.set(r.username, (m.get(r.username) || 0) + r.amount));
+      return [...m.entries()].map(([username, balance]) => ({username, balance}))
+        .sort((a,b) => b.balance - a.balance);
+    };
+    const all = ssRows(wallets);
+    const boards = {
+      week:  ['Həftəlik', sumSince(7)],
+      month: ['Aylıq',    sumSince(30)],
+      all:   ['Ümumi',    all]
+    };
+    const pf = u => ssRows(ssCache.profiles_lite || []).find(p => p.username === u);
+
+    body.innerHTML = `
+      <div class="ss-grid c3">
+        ${Object.entries(boards).map(([k, [label, rows]]) => `
+          <div class="ss-card">
+            <h3 class="ss-h3" style="margin-bottom:10px">${label}</h3>
+            ${rows.length ? rows.slice(0,8).map((w,i) =>
+              ssRankRow(i, w.username === currentUser?.username
+                ? (currentUser.display_name || w.username) : w.username,
+                '', ssNum(w.balance), w.username === currentUser?.username)).join('')
+              : `<p class="ss-p">Bu dövrdə hələ hərəkət yoxdur.</p>`}
+          </div>`).join('')}
+      </div>
+      <div class="ss-card" style="margin-top:14px">
+        <h3 class="ss-h3" style="margin-bottom:10px">Sinif reytinqi</h3>
+        <div id="ssBankClass">${ssSkeleton(1,'c2')}</div>
+      </div>`;
+
+    // Sinif reytinqi üçün profilləri çək (username → sinif)
+    const profs = await ssFetch('profiles_lite',
+      () => sb.from('profiles').select('username,display_name,class_grade,role').limit(1000));
+    const P = ssRows(profs);
+    const byClass = new Map();
+    all.forEach(w => {
+      const p = P.find(x => x.username === w.username);
+      const c = (p?.class_grade || '').trim();
+      if(!c) return;
+      byClass.set(c, (byClass.get(c) || 0) + (w.balance || 0));
+    });
+    const cls = [...byClass.entries()].sort((a,b) => b[1] - a[1]);
+    const cb = document.getElementById('ssBankClass');
+    if(cb) cb.innerHTML = cls.length
+      ? cls.map(([c, v], i) => ssRankRow(i, c, '', ssNum(v), c === currentUser?.class_grade)).join('')
+      : `<p class="ss-p">Sinif məlumatı hələ toplanmayıb.</p>`;
+    return;
+  }
+
+  // ── Cüzdan ──
+  if(!currentUser){
+    body.innerHTML = ssEmpty('💳','Cüzdan şəxsidir',
+      'Öz 205 Points balansını görmək üçün SözLab hesabınla daxil ol. '
+      + 'Liderbordlar və mükafat mağazası girişsiz də açıqdır.',
+      `<button class="ss-btn primary" data-ss-act="login">Daxil ol</button>
+       <button class="ss-btn" data-ss-tab="board">Liderbordlara bax</button>`);
+    return;
+  }
+  const [sum, led, achv] = await Promise.all([
+    ssMySummary(true), ssLedger(currentUser.username), ssAchv(currentUser.username)
+  ]);
+  const rows = ssRows(led);
+  body.innerHTML = `
+    <div class="ss-wallet">
+      <div class="ss-eyebrow" style="color:rgba(255,255,255,.55)">CARİ BALANS</div>
+      <div class="ss-wallet-bal">${ssNum(sum?.balance || 0)}<small>205 POINTS</small></div>
+      <div style="display:flex;gap:22px;flex-wrap:wrap;margin-top:16px;font-size:.78rem;color:rgba(255,255,255,.78)">
+        <span>Qazanılıb: <b style="color:#6EE7B7">${ssNum(sum?.earned || 0)}</b></span>
+        <span>Xərclənib: <b style="color:#FCA5A5">${ssNum(sum?.spent || 0)}</b></span>
+        <span>Məktəb sırası: <b>#${sum?.rank || '—'}</b></span>
+      </div>
+    </div>
+    <div class="ss-detail-grid" style="margin-top:14px">
+      <div class="ss-card">
+        <h3 class="ss-h3" style="margin-bottom:8px">Son əməliyyatlar</h3>
+        ${rows.length ? rows.slice(0,14).map(t => `
+          <div class="ss-tx">
+            <span class="ss-tx-ic" aria-hidden="true">${
+              ({quiz:'🎮',challenge:'🌍',project:'🧠',startup:'🚀',olympics:'🏅',
+                problem:'🧩',help:'🤝',teacher:'👨‍🏫',reward:'🎁'})[t.source] || '⭐'}</span>
+            <span class="ss-tx-txt"><b>${ssEsc(t.reason)}</b><span>${ssRel(t.created_at)}</span></span>
+            <span class="ss-tx-amt ${t.amount>0?'plus':'minus'}">${t.amount>0?'+':''}${ssNum(t.amount)}</span>
+          </div>`).join('')
+          : ssEmpty('📭','Hələ əməliyyat yoxdur',
+              'İlk 205 Points-i bir çağırışa qoşulanda və ya problem həll edəndə qazanacaqsan.',
+              `<button class="ss-btn sm" data-ss-go="problem">Problemlərə bax</button>`)}
+      </div>
+      <aside>
+        <div class="ss-card">
+          <h3 class="ss-h3" style="margin-bottom:10px">Nailiyyət tarixçəsi</h3>
+          ${ssRows(achv).length
+            ? ssRows(achv).slice(0,6).map(ssBadge).join('')
+            : `<p class="ss-p">Hələ nişan yoxdur.</p>`}
+        </div>
+        <div class="ss-card" style="margin-top:12px">
+          <h3 class="ss-h3" style="margin-bottom:8px">Necə qazanılır?</h3>
+          ${SS_EARN.slice(0,4).map(([ic,n,p]) =>
+            `<div style="display:flex;gap:8px;align-items:center;font-size:.78rem;padding:5px 0">
+              <span aria-hidden="true">${ic}</span><span style="flex:1">${ssEsc(n)}</span>
+              <b style="color:var(--m-yellow)">+${p}</b></div>`).join('')}
+          <button class="ss-btn sm" style="width:100%;margin-top:10px" data-ss-tab="how">Tam cədvəl</button>
+        </div>
+      </aside>
+    </div>`;
+}
+
+ssActions.claimReward = async (d, el) => {
+  if(!currentUser) return ssNeedLogin('Mükafat almaq');
+  const { data, error } = await sb.rpc('ss_claim_reward', { p_reward_id: Number(d.id) });
+  if(error){ showToast(error.message, 'red'); return; }
+  ssInvalidate('wallets', 'ledger_' + currentUser.username, 'achv_' + currentUser.username);
+  ssMe = null;
+  ssFxCelebrate('🎁', data || 'Mükafat alındı', `−${ssNum(d.cost)} 205P balansdan çıxıldı`);
+  setTimeout(() => renderMekteb205(), 900);
+};
+
+SS_RENDER.bank = ssRenderBank;
+
+
+// ══════════════════════════════════════════════════════════════════════
+// MODUL 3 — 205 STARTUP FACTORY
+// "One idea. One team. One product."
+// Boru xətti: PROBLEM → IDEA → TEAM → MVP → MENTOR → PITCH → DEMO DAY
+// ══════════════════════════════════════════════════════════════════════
+
+const SS_STAGES = [
+  { key:'idea',       label:'İdeya',    icon:'💡', desc:'Problem və ilkin həll fikri yazılıb.' },
+  { key:'validation', label:'Yoxlama',  icon:'🔎', desc:'İstifadəçi ilə danışılıb, ehtiyac təsdiqlənib.' },
+  { key:'team',       label:'Komanda',  icon:'👥', desc:'Rollar bölünüb, komanda formalaşıb.' },
+  { key:'prototype',  label:'Prototip', icon:'🧪', desc:'İlk işlək nümunə hazırdır.' },
+  { key:'mvp',        label:'MVP',      icon:'📦', desc:'Əsas funksiyası işləyən məhsul var.' },
+  { key:'mentor',     label:'Mentor',   icon:'🧭', desc:'Mentor rəyi alınıb və tətbiq edilib.' },
+  { key:'pitch',      label:'Pitç',     icon:'🎤', desc:'Təqdimat hazırlanıb və məşq edilib.' },
+  { key:'demoday',    label:'Demo Day', icon:'🏁', desc:'205 Demo Day-də təqdim olunub.' }
+];
+const ssStageIdx = k => Math.max(0, SS_STAGES.findIndex(s => s.key === k));
+const ssStageOf  = k => SS_STAGES[ssStageIdx(k)];
+
+/** StartupCard */
+function ssStartupCard(st, teamSize){
+  const idx = ssStageIdx(st.stage);
+  const pct = Math.round(((idx + 1) / SS_STAGES.length) * 100);
+  return `
+  <button class="ss-item" data-ss-open="${st.id}" data-ss-module="startup">
+    <span class="ss-item-top">
+      <span class="ss-item-ic" aria-hidden="true">${st.logo_url
+        ? `<img src="${ssEsc(st.logo_url)}" alt="">` : '🚀'}</span>
+      <span style="flex:1;min-width:0">
+        <span class="ss-item-title">${ssEsc(st.name)}</span>
+        <span class="ss-item-sub">${ssEsc(st.tagline || st.category)}</span>
+      </span>
+      <span class="ss-chip ${st.stage === 'demoday' ? 'done' : 'open'}">
+        ${ssStageOf(st.stage).icon} ${ssStageOf(st.stage).label}</span>
+    </span>
+    <span style="display:block">${ssBar(pct, 'var(--ss-startup)')}</span>
+    <span class="ss-item-meta">
+      <span>Qurucu: <b>${ssEsc(st.founder)}</b></span>
+      <span><b>${teamSize || 1}</b> nəfər</span>
+      <span>❤️ <b>${st.votes || 0}</b></span>
+      <span style="margin-left:auto">${pct}%</span>
+    </span>
+  </button>`;
+}
+
+const SS_SU_TABS = [
+  ['all','🚀 Bütün startaplar'],
+  ['pipeline','📊 Boru xətti'],
+  ['demoday','🏁 205 Demo Day'],
+  ['mentor','🧭 Mentor paneli']
+];
+
+async function ssRenderStartup(box){
+  if(ssRoute.id) return ssRenderStartupDetail(box);
+  const tab = ssRoute.tab || 'all';
+
+  box.innerHTML = ssPage(`
+    ${ssHero({
+      eyebrow:'MODUL 3 · 205 STARTUP FACTORY',
+      title:'One idea. <span>One team.</span> One product.',
+      tagline:'İdeyadan Demo Day-ə səkkiz mərhələ.',
+      lead:'Burası layihə yükləmə səhifəsi deyil — inkubasiyadır. Hər startap eyni '
+        + 'yoldan keçir: problem, yoxlama, komanda, prototip, MVP, mentor rəyi, pitç və Demo Day.',
+      ctas:[ currentUser
+        ? `<button class="ss-btn primary" data-ss-act="newStartup">🚀 Startap qur</button>`
+        : `<button class="ss-btn primary" data-ss-act="login">Daxil ol və başla</button>`,
+        `<button class="ss-btn" data-ss-tab="pipeline">📊 Boru xəttinə bax</button>` ]
+    })}
+    <div class="ss-grid c4 ss-sec" id="ssSuStats">${ssSkeleton(4,'c4')}</div>
+    <section class="ss-sec">
+      <div class="ss-tabs" role="tablist">${SS_SU_TABS.map(t =>
+        `<button class="ss-tab${tab===t[0]?' on':''}" role="tab"
+          aria-selected="${tab===t[0]}" data-ss-tab="${t[0]}">${t[1]}</button>`).join('')}</div>
+      <div id="ssSuBody">${ssSkeleton(6,'c3')}</div>
+    </section>`);
+
+  const [startups, teams, fb] = await Promise.all([
+    ssStartups(), ssTeams(),
+    ssFetch('mentorfb', () => sb.from('ss_mentor_feedback').select('*').order('created_at',{ascending:false}))
+  ]);
+  if(ssErr(startups)){ document.getElementById('ssSuBody').innerHTML = ssErrorState(ssErr(startups),'startup'); return; }
+  const S = ssRows(startups), T = ssRows(teams), FB = ssRows(fb);
+  const teamSize = st => (T.find(t => t.id === st.team_id)?.members || []).length || 1;
+
+  const stats = document.getElementById('ssSuStats');
+  if(stats) stats.innerHTML =
+    ssStat(S.length, 'Startap', S.filter(x => x.status === 'active').length + ' aktiv') +
+    ssStat(S.filter(x => x.stage === 'demoday').length, 'Demo Day-də') +
+    ssStat(S.reduce((a,x) => a + (x.votes||0), 0), 'Dəstək səsi') +
+    ssStat(FB.length, 'Mentor rəyi');
+
+  const body = document.getElementById('ssSuBody');
+  if(!body) return;
+
+  if(tab === 'pipeline'){
+    body.innerHTML = `
+      <div class="ss-card">
+        <h3 class="ss-h3" style="margin-bottom:6px">Səkkiz mərhələ</h3>
+        <p class="ss-p" style="margin-bottom:18px">
+          Hər startap eyni yoldan keçir. Mərhələ dəyişikliyini mentor təsdiqləyir.</p>
+        ${ssPipeline(SS_STAGES, null)}
+        <div class="ss-grid c2" style="margin-top:20px">
+          ${SS_STAGES.map((st,i) => `
+            <div class="ss-badge">
+              <span class="ss-badge-ic" aria-hidden="true">${st.icon}</span>
+              <div><b>${i+1}. ${ssEsc(st.label)}</b><span>${ssEsc(st.desc)}</span></div>
+              <span style="margin-left:auto;font-weight:800;color:var(--ss-startup)">
+                ${S.filter(x => x.stage === st.key).length}</span>
+            </div>`).join('')}
+        </div>
+      </div>`;
+    return;
+  }
+
+  if(tab === 'demoday'){
+    const dd = S.filter(x => x.stage === 'demoday');
+    body.innerHTML = `
+      <div class="ss-card" style="background:linear-gradient(140deg,var(--m-navy-950),var(--m-navy-700));
+           color:#fff;border:none;box-shadow:0 16px 40px rgba(11,31,58,.26)">
+        <div class="ss-eyebrow" style="color:rgba(255,255,255,.55)">TƏDBİR</div>
+        <h2 class="ss-h2">205 DEMO DAY</h2>
+        <p style="color:rgba(255,255,255,.82);font-size:.86rem;line-height:1.7;margin-top:8px;max-width:58ch">
+          Mərhələləri tamamlayan komandalar məhsullarını müəllimlər, mentorlar və
+          şagirdlər qarşısında təqdim edir. Hər çıxış 5 dəqiqə + 3 dəqiqə sual.
+        </p>
+        <div style="display:flex;gap:22px;flex-wrap:wrap;margin-top:18px;font-size:.8rem">
+          <span>Təqdimat: <b>${dd.length}</b></span>
+          <span>Ümumi iştirakçı: <b>${S.length}</b></span>
+        </div>
+      </div>
+      <div class="ss-sec">
+        ${ssSecHead('Təqdimat cədvəli')}
+        ${dd.length ? `<div class="ss-card pad-sm">${dd.map((st,i) => `
+            <div class="ss-tx">
+              <span class="ss-tx-ic" aria-hidden="true">${String(i+1).padStart(2,'0')}</span>
+              <span class="ss-tx-txt"><b>${ssEsc(st.name)}</b>
+                <span>${ssEsc(st.founder)} · ${ssEsc(st.category || '—')}</span></span>
+              <button class="ss-btn sm" data-ss-open="${st.id}" data-ss-module="startup">Bax</button>
+            </div>`).join('')}</div>`
+          : ssEmpty('🏁','Demo Day üçün hazır startap yoxdur',
+              'Startaplar bütün mərhələləri keçdikdə avtomatik olaraq bu cədvələ düşür.',
+              `<button class="ss-btn sm" data-ss-tab="all">Startaplara bax</button>`)}
+      </div>`;
+    return;
+  }
+
+  if(tab === 'mentor'){
+    if(!ssIsMentor()){
+      body.innerHTML = ssEmpty('🧭','Bu bölmə mentorlar üçündür',
+        'Mentor, müəllim və ya direktor hesabı ilə daxil olduqda startapları qiymətləndirə, '
+        + 'mərhələ təsdiqləyə və rəy yaza bilərsən.');
+      return;
+    }
+    body.innerHTML = `
+      <div class="ss-card" style="margin-bottom:14px">
+        <h3 class="ss-h3" style="margin-bottom:6px">Mentor paneli</h3>
+        <p class="ss-p">Startapı aç, rəy yaz və mərhələni təsdiqlə. Təsdiq olunan
+          hər mərhələ komandaya <b>+200 205 Points</b> qazandırır.</p>
+      </div>
+      <div class="ss-grid c2">${S.map(st => `
+        <div class="ss-item" style="cursor:default">
+          <span class="ss-item-top">
+            <span class="ss-item-ic" aria-hidden="true">🚀</span>
+            <span style="flex:1;min-width:0"><span class="ss-item-title">${ssEsc(st.name)}</span>
+              <span class="ss-item-sub">${ssEsc(st.founder)} · ${ssStageOf(st.stage).label}</span></span>
+          </span>
+          <span class="ss-item-meta" style="align-items:center">
+            <span><b>${FB.filter(f => f.startup_id === st.id).length}</b> rəy</span>
+            <button class="ss-btn sm" style="margin-left:auto"
+              data-ss-open="${st.id}" data-ss-module="startup">Aç və rəy yaz</button>
+          </span></div>`).join('')}</div>`;
+    return;
+  }
+
+  body.innerHTML = S.length
+    ? `<div class="ss-grid c3">${S.map(st => ssStartupCard(st, teamSize(st))).join('')}</div>`
+    : ssEmpty('🚀','Hələ startap qurulmayıb',
+        'Bu ekosistemdə ilk startapı sən qura bilərsən. Bir real problem seç, həll fikrini yaz — qalanı mərhələ-mərhələ gəlir.',
+        currentUser
+          ? `<button class="ss-btn primary" data-ss-act="newStartup">İlk startapı qur</button>`
+          : `<button class="ss-btn primary" data-ss-act="login">Daxil ol</button>`);
+}
+
+async function ssRenderStartupDetail(box){
+  const id = Number(ssRoute.id);
+  const [startups, teams, fb] = await Promise.all([
+    ssStartups(), ssTeams(),
+    ssFetch('mentorfb', () => sb.from('ss_mentor_feedback').select('*').order('created_at',{ascending:false}))
+  ]);
+  const st = ssRows(startups).find(x => x.id === id);
+  if(!st){
+    box.innerHTML = ssPage(ssEmpty('🔍','Startap tapılmadı','Bu layihə silinmiş və ya heç vaxt olmayıb.',
+      `<button class="ss-btn" data-ss-back="startup">← Startup Factory</button>`));
+    return;
+  }
+  const team = ssRows(teams).find(t => t.id === st.team_id);
+  const F = ssRows(fb).filter(f => f.startup_id === st.id);
+  const idx = ssStageIdx(st.stage);
+  const pct = Math.round(((idx + 1) / SS_STAGES.length) * 100);
+  const isOwner = currentUser?.username === st.founder;
+
+  box.innerHTML = ssPage(`
+    <button class="ss-back" data-ss-back="startup">← 205 Startup Factory</button>
+    <div class="ss-detail-grid">
+      <div>
+        <div class="ss-card">
+          <div style="display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap">
+            <span class="ss-item-ic" style="width:54px;height:54px;font-size:1.5rem">🚀</span>
+            <div style="flex:1;min-width:180px">
+              <h1 class="ss-h2">${ssEsc(st.name)}</h1>
+              <p class="ss-item-sub">${ssEsc(st.tagline || '')}</p>
+            </div>
+            <span class="ss-chip ${st.stage==='demoday'?'done':'open'}">
+              ${ssStageOf(st.stage).icon} ${ssStageOf(st.stage).label}</span>
+          </div>
+          <div style="margin-top:16px">${ssBar(pct,'var(--ss-startup)')}
+            <div style="font-size:.72rem;color:var(--ss-faint);margin-top:6px">
+              ${idx+1}/${SS_STAGES.length} mərhələ · ${pct}%</div></div>
+        </div>
+
+        <div class="ss-card" style="margin-top:14px">
+          <h3 class="ss-h3" style="margin-bottom:12px">Mərhələlər</h3>
+          ${ssPipeline(SS_STAGES, st.stage)}
+        </div>
+
+        <div class="ss-card" style="margin-top:14px">
+          <dl class="ss-def">
+            ${st.problem  ? `<div><dt>Problem</dt><dd>${ssEsc(st.problem)}</dd></div>` : ''}
+            ${st.solution ? `<div><dt>Həll</dt><dd>${ssEsc(st.solution)}</dd></div>` : ''}
+            ${st.target_users ? `<div><dt>Hədəf istifadəçi</dt><dd>${ssEsc(st.target_users)}</dd></div>` : ''}
+            ${st.description  ? `<div><dt>Təsvir</dt><dd>${ssEsc(st.description)}</dd></div>` : ''}
+          </dl>
+          ${(st.demo_url || st.deck_url) ? `
+            <div style="display:flex;gap:8px;margin-top:16px;flex-wrap:wrap">
+              ${st.demo_url ? `<a class="ss-btn sm" href="${ssEsc(st.demo_url)}" target="_blank" rel="noopener">🔗 Demo</a>` : ''}
+              ${st.deck_url ? `<a class="ss-btn sm" href="${ssEsc(st.deck_url)}" target="_blank" rel="noopener">📊 Təqdimat</a>` : ''}
+            </div>` : ''}
+        </div>
+
+        <div class="ss-sec">
+          ${ssSecHead(`Mentor rəyləri (${F.length})`)}
+          ${F.length ? F.map(f => `
+            <div class="ss-card pad-sm" style="margin-bottom:9px">
+              <div style="display:flex;gap:9px;align-items:center;margin-bottom:6px">
+                <span class="ss-chip ${f.verdict==='approved'?'done':f.verdict==='rejected'?'warn':'open'}">
+                  ${({comment:'Rəy',approved:'Təsdiq',changes:'Düzəliş',rejected:'Rədd'})[f.verdict]}</span>
+                <b style="font-size:.8rem">${ssEsc(f.mentor)}</b>
+                <span style="font-size:.7rem;color:var(--ss-faint);margin-left:auto">${ssRel(f.created_at)}</span>
+              </div>
+              <p class="ss-p">${ssEsc(f.body)}</p>
+            </div>`).join('')
+            : ssEmpty('🧭','Hələ mentor rəyi yoxdur',
+                'Mentor startapı nəzərdən keçirdikdə rəyi burada görünəcək.')}
+        </div>
+      </div>
+
+      <aside>
+        <div class="ss-card">
+          <h3 class="ss-h3" style="margin-bottom:10px">Komanda</h3>
+          <p class="ss-p">Qurucu: <b>${ssEsc(st.founder)}</b></p>
+          ${team ? `<p class="ss-p" style="margin-top:6px">${ssEsc(team.name)} —
+            ${(team.members||[]).map(ssEsc).join(', ')}</p>` : ''}
+          <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap">
+            ${currentUser
+              ? `<button class="ss-btn sm" data-ss-act="voteStartup" data-id="${st.id}">❤️ Dəstəklə (${st.votes||0})</button>`
+              : `<button class="ss-btn sm" data-ss-act="login">Dəstəklə</button>`}
+            ${isOwner && !team
+              ? `<button class="ss-btn sm" data-ss-act="makeTeam" data-id="${st.id}" data-purpose="startup">👥 Komanda qur</button>` : ''}
+          </div>
+        </div>
+
+        ${isOwner ? `
+        <div class="ss-card" style="margin-top:12px">
+          <h3 class="ss-h3" style="margin-bottom:8px">Qurucu paneli</h3>
+          <p class="ss-p" style="margin-bottom:10px">Mərhələni yalnız mentor təsdiqləyir,
+            amma məlumatları sən yeniləyə bilərsən.</p>
+          <button class="ss-btn sm" style="width:100%"
+            data-ss-act="editStartup" data-id="${st.id}">✏️ Məlumatları redaktə et</button>
+        </div>` : ''}
+
+        ${ssIsMentor() ? `
+        <div class="ss-card" style="margin-top:12px">
+          <h3 class="ss-h3" style="margin-bottom:8px">Mentor əməliyyatları</h3>
+          <button class="ss-btn sm" style="width:100%"
+            data-ss-act="mentorReview" data-id="${st.id}" data-stage="${st.stage}">📝 Rəy yaz</button>
+          <button class="ss-btn sm primary" style="width:100%;margin-top:8px"
+            data-ss-act="approveStage" data-id="${st.id}" data-stage="${st.stage}"
+            data-founder="${ssEsc(st.founder)}" ${idx >= SS_STAGES.length-1 ? 'disabled' : ''}>
+            ✅ Növbəti mərhələyə keçir</button>
+        </div>` : ''}
+      </aside>
+    </div>`);
+}
+
+// ── Əməliyyatlar ─────────────────────────────────────────────────────
+ssActions.newStartup = () => {
+  if(!currentUser) return ssNeedLogin('Startap qurmaq');
+  ssModal('Yeni startap', `
+    <div class="ss-field"><label class="ss-label" for="ssSuN">Startapın adı *</label>
+      <input class="ss-input" id="ssSuN" placeholder="Məs: BookFinder"></div>
+    <div class="ss-field"><label class="ss-label" for="ssSuT">Bir cümləlik təsvir</label>
+      <input class="ss-input" id="ssSuT" placeholder="Kitabı 2 dəqiqəyə tap"></div>
+    <div class="ss-field"><label class="ss-label" for="ssSuP">Hansı problemi həll edir? *</label>
+      <textarea class="ss-textarea" id="ssSuP" placeholder="Kimin, hansı çətinliyi?"></textarea></div>
+    <div class="ss-field"><label class="ss-label" for="ssSuS">Həll fikrin</label>
+      <textarea class="ss-textarea" id="ssSuS" placeholder="Necə həll edirsən?"></textarea></div>
+    <div class="ss-field"><label class="ss-label" for="ssSuU">Hədəf istifadəçi</label>
+      <input class="ss-input" id="ssSuU" placeholder="Məs: 5–11-ci sinif şagirdləri"></div>
+    <div class="ss-field"><label class="ss-label" for="ssSuC">Kateqoriya</label>
+      <input class="ss-input" id="ssSuC" placeholder="Təhsil / Ekologiya / Texnologiya…"></div>
+    <p class="ss-hint">Startap «İdeya» mərhələsindən başlayır. Hər mərhələni mentor təsdiqləyir.</p>`,
+    `<button class="ss-btn" data-ss-modal-close="1">Ləğv et</button>
+     <button class="ss-btn primary" data-ss-act="newStartupSave">Yarat</button>`);
+};
+
+ssActions.newStartupSave = async () => {
+  const g = id => document.getElementById(id)?.value.trim() || '';
+  const name = g('ssSuN'), problem = g('ssSuP');
+  if(!name || !problem){ showToast('Ad və problem sahələri mütləqdir.','red'); return; }
+  const { error } = await sb.from('ss_startups').insert([{
+    name, tagline:g('ssSuT'), problem, solution:g('ssSuS'),
+    target_users:g('ssSuU'), category:g('ssSuC'),
+    founder: currentUser.username, stage:'idea', status:'active'
+  }]);
+  if(error){ showToast(error.message,'red'); return; }
+  ssModalClose();
+  ssInvalidate('startups');
+  await ssAward(200,'Startap quruldu: '+name,'startup');
+  ssFxCelebrate('🚀','Startapın qeydə alındı','İlk mərhələ: İdeya. Mentor rəyindən sonra irəliləyəcək.');
+  setTimeout(() => renderMekteb205(), 900);
+};
+
+ssActions.editStartup = async (d) => {
+  const st = ssRows(await ssStartups()).find(x => x.id === Number(d.id));
+  if(!st) return;
+  ssModal('Startapı redaktə et', `
+    <div class="ss-field"><label class="ss-label" for="ssEdT">Bir cümləlik təsvir</label>
+      <input class="ss-input" id="ssEdT" value="${ssEsc(st.tagline||'')}"></div>
+    <div class="ss-field"><label class="ss-label" for="ssEdS">Həll</label>
+      <textarea class="ss-textarea" id="ssEdS">${ssEsc(st.solution||'')}</textarea></div>
+    <div class="ss-field"><label class="ss-label" for="ssEdD">Təsvir</label>
+      <textarea class="ss-textarea" id="ssEdD">${ssEsc(st.description||'')}</textarea></div>
+    <div class="ss-field"><label class="ss-label" for="ssEdDemo">Demo linki</label>
+      <input class="ss-input" id="ssEdDemo" value="${ssEsc(st.demo_url||'')}" placeholder="https://…"></div>
+    <div class="ss-field"><label class="ss-label" for="ssEdDeck">Təqdimat linki</label>
+      <input class="ss-input" id="ssEdDeck" value="${ssEsc(st.deck_url||'')}" placeholder="https://…"></div>`,
+    `<button class="ss-btn" data-ss-modal-close="1">Ləğv et</button>
+     <button class="ss-btn primary" data-ss-act="editStartupSave" data-id="${st.id}">Yadda saxla</button>`);
+};
+
+ssActions.editStartupSave = async (d) => {
+  const g = id => document.getElementById(id)?.value.trim() || '';
+  const { error } = await sb.from('ss_startups').update({
+    tagline:g('ssEdT'), solution:g('ssEdS'), description:g('ssEdD'),
+    demo_url:g('ssEdDemo'), deck_url:g('ssEdDeck'), updated_at:new Date().toISOString()
+  }).eq('id', Number(d.id));
+  if(error){ showToast(error.message,'red'); return; }
+  ssModalClose(); ssInvalidate('startups');
+  showToast('Yeniləndi ✅','teal');
+  renderMekteb205();
+};
+
+ssActions.voteStartup = async (d, el) => {
+  if(!currentUser) return ssNeedLogin('Dəstəkləmək');
+  const { data, error } = await sb.rpc('ss_vote_startup', { p_startup_id: Number(d.id) });
+  if(error){ showToast(error.message,'red'); return; }
+  ssInvalidate('startups');
+  if(el) el.innerHTML = `❤️ Dəstəklə (${data ?? ''})`;
+  showToast('Dəstəyin qeydə alındı ❤️','teal');
+};
+
+ssActions.mentorReview = (d) => {
+  if(!ssIsMentor()) return showToast('Bu əməliyyat mentorlar üçündür.','gold');
+  ssModal('Mentor rəyi', `
+    <div class="ss-field"><label class="ss-label" for="ssFbV">Qərar</label>
+      <select class="ss-select" id="ssFbV">
+        <option value="comment">Rəy (qərarsız)</option>
+        <option value="approved">Təsdiq edirəm</option>
+        <option value="changes">Düzəliş lazımdır</option>
+        <option value="rejected">Bu mərhələ üçün hazır deyil</option>
+      </select></div>
+    <div class="ss-field"><label class="ss-label" for="ssFbB">Rəyin *</label>
+      <textarea class="ss-textarea" id="ssFbB" placeholder="Nə yaxşıdır, nə dəyişməlidir?"></textarea></div>`,
+    `<button class="ss-btn" data-ss-modal-close="1">Ləğv et</button>
+     <button class="ss-btn primary" data-ss-act="mentorReviewSave" data-id="${d.id}" data-stage="${d.stage}">Göndər</button>`);
+};
+
+ssActions.mentorReviewSave = async (d) => {
+  const body = document.getElementById('ssFbB')?.value.trim();
+  const verdict = document.getElementById('ssFbV')?.value || 'comment';
+  if(!body){ showToast('Rəy mətnini yaz.','red'); return; }
+  const { error } = await sb.from('ss_mentor_feedback').insert([{
+    startup_id:Number(d.id), mentor:currentUser.username, stage:d.stage||'', verdict, body
+  }]);
+  if(error){ showToast(error.message,'red'); return; }
+  ssModalClose(); ssInvalidate('mentorfb');
+  showToast('Rəy yazıldı 🧭','teal');
+  renderMekteb205();
+};
+
+ssActions.approveStage = async (d) => {
+  if(!ssIsMentor()) return showToast('Bu əməliyyat mentorlar üçündür.','gold');
+  const i = ssStageIdx(d.stage);
+  const next = SS_STAGES[i+1];
+  if(!next){ showToast('Bu artıq son mərhələdir.','gold'); return; }
+  const { error } = await sb.from('ss_startups')
+    .update({ stage: next.key, updated_at:new Date().toISOString() }).eq('id', Number(d.id));
+  if(error){ showToast(error.message,'red'); return; }
+  ssInvalidate('startups');
+  await sb.rpc('ss_award_points',{ p_username:d.founder, p_amount:200,
+    p_reason:'Startap mərhələsi: '+next.label, p_source:'startup', p_ref_id:Number(d.id) }).catch(()=>{});
+  ssFxCelebrate(next.icon, next.label + ' mərhələsi', 'Komandaya +200 205 Points yazıldı');
+  setTimeout(() => renderMekteb205(), 900);
+};
+
+SS_RENDER.startup = ssRenderStartup;
+
+
+// ══════════════════════════════════════════════════════════════════════
+// MODUL 4 — 205 PROBLEM MARKET
+//
+// Ekosistemin ən fərqli hissəsi: məktəb şagirdə tapşırıq vermir —
+// ÖZ REAL PROBLEMİNİ elan edir, şagird isə onu həll etməyi öhdəsinə götürür.
+// Boru xətti: PROBLEM → İDEYA → KOMANDA → HƏLL → PROTOTİP → BAXIŞ → TƏTBİQ
+// ══════════════════════════════════════════════════════════════════════
+
+const SS_SOL_STAGES = [
+  { key:'idea',        label:'İdeya' },
+  { key:'team',        label:'Komanda' },
+  { key:'solution',    label:'Həll' },
+  { key:'prototype',   label:'Prototip' },
+  { key:'review',      label:'Baxış' },
+  { key:'implemented', label:'Tətbiq' }
+];
+const SS_PROB_CATS = ['Təhsil','Texnologiya','Ekologiya','Məktəb həyatı',
+  'Əlçatanlıq','İdman','Mədəniyyət','Təhlükəsizlik','İcma'];
+const SS_PROB_STATUS = {
+  open:       ['open','Açıqdır'],
+  progress:   ['warn','İşlənir'],
+  solved:     ['done','Həll olunub'],
+  implemented:['done','Tətbiq edilib']
+};
+
+/** ProblemCard */
+function ssProblemCard(p, solCount){
+  const st = SS_PROB_STATUS[p.status] || ['open', p.status];
+  const dif = { asan:'Asan', orta:'Orta', 'çətin':'Çətin' }[p.difficulty] || p.difficulty;
+  return `
+  <button class="ss-item" data-ss-open="${p.id}" data-ss-module="problem">
+    <span class="ss-item-top">
+      <span class="ss-item-ic" aria-hidden="true">${
+        ({'Təhsil':'📚','Texnologiya':'💻','Ekologiya':'🌱','Məktəb həyatı':'🏫',
+          'Əlçatanlıq':'♿','İdman':'⚽','Mədəniyyət':'🎭','Təhlükəsizlik':'🛡️','İcma':'🤝'})[p.category] || '🧩'}</span>
+      <span style="flex:1;min-width:0">
+        <span class="ss-item-title">${ssEsc(p.title)}</span>
+        <span class="ss-item-sub">${ssEsc(p.category)} · ${ssEsc(dif)}</span>
+      </span>
+      <span class="ss-chip ${st[0]}">${st[1]}</span>
+    </span>
+    <span class="ss-item-body">${ssEsc(String(p.body||'').slice(0,150))}${
+      String(p.body||'').length > 150 ? '…' : ''}</span>
+    <span class="ss-item-meta">
+      <span><b>+${p.points}</b> 205P</span>
+      <span><b>${solCount || 0}</b> həll</span>
+      ${p.deadline ? `<span>Son: <b>${ssDate(p.deadline)}</b></span>` : ''}
+      ${(p.solved_by||[]).length ? `<span>✅ <b>${(p.solved_by||[]).length}</b> şagird</span>` : ''}
+    </span>
+  </button>`;
+}
+
+async function ssRenderProblem(box){
+  if(ssRoute.id) return ssRenderProblemDetail(box);
+  const tab = ssRoute.tab || 'open';
+
+  box.innerHTML = ssPage(`
+    ${ssHero({
+      eyebrow:'MODUL 4 · 205 PROBLEM MARKET',
+      title:'Tapşırıq yox — <span>əsl problem</span>',
+      tagline:'Məktəbin həll gözləyən real məsələləri.',
+      lead:'Burada müəllim sual vermir, məktəb problem elan edir. Şagird onu götürür, '
+        + 'komanda qurur, prototip hazırlayır — və uğurlu həll məktəbdə HƏQİQƏTƏN tətbiq olunur.',
+      ctas:[ ssIsTeacher()
+        ? `<button class="ss-btn primary" data-ss-act="newProblem">➕ Problem elan et</button>`
+        : `<button class="ss-btn primary" data-ss-tab="open">🧩 Açıq problemlərə bax</button>` ]
+    })}
+    <div class="ss-grid c4 ss-sec" id="ssPrStats">${ssSkeleton(4,'c4')}</div>
+    <section class="ss-sec">
+      <div class="ss-card">
+        <h3 class="ss-h3" style="margin-bottom:12px">Problemdən tətbiqə</h3>
+        ${ssPipeline([{key:'p',label:'Problem'}].concat(SS_SOL_STAGES.map(x=>({key:x.key,label:x.label}))), 'p')}
+      </div>
+    </section>
+    <section class="ss-sec">
+      <div class="ss-tabs" role="tablist">
+        ${[['open','🟢 Açıq'],['progress','🟡 İşlənir'],['solved','✅ Həll olunub'],['all','📋 Hamısı']]
+          .map(t => `<button class="ss-tab${tab===t[0]?' on':''}" role="tab"
+            aria-selected="${tab===t[0]}" data-ss-tab="${t[0]}">${t[1]}</button>`).join('')}
+      </div>
+      <div id="ssPrBody">${ssSkeleton(6,'c3')}</div>
+    </section>`);
+
+  const [problems, solutions] = await Promise.all([ssProblems(), ssSolutions()]);
+  if(ssErr(problems)){ document.getElementById('ssPrBody').innerHTML = ssErrorState(ssErr(problems),'problem'); return; }
+  const P = ssRows(problems), S = ssRows(solutions);
+  const solCount = id => S.filter(x => x.problem_id === id).length;
+
+  const stats = document.getElementById('ssPrStats');
+  if(stats) stats.innerHTML =
+    ssStat(P.filter(p => p.status === 'open').length, 'Açıq problem') +
+    ssStat(P.filter(p => ['solved','implemented'].includes(p.status)).length, 'Həll olunub',
+           'məktəbdə tətbiq üçün') +
+    ssStat(S.length, 'Göndərilmiş həll') +
+    ssStat(new Set(P.flatMap(p => p.solved_by || [])).size, 'Problem həll edən şagird');
+
+  const body = document.getElementById('ssPrBody');
+  if(!body) return;
+  const list = tab === 'all' ? P
+    : tab === 'solved' ? P.filter(p => ['solved','implemented'].includes(p.status))
+    : P.filter(p => p.status === tab);
+
+  body.innerHTML = list.length
+    ? `<div class="ss-grid c3">${list.map(p => ssProblemCard(p, solCount(p.id))).join('')}</div>`
+    : ssEmpty('🧩',
+        tab === 'solved' ? 'Hələ həll olunmuş problem yoxdur' : 'Bu bölmədə problem yoxdur',
+        tab === 'solved'
+          ? 'İlk həll qəbul olunanda burada «Problem Solved by 205 Students» nişanı ilə görünəcək.'
+          : 'Müəllim və ya direktor yeni problem elan edəndə burada görünəcək.',
+        ssIsTeacher() ? `<button class="ss-btn sm" data-ss-act="newProblem">Problem elan et</button>` : '');
+}
+
+async function ssRenderProblemDetail(box){
+  const id = Number(ssRoute.id);
+  const [problems, solutions, teams] = await Promise.all([ssProblems(), ssSolutions(), ssTeams()]);
+  const p = ssRows(problems).find(x => x.id === id);
+  if(!p){
+    box.innerHTML = ssPage(ssEmpty('🔍','Problem tapılmadı','Bu problem silinib və ya mövcud deyil.',
+      `<button class="ss-btn" data-ss-back="problem">← Problem Market</button>`));
+    return;
+  }
+  const sols = ssRows(solutions).filter(x => x.problem_id === id);
+  const st = SS_PROB_STATUS[p.status] || ['open', p.status];
+  const mine = currentUser ? sols.find(x => x.author === currentUser.username) : null;
+
+  box.innerHTML = ssPage(`
+    <button class="ss-back" data-ss-back="problem">← 205 Problem Market</button>
+    <div class="ss-detail-grid">
+      <div>
+        <div class="ss-card">
+          <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:10px">
+            <span class="ss-chip ${st[0]}">${st[1]}</span>
+            <span class="ss-chip">${ssEsc(p.category)}</span>
+            <span class="ss-chip">${ssEsc({asan:'Asan',orta:'Orta','çətin':'Çətin'}[p.difficulty]||p.difficulty)}</span>
+            <span class="ss-chip warn">+${p.points} 205P</span>
+          </div>
+          <h1 class="ss-h2">${ssEsc(p.title)}</h1>
+          <p class="ss-p" style="margin-top:12px">${ssEsc(p.body)}</p>
+          ${(p.solved_by||[]).length ? `
+            <div class="ss-badge" style="margin-top:18px">
+              <span class="ss-badge-ic" aria-hidden="true">🧩</span>
+              <div><b>Problem Solved by 205 Students</b>
+                <span>${(p.solved_by||[]).map(ssEsc).join(', ')} · ${ssRel(p.solved_at)}</span></div>
+            </div>` : ''}
+        </div>
+
+        <div class="ss-card" style="margin-top:14px">
+          <h3 class="ss-h3" style="margin-bottom:12px">Həll yolu</h3>
+          ${ssPipeline(SS_SOL_STAGES, mine ? mine.stage : null)}
+          ${!mine ? `<p class="ss-p" style="margin-top:12px">
+            Bu problemi götürsən, mərhələlər burada sənin irəliləyişini göstərəcək.</p>` : ''}
+        </div>
+
+        <div class="ss-sec">
+          ${ssSecHead(`Təklif olunan həllər (${sols.length})`)}
+          ${sols.length ? sols.map(sol => `
+            <div class="ss-card pad-sm" style="margin-bottom:10px">
+              <div style="display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-bottom:7px">
+                <b style="font-size:.88rem">${ssEsc(sol.title)}</b>
+                <span class="ss-chip ${sol.status==='implemented'?'done':'open'}">
+                  ${({submitted:'Göndərilib',accepted:'Qəbul olunub',
+                      implemented:'Tətbiq edilib',rejected:'Rədd edilib'})[sol.status]||sol.status}</span>
+                <span style="font-size:.7rem;color:var(--ss-faint);margin-left:auto">
+                  ${ssEsc(sol.author)} · ${ssRel(sol.created_at)}</span>
+              </div>
+              ${sol.idea      ? `<p class="ss-p"><b>İdeya:</b> ${ssEsc(sol.idea)}</p>` : ''}
+              ${sol.solution  ? `<p class="ss-p" style="margin-top:5px"><b>Həll:</b> ${ssEsc(sol.solution)}</p>` : ''}
+              ${sol.prototype ? `<p class="ss-p" style="margin-top:5px"><b>Prototip:</b> ${ssEsc(sol.prototype)}</p>` : ''}
+              ${sol.feedback  ? `<p class="ss-p" style="margin-top:7px;color:var(--m-primary)">💬 ${ssEsc(sol.feedback)}</p>` : ''}
+              ${ssIsTeacher() && sol.status !== 'implemented' ? `
+                <div style="display:flex;gap:7px;margin-top:11px;flex-wrap:wrap">
+                  <button class="ss-btn sm primary" data-ss-act="markSolved"
+                    data-problem="${p.id}" data-sol="${sol.id}">✅ Bu həlli qəbul et</button>
+                </div>` : ''}
+            </div>`).join('')
+            : ssEmpty('📭','Bu problemə hələ həll göndərilməyib',
+                'İlk həlli sən təklif et — qəbul olunsa məktəbdə tətbiq ediləcək.',
+                currentUser ? `<button class="ss-btn sm primary" data-ss-act="newSolution" data-id="${p.id}">Həll təklif et</button>` : '')}
+        </div>
+      </div>
+
+      <aside>
+        <div class="ss-card">
+          <h3 class="ss-h3" style="margin-bottom:8px">Bu problemi götür</h3>
+          <p class="ss-p" style="margin-bottom:14px">
+            Qəbul olunan həll <b>+${p.points} 205 Points</b> və
+            <b>«Problem Solved by 205 Students»</b> nişanı qazandırır.</p>
+          ${currentUser
+            ? (mine
+                ? `<p class="ss-p" style="margin-bottom:10px">Artıq həll göndərmisən —
+                     mərhələni yeniləyə bilərsən.</p>
+                   <button class="ss-btn primary" style="width:100%"
+                     data-ss-act="advanceSolution" data-id="${mine.id}" data-stage="${mine.stage}">
+                     ➡️ Növbəti mərhələyə keç</button>`
+                : `<button class="ss-btn primary" style="width:100%"
+                     data-ss-act="newSolution" data-id="${p.id}">🧩 Həll təklif et</button>`)
+            : `<button class="ss-btn primary" style="width:100%" data-ss-act="login">Daxil ol</button>`}
+          ${currentUser ? `<button class="ss-btn" style="width:100%;margin-top:8px"
+            data-ss-act="makeTeam" data-id="${p.id}" data-purpose="problem">👥 Komanda qur</button>` : ''}
+        </div>
+        <div class="ss-card" style="margin-top:12px">
+          <dl class="ss-def">
+            <div><dt>Elan edən</dt><dd>${ssEsc(p.created_by || 'Məktəb rəhbərliyi')}</dd></div>
+            ${p.deadline ? `<div><dt>Son tarix</dt><dd>${ssDate(p.deadline)}</dd></div>` : ''}
+            <div><dt>Elan tarixi</dt><dd>${ssDate(p.created_at)}</dd></div>
+          </dl>
+        </div>
+        ${ssIsTeacher() ? `
+        <div class="ss-card" style="margin-top:12px">
+          <h3 class="ss-h3" style="margin-bottom:8px">Müəllim paneli</h3>
+          <button class="ss-btn sm" style="width:100%" data-ss-act="setProblemStatus"
+            data-id="${p.id}" data-status="${p.status === 'open' ? 'progress' : 'open'}">
+            ${p.status === 'open' ? '🟡 «İşlənir» kimi işarələ' : '🟢 Yenidən aç'}</button>
+        </div>` : ''}
+      </aside>
+    </div>`);
+}
+
+// ── Əməliyyatlar ─────────────────────────────────────────────────────
+ssActions.newProblem = () => {
+  if(!ssIsTeacher()) return showToast('Problem yalnız müəllim və direktor elan edə bilər.','gold');
+  ssModal('Yeni problem elan et', `
+    <div class="ss-field"><label class="ss-label" for="ssPrT">Problem sualı *</label>
+      <input class="ss-input" id="ssPrT" placeholder="Məs: Məktəbdə su israfını necə azalda bilərik?"></div>
+    <div class="ss-field"><label class="ss-label" for="ssPrB">Təfərrüat *</label>
+      <textarea class="ss-textarea" id="ssPrB" placeholder="Hazırkı vəziyyət nədir, uğur necə ölçüləcək?"></textarea></div>
+    <div class="ss-field"><label class="ss-label" for="ssPrC">Kateqoriya</label>
+      <select class="ss-select" id="ssPrC">${SS_PROB_CATS.map(c => `<option>${c}</option>`).join('')}</select></div>
+    <div class="ss-field"><label class="ss-label" for="ssPrD">Çətinlik</label>
+      <select class="ss-select" id="ssPrD"><option value="asan">Asan</option>
+        <option value="orta" selected>Orta</option><option value="çətin">Çətin</option></select></div>
+    <div class="ss-field"><label class="ss-label" for="ssPrP">Mükafat (205 Points)</label>
+      <input class="ss-input" id="ssPrP" type="number" value="75" min="10" max="500"></div>
+    <div class="ss-field"><label class="ss-label" for="ssPrDl">Son tarix (istəyə bağlı)</label>
+      <input class="ss-input" id="ssPrDl" type="date"></div>`,
+    `<button class="ss-btn" data-ss-modal-close="1">Ləğv et</button>
+     <button class="ss-btn primary" data-ss-act="newProblemSave">Elan et</button>`);
+};
+
+ssActions.newProblemSave = async () => {
+  const g = id => document.getElementById(id)?.value.trim() || '';
+  const title = g('ssPrT'), body = g('ssPrB');
+  if(!title || !body){ showToast('Sual və təfərrüat mütləqdir.','red'); return; }
+  const { error } = await sb.from('ss_problems').insert([{
+    title, body, category:g('ssPrC') || 'Məktəb həyatı',
+    difficulty:g('ssPrD') || 'orta', points:Number(g('ssPrP')) || 75,
+    deadline:g('ssPrDl') || null, created_by:currentUser.username, status:'open'
+  }]);
+  if(error){ showToast(error.message,'red'); return; }
+  ssModalClose(); ssInvalidate('problems');
+  showToast('Problem elan olundu 🧩','teal');
+  renderMekteb205();
+};
+
+ssActions.newSolution = (d) => {
+  if(!currentUser) return ssNeedLogin('Həll təklif etmək');
+  ssModal('Həll təklif et', `
+    <div class="ss-field"><label class="ss-label" for="ssSoT">Həllin adı *</label>
+      <input class="ss-input" id="ssSoT" placeholder="Məs: Rəngli ayırma sistemi"></div>
+    <div class="ss-field"><label class="ss-label" for="ssSoI">İdeyan *</label>
+      <textarea class="ss-textarea" id="ssSoI" placeholder="Bir cümlə ilə: nə təklif edirsən?"></textarea></div>
+    <div class="ss-field"><label class="ss-label" for="ssSoS">Necə işləyəcək?</label>
+      <textarea class="ss-textarea" id="ssSoS" placeholder="Addım-addım izah et."></textarea></div>
+    <p class="ss-hint">Həllin «İdeya» mərhələsindən başlayır. İrəlilədikcə mərhələni özün yeniləyirsən.</p>`,
+    `<button class="ss-btn" data-ss-modal-close="1">Ləğv et</button>
+     <button class="ss-btn primary" data-ss-act="newSolutionSave" data-id="${d.id}">Göndər</button>`);
+};
+
+ssActions.newSolutionSave = async (d) => {
+  const g = id => document.getElementById(id)?.value.trim() || '';
+  const title = g('ssSoT'), idea = g('ssSoI');
+  if(!title || !idea){ showToast('Ad və ideya mütləqdir.','red'); return; }
+  const { error } = await sb.from('ss_solutions').insert([{
+    problem_id:Number(d.id), author:currentUser.username,
+    title, idea, solution:g('ssSoS'), stage:'idea', status:'submitted'
+  }]);
+  if(error){ showToast(error.message,'red'); return; }
+  ssModalClose(); ssInvalidate('solutions','problems');
+  ssFxCelebrate('🧩','Həllin göndərildi','Müəllim qəbul edəndə 205 Points və nişan yazılacaq.');
+  setTimeout(() => renderMekteb205(), 900);
+};
+
+ssActions.advanceSolution = async (d) => {
+  const i = SS_SOL_STAGES.findIndex(s => s.key === d.stage);
+  const next = SS_SOL_STAGES[i+1];
+  if(!next || next.key === 'implemented'){
+    showToast('Son mərhələni müəllim təsdiqləyir.','gold'); return;
+  }
+  const { error } = await sb.from('ss_solutions').update({ stage: next.key }).eq('id', Number(d.id));
+  if(error){ showToast(error.message,'red'); return; }
+  ssInvalidate('solutions');
+  showToast('Mərhələ: ' + next.label + ' ➡️','teal');
+  renderMekteb205();
+};
+
+ssActions.markSolved = async (d) => {
+  if(!ssIsTeacher()) return showToast('Bu əməliyyat müəllimlər üçündür.','gold');
+  const { error } = await sb.rpc('ss_mark_problem_solved', {
+    p_problem_id:Number(d.problem), p_solution_id:Number(d.sol)
+  });
+  if(error){ showToast(error.message,'red'); return; }
+  ssInvalidate('problems','solutions');
+  ssFxCelebrate('🧩','Problem Solved by 205 Students',
+    'Həll qəbul olundu — komanda 205 Points və nişan qazandı.');
+  setTimeout(() => renderMekteb205(), 1000);
+};
+
+ssActions.setProblemStatus = async (d) => {
+  if(!ssIsTeacher()) return;
+  const { error } = await sb.from('ss_problems').update({ status:d.status }).eq('id', Number(d.id));
+  if(error){ showToast(error.message,'red'); return; }
+  ssInvalidate('problems');
+  renderMekteb205();
+};
+
+SS_RENDER.problem = ssRenderProblem;
+
+
+// ══════════════════════════════════════════════════════════════════════
+// MODUL 5 — 205 HUMANITY LAB
+// "Think beyond the classroom."
+// Axın: Problem → Araşdırma → İdeya → Komanda → Həll → Prototip → Təqdimat
+// ══════════════════════════════════════════════════════════════════════
+
+const SS_HUM_STAGES = [
+  { key:'research',     label:'Araşdırma' },
+  { key:'idea',         label:'İdeya' },
+  { key:'team',         label:'Komanda' },
+  { key:'solution',     label:'Həll' },
+  { key:'prototype',    label:'Prototip' },
+  { key:'presentation', label:'Təqdimat' }
+];
+
+// Kateqoriyanın vizual kimliyi — hər biri öz rəngi ilə tanınır
+const SS_HUM_LOOK = {
+  'Climate':         ['#EF4444','🌍'],
+  'Clean Water':     ['#06B6D4','💧'],
+  'Education':       ['#4F46E5','📚'],
+  'Accessibility':   ['#7C3AED','♿'],
+  'Environment':     ['#10B981','🌱'],
+  'Smart Cities':    ['#2563EB','🏙'],
+  'Food':            ['#F59E0B','🍎'],
+  'Clean Energy':    ['#84CC16','🔋'],
+  'Social Inclusion':['#EC4899','🤝']
+};
+
+async function ssRenderHumanity(box){
+  if(ssRoute.id) return ssRenderHumanityDetail(box);
+  const tab = ssRoute.tab || 'challenges';
+
+  box.innerHTML = ssPage(`
+    ${ssHero({
+      eyebrow:'MODUL 5 · 205 HUMANITY LAB',
+      title:'Sinif divarlarından <span>kənara</span> düşün',
+      tagline:'Think beyond the classroom.',
+      lead:'İqlim, təmiz su, təhsil, əlçatanlıq — bunlar imtahan mövzusu deyil, '
+        + 'dünyanın açıq problemləridir. Humanity Lab şagirdi bu problemlərin '
+        + 'üzərində araşdırmaçı kimi işləməyə çağırır.'
+    })}
+    <div class="ss-grid c4 ss-sec" id="ssHuStats">${ssSkeleton(4,'c4')}</div>
+    <section class="ss-sec">
+      <div class="ss-tabs" role="tablist">
+        ${[['challenges','🌍 Qlobal çağırışlar'],['projects','🔬 Şagird layihələri'],
+           ['impact','📈 Təsir göstəriciləri']]
+          .map(t => `<button class="ss-tab${tab===t[0]?' on':''}" role="tab"
+            aria-selected="${tab===t[0]}" data-ss-tab="${t[0]}">${t[1]}</button>`).join('')}
+      </div>
+      <div id="ssHuBody">${ssSkeleton(6,'c3')}</div>
+    </section>`);
+
+  const [challenges, projects] = await Promise.all([ssChalls('humanity'), ssHumanity()]);
+  if(ssErr(challenges)){ document.getElementById('ssHuBody').innerHTML = ssErrorState(ssErr(challenges),'humanity'); return; }
+  const C = ssRows(challenges), P = ssRows(projects);
+
+  const stats = document.getElementById('ssHuStats');
+  if(stats) stats.innerHTML =
+    ssStat(C.length, 'Qlobal çağırış', '9 kateqoriya') +
+    ssStat(P.length, 'Şagird layihəsi', P.filter(x => x.status === 'completed').length + ' tamamlanıb') +
+    ssStat(ssNum(P.reduce((a,x) => a + (x.impact_points||0), 0)), 'Humanity Points') +
+    ssStat(new Set(P.map(x => x.author)).size, 'İştirakçı şagird');
+
+  const body = document.getElementById('ssHuBody');
+  if(!body) return;
+
+  if(tab === 'projects'){
+    body.innerHTML = P.length
+      ? `<div class="ss-grid c3">${P.map(pr => {
+          const look = SS_HUM_LOOK[pr.category] || ['#4F46E5','🌍'];
+          const i = SS_HUM_STAGES.findIndex(s => s.key === pr.stage);
+          const pct = Math.round(((i+1) / SS_HUM_STAGES.length) * 100);
+          return `<button class="ss-item" data-ss-open="p${pr.id}" data-ss-module="humanity">
+            <span class="ss-item-top">
+              <span class="ss-item-ic" style="background:${look[0]}1a;border-color:${look[0]}44"
+                    aria-hidden="true">${look[1]}</span>
+              <span style="flex:1;min-width:0">
+                <span class="ss-item-title">${ssEsc(pr.title)}</span>
+                <span class="ss-item-sub">${ssEsc(pr.category)} · ${ssEsc(pr.author)}</span></span>
+            </span>
+            <span style="display:block">${ssBar(pct, look[0])}</span>
+            <span class="ss-item-meta">
+              <span>${ssEsc(SS_HUM_STAGES[Math.max(0,i)].label)}</span>
+              <span>🌱 <b>${pr.impact_points||0}</b> HP</span>
+              <span style="margin-left:auto">${pct}%</span></span>
+          </button>`; }).join('')}</div>`
+      : ssEmpty('🔬','Hələ layihə yoxdur',
+          'Bir qlobal çağırışı seç və ilk araşdırmanı başlat — layihən burada görünəcək.',
+          `<button class="ss-btn sm" data-ss-tab="challenges">Çağırışlara bax</button>`);
+    return;
+  }
+
+  if(tab === 'impact'){
+    const byCat = new Map();
+    P.forEach(pr => byCat.set(pr.category, (byCat.get(pr.category)||0) + (pr.impact_points||0)));
+    const rows = [...byCat.entries()].sort((a,b) => b[1]-a[1]);
+    const max = Math.max(...rows.map(r => r[1]), 1);
+    body.innerHTML = `
+      <div class="ss-card">
+        <h3 class="ss-h3" style="margin-bottom:6px">Kateqoriyalar üzrə təsir</h3>
+        <p class="ss-p" style="margin-bottom:16px">
+          Humanity Points layihənin mərhələsinə və müəllim qiymətinə görə verilir.</p>
+        ${rows.length ? rows.map(([cat, v]) => {
+          const look = SS_HUM_LOOK[cat] || ['#4F46E5','🌍'];
+          return `<div class="ss-jrow" style="grid-template-columns:150px 1fr 64px;margin-bottom:11px">
+            <span class="ss-jrow-lbl"><span aria-hidden="true">${look[1]}</span> ${ssEsc(cat)}</span>
+            ${ssBar((v/max)*100, look[0])}
+            <span class="ss-jrow-val">${ssNum(v)}</span></div>`; }).join('')
+          : `<p class="ss-p">Hələ ölçüləcək təsir yoxdur.</p>`}
+      </div>
+      <div class="ss-card" style="margin-top:14px">
+        <h3 class="ss-h3" style="margin-bottom:10px">Ən fəal araşdırmaçılar</h3>
+        ${(() => {
+          const m = new Map();
+          P.forEach(pr => m.set(pr.author, (m.get(pr.author)||0) + (pr.impact_points||0)));
+          const top = [...m.entries()].sort((a,b) => b[1]-a[1]).slice(0,8);
+          return top.length
+            ? top.map(([u,v],i) => ssRankRow(i, u, '', ssNum(v)+' HP', u===currentUser?.username)).join('')
+            : `<p class="ss-p">Hələ iştirakçı yoxdur.</p>`;
+        })()}
+      </div>`;
+    return;
+  }
+
+  body.innerHTML = C.length
+    ? `<div class="ss-grid c3">${C.map(c => {
+        const look = SS_HUM_LOOK[c.category] || ['#4F46E5', c.icon || '🌍'];
+        const n = P.filter(x => x.challenge_id === c.id).length;
+        return `<button class="ss-item" data-ss-open="${c.id}" data-ss-module="humanity">
+          <span class="ss-item-top">
+            <span class="ss-item-ic" style="background:${look[0]}1a;border-color:${look[0]}44"
+                  aria-hidden="true">${c.icon || look[1]}</span>
+            <span style="flex:1;min-width:0">
+              <span class="ss-item-title">${ssEsc(c.title)}</span>
+              <span class="ss-item-sub">${ssEsc(c.category)}</span></span>
+          </span>
+          <span class="ss-item-body">${ssEsc(c.summary)}</span>
+          <span class="ss-item-meta">
+            <span><b>+${c.points}</b> HP</span>
+            <span><b>${n}</b> layihə</span>
+            <span style="margin-left:auto">${ssEsc({asan:'Asan',orta:'Orta','çətin':'Çətin'}[c.difficulty]||'')}</span>
+          </span></button>`; }).join('')}</div>`
+    : ssEmpty('🌍','Çağırışlar hazırlanır','Müəllim ilk qlobal çağırışı əlavə edəndə burada görünəcək.');
+}
+
+async function ssRenderHumanityDetail(box){
+  const raw = String(ssRoute.id || '');
+  const isProject = raw[0] === 'p';
+  const id = Number(raw.replace(/^p/, ''));
+  const [challenges, projects] = await Promise.all([ssChalls('humanity'), ssHumanity()]);
+
+  if(isProject){
+    const pr = ssRows(projects).find(x => x.id === id);
+    if(!pr){
+      box.innerHTML = ssPage(ssEmpty('🔍','Layihə tapılmadı','',
+        `<button class="ss-btn" data-ss-back="humanity">← Humanity Lab</button>`));
+      return;
+    }
+    const look = SS_HUM_LOOK[pr.category] || ['#4F46E5','🌍'];
+    const mine = currentUser?.username === pr.author;
+    box.innerHTML = ssPage(`
+      <button class="ss-back" data-ss-back="humanity">← 205 Humanity Lab</button>
+      <div class="ss-card">
+        <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+          <span class="ss-item-ic" style="width:50px;height:50px;font-size:1.4rem;
+            background:${look[0]}1a;border-color:${look[0]}44">${look[1]}</span>
+          <div style="flex:1;min-width:180px">
+            <h1 class="ss-h2">${ssEsc(pr.title)}</h1>
+            <p class="ss-item-sub">${ssEsc(pr.category)} · ${ssEsc(pr.author)}</p>
+          </div>
+          <span class="ss-chip warn">🌱 ${pr.impact_points||0} HP</span>
+        </div>
+        <div style="margin-top:16px">${ssPipeline(SS_HUM_STAGES, pr.stage)}</div>
+      </div>
+      <div class="ss-card" style="margin-top:14px">
+        <dl class="ss-def">
+          ${pr.research  ? `<div><dt>Araşdırma</dt><dd>${ssEsc(pr.research)}</dd></div>` : ''}
+          ${pr.idea      ? `<div><dt>İdeya</dt><dd>${ssEsc(pr.idea)}</dd></div>` : ''}
+          ${pr.solution  ? `<div><dt>Həll</dt><dd>${ssEsc(pr.solution)}</dd></div>` : ''}
+          ${pr.prototype ? `<div><dt>Prototip</dt><dd>${ssEsc(pr.prototype)}</dd></div>` : ''}
+        </dl>
+        ${pr.link ? `<a class="ss-btn sm" style="margin-top:14px"
+          href="${ssEsc(pr.link)}" target="_blank" rel="noopener">🔗 Materiallar</a>` : ''}
+      </div>
+      ${mine ? `<div class="ss-card" style="margin-top:14px">
+        <h3 class="ss-h3" style="margin-bottom:8px">Layihəni irəlilət</h3>
+        <button class="ss-btn primary" data-ss-act="advanceHumanity"
+          data-id="${pr.id}" data-stage="${pr.stage}">➡️ Növbəti mərhələ</button>
+      </div>` : ''}`);
+    return;
+  }
+
+  const c = ssRows(challenges).find(x => x.id === id);
+  if(!c){
+    box.innerHTML = ssPage(ssEmpty('🔍','Çağırış tapılmadı','',
+      `<button class="ss-btn" data-ss-back="humanity">← Humanity Lab</button>`));
+    return;
+  }
+  const look = SS_HUM_LOOK[c.category] || ['#4F46E5', c.icon || '🌍'];
+  const P = ssRows(projects).filter(x => x.challenge_id === c.id);
+
+  box.innerHTML = ssPage(`
+    <button class="ss-back" data-ss-back="humanity">← 205 Humanity Lab</button>
+    <div class="ss-detail-grid">
+      <div>
+        <div class="ss-card" style="border-top:3px solid ${look[0]}">
+          <div style="display:flex;gap:12px;align-items:center;margin-bottom:12px">
+            <span class="ss-item-ic" style="width:50px;height:50px;font-size:1.4rem;
+              background:${look[0]}1a;border-color:${look[0]}44">${c.icon || look[1]}</span>
+            <div><h1 class="ss-h2">${ssEsc(c.title)}</h1>
+              <p class="ss-item-sub">${ssEsc(c.category)} · +${c.points} Humanity Points</p></div>
+          </div>
+          <dl class="ss-def">
+            <div><dt>Problem</dt><dd>${ssEsc(c.problem || c.summary)}</dd></div>
+            ${c.why        ? `<div><dt>Niyə vacibdir</dt><dd>${ssEsc(c.why)}</dd></div>` : ''}
+            ${c.research   ? `<div><dt>Araşdırma üçün başlanğıc</dt><dd>${ssEsc(c.research)}</dd></div>` : ''}
+            ${c.approaches ? `<div><dt>Mümkün yanaşmalar</dt><dd>${ssEsc(c.approaches)}</dd></div>` : ''}
+          </dl>
+        </div>
+        <div class="ss-card" style="margin-top:14px">
+          <h3 class="ss-h3" style="margin-bottom:12px">Şagird yolu</h3>
+          ${ssPipeline(SS_HUM_STAGES, 'research')}
+        </div>
+        <div class="ss-sec">
+          ${ssSecHead(`Bu çağırışa aid layihələr (${P.length})`)}
+          ${P.length
+            ? `<div class="ss-grid c2">${P.map(pr => `
+                <button class="ss-item" data-ss-open="p${pr.id}" data-ss-module="humanity">
+                  <span class="ss-item-title">${ssEsc(pr.title)}</span>
+                  <span class="ss-item-sub">${ssEsc(pr.author)} · ${ssRel(pr.created_at)}</span>
+                  <span class="ss-item-meta"><span>🌱 <b>${pr.impact_points||0}</b> HP</span></span>
+                </button>`).join('')}</div>`
+            : ssEmpty('🔬','Bu çağırışa hələ layihə yoxdur','İlk araşdırmanı sən başlada bilərsən.')}
+        </div>
+      </div>
+      <aside>
+        <div class="ss-card">
+          <h3 class="ss-h3" style="margin-bottom:10px">Araşdırmaya başla</h3>
+          <p class="ss-p" style="margin-bottom:14px">
+            Əvvəlcə araşdırma — problemi rəqəmlərlə anlamaq. Sonra ideya, komanda,
+            həll və prototip. Hər mərhələ Humanity Points qazandırır.</p>
+          ${currentUser
+            ? `<button class="ss-btn primary" style="width:100%"
+                 data-ss-act="newHumanity" data-id="${c.id}" data-cat="${ssEsc(c.category)}">
+                 🔬 Layihə başlat</button>`
+            : `<button class="ss-btn primary" style="width:100%" data-ss-act="login">Daxil ol</button>`}
+        </div>
+      </aside>
+    </div>`);
+}
+
+// ── Əməliyyatlar ─────────────────────────────────────────────────────
+ssActions.newHumanity = (d) => {
+  if(!currentUser) return ssNeedLogin('Layihə başlatmaq');
+  ssModal('Humanity Lab layihəsi', `
+    <div class="ss-field"><label class="ss-label" for="ssHuT">Layihənin adı *</label>
+      <input class="ss-input" id="ssHuT" placeholder="Məs: Məktəbdə su israfının xəritəsi"></div>
+    <div class="ss-field"><label class="ss-label" for="ssHuR">Araşdırma qeydlərin *</label>
+      <textarea class="ss-textarea" id="ssHuR"
+        placeholder="Problemi hansı rəqəmlər və müşahidələr göstərir?"></textarea></div>
+    <div class="ss-field"><label class="ss-label" for="ssHuI">İlkin ideya</label>
+      <textarea class="ss-textarea" id="ssHuI" placeholder="Hansı istiqamətdə həll axtarırsan?"></textarea></div>
+    <p class="ss-hint">Layihə «Araşdırma» mərhələsindən başlayır — çünki yaxşı həll
+      yaxşı suallardan doğur.</p>`,
+    `<button class="ss-btn" data-ss-modal-close="1">Ləğv et</button>
+     <button class="ss-btn primary" data-ss-act="newHumanitySave"
+       data-id="${d.id}" data-cat="${ssEsc(d.cat||'')}">Başlat</button>`);
+};
+
+ssActions.newHumanitySave = async (d) => {
+  const g = id => document.getElementById(id)?.value.trim() || '';
+  const title = g('ssHuT'), research = g('ssHuR');
+  if(!title || !research){ showToast('Ad və araşdırma mütləqdir.','red'); return; }
+  const { error } = await sb.from('ss_humanity_projects').insert([{
+    challenge_id:Number(d.id), title, category:d.cat || '',
+    author:currentUser.username, research, idea:g('ssHuI'),
+    stage:'research', status:'active', impact_points:20
+  }]);
+  if(error){ showToast(error.message,'red'); return; }
+  ssModalClose(); ssInvalidate('humanity');
+  ssFxCelebrate('🌱','Araşdırma başladı','+20 Humanity Points');
+  setTimeout(() => renderMekteb205(), 900);
+};
+
+ssActions.advanceHumanity = async (d) => {
+  const i = SS_HUM_STAGES.findIndex(s => s.key === d.stage);
+  const next = SS_HUM_STAGES[i+1];
+  if(!next){ showToast('Layihə son mərhələdədir.','gold'); return; }
+  const { error } = await sb.from('ss_humanity_projects')
+    .update({ stage: next.key, impact_points: 20 * (i + 2) }).eq('id', Number(d.id));
+  if(error){ showToast(error.message,'red'); return; }
+  ssInvalidate('humanity');
+  ssFxPoints(20);
+  showToast('Mərhələ: ' + next.label + ' 🌱','teal');
+  renderMekteb205();
+};
+
+SS_RENDER.humanity = ssRenderHumanity;
+
+
+// ══════════════════════════════════════════════════════════════════════
+// MODUL 6 — 205 OLYMPICS
+// Məktəbdaxili çempionat: Təsnifat → Sinif → Paralel → Final → Çempionat
+//
+// SUAL MƏNBƏYİ: yeni sual bazası icad EDİLMİR. Yarış SözLab-ın mövcud
+// mənbələrini işlədir — söz ehtiyatı üçün WORDS lüğəti, bilik kateqoriyaları
+// üçün isə AI bilik bazası (bilikPool). Mənbəsi olmayan kateqoriya dürüst
+// şəkildə "müəllim sualları əlavə etməlidir" vəziyyəti göstərir.
+// ══════════════════════════════════════════════════════════════════════
+
+const SS_OLY_STAGES = [
+  { key:'qualification', label:'Təsnifat' },
+  { key:'class',         label:'Sinif' },
+  { key:'grade',         label:'Paralel' },
+  { key:'final',         label:'Final' },
+  { key:'championship',  label:'Çempionat' }
+];
+const SS_MEDALS = { gold:['🥇','Qızıl'], silver:['🥈','Gümüş'], bronze:['🥉','Bürünc'] };
+
+// Kateqoriya → hansı mövcud mənbədən sual alınır
+const SS_OLY_SOURCE = {
+  'Söz ehtiyatı':'words',
+  'Elm':'qa', 'Coğrafiya':'qa', 'Texnologiya':'qa', 'Məntiq':'qa'
+};
+
+/** Yarış üçün sual dəsti qurur (mövcud SözLab mənbələrindən). */
+async function ssOlyQuestions(category, n){
+  const src = SS_OLY_SOURCE[category];
+  if(src === 'words'){
+    const pool = (WORDS || []).filter(w => w.en && w.az);
+    if(pool.length < 8) return [];
+    const out = [], used = new Set();
+    let guard = 0;
+    while(out.length < n && guard++ < 500){
+      const w = pool[Math.floor(Math.random() * pool.length)];
+      if(used.has(w.en)) continue;
+      const wrong = [];
+      let g2 = 0;
+      while(wrong.length < 3 && g2++ < 200){
+        const x = pool[Math.floor(Math.random() * pool.length)];
+        if(x.az !== w.az && !wrong.includes(x.az)) wrong.push(x.az);
+      }
+      if(wrong.length < 3) continue;
+      used.add(w.en);
+      out.push({ q:`“${w.en}” sözünün mənası?`, correct:w.az, opts:shuffle([w.az, ...wrong]) });
+    }
+    return out;
+  }
+  if(src === 'qa'){
+    const pool = await bilikPool();
+    const key = { 'Elm':/elm|fizika|kimya|biologiya|tibb/i, 'Coğrafiya':/coğrafiya|ölkə|şəhər|dağ|çay|dəniz/i,
+                  'Texnologiya':/texnologiya|kompüter|internet|rəqəmsal/i, 'Məntiq':null }[category];
+    let src2 = pool;
+    if(key) src2 = pool.filter(r => key.test(r.category || '') || key.test(r.topic || ''));
+    if(src2.length < 20) src2 = pool;
+    if(src2.length < 20) return [];
+    const out = [], used = new Set();
+    let guard = 0;
+    while(out.length < n && guard++ < 600){
+      const r = src2[Math.floor(Math.random() * src2.length)];
+      if(used.has(r.id)) continue;
+      const wrong = [];
+      let g2 = 0;
+      while(wrong.length < 3 && g2++ < 120){
+        const d = src2[Math.floor(Math.random() * src2.length)];
+        if(d.answer !== r.answer && !wrong.includes(d.answer)) wrong.push(d.answer);
+      }
+      if(wrong.length < 3) continue;
+      used.add(r.id);
+      out.push({ q:r.question, correct:r.answer, opts:shuffle([r.answer, ...wrong]) });
+    }
+    return out;
+  }
+  return [];   // bu kateqoriya üçün hazır mənbə yoxdur
+}
+
+async function ssRenderOlympics(box){
+  if(ssRoute.id) return ssRenderOlympicsEvent(box);
+  const tab = ssRoute.tab || 'events';
+
+  box.innerHTML = ssPage(`
+    ${ssHero({
+      eyebrow:'MODUL 6 · 205 OLYMPICS',
+      title:'Məktəbin öz <span>çempionatı</span>',
+      tagline:'On kateqoriya. Beş mərhələ. Bir çempion.',
+      lead:'Bu, növbəti quiz deyil — məktəbin bütün siniflərini əhatə edən mövsümi '
+        + 'çempionatdır. Təsnifatdan finala qədər hər mərhələ ayrıca keçirilir.'
+    })}
+    <div class="ss-grid c4 ss-sec" id="ssOlyStats">${ssSkeleton(4,'c4')}</div>
+    <section class="ss-sec">
+      <div class="ss-card">
+        <h3 class="ss-h3" style="margin-bottom:12px">Çempionat quruluşu</h3>
+        ${ssPipeline(SS_OLY_STAGES, 'qualification')}
+      </div>
+    </section>
+    <section class="ss-sec">
+      <div class="ss-tabs" role="tablist">
+        ${[['events','🏅 Yarışlar'],['board','📊 Liderbordlar'],['hall','🏛 Şöhrət Zalı']]
+          .map(t => `<button class="ss-tab${tab===t[0]?' on':''}" role="tab"
+            aria-selected="${tab===t[0]}" data-ss-tab="${t[0]}">${t[1]}</button>`).join('')}
+      </div>
+      <div id="ssOlyBody">${ssSkeleton(6,'c3')}</div>
+    </section>`);
+
+  const [events, results, hall] = await Promise.all([ssOlyEvents(), ssOlyResults(), ssHall()]);
+  if(ssErr(events)){ document.getElementById('ssOlyBody').innerHTML = ssErrorState(ssErr(events),'olympics'); return; }
+  const E = ssRows(events), Rz = ssRows(results), H = ssRows(hall);
+
+  const stats = document.getElementById('ssOlyStats');
+  if(stats) stats.innerHTML =
+    ssStat(new Set(E.map(e => e.category)).size, 'Kateqoriya') +
+    ssStat(new Set(Rz.map(r => r.username)).size, 'İştirakçı') +
+    ssStat(Rz.filter(r => r.medal).length, 'Verilmiş medal') +
+    ssStat(E.filter(e => e.status === 'live').length || E.filter(e => e.status === 'upcoming').length,
+           E.some(e => e.status === 'live') ? 'Canlı yarış' : 'Gözləyən yarış');
+
+  const body = document.getElementById('ssOlyBody');
+  if(!body) return;
+
+  if(tab === 'hall'){
+    const bySeason = new Map();
+    H.forEach(h => { if(!bySeason.has(h.season)) bySeason.set(h.season, []); bySeason.get(h.season).push(h); });
+    body.innerHTML = H.length
+      ? [...bySeason.entries()].map(([season, rows]) => `
+          <div class="ss-card" style="margin-bottom:14px">
+            <div class="ss-eyebrow">${ssEsc(season)}</div>
+            <h3 class="ss-h2" style="margin-bottom:14px">🏛 Şöhrət Zalı</h3>
+            <div class="ss-grid c2">${rows.map(h => `
+              <div class="ss-badge">
+                <span class="ss-medal ${h.medal}" aria-hidden="true">${SS_MEDALS[h.medal][0]}</span>
+                <div><b>${ssEsc(h.display_name || h.username)}</b>
+                  <span>${ssEsc(h.category)} · ${ssEsc(h.class_grade || '')} · ${ssNum(h.score)} bal</span></div>
+              </div>`).join('')}</div>
+          </div>`).join('')
+      : ssEmpty('🏛','Şöhrət Zalı hələ boşdur',
+          'İlk mövsüm başa çatanda qaliblər buraya daimi olaraq yazılacaq.');
+    return;
+  }
+
+  if(tab === 'board'){
+    const byUser = new Map();
+    Rz.forEach(r => {
+      const cur = byUser.get(r.username) || { username:r.username, cls:r.class_grade, score:0, n:0, medals:0 };
+      cur.score += r.score || 0; cur.n++; if(r.medal) cur.medals++;
+      byUser.set(r.username, cur);
+    });
+    const indiv = [...byUser.values()].sort((a,b) => b.score - a.score);
+    const byClass = new Map();
+    indiv.forEach(u => { if(u.cls) byClass.set(u.cls, (byClass.get(u.cls)||0) + u.score); });
+    const cls = [...byClass.entries()].sort((a,b) => b[1]-a[1]);
+    body.innerHTML = `
+      <div class="ss-detail-grid">
+        <div class="ss-card">
+          <h3 class="ss-h3" style="margin-bottom:10px">Fərdi reytinq</h3>
+          ${indiv.length ? indiv.slice(0,12).map((u,i) =>
+            ssRankRow(i, u.username, `${u.n} yarış · ${u.medals} medal`,
+              ssNum(u.score), u.username === currentUser?.username)).join('')
+            : `<p class="ss-p">Hələ nəticə yoxdur.</p>`}
+        </div>
+        <aside class="ss-card">
+          <h3 class="ss-h3" style="margin-bottom:10px">Sinif reytinqi</h3>
+          ${cls.length ? cls.map(([c,v],i) =>
+            ssRankRow(i, c, '', ssNum(v), c === currentUser?.class_grade)).join('')
+            : `<p class="ss-p">Sinif məlumatı yoxdur.</p>`}
+        </aside>
+      </div>`;
+    return;
+  }
+
+  body.innerHTML = E.length
+    ? `<div class="ss-grid c3">${E.map(e => {
+        const n = Rz.filter(r => r.event_id === e.id).length;
+        const st = e.status === 'live' ? '<span class="ss-chip live">CANLI</span>'
+          : e.status === 'finished' ? '<span class="ss-chip done">Bitib</span>'
+          : '<span class="ss-chip soon">Gözləyir</span>';
+        return `<button class="ss-item" data-ss-open="${e.id}" data-ss-module="olympics">
+          <span class="ss-item-top">
+            <span class="ss-item-ic" aria-hidden="true">${e.icon || '🏅'}</span>
+            <span style="flex:1;min-width:0">
+              <span class="ss-item-title">${ssEsc(e.category)}</span>
+              <span class="ss-item-sub">${ssEsc(
+                (SS_OLY_STAGES.find(s => s.key === e.stage) || {}).label || e.stage)} mərhələsi</span></span>
+            ${st}
+          </span>
+          <span class="ss-item-body">${ssEsc(e.description || '')}</span>
+          <span class="ss-item-meta">
+            <span><b>${e.question_count}</b> sual</span>
+            <span><b>${n}</b> iştirakçı</span>
+            <span style="margin-left:auto">${SS_OLY_SOURCE[e.category] ? '▶️ Oynanıla bilər' : '📝 Sual gözləyir'}</span>
+          </span></button>`; }).join('')}</div>`
+    : ssEmpty('🏅','Hələ yarış yaradılmayıb','Müəllim ilk yarışı əlavə edəndə burada görünəcək.');
+}
+
+/** Yarış səhifəsi + canlı yarış ekranı */
+async function ssRenderOlympicsEvent(box){
+  const id = Number(ssRoute.id);
+  const [events, results] = await Promise.all([ssOlyEvents(), ssOlyResults()]);
+  const e = ssRows(events).find(x => x.id === id);
+  if(!e){
+    box.innerHTML = ssPage(ssEmpty('🔍','Yarış tapılmadı','',
+      `<button class="ss-btn" data-ss-back="olympics">← 205 Olympics</button>`));
+    return;
+  }
+  const rows = ssRows(results).filter(r => r.event_id === id)
+    .sort((a,b) => (b.score||0) - (a.score||0));
+  const mine = currentUser ? rows.find(r => r.username === currentUser.username) : null;
+  const playable = !!SS_OLY_SOURCE[e.category];
+
+  box.innerHTML = ssPage(`
+    <button class="ss-back" data-ss-back="olympics">← 205 Olympics</button>
+    <div class="ss-detail-grid">
+      <div>
+        <div class="ss-card">
+          <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+            <span class="ss-item-ic" style="width:50px;height:50px;font-size:1.4rem">${e.icon||'🏅'}</span>
+            <div style="flex:1;min-width:170px">
+              <div class="ss-eyebrow" style="margin-bottom:3px">${ssEsc(e.season)}</div>
+              <h1 class="ss-h2">${ssEsc(e.category)}</h1>
+            </div>
+            ${e.status === 'live' ? '<span class="ss-chip live">CANLI</span>'
+              : `<span class="ss-chip soon">${e.status === 'finished' ? 'Bitib' : 'Gözləyir'}</span>`}
+          </div>
+          ${e.description ? `<p class="ss-p" style="margin-top:12px">${ssEsc(e.description)}</p>` : ''}
+          <div style="margin-top:16px">${ssPipeline(SS_OLY_STAGES, e.stage)}</div>
+        </div>
+        <div class="ss-sec">
+          ${ssSecHead(`Canlı reytinq (${rows.length})`)}
+          <div class="ss-card pad-sm">
+            ${rows.length ? rows.slice(0,15).map((r,i) => `
+              <div class="ss-rank${r.username===currentUser?.username?' me':''}">
+                <span class="ss-rank-n ${i===0?'g':i===1?'s':i===2?'b':''}">${i+1}</span>
+                <span class="ss-rank-name">${ssEsc(r.username)}
+                  <small>${ssEsc(r.class_grade||'')} · ${r.accuracy||0}% dəqiqlik · kombo ${r.best_combo||0}</small></span>
+                ${r.medal ? `<span class="ss-medal ${r.medal}" aria-hidden="true">${SS_MEDALS[r.medal][0]}</span>` : ''}
+                <span class="ss-rank-val">${ssNum(r.score)}</span>
+              </div>`).join('')
+              : ssEmpty('📭','Hələ heç kim iştirak etməyib','Bu yarışda ilk nəticəni sən qoya bilərsən.')}
+          </div>
+        </div>
+      </div>
+      <aside>
+        <div class="ss-card">
+          <h3 class="ss-h3" style="margin-bottom:10px">İştirak et</h3>
+          ${mine ? `<p class="ss-p" style="margin-bottom:12px">
+            Nəticən: <b>${ssNum(mine.score)}</b> bal · ${mine.accuracy}% dəqiqlik
+            ${mine.medal ? ` · ${SS_MEDALS[mine.medal][0]} ${SS_MEDALS[mine.medal][1]}` : ''}</p>` : ''}
+          ${!currentUser
+            ? `<button class="ss-btn primary" style="width:100%" data-ss-act="login">Daxil ol</button>`
+            : playable
+              ? `<button class="ss-btn primary" style="width:100%"
+                   data-ss-act="olyStart" data-id="${e.id}" data-cat="${ssEsc(e.category)}"
+                   data-n="${e.question_count}">${mine ? '🔄 Yenidən yarış' : '▶️ Yarışa başla'}</button>`
+              : `<p class="ss-p">Bu kateqoriya üçün suallar hələ hazır deyil —
+                   müəllim sual dəstini əlavə etməlidir.</p>`}
+          <p class="ss-hint" style="margin-top:10px">
+            ${e.question_count} sual · hər düzgün cavab +10 bal · kombo bonusu var.
+            İştirak <b>+150 205 Points</b> qazandırır.</p>
+        </div>
+      </aside>
+    </div>`);
+}
+
+// ── Canlı yarış ekranı ───────────────────────────────────────────────
+let ssOlyState = null;
+
+ssActions.olyStart = async (d) => {
+  if(!currentUser) return ssNeedLogin('Yarışa qoşulmaq');
+  const n = Math.max(5, Math.min(25, Number(d.n) || 12));
+  const qs = await ssOlyQuestions(d.cat, n);
+  if(qs.length < 5){
+    showToast('Bu kateqoriya üçün kifayət qədər sual tapılmadı.','gold');
+    return;
+  }
+  ssOlyState = { eventId:Number(d.id), cat:d.cat, qs, i:0, score:0, correct:0,
+                 combo:0, bestCombo:0, startedAt:Date.now(), perQ:20, left:20, timer:null };
+  ssOlyScreen();
+};
+
+function ssOlyScreen(){
+  const s = ssOlyState;
+  const box = document.getElementById('m205Page');
+  if(!s || !box) return;
+  if(s.i >= s.qs.length) return ssOlyFinish();
+
+  const q = s.qs[s.i];
+  const pct = Math.round((s.i / s.qs.length) * 100);
+  box.innerHTML = ssPage(`
+    <div class="ss-card" style="max-width:760px;margin:12px auto 0">
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px">
+        <span class="ss-chip live">CANLI</span>
+        <b style="font-size:.86rem">${ssEsc(s.cat)}</b>
+        <span style="margin-left:auto;font-size:.78rem;color:var(--ss-faint)">
+          Sual ${s.i+1}/${s.qs.length}</span>
+      </div>
+      ${ssBar(pct,'var(--ss-olympics)')}
+      <div class="ss-grid c4" style="margin:14px 0">
+        ${ssStat(ssNum(s.score),'Bal')}
+        ${ssStat(s.correct + '/' + s.i,'Düzgün')}
+        ${ssStat('×' + s.combo,'Kombo', 'ən yaxşı ×' + s.bestCombo)}
+        ${ssStat('<span id="ssOlyTime">' + s.left + '</span>','Saniyə')}
+      </div>
+      <div style="font-size:1.02rem;font-weight:700;line-height:1.5;margin:18px 0 14px">
+        ${ssEsc(q.q)}</div>
+      <div style="display:grid;gap:9px" id="ssOlyOpts">
+        ${q.opts.map(o => `<button class="ss-btn" style="justify-content:flex-start;text-align:left;
+          padding:13px 16px;font-weight:600" data-ss-act="olyAnswer"
+          data-v="${ssEsc(o)}">${ssEsc(o)}</button>`).join('')}
+      </div>
+      <button class="ss-btn ghost sm" style="margin-top:14px" data-ss-act="olyQuit">Yarışdan çıx</button>
+    </div>`);
+
+  clearInterval(s.timer);
+  s.left = s.perQ;
+  s.timer = setInterval(() => {
+    s.left--;
+    const t = document.getElementById('ssOlyTime');
+    if(t) t.textContent = s.left;
+    if(s.left <= 0){ clearInterval(s.timer); ssOlyAnswer(null); }
+  }, 1000);
+}
+
+function ssOlyAnswer(val){
+  const s = ssOlyState;
+  if(!s) return;
+  clearInterval(s.timer);
+  const q = s.qs[s.i];
+  const right = val === q.correct;
+  if(right){
+    s.correct++; s.combo++; s.bestCombo = Math.max(s.bestCombo, s.combo);
+    s.score += 10 + Math.min(10, (s.combo - 1) * 2) + Math.max(0, s.left);
+    sfxCorrect?.();
+  }else{
+    s.combo = 0;
+    sfxWrong?.();
+  }
+  document.querySelectorAll('#ssOlyOpts button').forEach(b => {
+    b.disabled = true;
+    if(b.dataset.v === q.correct) b.style.borderColor = 'var(--m-green)';
+    else if(b.dataset.v === val) b.style.borderColor = 'var(--m-red)';
+  });
+  setTimeout(() => { s.i++; ssOlyScreen(); }, 850);
+}
+ssActions.olyAnswer = (d) => ssOlyAnswer(d.v);
+ssActions.olyQuit = () => {
+  if(ssOlyState) clearInterval(ssOlyState.timer);
+  ssOlyState = null;
+  renderMekteb205();
+};
+
+async function ssOlyFinish(){
+  const s = ssOlyState;
+  if(!s) return;
+  clearInterval(s.timer);
+  const accuracy = Math.round((s.correct / s.qs.length) * 100);
+  const duration = Math.round((Date.now() - s.startedAt) / 1000);
+
+  try{
+    await sb.from('ss_olympics_results').insert([{
+      event_id:s.eventId, username:currentUser.username,
+      class_grade:currentUser.class_grade || '', score:s.score,
+      accuracy, best_combo:s.bestCombo, duration_s:duration
+    }]);
+  }catch(err){ /* nəticə yazılmasa da ekran göstərilir */ }
+  ssInvalidate('olyres');
+  await ssAward(150, '205 Olympics: ' + s.cat, 'olympics', s.eventId);
+
+  const medal = accuracy >= 90 ? 'gold' : accuracy >= 75 ? 'silver' : accuracy >= 60 ? 'bronze' : null;
+  const box = document.getElementById('m205Page');
+  const eventId = s.eventId;
+  ssOlyState = null;
+
+  if(box) box.innerHTML = ssPage(`
+    <div class="ss-card" style="max-width:620px;margin:20px auto 0;text-align:center">
+      <div style="font-size:3rem;line-height:1">${medal ? SS_MEDALS[medal][0] : '🎯'}</div>
+      <h2 class="ss-h2" style="margin-top:8px">${ssNum(s.score)} bal</h2>
+      <p class="ss-p" style="margin-top:6px">${s.correct}/${s.qs.length} düzgün · ${accuracy}% dəqiqlik
+        · ən yaxşı kombo ×${s.bestCombo}</p>
+      ${medal ? `<p class="ss-p" style="margin-top:10px"><b>${SS_MEDALS[medal][1]} səviyyə</b> —
+        rəsmi medal mərhələ bitəndə müəllim tərəfindən təsdiqlənir.</p>` : ''}
+      <div class="ss-badge" style="margin-top:18px;text-align:left">
+        <span class="ss-badge-ic" aria-hidden="true">🏦</span>
+        <div><b>+150 205 Points</b><span>iştiraka görə cüzdanına yazıldı</span></div>
+      </div>
+      <div style="display:flex;gap:8px;justify-content:center;margin-top:18px;flex-wrap:wrap">
+        <button class="ss-btn primary" data-ss-open="${eventId}" data-ss-module="olympics">Nəticələrə bax</button>
+        <button class="ss-btn" data-ss-go="olympics">← Olympics</button>
+      </div>
+    </div>`);
+  if(medal) ssFxCelebrate(SS_MEDALS[medal][0], SS_MEDALS[medal][1] + ' səviyyə!', accuracy + '% dəqiqlik');
+}
+
+SS_RENDER.olympics = ssRenderOlympics;
+
+
+// ══════════════════════════════════════════════════════════════════════
+// MƏKTƏB ANALİTİKASI — 205 Smart School ekosistemi
+// Yalnız direktor və admin üçün.
+//
+// QRAFİK QƏRARLARI (hamısı ölçülüb, gözlə seçilməyib):
+//   • Hər qrafik TƏK ölçü göstərir → kateqorik palitra lazım deyil.
+//     Nominal kateqoriyalarda (problem sahələri) bütün sütunlar EYNİ rəngdədir;
+//     uzunluq onsuz da böyüklüyü kodlayır, hüceyrəni ikinci dəfə kodlamaq səhvdir.
+//   • Startap boru xətti SIRALI olduğu üçün orada ordinal indigo ramp işlədilir
+//     (L: 0.87 → 0.46, monoton azalan — yoxlanılıb).
+//   • Əsas rəng #4F46E5 ağ fonla 6.29:1 kontrast verir.
+//     Status rəngləri (#10B981 / #F59E0B) 3:1-dən aşağıdır, ona görə HƏMİŞƏ
+//     ikona + mətn etiketi ilə gəlir — rəng tək başına məna daşımır.
+//   • İki y-oxu YOXDUR, dairəvi diaqram YOXDUR, kəsik şəbəkə xətti YOXDUR.
+//   • Hər qrafikin cədvəl görünüşü var (əlçatanlıq).
+// ══════════════════════════════════════════════════════════════════════
+
+const SSC_HUE  = '#4F46E5';                      // tək ölçü üçün əsas rəng
+const SSC_RAMP = ['#C7D2FE','#A5B4FC','#818CF8','#6366F1','#4F46E5','#4338CA'];
+const sscRamp  = (i, n) => SSC_RAMP[Math.min(SSC_RAMP.length-1,
+  Math.round((i / Math.max(1, n-1)) * (SSC_RAMP.length-1)))];
+
+let sscTable = {};        // hansı qrafikin cədvəl görünüşü açıqdır
+
+/** Üfüqi sütun qrafiki — tək ölçü, seçmə birbaşa etiket. */
+function sscBars(id, rows, opts){
+  const o = opts || {};
+  const max = Math.max(...rows.map(r => r[1]), 1);
+  if(sscTable[id]){
+    return `<table class="ssc-table"><caption class="ssc-cap">${ssEsc(o.caption||'')}</caption>
+      <thead><tr><th scope="col">${ssEsc(o.dim||'Kateqoriya')}</th>
+      <th scope="col">${ssEsc(o.measure||'Say')}</th></tr></thead>
+      <tbody>${rows.map(r => `<tr><th scope="row">${ssEsc(r[0])}</th>
+        <td>${ssNum(r[1])}</td></tr>`).join('')}</tbody></table>`;
+  }
+  return `<div class="ssc-bars" role="img" aria-label="${ssEsc(o.caption||'')}">
+    ${rows.map((r,i) => `
+      <div class="ssc-row">
+        <span class="ssc-lbl" title="${ssEsc(r[0])}">${ssEsc(r[0])}</span>
+        <span class="ssc-track">
+          <span class="ssc-fill" style="width:${r[1] ? Math.max(2,(r[1]/max)*100) : 0}%;
+            background:${o.ordinal ? sscRamp(i, rows.length) : SSC_HUE}"
+            data-ssc-tip="${ssEsc(r[0])}: ${ssNum(r[1])} ${ssEsc(o.measure||'')}"></span>
+        </span>
+        <span class="ssc-val">${ssNum(r[1])}</span>
+      </div>`).join('')}
+  </div>`;
+}
+
+/** Zaman xətti — tək seriya, 2px xətt, yalnız ilk/son/maksimum etiketlənir. */
+function sscLine(id, points, opts){
+  const o = opts || {};
+  if(sscTable[id]){
+    return `<table class="ssc-table"><caption class="ssc-cap">${ssEsc(o.caption||'')}</caption>
+      <thead><tr><th scope="col">Ay</th><th scope="col">${ssEsc(o.measure||'Dəyər')}</th></tr></thead>
+      <tbody>${points.map(p => `<tr><th scope="row">${ssEsc(p[0])}</th>
+        <td>${ssNum(p[1])}</td></tr>`).join('')}</tbody></table>`;
+  }
+  if(points.length < 2) return `<p class="ss-p">Qrafik üçün ən azı iki ay lazımdır.</p>`;
+  const W = 720, H = 210, PL = 44, PR = 16, PT = 16, PB = 30;
+  const max = Math.max(...points.map(p => p[1]), 1);
+  const nice = Math.ceil(max / 10) * 10 || 10;
+  const x = i => PL + (i / (points.length - 1)) * (W - PL - PR);
+  const y = v => PT + (1 - v / nice) * (H - PT - PB);
+  const line = points.map((p,i) => `${i ? 'L' : 'M'} ${x(i).toFixed(1)} ${y(p[1]).toFixed(1)}`).join(' ');
+  const area = `${line} L ${x(points.length-1).toFixed(1)} ${y(0)} L ${x(0).toFixed(1)} ${y(0)} Z`;
+  const maxI = points.reduce((b,p,i) => p[1] > points[b][1] ? i : b, 0);
+  const label = i => i === 0 || i === points.length-1 || i === maxI;
+  return `<div class="ssc-line-wrap">
+    <svg viewBox="0 0 ${W} ${H}" class="ssc-line" role="img"
+         aria-label="${ssEsc(o.caption||'')}">
+      <defs><linearGradient id="sscFill${id}" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="${SSC_HUE}" stop-opacity=".20"/>
+        <stop offset="100%" stop-color="${SSC_HUE}" stop-opacity="0"/></linearGradient></defs>
+      <!-- şəbəkə: incə, bütöv, geri planda -->
+      ${[0,.5,1].map(f => `<line x1="${PL}" y1="${y(nice*f)}" x2="${W-PR}" y2="${y(nice*f)}"
+          stroke="#E2E8F0" stroke-width="1"/>
+        <text x="${PL-8}" y="${y(nice*f)+4}" text-anchor="end" font-size="11"
+          fill="#94A3B8">${ssNum(Math.round(nice*f))}</text>`).join('')}
+      <path d="${area}" fill="url(#sscFill${id})"/>
+      <path d="${line}" fill="none" stroke="${SSC_HUE}" stroke-width="2"
+            stroke-linejoin="round" stroke-linecap="round"/>
+      ${points.map((p,i) => `
+        <circle cx="${x(i)}" cy="${y(p[1])}" r="${i===maxI?5:4}" fill="#fff"
+                stroke="${SSC_HUE}" stroke-width="2"/>
+        <circle class="ssc-hit" cx="${x(i)}" cy="${y(p[1])}" r="14" fill="transparent"
+                data-ssc-tip="${ssEsc(p[0])}: ${ssNum(p[1])} ${ssEsc(o.measure||'')}"/>
+        ${label(i) ? `<text x="${x(i)}" y="${y(p[1])-11}" text-anchor="middle"
+          font-size="11" font-weight="700" fill="#334155">${ssNum(p[1])}</text>` : ''}
+        <text x="${x(i)}" y="${H-9}" text-anchor="middle" font-size="11"
+          fill="#94A3B8">${ssEsc(p[0])}</text>`).join('')}
+    </svg></div>`;
+}
+
+function sscHead(id, title, sub){
+  return `<div class="ss-sec-head" style="margin-bottom:12px">
+    <div><h3 class="ss-h3">${ssEsc(title)}</h3>
+      ${sub ? `<p class="ss-item-sub" style="margin-top:3px">${ssEsc(sub)}</p>` : ''}</div>
+    <button class="ss-btn sm ghost" data-ss-act="sscToggle" data-id="${id}"
+      aria-pressed="${!!sscTable[id]}">${sscTable[id] ? '📊 Qrafik' : '🔢 Cədvəl'}</button>
+  </div>`;
+}
+
+async function ssRenderAnalytics(box){
+  if(!ssIsDir()){
+    box.innerHTML = ssPage(ssEmpty('🔒','Bu bölmə məktəb rəhbərliyi üçündür',
+      'Ekosistem analitikasını yalnız direktor və admin görə bilər.',
+      `<button class="ss-btn" data-ss-go="home">← 205 Smart School</button>`));
+    return;
+  }
+
+  box.innerHTML = ssPage(`
+    <div class="ss-sec" style="margin-top:16px">
+      <div class="ss-eyebrow">MƏKTƏB ANALİTİKASI</div>
+      <h1 class="ss-h2">205 Smart School — ekosistem göstəriciləri</h1>
+      <p class="ss-p" style="margin-top:6px">Bütün rəqəmlər cari andakı vəziyyəti göstərir.</p>
+    </div>
+    <div id="ssAnBody" style="margin-top:16px">${ssSkeleton(4,'c4')}</div>`);
+
+  let A = null;
+  try{
+    const { data, error } = await sb.rpc('ss_school_analytics');
+    if(error) throw error;
+    A = data || {};
+  }catch(e){
+    document.getElementById('ssAnBody').innerHTML = ssErrorState(e.message, 'analytics');
+    return;
+  }
+
+  const part = A.students ? Math.round((A.active_students / A.students) * 100) : 0;
+  const health = part >= 60 ? ['✅','Güclü iştirak','#10B981']
+    : part >= 30 ? ['⚠️','Orta iştirak','#F59E0B']
+    : ['🔻','Aşağı iştirak','#EF4444'];
+
+  const cats = Object.entries(A.by_category || {}).sort((a,b) => b[1]-a[1]);
+  const stageOrder = ['idea','validation','team','prototype','mvp','mentor','pitch','demoday'];
+  const stageLbl = { idea:'İdeya', validation:'Yoxlama', team:'Komanda', prototype:'Prototip',
+                     mvp:'MVP', mentor:'Mentor', pitch:'Pitç', demoday:'Demo Day' };
+  const pipe = stageOrder.map(k => [stageLbl[k], (A.startups_by_stage||{})[k] || 0]);
+  const months = (A.monthly || []).map(m => {
+    const [yy, mm] = String(m.ym).split('-');
+    return [['Yan','Fev','Mar','Apr','May','İyn','İyl','Avq','Sen','Okt','Noy','Dek'][+mm-1] || m.ym, m.n];
+  });
+
+  document.getElementById('ssAnBody').innerHTML = `
+    <div class="ss-grid c4">
+      ${ssStat(ssNum(A.students), 'Şagird', ssNum(A.active_students) + ' son 30 gündə aktiv')}
+      ${ssStat(ssNum(A.startups), 'Startap', ssNum(A.teams) + ' komanda')}
+      ${ssStat(ssNum(A.problems_solved) + '/' + ssNum(A.problems), 'Problem həll olunub',
+               ssNum(A.solutions) + ' həll təklifi')}
+      ${ssStat(ssNum(A.points_total), '205 Points', 'ekosistemdə qazanılıb')}
+      ${ssStat(ssNum(A.connections), 'Qlobal əlaqə', ssNum(A.submissions) + ' beynəlxalq göndəriş')}
+      ${ssStat(ssNum(A.humanity), 'Humanity layihəsi')}
+      ${ssStat(ssNum(A.olympics_participants), 'Olimpiada iştirakçısı',
+               ssNum(A.olympics_events) + ' yarış')}
+      ${ssStat(ssNum(A.challenges), 'Çağırış')}
+    </div>
+
+    <div class="ss-card" style="margin-top:16px">
+      <div class="ss-sec-head" style="margin-bottom:10px">
+        <div><h3 class="ss-h3">Şagird iştirakı</h3>
+          <p class="ss-item-sub" style="margin-top:3px">Son 30 gündə ən azı bir dəfə ekosistemdə fəaliyyət</p></div>
+        <span class="ss-chip" style="border-color:${health[2]}55">
+          <span aria-hidden="true">${health[0]}</span> ${health[1]}</span>
+      </div>
+      <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap">
+        <b style="font-family:var(--font-head);font-size:clamp(2rem,5vw,3rem);line-height:1">${part}%</b>
+        <span class="ss-p">${ssNum(A.active_students)} / ${ssNum(A.students)} şagird</span>
+      </div>
+      <div style="margin-top:12px">${ssBar(part, health[2])}</div>
+    </div>
+
+    <div class="ss-detail-grid" style="margin-top:16px">
+      <div class="ss-card">
+        ${sscHead('cats','Problemlər — sahələr üzrə','Hansı sahədə daha çox məsələ elan olunub')}
+        ${cats.length ? sscBars('cats', cats, {caption:'Problemlər sahələr üzrə',
+            dim:'Sahə', measure:'problem'})
+          : `<p class="ss-p">Hələ problem elan olunmayıb.</p>`}
+      </div>
+      <div class="ss-card">
+        ${sscHead('pipe','Startap boru xətti','Hansı mərhələdə neçə komanda var')}
+        ${sscBars('pipe', pipe, {ordinal:true, caption:'Startaplar mərhələlər üzrə',
+          dim:'Mərhələ', measure:'startap'})}
+      </div>
+    </div>
+
+    <div class="ss-card" style="margin-top:16px">
+      ${sscHead('mon','Aylıq fəaliyyət','Ekosistemdə qeydə alınan hərəkətlərin sayı')}
+      ${months.length ? sscLine('mon', months, {caption:'Aylıq fəaliyyət', measure:'hərəkət'})
+        : `<p class="ss-p">Hələ kifayət qədər tarixçə yoxdur.</p>`}
+    </div>
+
+    <div class="ss-card" style="margin-top:16px">
+      <h3 class="ss-h3" style="margin-bottom:8px">Bu rəqəmlər nə deyir?</h3>
+      <p class="ss-p">
+        ${part >= 60
+          ? 'İştirak güclüdür — ekosistem şagirdlərin gündəlik həyatına daxil olub.'
+          : part >= 30
+            ? 'İştirak orta səviyyədədir. Sinif rəhbərləri ilə birlikdə bir «Problem Market» '
+              + 'tapşırığı elan etmək iştirakı adətən qaldırır.'
+            : 'İştirak hələ aşağıdır. Ən sürətli yol: bir real problem elan edib onu '
+              + 'sinif saatında təqdim etmək.'}
+        ${A.problems_solved ? ` Məktəbdə ${A.problems_solved} problem şagird həlli ilə bağlanıb.` : ''}
+      </p>
+    </div>`;
+}
+
+ssActions.sscToggle = (d) => {
+  sscTable[d.id] = !sscTable[d.id];
+  renderMekteb205();
+};
+
+// ── Tooltip (bütün qrafiklər üçün ortaq) ────────────────────────────
+function sscTipInit(){
+  if(window.__sscTip) return;
+  window.__sscTip = true;
+  let tip = null;
+  document.addEventListener('mousemove', e => {
+    const el = e.target.closest('[data-ssc-tip]');
+    if(!el){ if(tip){ tip.remove(); tip = null; } return; }
+    if(!tip){
+      tip = document.createElement('div');
+      tip.className = 'ssc-tip';
+      document.body.appendChild(tip);
+    }
+    tip.textContent = el.dataset.sscTip;
+    tip.style.left = (e.clientX + 14) + 'px';
+    tip.style.top  = (e.clientY - 12) + 'px';
+  }, { passive:true });
+  document.addEventListener('scroll', () => { if(tip){ tip.remove(); tip = null; } }, true);
+}
+
+SS_RENDER.analytics = async (box) => { sscTipInit(); return ssRenderAnalytics(box); };
+
+
 window.copyEmail=()=>{
   navigator.clipboard.writeText('sozlab@example.com');
   showToast('Email ünvanı kopyalandı!','teal');
@@ -11893,6 +15393,8 @@ window.addEventListener('DOMContentLoaded',async()=>{
   // Foyedəki televizor üçün: sozlabyoxlama.vercel.app/#ekran linkini açmaq
   // kifayətdir — heç bir klik lazım deyil.
   if(location.hash==='#ekran'||location.hash==='#kiosk')setTimeout(openKiosk,1200);
+  // 205 ekosistemi üçün dərin link: #/205/world kimi ünvanlar birbaşa açılır
+  if(ssParseHash(location.hash))setTimeout(ssHandleHash,900);
   window.addEventListener('hashchange',()=>{
     if(location.hash==='#ekran'||location.hash==='#kiosk')openKiosk();
   });
